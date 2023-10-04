@@ -5,6 +5,7 @@ import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { GitHubContact, LinkedInContact } from "@/components/contact-button"
 import { ModeToggle } from "./mode-toggle"
 import {
     NavigationMenu,
@@ -68,6 +69,7 @@ export function PageHeader() {
                     <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" />
                     <AvatarFallback>TN</AvatarFallback>
                 </Avatar>
+                <div className="flex items-center gap-2">
                 <NavigationMenu>
                     <NavigationMenuList>
                         <NavigationMenuItem>
@@ -109,9 +111,12 @@ export function PageHeader() {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
-                        <ModeToggle />
+                        <GitHubContact />
+                        <LinkedInContact />
                     </NavigationMenuList>
                 </NavigationMenu>
+                <ModeToggle />
+                </div>
             </div>
         </div>
     )
