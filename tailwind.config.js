@@ -75,11 +75,34 @@ module.exports = {
             "background-position": "right center"
           }
         },
+        "card-translate-y": {
+          "0%": {
+            "transform": "translateY(0)",
+            "animation-timing-function": "cubic-bezier(0.9, 0, 1, 1)",
+          },
+          "100%": {
+            "transform": "translateY(-1%)",
+            "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
+          }
+        },
+        "card-bounce": {
+          "0%, 100%": {
+            "transform": "translateY(-0.5%)",
+            "animation-timing-function": "cubic-bezier(0.9, 0, 1, 1)",
+          },
+          "50%" : {
+            "transform": "translateY(0)",
+            "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
+          }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "gradient-xy": "gradient-xy 5s ease infinite",
+        "gradient-xy-delay": "gradient-xy 10s ease infinite",
+        "card-translate-y": "card-translate-y 0.2s forwards",
+        "card-bounce": "card-bounce 1s infinite",
       },
     },
   },

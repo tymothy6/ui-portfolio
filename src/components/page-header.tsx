@@ -23,12 +23,12 @@ const works : { title: string; href: string; description: string }[] = [
     {
         title: "Product Design",
         href: "work/product-design",
-        description: "Some of the digital products I've designed.",
+        description: "An overview of the digital products I've designed.",
     },
     {
         title: "Scientific Design",
         href: "work/science",
-        description: "Some of the research I've published in my PhD thesis.",
+        description: "An overview of the research I've published in my PhD thesis.",
     },
 ]
 
@@ -41,7 +41,7 @@ const about : { title: string; href: string; description: string }[] = [
     {
         title: "Values",
         href: "#values",
-        description: "Some of the things I care about.",
+        description: "My design philosophy and the things I care about.",
     },
 ]
 
@@ -63,7 +63,7 @@ const contacts : { title: string; href: string }[] = [
 
 export function PageHeader() {
     return (
-        <div className="bg-background fixed top-0 w-full">
+        <div className="bg-background border-b-[1px] fixed top-0 w-full z-[49]">
             <div className="flex justify-between items-center px-8 py-4">
                 <Avatar>
                     <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" />
