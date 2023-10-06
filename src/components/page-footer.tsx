@@ -110,26 +110,22 @@ export function PageFooter () {
                             </Button>
                             <Button variant="link">
                                 <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
-                                <span className="text-xs">404</span>
+                                <span className="text-xs">Privacy</span>
                                 </Link>
                             </Button>
                             <Button variant="link">
                                 <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
-                                <span className="text-xs">Privacy</span>
+                                <span className="text-xs">404</span>
                                 </Link>
                             </Button>
                     </div>
                     <div className="flex items-center gap-2">
-                            <Button variant="link">
-                                <Link href="" legacyBehavior passHref>
-                                <span className="text-xs">Made with 💌 and 🤖 in Toronto 🇨🇦</span>
-                                </Link>
-                            </Button>
-                            <Button variant="link">
-                                <Link href="https://www.linkedin.com/in/timng88" legacyBehavior passHref>
-                                <span className="text-xs">© Tim Ng, 2023</span>
-                                </Link>
-                            </Button>
+                            <div className="h-10 px-4 py-2 text-foreground">
+                                <span className="text-xs underline-offset-4 font-medium">Made with 💌 and 🤖 in Toronto 🇨🇦</span>
+                            </div>
+                            <div className="h-10 px-4 py-2 text-foreground">
+                                <span className="text-xs underline-offset-4 font-medium">© Tim Ng, 2023</span>
+                            </div>
                         </div>
                     </div>
                 </div>  

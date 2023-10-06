@@ -45,19 +45,13 @@ const about : { title: string; href: string; description: string }[] = [
     },
 ]
 
-const contacts : { title: string; href: string }[] = [
+const blog : { title: string; href: string, description:string }[] = [
     {
-        title: "Email",
-        href: "#contact",
+        title: "Design Blog",
+        href: "/",
+        description: " 🏗️ Coming soon!"
     },
-    {
-        title: "LinkedIn",
-        href: "https://www.linkedin.com/in/timng88",
-    },
-    {
-        title: "GitHub",
-        href: "https://www.github.com/tymothy6",
-    },
+    
 ]
 
 
@@ -99,6 +93,22 @@ export function PageHeader() {
                                             href={about.href}
                                         >
                                             {about.description}
+                                        </ListItem> 
+                                    ))}
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[300px] gap-3 p-4 lg:w-[400px] ">
+                                    {blog.map((blog) => (
+                                        <ListItem
+                                            key={blog.title}
+                                            title={blog.title}
+                                            href={blog.href}
+                                        >
+                                            {blog.description}
                                         </ListItem> 
                                     ))}
                                 </ul>
