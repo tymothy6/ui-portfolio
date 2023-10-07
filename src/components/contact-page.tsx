@@ -4,6 +4,7 @@ import * as React from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import ReCAPTCHA from "react-google-recaptcha"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -55,6 +56,7 @@ export function ContactPage () {
         },
     })
 
+    // Modify method to first verify the CAPTCHA before sending the email
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log('Form values:', values);
         try {
@@ -190,6 +192,7 @@ export function ContactPage () {
                                 )}
                             />
                             </div>
+                            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY ?? "sitekey"} />
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>

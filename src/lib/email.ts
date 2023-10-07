@@ -9,7 +9,7 @@ type EmailPayload = {
 // Replace with your SMTP credentials
 const smtpOptions = {
   host: process.env.NODEMAILER_HOST,
-  port: parseInt(process.env.NODEMAILER_PORT || "2525"),
+  port: parseInt(process.env.NODEMAILER_PORT || "587"),
   secure: false,
   auth: {
     user: process.env.NODEMAILER_USER || "user",
