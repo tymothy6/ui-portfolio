@@ -19,18 +19,24 @@ import {
 import {
     Select,
     SelectContent,
+    SelectLabel,
     SelectItem,
+    SelectGroup,
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
-
+import { ToastAction } from "@/components/ui/toast"
 
 // Legacy imports
 import Image from "next/image"
 import contactIcon from "../../public/ContactIcon.svg"
+
+interface HomeProps {
+    id: string;
+}
 
 const baseEmail = z.string().transform(val => val === "" ? undefined : val).optional();
 const emailSchema = baseEmail.refine(val => val === undefined || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val), { message: "Invalid email" });
@@ -43,7 +49,8 @@ const formSchema = z.object({
 })
 
 
-export function ContactPage () {
+export const ContactPage: React.FC<HomeProps> = ({ id }) => {
+    const recaptcha = React.useRef<ReCAPTCHA | null>(null);
     const { toast } = useToast()
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -55,23 +62,64 @@ export function ContactPage () {
             message: "",
         },
     })
-
-    // Modify method to first verify the CAPTCHA before sending the email
+  
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log('Form values:', values);
+        const captchaValue = recaptcha.current ? recaptcha.current.getValue() : null; 
+        if (!captchaValue) {
+            toast({
+                variant: "destructive",
+                title: "😖 Oops",
+                description:(
+                    <p className="text-sm font-medium">Please verify that you're not a robot 🤖</p>
+                ),
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            });
+            console.error('No captcha value found');
+            return; // exit the function early if no captcha value 
+        }
+
         try {
-            const response = await fetch('/api/contact', {
+            // Verify the captcha 
+            const captchaResponse = await fetch('/api/verify-recaptcha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ captchaValue }),
+            });
+
+            if (!captchaResponse.ok) {
+                const errorData = await captchaResponse.json();
+                throw new Error('Failed to verify captcha: ' + errorData.message);
+            }
+
+            const captchaData = await captchaResponse.json();
+            if (!captchaData.success) {
+                toast({
+                    "variant": "destructive",
+                    title: "😣 Oops",
+                    description:(
+                        <p className="text-sm font-medium">We couldn't verify that you're not a robot.</p>
+                    ),
+                    action: <ToastAction altText="Try again">Try again</ToastAction>,
+                });
+                return;
+            }
+
+            // If the captcha is valid, send the email
+            const emailResponse = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(values),
             });
-            if (!response.ok) {
+            if (!emailResponse.ok) {
                 throw new Error('Failed to send email');
             }
 
-            const data = await response.json();
+            const data = await emailResponse.json();
             toast({
                 title: "📬 Thanks!",
                 description:(
@@ -88,16 +136,16 @@ export function ContactPage () {
             });
         } catch (error) {
             toast({
-                title: "😖 Oops..",
+                title: "😖 Oops",
                 description:(
-                    <p className="text-sm font-medium">Your message failed to send, please try again later or reach out elsewhere.</p>
+                    <p className="text-sm font-medium">Your message failed to send, please try again later or reach out to me elsewhere.</p>
                 ),
             });
         }
     }
 
     return(
-        <div className="flex py-16 my-16 px-24">
+        <div id={id} className="flex py-16 my-16 px-24">
             <div className="flex-col rounded-lg items-center justify-center p-16 border bg-card text-card-foreground shadow-sm">
                 <h1 className="text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Let's chat!
@@ -117,7 +165,7 @@ export function ContactPage () {
                                             Who's writing this message?
                                         </FormDescription>
                                         <FormControl>
-                                            <Input placeholder="Don Norman" {...field} />
+                                            <Input placeholder="Your name" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -130,12 +178,12 @@ export function ContactPage () {
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email (Optional)</FormLabel>
+                                        <FormLabel>Email (*Optional)</FormLabel>
                                         <FormDescription>
                                                Where can I reach you?  
                                         </FormDescription>
                                         <FormControl>
-                                            <Input placeholder="name@yoursite.com" {...field} />
+                                            <Input placeholder="yourname@mail.com" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -149,9 +197,9 @@ export function ContactPage () {
                                 name="topic"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Topic (Optional)</FormLabel>
+                                        <FormLabel>Topic (*Optional)</FormLabel>
                                         <FormDescription>
-                                            What's this about?
+                                            What's this message about?
                                         </FormDescription>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>  
@@ -160,9 +208,12 @@ export function ContactPage () {
                                                 </SelectTrigger>      
                                             </FormControl>
                                             <SelectContent>
-                                                <SelectItem value="design">👨🏼‍💻 Design</SelectItem>
-                                                <SelectItem value="science">🧑🏼‍🔬 Science</SelectItem>
-                                                <SelectItem value="other">🙋🏼 Other</SelectItem>
+                                                <SelectGroup>
+                                                <SelectLabel>Topic</SelectLabel>
+                                                <SelectItem value="Design">👨🏼‍💻 Design</SelectItem>
+                                                <SelectItem value="Science">🧑🏼‍🔬 Science</SelectItem>
+                                                <SelectItem value="Other">🙋🏼 Other</SelectItem>
+                                                </SelectGroup>
                                             </SelectContent>
                                         </Select>
                                         <FormMessage />
@@ -192,7 +243,9 @@ export function ContactPage () {
                                 )}
                             />
                             </div>
-                            <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY ?? "sitekey"} />
+                            <ReCAPTCHA
+                            ref={recaptcha} 
+                            sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY ?? "sitekey"} />
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>

@@ -23,8 +23,8 @@ export default function Home() {
     <div className="dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
       <PageHeader />
       <Hero />
-      <Projects />
-      <AboutPage />
+      <Projects id="work" />
+      <AboutPage id="about" />
       <div className="relative">
       <img
           src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
@@ -56,8 +56,8 @@ export default function Home() {
       
       <ExperiencePage />
       <SkillsPage />
-      <ValuesPage />
-      <ContactPage />
+      <ValuesPage id="values" />
+      <ContactPage id="contact" />
       <PageFooter />
     </div>
   )

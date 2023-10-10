@@ -22,33 +22,33 @@ import {
 const works : { title: string; href: string; description: string }[] = [
     {
         title: "Product Design",
-        href: "work/product-design",
-        description: "An overview of the digital products I've designed.",
+        href: "/#work",
+        description: "Problems I've solved with design thinking.",
     },
     {
         title: "Scientific Design",
-        href: "work/science",
-        description: "An overview of the research I've published in my PhD thesis.",
+        href: "/#work",
+        description: "Research I've published in my PhD.",
     },
 ]
 
 const about : { title: string; href: string; description: string }[] = [
     {
         title: "About me",
-        href: "#about",
+        href: "/#about",
         description: "A brief introduction to who I am.",
     },
     {
         title: "Values",
-        href: "#values",
-        description: "My design philosophy and the things I care about.",
+        href: "/#values",
+        description: "My design philosophy and what I care about.",
     },
 ]
 
 const blog : { title: string; href: string, description:string }[] = [
     {
         title: "Design Blog",
-        href: "/",
+        href: "/blog",
         description: " 🏗️ Coming soon!"
     },
     
@@ -115,7 +115,7 @@ export function PageHeader() {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <Link href="#contact" legacyBehavior passHref>
+                            <Link href="/#contact" legacyBehavior passHref>
                                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                 Contact
                                 </NavigationMenuLink>

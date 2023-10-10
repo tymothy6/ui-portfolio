@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
@@ -9,13 +8,28 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex-col rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-gray-50 dark:hover:bg-slate-800 hover:border-primary hover:animate-card-translate-y",
+      "flex-col rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-gray-50 dark:hover:bg-slate-900 hover:border-primary hover:animate-card-translate-y focus:bg-gray-50 dark:focus:bg-slate-800 focus:border-4 focus:animate-card-translate-y",
       className
     )}
     {...props}
   />
 ))
 Card.displayName = "Card"
+
+const ButtonCard = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, ...props }, ref) => (
+  <button
+    ref={ref}
+    className={cn(
+      "flex-col rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-gray-50 dark:hover:bg-slate-900 hover:border-2 hover:border-primary hover:animate-card-translate-y transition-colors ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2", 
+    className
+    )}
+    {...props}
+  />
+))
+ButtonCard.displayName = "ButtonCard"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -72,7 +86,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex-col p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
@@ -88,4 +102,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardImageHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, ButtonCard, CardHeader, CardImageHeader, CardFooter, CardTitle, CardDescription, CardContent }

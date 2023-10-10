@@ -5,15 +5,18 @@ import * as React from "react"
 import { roboto_mono } from "@/app/fonts"
 import { Separator } from "@/components/ui/separator"
 
-export function AboutPage () {
+interface HomeProps {
+    id: string;
+}
+
+export const AboutPage: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div className="grid grid-cols-2 py-16 my-16 mx-24">
+        <div id={id} className="grid grid-cols-2 py-16 my-16 mx-24">
             <h2 className="text-4xl font-semibold text-foreground">About me</h2>
             <div className="flex-col">
                 <p className="text-xl font-regular text-foreground leading-relaxed mb-6">I'm a scientist by training and graduated with a PhD in Molecular Genetics from the University of Toronto in 2022. My research leveraged functional genomics to study small molecule drugs for cancers.</p>
                 <p className="text-xl font-regular text-foreground leading-relaxed mb-6">During my PhD, I developed knowledge translation skills and honed a keen eye for aesthetic design. Now, I apply my design skills and data fluency to make complex ideas easier to understand for others.</p>
                 <p className="text-xl font-regular text-foreground leading-relaxed mb-6">I believe I can fulfill this goal by crafting digital experiences. Software has already changed our perception of what's possible. But the next generation of user experiences will enable the future and even let us envision what comes after it. Feeling inspired? Connect with me to start a project together.</p>
-                <p className="text-lg font-regular text-gray-500 dark:text-gray-300">Read more about what I value below</p>
             </div>
         </div>
         
@@ -85,9 +88,9 @@ export function SkillsPage () {
     )
 }
 
-export function ValuesPage () {
+export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div className="flex-col py-16 my-16 mx-24">
+        <div id={id} className="flex-col py-16 my-16 mx-24">
             <h2 className="text-3xl font-semibold text-foreground mb-8">Values</h2>
             <div className="grid grid-cols-2 gap-x-16 gap-y-8">
             <div className="flex-col gap-2">

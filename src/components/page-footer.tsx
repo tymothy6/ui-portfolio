@@ -63,7 +63,7 @@ export function PageFooter () {
                         <NavigationMenu>
                             <NavigationMenuList>
                             <NavigationMenuItem>
-                                    <Link href="/" legacyBehavior passHref>
+                                    <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                         Resume
                                         </NavigationMenuLink>
@@ -114,7 +114,7 @@ export function PageFooter () {
                                 </Link>
                             </Button>
                             <Button variant="link">
-                                <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
+                                <Link href="/not-found" legacyBehavior passHref>
                                 <span className="text-xs">404</span>
                                 </Link>
                             </Button>

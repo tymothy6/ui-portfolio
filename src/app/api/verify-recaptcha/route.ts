@@ -9,9 +9,9 @@ type RecaptchaResponse = {
 
 export async function POST(req: NextRequest) {
     try {
-        const { recaptchaResponse } = await req.json();
+        const { captchaValue } = await req.json();
 
-        if (!recaptchaResponse) {
+        if (!captchaValue) {
             return NextResponse.json({ success: false, error: 'reCAPTCHA response is missing.' });
         }
 
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `secret=${process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY}&response=${recaptchaResponse}`,
+                body: `secret=${process.env.NEXT_PUBLIC_GOOGLE_SECRET_KEY}&response=${captchaValue}`,
         });
 
         const data = await response.json() as RecaptchaResponse;
