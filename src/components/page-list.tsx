@@ -11,7 +11,7 @@ interface HomeProps {
 
 export const AboutPage: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div id={id} className="grid grid-cols-2 py-16 my-16 mx-24">
+        <div id={id} className="grid grid-cols-2 py-16 my-16 mx-24 scroll-mt-16">
             <h2 className="text-4xl font-semibold text-foreground">About me</h2>
             <div className="flex-col">
                 <p className="text-xl font-regular text-foreground leading-relaxed mb-6">I'm a scientist by training and graduated with a PhD in Molecular Genetics from the University of Toronto in 2022. My research leveraged functional genomics to study small molecule drugs for cancers.</p>
@@ -90,7 +90,7 @@ export function SkillsPage () {
 
 export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div id={id} className="flex-col py-16 my-16 mx-24">
+        <div id={id} className="flex-col py-16 my-16 mx-24 scroll-mt-16">
             <h2 className="text-3xl font-semibold text-foreground mb-8">Values</h2>
             <div className="grid grid-cols-2 gap-x-16 gap-y-8">
             <div className="flex-col gap-2">

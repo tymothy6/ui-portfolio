@@ -145,7 +145,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     }
 
     return(
-        <div id={id} className="flex py-16 my-16 px-24">
+        <div id={id} className="flex py-16 my-16 px-24 scroll-mt-12">
             <div className="flex-col rounded-lg items-center justify-center p-16 border bg-card text-card-foreground shadow-sm">
                 <h1 className="text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Let's chat!
@@ -178,7 +178,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email (*Optional)</FormLabel>
+                                        <FormLabel>Email <strong>(Optional)</strong></FormLabel>
                                         <FormDescription>
                                                Where can I reach you?  
                                         </FormDescription>
@@ -197,7 +197,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                 name="topic"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Topic (*Optional)</FormLabel>
+                                        <FormLabel>Topic <strong>(Optional)</strong></FormLabel>
                                         <FormDescription>
                                             What's this message about?
                                         </FormDescription>

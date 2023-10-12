@@ -6,29 +6,33 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { GitHubContact, LinkedInContact } from "@/components/contact-button"
-import { ModeToggle } from "./mode-toggle"
+import { ModeToggle } from "@/components/mode-toggle"
 import {
     NavigationMenu,
     NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    NavigationMenuViewport,
     navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
 
 const works : { title: string; href: string; description: string }[] = [
     {
-        title: "Product Design",
+        title: "UX Design",
         href: "/#work",
         description: "Problems I've solved with design thinking.",
     },
     {
-        title: "Scientific Design",
+        title: "Science",
         href: "/#work",
-        description: "Research I've published in my PhD.",
+        description: "Scientific research I've published in my PhD.",
     },
 ]
 
@@ -48,7 +52,7 @@ const about : { title: string; href: string; description: string }[] = [
 const blog : { title: string; href: string, description:string }[] = [
     {
         title: "Design Blog",
-        href: "/blog",
+        href: "/not-found",
         description: " 🏗️ Coming soon!"
     },
     
@@ -59,10 +63,21 @@ export function PageHeader() {
     return (
         <div className="bg-background border-b-[1px] fixed top-0 w-full z-[49]">
             <div className="flex justify-between items-center px-8 py-4">
-                <Avatar>
-                    <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" />
-                    <AvatarFallback>TN</AvatarFallback>
-                </Avatar>
+                <Link href="/#home" className="rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4">
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Avatar>
+                                    <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
+                                    <AvatarFallback>TN</AvatarFallback>
+                                </Avatar>
+                            </TooltipTrigger>
+                            <TooltipContent className="w-28">
+                                <p className="text-sm font-regular"> 🐾 This doggo will guide you back Home </p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </Link>
                 <div className="flex items-center gap-2">
                 <NavigationMenu>
                     <NavigationMenuList>

@@ -8,15 +8,17 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
     navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
+  import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+  } from "@/components/ui/tooltip"
 
 export function PageFooter () {
     return (
@@ -26,7 +28,7 @@ export function PageFooter () {
                         <NavigationMenu>
                             <NavigationMenuList>
                             <NavigationMenuItem>
-                                    <Link href="/" legacyBehavior passHref>
+                                    <Link href="/#home" legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                         Home
                                         </NavigationMenuLink>
@@ -84,10 +86,19 @@ export function PageFooter () {
                                     </Link>
                                 </NavigationMenuItem>
                                 <div className="px-4">
-                                <Avatar>
-                                    <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" />
-                                    <AvatarFallback>TN</AvatarFallback>
-                                </Avatar>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Avatar>
+                                                <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
+                                                <AvatarFallback>TN</AvatarFallback>
+                                            </Avatar>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p> A shiba inu wearing a Grogu costume </p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
                                 </div>
                         
                             </NavigationMenuList>
@@ -99,17 +110,17 @@ export function PageFooter () {
                     <div className="flex justify-between items-center px-8 py-4">
                     <div className="flex items-center gap-2">
                             <Button variant="link">
-                                <Link href="" legacyBehavior passHref>
-                                <span className="text-xs">Style Guide</span>
+                                <Link href="/password" legacyBehavior passHref>
+                                <span className="text-xs">Password</span>
                                 </Link>
                             </Button>
                             <Button variant="link">
-                                <Link href="https://www.linkedin.com/in/timng88" legacyBehavior passHref>
+                                <Link href="/licenses" legacyBehavior passHref>
                                 <span className="text-xs">Licenses</span>
                                 </Link>
                             </Button>
                             <Button variant="link">
-                                <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
+                                <Link href="/privacy" legacyBehavior passHref>
                                 <span className="text-xs">Privacy</span>
                                 </Link>
                             </Button>
@@ -121,7 +132,7 @@ export function PageFooter () {
                     </div>
                     <div className="flex items-center gap-2">
                             <div className="h-10 px-4 py-2 text-foreground">
-                                <span className="text-xs underline-offset-4 font-medium">Made with 💌 and 🤖 in Toronto 🇨🇦</span>
+                                <span className="text-xs underline-offset-4 font-medium">Made with 💌 and 🤖 in 🇨🇦</span>
                             </div>
                             <div className="h-10 px-4 py-2 text-foreground">
                                 <span className="text-xs underline-offset-4 font-medium">© Tim Ng, 2023</span>

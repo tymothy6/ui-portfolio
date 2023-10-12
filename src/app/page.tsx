@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import Link from "next/link"
 
@@ -8,7 +10,6 @@ import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/
 import { ContactPage } from "@/components/contact-page"
 import { PageFooter } from "@/components/page-footer"
 
-import { ImageIcon } from "@radix-ui/react-icons"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
@@ -20,9 +21,10 @@ import {
 
 export default function Home() {
   return (
-    <div className="dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
+    <div 
+    className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
       <PageHeader />
-      <Hero />
+      <Hero id="home" />
       <Projects id="work" />
       <AboutPage id="about" />
       <div className="relative">
@@ -35,19 +37,19 @@ export default function Home() {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant="outline" size="icon">
-              <ImageIcon className="h-4 w-4" />
+            <Button variant="outline" className="text-sm text-gray-800 dark:text-gray-200">
+            📍 Where is this?
             </Button>
           </TooltipTrigger>
-          <TooltipContent>
-            <p className="text-sm font-regular text-foreground">🏠 Vancouver, Canada</p>
+          <TooltipContent className="p-2 w-48">
+            <div className="flex items-center space-x-1 mb-1">
+            <p className="text-sm font-medium text-foreground"> 🏠 Tim was born and raised in Vancouver, Canada</p>
+            </div>
             <Link href="https://unsplash.com/photos/GVr33-rHTDU" passHref>
-              <div className="flex items-center gap-1">
-                <ExternalLinkIcon className="h-3 w-3" />
-                <p className="text-small font-regular text-foreground">Unsplash</p>
+              <div className="flex justify-start items-center space-x-1">
+                <p className="text-sm text-gray-800 dark:text-gray-300 font-regular text-foreground"><ExternalLinkIcon className="h-3 w-3" />Download from Unsplash</p>
               </div>
             </Link>
-            
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
