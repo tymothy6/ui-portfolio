@@ -1,5 +1,5 @@
 import * as React from "react"
-import Link from "next/link"
+import { Document } from "@contentful/rich-text-types"
 
 import { PageHeader } from "@/components/page-header"
 import { Separator } from "@/components/ui/separator"
@@ -8,16 +8,17 @@ import { ContactPage } from "@/components/contact-page"
 import { PageFooter } from "@/components/page-footer"
 import { ProjectData } from "@/components/project-card"
 
-
-type ContentOption = string;
+type Media = string;
 
 export type ProjectPageProps = ProjectData & {
+   slug: string;
    purpose: string;
-   year: string;
+   timeline: string;
    overview: string;
-   process: string;
-   outcome: string;
-   
+   process: Document;
+   outcome: Document;
+   heroBlock1: Media[];
+   heroBlock2: Media[];
 }
 
 export default function ProjectPage () {
