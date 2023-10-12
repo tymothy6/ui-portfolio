@@ -47,7 +47,8 @@ export default function Home() {
             </div>
             <Link href="https://unsplash.com/photos/GVr33-rHTDU" passHref>
               <div className="flex justify-start items-center space-x-1">
-                <p className="text-sm text-gray-800 dark:text-gray-300 font-regular text-foreground"><ExternalLinkIcon className="h-3 w-3" />Download from Unsplash</p>
+              <ExternalLinkIcon className="h-3 w-3" />
+                <p className="text-xs text-gray-800 dark:text-gray-300 font-regular text-foreground">Download from Unsplash</p>
               </div>
             </Link>
           </TooltipContent>

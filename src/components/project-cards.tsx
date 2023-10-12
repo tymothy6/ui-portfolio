@@ -6,7 +6,6 @@ import Link from "next/link"
 import { GitHubLogoIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
-    Card,
     ButtonCard,
     CardContent,
     CardImageHeader,

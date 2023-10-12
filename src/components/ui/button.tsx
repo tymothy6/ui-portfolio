@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: "text-slate-600 dark:text-slate-300 hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
         ghostnobg: "text-slate-600 dark:text-slate-300 hover:text-accent-foreground dark:hover:text-accent-foreground",
         link: "text-foreground decoration-primary decoration-2 underline-offset-4 hover:underline",
-        gradient: "bg-gradient-to-br from-primary to-pink-500 text-primary-foreground animate-gradient-xy hover:from-primary/90 hover:to-cyan-500/90 hover:animate-gradient-xy hover:drop-shadow-[0_4px_8px_rgba(255,255,255,0.4)]",
+        gradient: "bg-gradient-to-br from-primary to-indigo-600 text-primary-foreground hover:from-primary/90 hover:to-pink-500/90 hover:animate-gradient-xy",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -33,7 +33,7 @@ export function ExperiencePage () {
                 <h3 className="text-lg font-medium text-foreground leading-relaxed">User Experience Designer</h3>
                 <p className="text-base font-regular text-foreground leading-relaxed">Toronto, ON</p>
                 <span className={roboto_mono.className}>
-                    <p className="text-sm font-regular text-foreground leading-relaxed">May 2022 - Present</p>
+                    <p className="text-base font-regular text-foreground leading-relaxed">May 2022 - Present</p>
                 </span>
             </div>
             <Separator className="mt-4 mb-4" />
@@ -42,7 +42,7 @@ export function ExperiencePage () {
                 <h3 className="text-lg font-medium text-foreground leading-relaxed">Senior Research Scientist</h3>
                 <p className="text-base font-regular text-foreground leading-relaxed tracking-wide">Toronto, ON</p>
                 <span className={roboto_mono.className}>
-                    <p className="text-sm font-regular text-foreground leading-relaxed tracking-wide">Jan 2016 - Oct 2022</p>
+                    <p className="text-base font-regular text-foreground leading-relaxed tracking-wide">Jan 2016 - Oct 2022</p>
                 </span>
             </div>
             <Separator className="mt-4 mb-4" />
@@ -51,7 +51,7 @@ export function ExperiencePage () {
                 <h3 className="text-lg font-medium text-foreground leading-relaxed">Research Scientist</h3>
                 <p className="text-base font-regular text-foreground leading-relaxed tracking-wide">Montreal, QC</p>
                 <span className={roboto_mono.className}>
-                <p className="text-sm font-regular text-foreground leading-relaxed tracking-wide">May 2014 - Jun 2015</p>
+                <p className="text-base font-regular text-foreground leading-relaxed tracking-wide">May 2014 - Jun 2015</p>
                 </span>
             </div>
             </div>

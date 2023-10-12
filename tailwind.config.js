@@ -65,6 +65,11 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "animated-gradient": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
         "gradient-xy": {
           "0%, 100%": {
             "background-size": "400% 400%",
@@ -96,7 +101,11 @@ module.exports = {
           }
         },
       },
+      backgroundSize: {
+        "300%": "300%",
+      },
       animation: {
+        "animated-gradient": "animated-gradient 6s ease infinite alternate",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "gradient-xy": "gradient-xy 5s ease infinite",
