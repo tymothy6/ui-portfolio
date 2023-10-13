@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import { motion } from "framer-motion"
 
 import { FigmaLogoIcon } from "@radix-ui/react-icons"
+import { GitHubLogoIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -221,6 +222,99 @@ export function NotFoundHero () {
                 <span className="text-lg">Go back</span>
                 </Link>
             </Button>
+        </div>
+
+    )
+}
+
+export function LicenseHero () {
+    return (
+        <div>
+            <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-2xl">
+                <h1 className="text-6xl font-semibold mb-8">Licenses</h1>
+                <p className="text-3xl font-regular tracking-wide text-gray-800 dark:text-gray-200 mb-8">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+            </div>
+            <div className="grid grid-cols-2 space-x-12 justify-center py-28 mx-24">
+                <div className="flex-col space-y-8">
+                    <h2 className="text-3xl font-semibold">Images</h2>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses images sourced from Unsplash and generated with AI using DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
+                   
+                    <Button variant="default" asChild>
+                        <Link href="https://unsplash.com/license">Unsplash</Link>
+                    </Button>
+                    
+                </div>
+            
+                    <img 
+                    src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
+                    alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
+                    className="rounded-lg object-cover w-[48rem] h-[16rem]"
+                    />
+                
+            </div>
+
+            <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
+                <div className="flex-col space-y-8">
+                    <h2 className="text-3xl font-semibold">Fonts</h2>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses the Inter typeface by Rasmus Andersson.</p>
+                  
+                        <Button variant="default" asChild>
+                            <Link href="https://rsms.me/inter/#free">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                Inter</Link>
+                        </Button>
+                   
+                </div>
+                <img 
+                src="https://github.com/rsms/inter/raw/master/misc/readme/intro.png"
+                alt="Inter typeface by Rasmus Andersson"
+                className="rounded-lg object-cover w-[48rem] h-[16rem]"
+                />
+            </div>
+
+            <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
+                <div className="flex-col space-y-8">
+                    <h2 className="text-3xl font-semibold">Icons</h2>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses icons from Radix UI.</p>
+                  
+                        <Button variant="default" asChild>
+                            <Link href="https://github.com/radix-ui/icons">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                Radix Icons</Link>
+                        </Button>
+                   
+                </div>
+                <img 
+                src="https://github.com/radix-ui/icons/raw/master/icons.png"
+                alt="Icons from Radix UI"
+                className="rounded-lg object-cover w-[48rem] h-[16rem]"
+                />
+            </div>
+
+            <div className="grid grid-cols-2 space-x-12 justify-center pb-56 mx-24">
+                <div className="flex-col space-y-8">
+                    <h2 className="text-3xl font-semibold">Components</h2>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses open-source React components from shadcn/ui and Radix UI Primitives. Read more about usage guidelines in their GitHub repositories.</p>
+                    <div className="flex space-x-4">
+                        <Button variant="secondary" asChild>
+                            <Link href="https://github.com/shadcn-ui/ui">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            shadcn/ui</Link>
+                        </Button>
+                        <Button variant="secondary" asChild>
+                            <Link href="https://github.com/radix-ui/primitives">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            Radix UI</Link>
+                        </Button>
+                    </div>
+                </div>
+                <img 
+                src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
+                alt="Components from shadcn/ui"
+                className="rounded-lg object-cover w-[48rem] h-[16rem]"
+                />
+            </div>
+
         </div>
 
     )
