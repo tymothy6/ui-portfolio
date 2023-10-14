@@ -72,8 +72,8 @@ export function PageHeader() {
                                     <AvatarFallback>TN</AvatarFallback>
                                 </Avatar>
                             </TooltipTrigger>
-                            <TooltipContent className="w-28">
-                                <p className="text-sm font-regular"> 🐾 This doggo will guide you back Home </p>
+                            <TooltipContent className="p-2">
+                                <p className="text-sm font-medium"> Doggo will guide you back to the top 🐾 </p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>

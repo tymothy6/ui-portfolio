@@ -95,7 +95,7 @@ export function PageFooter () {
                                             </Avatar>
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            <p> A shiba inu wearing a Grogu costume </p>
+                                            <p className="font-medium"> Please don't feed the shiba 😅 </p>
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>
