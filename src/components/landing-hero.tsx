@@ -240,7 +240,7 @@ export function LicenseHero () {
                     <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses images sourced from Unsplash and generated with AI using DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
                    
                     <Button variant="default" asChild>
-                        <Link href="https://unsplash.com/license">Unsplash</Link>
+                        <Link href="https://unsplash.com/license">Unsplash License</Link>
                     </Button>
                     
                 </div>
