@@ -24,7 +24,7 @@ export const Projects: React.FC<HomeProps> = ({ id }) => {
             </div>
             <div className="grid grid-cols-6 gap-4">
                
-                <ButtonCard onClick={() => window.location.href = '/work'}className="h-max col-span-3 col-start-1">
+                <ButtonCard onClick={() => window.location.href = '/work/nota'}className="h-max col-span-3 col-start-1">
                     
                     <CardImageHeader>
                   
@@ -37,8 +37,8 @@ export const Projects: React.FC<HomeProps> = ({ id }) => {
                    
                     <CardContent className="flex justify-between items-center pt-4 h-full">
                         <div className="flex-col">
-                        <p className="text-left text-lg font-semibold text-foreground">Design System</p>
-                        <p className="text-left text-base font-medium text-gray-800 dark:text-gray-200">UI Design</p> 
+                        <p className="text-left text-lg font-semibold text-foreground">Nota</p>
+                        <p className="text-left text-base font-medium text-gray-800 dark:text-gray-200">Product Design</p> 
                         </div>
                         <Button variant="ghostnobg" size="icon" asChild>
                         <Link href="https://www.github.com/tymothy6/copilot">
