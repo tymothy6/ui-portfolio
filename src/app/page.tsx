@@ -1,11 +1,9 @@
-"use client"
-
 import * as React from "react"
 import Link from "next/link"
 
 import { PageHeader } from "@/components/page-header"
 import { Hero } from "@/components/landing-hero"
-import { Projects } from "@/components/project-cards"
+import { ProjectGrid } from "@/components/project-grid"
 import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/page-list"
 import { ContactPage } from "@/components/contact-page"
 import { PageFooter } from "@/components/page-footer"
@@ -25,7 +23,7 @@ export default function Home() {
     className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
       <PageHeader />
       <Hero id="home" />
-      <Projects id="work" />
+      <ProjectGrid id="work" />
       <AboutPage id="about" />
       <div className="relative">
       <img
