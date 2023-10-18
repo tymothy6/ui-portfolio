@@ -86,7 +86,7 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0.9, 0, 1, 1)",
           },
           "100%": {
-            "transform": "translateY(-1%)",
+            "transform": "translateY(-0.5%)",
             "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
           }
         },

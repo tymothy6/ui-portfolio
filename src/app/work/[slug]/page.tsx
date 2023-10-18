@@ -61,24 +61,24 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     </p>
                     <div className="flex flex-col justify-start space-y-4">
                         <div className="flex justify-between items-center">
-                            <p className="text-sm text-foreground font-semibold">Purpose</p>
-                            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium">{data.purpose}</p>
+                            <p className="text-base text-foreground font-semibold">Purpose</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.purpose}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
-                            <p className="text-sm text-foreground font-semibold">Type</p>
-                            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium">{data.type}</p>
+                            <p className="text-base text-foreground font-semibold">Type</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.type}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
-                            <p className="text-sm text-foreground font-semibold">Timeline</p>
-                            <p className="text-sm text-gray-800 dark:text-gray-200 font-medium">{data.timeline}</p>
+                            <p className="text-base text-foreground font-semibold">Timeline</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.timeline}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="my-6 flex-col space-y-4"> 
+            <div className="my-6 flex-col"> 
                 {data.heroBlock1 && data.heroBlock1.map((image, index) =>
                    image && (
                         <img
@@ -92,11 +92,11 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
             <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-4">Design Process</h2>
+                <h2 className="text-4xl font-semibold mb-8">Design Process</h2>
                 <RichText document={data.process} />
             </div>
 
-            <div className="my-6 flex-col space-y-4"> 
+            <div className="my-6 flex-col"> 
                 {data.heroBlock2 && data.heroBlock2.map((image, index) =>
                    image && (
                         <img
@@ -109,15 +109,17 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                 )}
             </div>
 
+            {data.outcome && (
             <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-4">Design Outcome</h2>
+                <h2 className="text-4xl font-semibold mb-8">Design Outcome</h2>
                 <RichText document={data.outcome} />
             </div>
+            )}
 
             <div className="flex-col space-y-8 py-56 mx-24">
                 <h2 className="text-2xl font-semibold mb-4">Other work</h2>
-                <div className="grid grid-cols-3 gap-4">
-                    {otherProjects.slice(0, 3).map((project) => (
+                <div className="grid grid-cols-2 gap-4">
+                    {otherProjects.slice(0, 2).map((project) => (
                         <div className="h-max" key={project.slug}>
                             <ProjectCard {...project} />
                         </div>

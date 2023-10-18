@@ -17,6 +17,7 @@ export interface TypeWorkFields {
     outcome?: EntryFieldTypes.RichText;
     figmaLink?: EntryFieldTypes.Symbol;
     githubLink?: EntryFieldTypes.Symbol;
+    tools?: EntryFieldTypes.Array<EntryFieldTypes.Symbol<"Adobe Creative Suite" | "Angular" | "FigJam" | "Figma" | "JavaScript" | "Miro" | "Next.js" | "ProtoPie" | "Python" | "R" | "React Native" | "React" | "SwiftUI" | "TailwindCSS" | "TypeScript">>;
 }
 
 export type TypeWorkSkeleton = EntrySkeletonType<TypeWorkFields, "work">;

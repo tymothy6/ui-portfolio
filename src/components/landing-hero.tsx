@@ -5,10 +5,11 @@ import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 
 import { FigmaLogoIcon } from "@radix-ui/react-icons"
 import { GitHubLogoIcon } from "@radix-ui/react-icons"
+
 
 import { Button } from "@/components/ui/button"
 import {
@@ -37,15 +38,8 @@ const formSchema = z.object({
 
 export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
-        <motion.div 
+        <div 
         id={id}
-        initial={{ x: '-120%', opacity: 0 }}
-        animate={{ x: '0', opacity: 1 }}
-        transition={{
-            type: 'tween',
-            ease: 'easeIn',
-            duration: 0.5,  
-        }}
         className="flex flex-col pt-52 pb-56 my-4 mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl font-semibold mb-4">👋🏼 I'm Tim, an experience designer with a background in quantitative research</h1>
             <h1 className="text-6xl font-semibold pb-4 mb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
@@ -54,7 +48,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
                     <span className="text-lg">Meet me</span>
                 </Link>
             </Button>
-        </motion.div>
+        </div>
     )
 }
 
@@ -214,10 +208,11 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl">
-            <h1 className="text-8xl font-semibold mb-4">404</h1>
-            <p className="text-4xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
-            <Button variant="default" size="lg" asChild>
+        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl relative">
+            <img src="/shiba-404.png" alt="Shiba inu with papers in their mouth" className="absolute bottom-0 right-0 z-0 w-80 h-80" />
+            <h1 className="text-8xl font-semibold mb-4 relative">404</h1>
+            <p className="text-4xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8 relative">😖 Hmm, we couldn't find what you're looking for</p>
+            <Button variant="default" size="lg" className="relative" asChild>
                 <Link href="#" onClick={goBack}>
                 <span className="text-lg">Go back</span>
                 </Link>
@@ -232,16 +227,27 @@ export function LicenseHero () {
         <div>
             <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-6xl font-semibold mb-8">Licenses</h1>
-                <p className="text-3xl font-regular tracking-wide text-gray-800 dark:text-gray-200 mb-8">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <p className="text-2xl font-regular tracking-wide text-gray-800 dark:text-gray-200 mb-8">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
             </div>
             <div className="grid grid-cols-2 space-x-12 justify-center py-28 mx-24">
                 <div className="flex-col space-y-8">
                     <h2 className="text-3xl font-semibold">Images</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses images sourced from Unsplash and generated with AI using DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses images sourced from Unsplash and generated with AI using DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
                    
-                    <Button variant="default" asChild>
-                        <Link href="https://unsplash.com/license">Unsplash License</Link>
-                    </Button>
+                    <div className="flex space-x-4">
+                        <Button variant="secondary" asChild>
+                            <Link href="https://unsplash.com/license">Unsplash</Link>
+                        </Button>
+                       
+                        <Button variant="secondary" asChild>
+                            <Link href="https://openai.com/dall-e-3">
+                            DALL-E</Link>
+                        </Button>
+                        <Button variant="secondary" asChild>
+                            <Link href="https://www.biorender.com">
+                            BioRender</Link>
+                        </Button>
+                    </div>
                     
                 </div>
             
@@ -256,7 +262,7 @@ export function LicenseHero () {
             <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
                 <div className="flex-col space-y-8">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses the Inter typeface by Rasmus Andersson.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses the Inter typeface by Rasmus Andersson.</p>
                   
                         <Button variant="default" asChild>
                             <Link href="https://rsms.me/inter/#free">
@@ -275,7 +281,11 @@ export function LicenseHero () {
             <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
                 <div className="flex-col space-y-8">
                     <h2 className="text-3xl font-semibold">Icons</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses icons from Radix UI.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium">
+                    npm i @radix-ui/react-icons
+                    </code>
+                    </p>
+                    
                   
                         <Button variant="default" asChild>
                             <Link href="https://github.com/radix-ui/icons">
@@ -294,7 +304,8 @@ export function LicenseHero () {
             <div className="grid grid-cols-2 space-x-12 justify-center pb-56 mx-24">
                 <div className="flex-col space-y-8">
                     <h2 className="text-3xl font-semibold">Components</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-300">This website uses open-source React components from shadcn/ui and Radix UI Primitives. Read more about usage guidelines in their GitHub repositories.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI Primitives. <br /><br />
+                    Find more about installation and usage guidelines in their GitHub repositories.</p>
                     <div className="flex space-x-4">
                         <Button variant="secondary" asChild>
                             <Link href="https://github.com/shadcn-ui/ui">

@@ -22,6 +22,7 @@ export interface Project {
     outcome: RichTextDocument | null 
     figmaLink: string
     githubLink: string
+    tools: string[]
 }
 
 // Transform a Contentful entry into a Project object
@@ -46,6 +47,7 @@ export function parseContentfulProject(projectWork?: ProjectWork): Project | nul
         outcome: projectWork.fields.outcome || null,
         figmaLink: projectWork.fields.figmaLink || "",
         githubLink: projectWork.fields.githubLink || "",
+        tools: projectWork.fields.tools || [],
     }
 }
 

@@ -73,7 +73,7 @@ export function PageHeader() {
                                 </Avatar>
                             </TooltipTrigger>
                             <TooltipContent className="p-2">
-                                <p className="text-sm font-medium"> Doggo will guide you back to the top 🐾 </p>
+                                <p className="text-sm font-medium"> Doggo will guide you back to the start 🐾 </p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
