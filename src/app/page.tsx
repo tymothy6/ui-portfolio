@@ -11,11 +11,10 @@ import { PageFooter } from "@/components/page-footer"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 export default function Home() {
   return (
@@ -31,27 +30,25 @@ export default function Home() {
           alt="Aerial view of Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
           className="block object-cover w-full lg:h-[60vh]"
       />
-      <div className="absolute bottom-0 left-0 p-4">
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline" className="text-sm text-gray-800 dark:text-gray-200">
+      <div className="absolute bottom-0 left-0 p-8">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button variant="outline" className="text-sm">
             📍 Where is this?
             </Button>
-          </TooltipTrigger>
-          <TooltipContent className="p-2 w-48">
-            <div className="flex items-center space-x-1 mb-1">
-            <p className="text-sm font-medium text-foreground"> 🏠 Tim was born and raised in Vancouver, Canada</p>
-            </div>
+          </PopoverTrigger>
+          <PopoverContent className="w-60">
+            
+            <p className="text-sm font-medium text-foreground mb-2"> 🏠 Tim was born and raised in Vancouver, Canada</p>
             <Link href="https://unsplash.com/photos/GVr33-rHTDU" passHref>
               <div className="flex justify-start items-center space-x-1">
               <ExternalLinkIcon className="h-3 w-3" />
-                <p className="text-xs text-gray-800 dark:text-gray-300 font-regular text-foreground">Download from Unsplash</p>
+                <p className="text-xs text-gray-800 dark:text-gray-300 font-regular text-foreground">Download image from Unsplash</p>
               </div>
             </Link>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+          </PopoverContent>
+        </Popover>
+    
       </div>
       </div>
       

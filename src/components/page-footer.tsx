@@ -13,18 +13,56 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
-  import {
+import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
   } from "@/components/ui/tooltip"
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+} from "@/components/ui/popover"
 
 export function PageFooter () {
+    const [isVisible, setIsVisible] = React.useState(false)
+
+    const handleScroll = () => {
+        const totalHeight = document.body.offsetHeight;
+        const scrolledAmount = window.innerHeight + window.scrollY;
+        const scrolledPercentage = (scrolledAmount / totalHeight) * 100;
+        const thresholdPercentage = 95;
+        const isBottomOfPage = scrolledPercentage >= thresholdPercentage;
+        setIsVisible(isBottomOfPage);
+    }
+
+    React.useEffect(() => {
+        // Add event listener when mounted
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            // Clean up the event listener when the component unmounts
+            window.removeEventListener("scroll", handleScroll);
+        }
+    }, [])
+
     return (
-        <div className="flex-col bg-background w-full pt-16 pb-24 justify-start">
-                    <div className="flex justify-between items-center px-8 py-4">
-                        <div className="flex items-center gap-2">
+      <div className={`border-t-[1px] transition-transform transition-opacity duration-1000 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+        <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden ">
+            <Popover>
+                <PopoverTrigger>
+                    <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee">When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
+                </PopoverTrigger>
+                <PopoverContent className="w-max">
+                    <span className="text-sm font-regular text-foreground">Some rules to live by from <em>Humankind</em>, a 2020 novel by <a href="https://www.rutgerbregman.com/" target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-2 decoration-primary">Rutger Bregman</a>.</span>
+                </PopoverContent>
+            </Popover>
+        </div>
+        <div className="flex flex-col bg-background w-full pt-12 pb-12 justify-start">
+            <div className="px-12"><span className="text-gray-500 text-sm font-medium tracking-wide">Portfolio & Links</span>
+            </div>
+                    <div className="flex flex-col md:flex-row gap-4 items-start md:justify-between md:items-center px-8 py-4">
+                        <div>
                         <NavigationMenu>
                             <NavigationMenuList>
                             <NavigationMenuItem>
@@ -60,8 +98,8 @@ export function PageFooter () {
                     
                         </div>
 
-                        
-                        <div className="flex items-center gap-2">
+                    
+                        <div>
                         <NavigationMenu>
                             <NavigationMenuList>
                             <NavigationMenuItem>
@@ -85,7 +123,7 @@ export function PageFooter () {
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
-                                <div className="px-4">
+                                <div className="px-4 order-first md:order-last">
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
@@ -95,7 +133,7 @@ export function PageFooter () {
                                             </Avatar>
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            <p className="font-medium"> Please don't feed the shiba 😅 </p>
+                                            <p className="font-regular"> Please don't feed the shiba 😅 </p>
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>
@@ -106,39 +144,43 @@ export function PageFooter () {
                         </div>
                         
                     </div>
-                    <div className="px-12 py-4"><Separator className="mt-4 mb-4" /></div>
-                    <div className="flex justify-between items-center px-8 py-4">
-                    <div className="flex items-center gap-2">
-                            <Button variant="link">
+                    <div className="px-12 py-4"><Separator className="md:mt-4 md:mb-4" /></div>
+                    <div className="px-12 pt-4"><span className="text-gray-500 text-sm font-medium tracking-wide">Pages</span>
+                    </div>
+                    <div className="flex flex-col gap-4 md:flex-row md:justify-between items-start px-8 py-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
+                            <Button variant="link" className="h-max">
                                 <Link href="/password" legacyBehavior passHref>
-                                <span className="text-xs">Password</span>
+                                <span className="text-xs md:text-sm">Password</span>
                                 </Link>
                             </Button>
-                            <Button variant="link">
+                            <Button variant="link" className="h-max">
                                 <Link href="/licenses" legacyBehavior passHref>
-                                <span className="text-xs">Licenses</span>
+                                <span className="text-xs md:text-sm">Licenses</span>
                                 </Link>
                             </Button>
-                            <Button variant="link">
+                            <Button variant="link" className="h-max">
                                 <Link href="/privacy" legacyBehavior passHref>
-                                <span className="text-xs">Privacy</span>
+                                <span className="text-xs md:text-sm">Privacy</span>
                                 </Link>
                             </Button>
-                            <Button variant="link">
+                            <Button variant="link" className="h-max">
                                 <Link href="/not-found" legacyBehavior passHref>
-                                <span className="text-xs">404</span>
+                                <span className="text-xs md:text-sm">404</span>
                                 </Link>
                             </Button>
                     </div>
-                    <div className="flex items-center gap-2">
-                            <div className="h-10 px-4 py-2 text-foreground">
-                                <span className="text-xs underline-offset-4 font-medium">Made with 💌 and 🤖 in 🇨🇦</span>
+                    
+                    <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
+                            <div className="h-10 px-4 py-1">
+                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium">Made with 💌 and 🤖 in 🇨🇦</span>
                             </div>
-                            <div className="h-10 px-4 py-2 text-foreground">
-                                <span className="text-xs underline-offset-4 font-medium">© Tim Ng, 2023</span>
+                            <div className="h-10 px-4 py-1">
+                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium">© Tim Ng, 2023</span>
                             </div>
                         </div>
                     </div>
                 </div>  
+        </div>
     )
 }      

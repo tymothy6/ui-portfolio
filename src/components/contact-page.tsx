@@ -30,10 +30,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
 
-// Legacy imports
-import Image from "next/image"
-import contactIcon from "../../public/ContactIcon.svg"
-
 interface HomeProps {
     id: string;
 }
@@ -145,16 +141,17 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     }
 
     return(
-        <div id={id} className="flex py-16 my-16 px-24 scroll-mt-12">
+        <div id={id} className="flex py-16 px-8 my-16 mx-24 scroll-mt-12">
             <div className="flex-col rounded-lg items-center justify-center p-16 border bg-card text-card-foreground shadow-sm">
-                <h1 className="text-6xl text-center font-semibold text-foreground mb-8">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Let's chat!
                 </h1>
                 <div>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                            <div className="flex justify-start items-center space-x-8">
-                            <div className="flex-grow">
+                            <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
+
+                            <div className="w-full h-full md:flex-grow">
                             <FormField
                                 control={form.control}
                                 name="name"
@@ -162,7 +159,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                     <FormItem>
                                         <FormLabel>Name</FormLabel>
                                         <FormDescription>
-                                            Who's writing this message?
+                                            Who are you?
                                         </FormDescription>
                                         <FormControl>
                                             <Input placeholder="Your name" {...field} />
@@ -172,13 +169,14 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                 )}
                             />
                             </div>
-                            <div className="flex-grow">
+
+                            <div className="w-full h-full md:flex-grow">
                             <FormField
                                 control={form.control}
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email <strong>(Optional)</strong></FormLabel>
+                                        <FormLabel>Email <span className="font-semibold">(Optional)</span></FormLabel>
                                         <FormDescription>
                                                Where can I reach you?  
                                         </FormDescription>
@@ -190,14 +188,16 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                 )}
                             />
                             </div>
+
                             </div>
+
                             <div>
                             <FormField
                                 control={form.control}
                                 name="topic"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Topic <strong>(Optional)</strong></FormLabel>
+                                        <FormLabel>Topic <span className="font-semibold">(Optional)</span></FormLabel>
                                         <FormDescription>
                                             What's this message about?
                                         </FormDescription>
@@ -210,9 +210,9 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                             <SelectContent>
                                                 <SelectGroup>
                                                 <SelectLabel>Topic</SelectLabel>
-                                                <SelectItem value="Design">👨🏼‍💻 Design</SelectItem>
-                                                <SelectItem value="Science">🧑🏼‍🔬 Science</SelectItem>
-                                                <SelectItem value="Other">🙋🏼 Other</SelectItem>
+                                                <SelectItem value="Design">Design</SelectItem>
+                                                <SelectItem value="Science">Science</SelectItem>
+                                                <SelectItem value="Other">Other</SelectItem>
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>

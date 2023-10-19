@@ -23,6 +23,21 @@ const NavigationMenu = React.forwardRef<
 ))
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
+const NavigationMenuListOrient = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.List
+    ref={ref}
+    className={cn(
+      "group flex flex-col md:flex-row flex-1 list-none items-center justify-center gap-2",
+      className
+    )}
+    {...props}
+  />
+))
+NavigationMenuListOrient.displayName = NavigationMenuPrimitive.List.displayName
+
 const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
@@ -30,7 +45,7 @@ const NavigationMenuList = React.forwardRef<
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-1 list-none items-center justify-center space-x-1",
+      "group flex flex-row flex-1 list-none items-center justify-center md:gap-1",
       className
     )}
     {...props}
@@ -43,6 +58,7 @@ const NavigationMenuItem = NavigationMenuPrimitive.Item
 const navigationMenuTriggerStyle = cva(
   "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 )
+
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
@@ -119,6 +135,7 @@ export {
   navigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
+  NavigationMenuListOrient,
   NavigationMenuItem,
   NavigationMenuContent,
   NavigationMenuTrigger,

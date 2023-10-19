@@ -8,7 +8,7 @@ import { GitHubLogoIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
-    ButtonCard,
+    Card,
     CardContent,
     CardImageHeader,
 } from "@/components/ui/card"
@@ -22,7 +22,7 @@ export function ProjectCard (data: Project) {
 
     return(
         <Link href={`/work/${data.slug}`} className="focus-visible:outline-none focus-visible:ring-none">
-        <ButtonCard>
+        <Card>
             {isClient && (
                 <>
             <CardImageHeader>
@@ -66,7 +66,7 @@ export function ProjectCard (data: Project) {
             </CardContent>
             </>
             )}  
-        </ButtonCard>
+        </Card>
         </Link>
     )
 }

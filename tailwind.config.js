@@ -100,6 +100,10 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
           }
         },
+        "scrollMarquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-75%)" },
+        },
       },
       backgroundSize: {
         "300%": "300%",
@@ -112,6 +116,21 @@ module.exports = {
         "gradient-xy-delay": "gradient-xy 10s ease infinite",
         "card-translate-y": "card-translate-y 0.2s forwards",
         "card-bounce": "card-bounce 1s infinite",
+        "scrollMarquee": "scrollMarquee 30s linear infinite",
+      },
+      transitionProperty: {
+        "transform": "transform",
+        "transform-opacity": "transform, opacity",
+      },
+      transitionDuration: {
+        "1000": "1000ms",
+      },
+      transitionTimingFunction: {
+        "ease-in-out": "ease-in-out",
+      },
+      translate: {
+        "full": "100%",
+        "0": "0",
       },
     },
   },

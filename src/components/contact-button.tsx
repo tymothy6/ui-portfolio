@@ -12,7 +12,7 @@ export function GitHubContact() {
     <Button variant="ghost" size="icon" asChild>
         <Link href="https://www.github.com/tymothy6">
         <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-        <span className="sr-only">Github profile</span>
+        <span className="sr-only">My Github profile</span>
         </Link>
     </Button>
   )
@@ -23,7 +23,7 @@ export function LinkedInContact() {
         <Button variant="ghost" size="icon" asChild>
         <Link href="https://www.linkedin.com/in/timng88">
         <LinkedInLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-        <span className="sr-only">LinkedIn profile</span>
+        <span className="sr-only">My LinkedIn profile</span>
         </Link>
     </Button>
   )

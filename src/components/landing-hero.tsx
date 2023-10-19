@@ -40,14 +40,16 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="flex flex-col pt-52 pb-56 my-4 mx-24 max-w-xl md:max-w-5xl">
-            <h1 className="text-6xl font-semibold mb-4">👋🏼 I'm Tim, an experience designer with a background in quantitative research</h1>
-            <h1 className="text-6xl font-semibold pb-4 mb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
-            <Button variant="gradient" size="lg" className="w-36" asChild>
-                <Link href="/#work">
-                    <span className="text-lg">Meet me</span>
-                </Link>
-            </Button>
+        className="flex flex-col gap-4 pt-52 pb-64 my-4 mx-24 max-w-xl md:max-w-3xl lg:max-w-5xl">
+            <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">👋🏼 I'm Tim, an experience designer with a background in quantitative research</h1>
+            <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+            <div className="md:pl-8">
+                <Button variant="gradient" size="default" className="md:w-36" asChild>
+                    <Link href="/#work">
+                        <span className="md:text-lg">Meet me</span>
+                    </Link>
+                </Button>
+            </div>
         </div>
     )
 }
@@ -177,8 +179,8 @@ export function PasswordHero () {
 
     return(
         <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl">
-            <h1 className="text-6xl font-semibold mb-4">Protected page</h1>
-            <p className="text-2xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
+            <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
+            <p className="text-xl md:text-2xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
@@ -186,7 +188,7 @@ export function PasswordHero () {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel><span className="md:text-base">Password</span></FormLabel>
                                 <FormControl>
                                     <Input placeholder="T0pS3cr3t&F0rY0ur3y3s0n1y" {...field} />
                                 </FormControl>
@@ -194,7 +196,7 @@ export function PasswordHero () {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit"><span className="md:text-base">Submit</span></Button>
                 </form>
             </Form>
         </div>
@@ -208,13 +210,12 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl relative">
-            <img src="/shiba-404.png" alt="Shiba inu with papers in their mouth" className="absolute bottom-0 right-0 z-0 w-80 h-80" />
-            <h1 className="text-8xl font-semibold mb-4 relative">404</h1>
-            <p className="text-4xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8 relative">😖 Hmm, we couldn't find what you're looking for</p>
-            <Button variant="default" size="lg" className="relative" asChild>
+        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl">
+            <h1 className="text-6xl md:text-8xl font-semibold mb-4">404</h1>
+            <p className="text-2xl md:text-4xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
+            <Button variant="default" size="default" className="md:w-36" asChild>
                 <Link href="#" onClick={goBack}>
-                <span className="text-lg">Go back</span>
+                <span className="md:text-lg">Go back</span>
                 </Link>
             </Button>
         </div>
@@ -225,106 +226,128 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
-            <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-2xl">
-                <h1 className="text-6xl font-semibold mb-8">Licenses</h1>
-                <p className="text-2xl font-regular tracking-wide text-gray-800 dark:text-gray-200 mb-8">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
-            </div>
-            <div className="grid grid-cols-2 space-x-12 justify-center py-28 mx-24">
-                <div className="flex-col space-y-8">
-                    <h2 className="text-3xl font-semibold">Images</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses images sourced from Unsplash and generated with AI using DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
-                   
-                    <div className="flex space-x-4">
-                        <Button variant="secondary" asChild>
-                            <Link href="https://unsplash.com/license">Unsplash</Link>
-                        </Button>
-                       
-                        <Button variant="secondary" asChild>
-                            <Link href="https://openai.com/dall-e-3">
-                            DALL-E</Link>
-                        </Button>
-                        <Button variant="secondary" asChild>
-                            <Link href="https://www.biorender.com">
-                            BioRender</Link>
-                        </Button>
-                    </div>
-                    
+            <div className="flex flex-col gap-8 pt-52 pb-56 mx-24 max-w-xl md:max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-semibold">Licenses</h1>
+                <p className="text-xl md:text-2xl font-regular tracking-wide text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <div>
+                    <Button variant="gradient" size="default" className="relative md:w-36" asChild>
+                        <Link href="/#contact">
+                        <span className="text-base md:text-lg">Contact me</span>
+                        </Link>
+                    </Button>
                 </div>
-            
-                    <img 
-                    src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
-                    alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
-                    className="rounded-lg object-cover w-[48rem] h-[16rem]"
-                    />
+            </div>
+            <div className="flex flex-col gap-8 pt-28 pb-36 mx-24">
+           
+                    <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                        <div className="flex flex-col gap-4">
+                        <h2 className="text-2xl md:text-3xl font-semibold">Images</h2>
+                        <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
+                        <div className="flex flex-row gap-4">
+                            <Button variant="default" asChild>
+                                <Link href="https://unsplash.com/license">Unsplash</Link>
+                            </Button>
+                        
+                            <Button variant="default" asChild>
+                                <Link href="https://openai.com/dall-e-3">
+                               OpenAI</Link>
+                            </Button>
+                            <Button variant="default" asChild>
+                                <Link href="https://www.biorender.com">
+                                BioRender</Link>
+                            </Button>
+                        </div>
+                        </div>
+
+                        <img 
+                        src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
+                        alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
+                        className="rounded-lg object-cover md:w-[48rem] max-h-[16rem]"
+                        />
+                        
+                    </div>
+               
                 
             </div>
 
-            <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
-                <div className="flex-col space-y-8">
+            <div className="flex flex-col gap-8 pb-36 mx-24">
+         
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                    <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses the Inter typeface by Rasmus Andersson.</p>
-                  
+                    <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson.</p>
+                        <span>
                         <Button variant="default" asChild>
                             <Link href="https://rsms.me/inter/#free">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                                 Inter</Link>
                         </Button>
-                   
-                </div>
-                <img 
-                src="https://github.com/rsms/inter/raw/master/misc/readme/intro.png"
-                alt="Inter typeface by Rasmus Andersson"
-                className="rounded-lg object-cover w-[48rem] h-[16rem]"
-                />
-            </div>
-
-            <div className="grid grid-cols-2 space-x-12 justify-center pb-28 mx-24">
-                <div className="flex-col space-y-8">
-                    <h2 className="text-3xl font-semibold">Icons</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium">
-                    npm i @radix-ui/react-icons
-                    </code>
-                    </p>
-                    
-                  
-                        <Button variant="default" asChild>
-                            <Link href="https://github.com/radix-ui/icons">
-                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                                Radix Icons</Link>
-                        </Button>
-                   
-                </div>
-                <img 
-                src="https://github.com/radix-ui/icons/raw/master/icons.png"
-                alt="Icons from Radix UI"
-                className="rounded-lg object-cover w-[48rem] h-[16rem]"
-                />
-            </div>
-
-            <div className="grid grid-cols-2 space-x-12 justify-center pb-56 mx-24">
-                <div className="flex-col space-y-8">
-                    <h2 className="text-3xl font-semibold">Components</h2>
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI Primitives. <br /><br />
-                    Find more about installation and usage guidelines in their GitHub repositories.</p>
-                    <div className="flex space-x-4">
-                        <Button variant="secondary" asChild>
-                            <Link href="https://github.com/shadcn-ui/ui">
-                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            shadcn/ui</Link>
-                        </Button>
-                        <Button variant="secondary" asChild>
-                            <Link href="https://github.com/radix-ui/primitives">
-                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            Radix UI</Link>
-                        </Button>
+                        </span>
                     </div>
+                    <img 
+                    src="https://github.com/rsms/inter/raw/master/misc/readme/intro.png"
+                    alt="Inter typeface by Rasmus Andersson"
+                    className="rounded-lg object-cover max-h-[16rem] md:w-[48rem]"
+                    />
                 </div>
-                <img 
-                src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
-                alt="Components from shadcn/ui"
-                className="rounded-lg object-cover w-[48rem] h-[16rem]"
-                />
+               
             </div>
+
+            <div className="flex flex-col gap-8 pb-36 mx-24">
+            
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                    <div className="flex flex-col gap-4">
+                    <h2 className="text-3xl font-semibold">Icons</h2>
+                        <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br />
+                        <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-sm md:text-base font-medium">
+                        npm i @radix-ui/react-icons
+                        </code>
+                        </p>
+                        <span>
+                            <Button variant="default" asChild>
+                                <Link href="https://github.com/radix-ui/icons">
+                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                    Radix Icons</Link>
+                            </Button>
+                        </span>
+                    </div>
+                    <img 
+                    src="https://github.com/radix-ui/icons/raw/master/icons.png"
+                    alt="Icons from Radix UI"
+                    className="rounded-lg object-cover md:w-[48rem] max-h-[16rem]"
+                    />
+                </div>
+                
+            </div>
+
+            <div className="flex flex-col gap-8 pb-32 md:pb-48 mx-24">
+            
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                    <div className="flex flex-col gap-4">
+                    <h2 className="text-3xl font-semibold">Components</h2>
+                    <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI Primitives. Read more about installation and usage guidelines in their GitHub repositories.</p>
+                        <div className="flex space-x-4">
+                            <Button variant="default" asChild>
+                                <Link href="https://github.com/shadcn-ui/ui">
+                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                shadcn/ui</Link>
+                            </Button>
+                            <Button variant="default" asChild>
+                                <Link href="https://github.com/radix-ui/primitives">
+                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                Radix UI</Link>
+                            </Button>
+                        </div>
+                    </div>
+                    <img 
+                    src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
+                    alt="Components from shadcn/ui"
+                    className="rounded-lg object-cover m:w-[48rem] max-h-[16rem]"
+                    />
+                </div>
+               
+            </div>
+           
 
         </div>
 

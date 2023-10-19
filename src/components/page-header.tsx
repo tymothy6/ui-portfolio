@@ -14,7 +14,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle
+    navigationMenuTriggerStyle,
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
@@ -73,7 +73,7 @@ export function PageHeader() {
                                 </Avatar>
                             </TooltipTrigger>
                             <TooltipContent className="p-2">
-                                <p className="text-sm font-medium"> Doggo will guide you back to the start 🐾 </p>
+                                <p className="text-sm font-regular"> Doggo will guide you back to the start 🐾 </p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
@@ -136,10 +136,11 @@ export function PageHeader() {
                                 </NavigationMenuLink>
                             </Link>
                         </NavigationMenuItem>
-                        <GitHubContact />
-                        <LinkedInContact />
+                        
                     </NavigationMenuList>
                 </NavigationMenu>
+                <GitHubContact />
+                <LinkedInContact />
                 <ModeToggle />
                 </div>
             </div>
