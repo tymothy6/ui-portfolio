@@ -40,13 +40,13 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="flex flex-col gap-4 pt-52 pb-64 my-4 mx-24 max-w-xl md:max-w-3xl lg:max-w-5xl">
-            <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">👋🏼 I'm Tim, an experience designer with a background in quantitative research</h1>
-            <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
-            <div className="md:pl-8">
+        className="flex flex-col gap-4 pt-24 md:pt-36 lg:pt-48 pb-64 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-6xl">
+            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a background in quantitative research</h1>
+            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+            <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
                     <Link href="/#work">
-                        <span className="md:text-lg">Meet me</span>
+                        <span className="text-base md:text-lg">Meet me</span>
                     </Link>
                 </Button>
             </div>
@@ -178,7 +178,7 @@ export function PasswordHero () {
     }
 
     return(
-        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl">
+        <div className="flex-col pt-52 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
             <p className="text-xl md:text-2xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
@@ -196,7 +196,7 @@ export function PasswordHero () {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit"><span className="md:text-base">Submit</span></Button>
+                    <Button type="submit"><span className="text-sm md:text-base">Submit</span></Button>
                 </form>
             </Form>
         </div>
@@ -210,14 +210,16 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-52 pb-56 mx-24 max-w-xl md:max-w-5xl">
-            <h1 className="text-6xl md:text-8xl font-semibold mb-4">404</h1>
-            <p className="text-2xl md:text-4xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
-            <Button variant="default" size="default" className="md:w-36" asChild>
-                <Link href="#" onClick={goBack}>
-                <span className="md:text-lg">Go back</span>
-                </Link>
-            </Button>
+        <div className="flex-col pt-52 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
+            <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
+            <p className="text-2xl md:text-4xl md:pl-8 font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
+            <div className="md:pl-8">
+                <Button variant="default" size="default" className="md:w-36" asChild>
+                    <Link href="#" onClick={goBack}>
+                    <span className="text-sm md:text-base">Go back</span>
+                    </Link>
+                </Button>
+            </div>
         </div>
 
     )
@@ -226,20 +228,20 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-52 pb-56 mx-24 max-w-xl md:max-w-2xl">
-                <h1 className="text-4xl md:text-6xl font-semibold">Licenses</h1>
-                <p className="text-xl md:text-2xl font-regular tracking-wide text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
-                <div>
+            <div className="flex flex-col gap-8 pt-52 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
+                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <div className="md:pl-8">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
-                        <span className="text-base md:text-lg">Contact me</span>
+                        <span className="text-sm md:text-base">Contact me</span>
                         </Link>
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col gap-8 pt-28 pb-36 mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-16 lg:mx-24">
            
-                    <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                         <div className="flex flex-col gap-4">
                         <h2 className="text-2xl md:text-3xl font-semibold">Images</h2>
                         <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
@@ -262,7 +264,7 @@ export function LicenseHero () {
                         <img 
                         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
                         alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
-                        className="rounded-lg object-cover md:w-[48rem] max-h-[16rem]"
+                        className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
                         />
                         
                     </div>
@@ -270,9 +272,9 @@ export function LicenseHero () {
                 
             </div>
 
-            <div className="flex flex-col gap-8 pb-36 mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-16 lg:mx-24">
          
-                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
                     <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson.</p>
@@ -287,21 +289,19 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/rsms/inter/raw/master/misc/readme/intro.png"
                     alt="Inter typeface by Rasmus Andersson"
-                    className="rounded-lg object-cover max-h-[16rem] md:w-[48rem]"
+                    className="rounded-lg object-cover max-h-[16rem] md:w-[32rem]"
                     />
                 </div>
                
             </div>
 
-            <div className="flex flex-col gap-8 pb-36 mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
-                        <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br />
-                        <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-sm md:text-base font-medium">
-                        npm i @radix-ui/react-icons
-                        </code>
+                        <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-sm md:text-base font-medium md:font-semibold">
+                        npm i @radix-ui/react-icons</code>
                         </p>
                         <span>
                             <Button variant="default" asChild>
@@ -314,18 +314,18 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/radix-ui/icons/raw/master/icons.png"
                     alt="Icons from Radix UI"
-                    className="rounded-lg object-cover md:w-[48rem] max-h-[16rem]"
+                    className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
                     />
                 </div>
                 
             </div>
 
-            <div className="flex flex-col gap-8 pb-32 md:pb-48 mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-12">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Components</h2>
-                    <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI Primitives. Read more about installation and usage guidelines in their GitHub repositories.</p>
+                    <p className="text-base md:text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI. Read about installation and usage in their GitHub repositories and linked docs.</p>
                         <div className="flex space-x-4">
                             <Button variant="default" asChild>
                                 <Link href="https://github.com/shadcn-ui/ui">
@@ -342,7 +342,7 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
                     alt="Components from shadcn/ui"
-                    className="rounded-lg object-cover m:w-[48rem] max-h-[16rem]"
+                    className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
                     />
                 </div>
                

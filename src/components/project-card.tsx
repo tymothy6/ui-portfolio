@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Project } from "@/lib/projects"
 
-import { GitHubLogoIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
+import { GitHubBadge, FigmaBadge } from "@/components/contact-button"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -21,8 +21,8 @@ export function ProjectCard (data: Project) {
     }, [])
 
     return(
-        <Link href={`/work/${data.slug}`} className="focus-visible:outline-none focus-visible:ring-none">
-        <Card>
+        <Link tabIndex={-1} href={`/work/${data.slug}`}>
+        <Card tabIndex={0} className="focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
             {isClient && (
                 <>
             <CardImageHeader>
@@ -34,7 +34,7 @@ export function ProjectCard (data: Project) {
             <CardContent className="flex justify-between items-start pt-4 h-full">
                 <div className="flex flex-col">
                     <p className="text-left text-lg font-semibold text-foreground mb-1">{data.name}</p>
-                    <p className="text-left text-base font-medium text-gray-800 dark:text-gray-200 mb-2">{data.type}</p> 
+                    <p className="text-left text-base md:text-lg font-medium text-gray-800 dark:text-gray-200 mb-4">{data.type}</p> 
                     <div className="flex flex-wrap gap-2 mb-2">
                     <Badge variant="default">{data.year}</Badge>
                         {data.tools && data.tools.map( tool => (
@@ -45,28 +45,16 @@ export function ProjectCard (data: Project) {
                 </div>
             
                 <div className="flex space-x-0">
-                    {data.figmaLink && (
-                        <Button variant="outline" size="icon" asChild>
-                            <Link href={data.figmaLink}>
-                                <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                                <span className="sr-only">Link to {data.name} Figma prototype</span>
-                            </Link>            
-                        </Button> 
-                    )}
-                    {data.githubLink && (
-                        <Button variant="outline" size="icon" asChild>
-                            <Link href={data.githubLink}>
-                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                                <span className="sr-only">Link to {data.name} Github repository</span>
-                            </Link>
-                        </Button> 
-                    )}
+                    {data.figmaLink && <FigmaBadge />}
+                    {data.githubLink && <GitHubBadge />}
                 </div>
             
             </CardContent>
             </>
             )}  
         </Card>
+       
         </Link>
+        
     )
 }

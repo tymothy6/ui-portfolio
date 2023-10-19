@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { fetchProject, fetchAllProjects } from "@/lib/projects"
@@ -8,6 +9,9 @@ import { PageHeader } from "@/components/page-header"
 import { Separator } from "@/components/ui/separator"
 import { ProjectCard } from "@/components/project-card"
 import { PageFooter } from "@/components/page-footer"
+import { Button } from "@/components/ui/button"
+
+import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
 
 interface ProjectPageParams {
     slug: string
@@ -53,13 +57,13 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
             <PageHeader />
             <div>
-            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-4 py-56 mx-24">
-                <h1 className="text-6xl font-semibold mb-8">{data.name}</h1>
+            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-4 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-12 md:mx-16 lg:mx-24">
+                <h1 className="text-5xl md:text-6xl font-semibold mb-8">{data.name}</h1>
                 <div className="flex flex-col justify-start">
-                    <p className="text-lg text-foreground font-regular leading-relaxed tracking-wide mb-8">
+                    <p className="text-[1.05rem] md:text-lg text-foreground font-regular leading-relaxed tracking-wide mb-8">
                         {data.overview}
                     </p>
-                    <div className="flex flex-col justify-start space-y-4">
+                    <div className="flex flex-col justify-start gap-4">
                         <div className="flex justify-between items-center">
                             <p className="text-base text-foreground font-semibold">Purpose</p>
                             <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.purpose}</p>
@@ -74,11 +78,35 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                             <p className="text-base text-foreground font-semibold">Timeline</p>
                             <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.timeline}</p>
                         </div>
+                        {(data.figmaLink || data.githubLink) ? (
+                            <>
+                            <Separator />
+                                <div className="flex justify-between items-center">
+                                    <p className="text-base text-foreground font-semibold">Resources</p>
+                                    {data.figmaLink && (
+                                    <Button variant="outline" size="icon" asChild>
+                                        <Link href={data.figmaLink}>
+                                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
+                                            <span className="sr-only">Link to {data.name} Figma prototype</span>
+                                        </Link>            
+                                    </Button> 
+                                    )}
+                                    {data.githubLink && (
+                                        <Button variant="outline" size="icon" asChild>
+                                            <Link href={data.githubLink}>
+                                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
+                                                <span className="sr-only">Link to {data.name} Github repository</span>
+                                            </Link>
+                                        </Button> 
+                                    )}
+                                </div>
+                            </>
+                        ) : null}
                     </div>
                 </div>
             </div>
 
-            <div className="my-6 flex-col"> 
+            <div className="my-6 flex flex-col"> 
                 {data.heroBlock1 && data.heroBlock1.map((image, index) =>
                    image && (
                         <img
@@ -91,12 +119,12 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                 )}
             </div>
 
-            <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-8">Design Process</h2>
+            <div className="flex flex-col gap-4 py-24 md:py-36 lg:py-48 mx-0 md:mx-16 lg:mx-24">
+                <h2 className="text-3xl md:text-4xl font-semibold mx-12 md:mx-0 lg:mx-0 mb-8">Design Process</h2>
                 <RichText document={data.process} />
             </div>
 
-            <div className="my-6 flex-col"> 
+            <div className="my-6 flex flex-col"> 
                 {data.heroBlock2 && data.heroBlock2.map((image, index) =>
                    image && (
                         <img
@@ -110,15 +138,15 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
             {data.outcome && (
-            <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-8">Design Outcome</h2>
+            <div className="flex flex-col gap-4 pb-24 md:pb-36 lg:pb-48 mx-0 lg:mx-24">
+                <h2 className="text-3xl md:text-4xl font-semibold mx-12 md:mx-0 lg:mx-0 mt-16 mb-8">Design Outcome</h2>
                 <RichText document={data.outcome} />
             </div>
             )}
 
-            <div className="flex-col space-y-8 py-56 mx-24">
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 mx-16 lg:mx-24">
                 <h2 className="text-2xl font-semibold mb-4">Other work</h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-4">
                     {otherProjects.slice(0, 2).map((project) => (
                         <div className="h-max" key={project.slug}>
                             <ProjectCard {...project} />

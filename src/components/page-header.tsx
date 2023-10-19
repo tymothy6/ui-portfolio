@@ -61,7 +61,7 @@ const blog : { title: string; href: string, description:string }[] = [
 
 export function PageHeader() {
     return (
-        <div className="bg-background border-b-[1px] fixed top-0 w-full z-[49]">
+        <div className="bg-background/50 dark:bg-background/70 backdrop-blur-md border-b-[1px] fixed top-0 w-full z-[49]">
             <div className="flex justify-between items-center px-8 py-4">
                 <Link href="/#home" className="rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4">
                     <TooltipProvider>

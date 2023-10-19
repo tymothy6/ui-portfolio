@@ -141,11 +141,12 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     }
 
     return(
-        <div id={id} className="flex py-16 px-8 my-16 mx-24 scroll-mt-12">
-            <div className="flex-col rounded-lg items-center justify-center p-16 border bg-card text-card-foreground shadow-sm">
+        <div id={id} className="flex py-8 md:py-16 lg:px-8 my-16 md:mx-24 scroll-mt-12">
+            <div className="flex-col md:rounded-lg items-center justify-center p-16 border bg-card text-card-foreground md:shadow-sm">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
-                🤝🏼 Want to work together? Let's chat!
+                🤝🏼 Want to work together? Get in touch
                 </h1>
+                <p className="text-base md:text-lg lg:text-xl font-medium text-gray-800 dark:text-gray-400 mb-8">Connect with me to create impactful designs that align with our values and exceed our expectations</p>
                 <div>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
