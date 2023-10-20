@@ -59,7 +59,7 @@ export function PageFooter () {
             </Popover>
         </div>
         <div className="flex flex-col bg-background w-full pt-12 pb-12 justify-start">
-                        <div className="px-12 pb-4 block md:hidden">
+                        <div className="px-12 pb-8 block md:hidden">
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
@@ -74,9 +74,7 @@ export function PageFooter () {
                                     </Tooltip>
                                 </TooltipProvider>
                                 </div>
-            <div className="px-12 pt-4 pb-8 block md:hidden">
-                <Separator className="md:mt-4 md:mb-4" />
-            </div>
+            
             <div className="px-12"><span className="text-gray-500 text-sm font-medium tracking-wide">Links</span>
             </div>
                     <div className="flex flex-col md:flex-row gap-4 items-start md:justify-between md:items-center px-8 py-4">

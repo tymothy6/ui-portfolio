@@ -23,20 +23,20 @@ const NavigationMenu = React.forwardRef<
 ))
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
 
-const NavigationMenuListOrient = React.forwardRef<
+const NavigationMenuListVert = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
     className={cn(
-      "group flex flex-col md:flex-row flex-1 list-none items-center justify-center gap-2",
+      "group flex flex-col flex-1 list-none items-start justify-center gap-2",
       className
     )}
     {...props}
   />
 ))
-NavigationMenuListOrient.displayName = NavigationMenuPrimitive.List.displayName
+NavigationMenuListVert.displayName = NavigationMenuPrimitive.List.displayName
 
 const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
@@ -135,7 +135,7 @@ export {
   navigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
-  NavigationMenuListOrient,
+  NavigationMenuListVert,
   NavigationMenuItem,
   NavigationMenuContent,
   NavigationMenuTrigger,
