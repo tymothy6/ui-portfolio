@@ -55,6 +55,32 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
+interface CustomNavigationMenuItemProps {
+  onClick?: React.MouseEventHandler<HTMLLIElement>
+}
+
+const CustomNavigationMenuItem = React.forwardRef<
+React.ElementRef<typeof NavigationMenuPrimitive.Item>,
+React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item> & CustomNavigationMenuItemProps  
+>(({ onClick, children, ...props }, ref) => {
+  const handleClick: React.MouseEventHandler<HTMLLIElement> = (event: React.MouseEvent<HTMLLIElement>) => {
+    if (onClick) {
+      onClick(event)
+    }
+  }
+
+  return (
+    <NavigationMenuPrimitive.Item
+      ref={ref}
+      {...props}
+      onClick={handleClick}
+      >
+        {children}
+      </NavigationMenuPrimitive.Item>
+  )
+})
+CustomNavigationMenuItem.displayName = 'CustomNavigationMenuItem';
+
 const navigationMenuTriggerStyle = cva(
   "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background/0 px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/60 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 )
@@ -137,6 +163,7 @@ export {
   NavigationMenuList,
   NavigationMenuListVert,
   NavigationMenuItem,
+  CustomNavigationMenuItem,
   NavigationMenuContent,
   NavigationMenuTrigger,
   NavigationMenuLink,

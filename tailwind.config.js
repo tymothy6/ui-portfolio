@@ -132,6 +132,9 @@ module.exports = {
         "full": "100%",
         "0": "0",
       },
+      boxShadow: {
+        glow: '0 0 10px 4px rgba(109, 40, 217, 0.8)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

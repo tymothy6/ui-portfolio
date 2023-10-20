@@ -16,16 +16,16 @@ export default function RichText({ document }: RichTextProps) {
 
     const options = {
         renderNode: {
-            [BLOCKS.HEADING_1]: (node: Block | Inline, children: React.ReactNode) => <h1 className="text-2xl md:text-3xl font-semibold mb-4 mx-12 md:mx-0 lg:mx-0">{children}</h1>,
-            [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => <h2 className="text-xl md:text-2xl font-semibold mx-12 md:mx-0 lg:mx-0">{children}</h2>,
+            [BLOCKS.HEADING_1]: (node: Block | Inline, children: React.ReactNode) => <h1 className="text-2xl md:text-3xl font-semibold mb-4 mx-8 md:mx-0 lg:mx-0">{children}</h1>,
+            [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => <h2 className="text-xl md:text-2xl font-semibold mx-8 md:mx-0 lg:mx-0">{children}</h2>,
             [BLOCKS.HEADING_3]: (node: Block | Inline, children: React.ReactNode) => <h3>{children}</h3>,
             [BLOCKS.HEADING_4]: (node: Block | Inline, children: React.ReactNode) => <h4>{children}</h4>,
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
-            [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-start mb-8 mx-6 lg:mx-0">{children}</h6>,
-            [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-base md:text-lg leading-relaxed mb-8 mx-12 md:mx-0 lg:mx-0">{children}</p>,
+            [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6 lg:mx-0">{children}</h6>,
+            [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8 md:mx-0 lg:mx-0">{children}</p>,
             [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-disc">{children}</ol>,
             [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-16 lg:mx-0 p-8 md:p-12 bg-accent rounded-sm"><blockquote className="border-l-2 border-primary p-2 pl-2 md:pl-6 italic">{children}</blockquote></div>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 lg:mx-0 p-8 md:p-12 bg-accent rounded-sm"><blockquote className="border-l-2 border-primary p-2 pl-2 md:pl-6 italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (

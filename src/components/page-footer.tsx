@@ -77,7 +77,7 @@ export function PageFooter () {
             
             <div className="px-12"><span className="text-gray-500 text-sm font-medium tracking-wide">Links</span>
             </div>
-                    <div className="flex flex-col md:flex-row gap-4 items-start md:justify-between md:items-center px-8 py-4">
+                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:justify-between md:items-center px-8 py-4">
                         <div>
                         <NavigationMenu>
                             <NavigationMenuList>
@@ -118,7 +118,15 @@ export function PageFooter () {
                         <div>
                         <NavigationMenu>
                             <NavigationMenuList>
-                            
+                            <div className="block md:hidden">
+                                <NavigationMenuItem>
+                                    <Link href="/not-found" legacyBehavior passHref>
+                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        Blog
+                                        </NavigationMenuLink>
+                                    </Link>
+                                </NavigationMenuItem>
+                            </div>
                             <NavigationMenuItem>
                                     <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
                                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -140,15 +148,7 @@ export function PageFooter () {
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
-                                <div className="block md:hidden">
-                                <NavigationMenuItem>
-                                    <Link href="/not-found" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                        Blog 🚧
-                                        </NavigationMenuLink>
-                                    </Link>
-                                </NavigationMenuItem>
-                                </div>
+                                
                                 <div className="px-4 hidden md:block md:order-last">
                                 <TooltipProvider>
                                     <Tooltip>
