@@ -28,6 +28,10 @@ import {
     TooltipProvider,
     TooltipTrigger,
   } from "@/components/ui/tooltip"
+  import { useToast } from "@/components/ui/use-toast"
+  import { ToastAction } from "@/components/ui/toast"
+
+
 
 const works : { title: string; href: string; description: string }[] = [
     {
@@ -65,6 +69,7 @@ const blog : { title: string; href: string, description:string }[] = [
 ]
 
 export function PageHeader() {
+
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
     const menuRef = React.useRef<HTMLDivElement>(null)
 
@@ -89,6 +94,7 @@ export function PageHeader() {
         window.addEventListener('resize', handleResize)
         document.addEventListener("mouseup", handleClick)
         document.addEventListener("touchend", handleClick)
+        
         return () => {
             window.removeEventListener('resize', handleResize)
             document.removeEventListener("mouseup", handleClick)
@@ -192,7 +198,7 @@ export function PageHeader() {
                         setIsMenuOpen(!isMenuOpen);
                     }}
                     className="text-slate-800 dark:text-slate-300 hover:text-foreground hover:dark:text-foreground">
-                        {isMenuOpen ? <span className="mr-2">Close</span> : <span className="mr-2">Menu</span>}
+                        {isMenuOpen ? <span className="mr-2 text-base">Close</span> : <span className="mr-2 text-base">Menu</span>}
             
                         {isMenuOpen ? <Cross1Icon className="w-5 h-5" /> : <HamburgerMenuIcon className="w-5 h-5" />}
                         
@@ -210,7 +216,7 @@ export function PageHeader() {
         <div className="flex flex-col justify-start items-start bg-background/70 backdrop-blur-md border-b-[1px] w-full">
             
             <div className="px-12 pt-8 cursor-default">
-                <span className="text-gray-600 dark:text-gray-300 text-sm font-medium tracking-wide">Menu</span>
+                <span className="text-gray-600 dark:text-gray-400 text-base font-mono font-medium tracking-wide">Menu</span>
             </div>
             
                     <div className="flex flex-col gap-4 justify-start items-start px-8 pt-4 pb-8 w-full">
@@ -251,7 +257,11 @@ export function PageHeader() {
                     
                         </div>
                         
-                        <Separator />
+                        <Separator className="mt-4" />
+
+                        <div className="px-4 pt-4 cursor-default">
+                <span className="text-gray-600 dark:text-gray-400 text-base font-mono font-medium tracking-wide">Resources</span>
+            </div>
                         
                         <div>
                         <NavigationMenu>
@@ -292,8 +302,8 @@ export function PageHeader() {
                 </div>
 
                 <div className="flex flex-row justify-between px-12 pb-8 w-full cursor-default">
-                    <p className="text-gray-500 text-sm font-medium tracking-wide">Tim Ng</p>
-                    <p className="text-gray-500 text-sm font-medium tracking-wide">Design Portfolio</p>
+                    <p className="text-gray-500 text-base font-medium tracking-wide">Tim Ng</p>
+                    <p className="text-gray-500 text-base font-medium tracking-wide">Design Portfolio</p>
                 </div>
         </div>
         

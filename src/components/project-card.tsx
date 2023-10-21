@@ -6,7 +6,6 @@ import { Project } from "@/lib/projects"
 
 import { GitHubBadge, FigmaBadge } from "@/components/contact-button"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
@@ -31,20 +30,19 @@ export function ProjectCard (data: Project) {
                 alt={data.thumbnail ? data.thumbnail.alt : ''}
                 className="rounded-t-lg object-cover" />
             </CardImageHeader>
-            <CardContent className="flex justify-between items-start pt-4 h-full">
+            <CardContent className="flex flex-row justify-between items-start pt-4 h-full">
                 <div className="flex flex-col">
-                    <p className="text-left text-lg font-semibold text-foreground mb-1">{data.name}</p>
-                    <p className="text-left text-base md:text-lg font-medium text-gray-800 dark:text-gray-200 mb-4">{data.type}</p> 
-                    <div className="flex flex-wrap gap-2 mb-2">
-                    <Badge variant="default">{data.year}</Badge>
-                        {data.tools && data.tools.map( tool => (
-                            <Badge key={tool} variant="secondary">{tool}</Badge>
-                        ))}
-                    </div>
-                        
+                    <p className="text-left text-lg font-semibold text-foreground pr-2 mb-0">{data.name}</p>
+                    <p className="text-left text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 pr-2 mb-2">{data.type}</p> 
+                    <div className="flex flex-row flex-wrap gap-2">
+                        <Badge variant="default"><span className="font-mono font-semibold">{data.year}</span></Badge>
+                            {data.tools && data.tools.map( tool => (
+                                <Badge key={tool} variant="secondary"><span className="font-mono font-semibold tracking-tight">{tool}</span></Badge>
+                            ))}
+                    </div>  
                 </div>
             
-                <div className="flex space-x-0">
+                <div className="flex flex-row gap-0">
                     {data.figmaLink && <FigmaBadge />}
                     {data.githubLink && <GitHubBadge />}
                 </div>

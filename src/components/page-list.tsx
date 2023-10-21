@@ -31,23 +31,23 @@ export function ExperiencePage () {
             <div className="flex flex-col gap-1 md:gap-2">
                 <h3 className="text-lg font-medium text-foreground">Freelance</h3>
                 <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">User Experience Designer</h3>
-                <p className="text-base font-medium text-gray-800 dark:text-gray-200">Toronto, ON</p>
-                <p className="text-base font-mono font-regular text-foreground tracking-wide">May 2022 - Present</p>
+                <p className="text-lg font-medium text-gray-800 dark:text-gray-200">Toronto, ON</p>
+                <p className="text-base font-mono font-regular text-foreground">May 2022 - Present</p>
             </div>
             <Separator className="mt-4 mb-4" />
             <div className="flex flex-col gap-1 md:gap-2">
                 <h3 className="text-lg font-medium text-foreground">Lunenfeld-Tanenbaum Research Institute</h3>
                 <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">Senior Research Scientist</h3>
-                <p className="text-base font-medium text-gray-800 dark:text-gray-200">Toronto, ON</p>
-                <p className="text-base font-mono font-regular text-foreground tracking-wide">Jan 2016 - Oct 2022</p>
+                <p className="text-lg font-medium text-gray-800 dark:text-gray-200">Toronto, ON</p>
+                <p className="text-base font-mono font-regular text-foreground">Jan 2016 - Oct 2022</p>
                 
             </div>
             <Separator className="mt-4 mb-4" />
             <div className="flex flex-col gap-1 md:gap-2">
                 <h3 className="text-lg font-medium text-foreground leading-relaxed">Goodman Cancer Research Centre</h3>
                 <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">Research Scientist</h3>
-                <p className="text-base font-medium text-gray-800 dark:text-gray-200">Montreal, QC</p>
-                <p className="text-base font-mono font-regular text-foreground tracking-wide">May 2014 - Jun 2015</p>
+                <p className="text-lg font-medium text-gray-800 dark:text-gray-200">Montreal, QC</p>
+                <p className="text-base font-mono font-regular text-foreground">May 2014 - Jun 2015</p>
                 
             </div>
             </div>
@@ -92,7 +92,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             <div className="flex flex-col gap-2">
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🤗 Compassion</h3>
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                Empathy is a powerful yet strikingly limited spotlight that brightens our connections with others. By definition, we must exclude many more people than we can include. That’s why I train my compassion and temper my empathy, feeling for my users rather than with them. <strong className="font-semibold"><span className="underline decoration-primary decoration-2 underline-offset-4">I believe compassion is empathy <em>plus</em> action</span></strong>. I strive to be compassionate and open-minded in every interaction. Every day I succeed in doing so I forge a more forgiving and productive version of myself.
+                Empathy is a powerful yet strikingly limited spotlight that brightens our connections with others. By definition, we must exclude many more people than we can include. That’s why I train my compassion and temper my empathy, feeling for my users rather than with them. <strong className="font-semibold"><span className="underline decoration-primary decoration-2 underline-offset-4">Compassion is empathy <em>plus</em> action</span></strong>. I strive to be compassionate and open-minded in every interaction. Every day I succeed in doing so I forge a more forgiving and productive version of myself.
                 </p>
                 
             </div>
@@ -109,7 +109,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             <Separator className="mb-12" />
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🌎 Connection</h3>
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                I believe in finding new ways to create genuine connections in a digital age. <strong className="font-semibold"><span className="underline decoration-primary decoration-2 underline-offset-4">The solutions that I craft as a designer don’t exist in a vacuum and neither do my users.</span></strong> I aspire to build digital experiences that empower my users and give them the ability to transcend social, economic, and cultural barriers. My lifelong goal is to apply my design skills to help the people I work for realize their dreams.That means stepping out of my comfort zone and taking on challenges in new problem spaces.</p>
+                I believe in finding new ways to create genuine connections in a digital age. <strong className="font-semibold"><span className="underline decoration-primary decoration-2 underline-offset-4">The solutions that I craft as a designer don’t exist in a vacuum and neither do my users.</span></strong> I aspire to build digital experiences that empower my users and give them the ability to transcend social, economic, and cultural barriers. My lifelong goal is to apply my design skills to help the people I work for realize their dreams. That means stepping out of my comfort zone and taking on challenges in new problem spaces.</p>
             </div>
             
             <div className="flex flex-col gap-2">

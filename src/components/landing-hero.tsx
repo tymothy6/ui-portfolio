@@ -39,9 +39,9 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="flex flex-col gap-4 pt-24 md:pt-36 lg:pt-48 pb-64 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-6xl scroll-mt-48">
-            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a background in quantitative research</h1>
-            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+        className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-6xl scroll-mt-48">
+            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a quantitative research background</h1>
+            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
                     <Link href="/#work">
@@ -177,7 +177,7 @@ export function PasswordHero () {
     }
 
     return(
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
+        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
             <p className="text-xl md:text-2xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
@@ -209,7 +209,7 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
+        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
             <p className="text-2xl md:text-4xl md:pl-8 font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
             <div className="md:pl-8">
@@ -227,7 +227,7 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
                 <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8">
@@ -238,7 +238,7 @@ export function LicenseHero () {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-12 md:mx-16 lg:mx-24">
            
                     <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                         <div className="flex flex-col gap-4">

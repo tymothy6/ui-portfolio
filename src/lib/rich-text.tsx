@@ -5,12 +5,26 @@ import { Document as RichTextDocument, BLOCKS, MARKS, INLINES, Block, Inline } f
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FigmaEmbed } from "@/components/figma-embed"
 import FsLightbox from "fslightbox-react"
+import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast"
 
 type RichTextProps = {
     document: RichTextDocument | null
 }
 
 export default function RichText({ document }: RichTextProps) {
+    const { toast } = useToast()
+
+    React.useEffect(() => {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            toast({
+            title: "📱 Heads up!",
+            description: "Figma embeds aren't optimized on mobile. Please view my project pages on a desktop browser for the best experience.",
+            action: <ToastAction altText="Ok">Okay</ToastAction>,
+            });
+        }
+    }, [])
+
     const [isLightBoxOpen, setIsLightBoxOpen] = React.useState(false)
     const [lightBoxSource, setLightBoxSource] = React.useState("")
 
@@ -23,9 +37,9 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
             [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6 lg:mx-0">{children}</h6>,
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8 md:mx-0 lg:mx-0">{children}</p>,
-            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-disc">{children}</ol>,
-            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 lg:mx-0 p-8 md:p-12 bg-accent rounded-sm"><blockquote className="border-l-2 border-primary p-2 pl-2 md:pl-6 italic">{children}</blockquote></div>,
+            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-decimal">{children}</ol>,
+            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-disc">{children}</ol>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 lg:mx-0 p-8 md:p-12 bg-accent rounded-md"><blockquote className="border-l-2 border-primary pl-4 md:pl-6 italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (

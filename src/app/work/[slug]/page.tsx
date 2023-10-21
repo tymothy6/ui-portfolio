@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
 }
 
 async function ProjectPage ( { params }: ProjectPageProps ) {
+
     // fetch a single project by slug
     const data = await fetchProject({ slug: params.slug })
 
@@ -66,38 +67,44 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     <div className="flex flex-col justify-start gap-4">
                         <div className="flex justify-between items-center">
                             <p className="text-base text-foreground font-semibold">Purpose</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.purpose}</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.purpose}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
                             <p className="text-base text-foreground font-semibold">Type</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.type}</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.type}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
                             <p className="text-base text-foreground font-semibold">Timeline</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">{data.timeline}</p>
+                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.timeline}</p>
                         </div>
                         {(data.figmaLink || data.githubLink) ? (
                             <>
                             <Separator />
                                 <div className="flex justify-between items-center">
-                                    <p className="text-base text-foreground font-semibold">Resources</p>
+                                    <p className="text-base text-foreground font-semibold">Public Links</p>
                                     {data.figmaLink && (
-                                    <Button variant="outline" size="icon" asChild>
-                                        <Link href={data.figmaLink}>
-                                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                                            <span className="sr-only">Link to {data.name} Figma prototype</span>
-                                        </Link>            
-                                    </Button> 
+                                        <div className="flex flex-row items-center gap-2">
+                                        <span className="text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">Figma</span>
+                                        <Button variant="outline" size="icon" asChild>
+                                            <Link href={data.figmaLink}>
+                                                <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
+                                                <span className="sr-only">Link to {data.name} Figma prototype</span>
+                                            </Link>            
+                                        </Button> 
+                                </div>
                                     )}
                                     {data.githubLink && (
+                                        <div className="flex flex-row items-center gap-2">
+                                        <span className="text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">GitHub</span>
                                         <Button variant="outline" size="icon" asChild>
                                             <Link href={data.githubLink}>
                                                 <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
                                                 <span className="sr-only">Link to {data.name} Github repository</span>
                                             </Link>
                                         </Button> 
+                                        </div>
                                     )}
                                 </div>
                             </>

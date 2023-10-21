@@ -75,7 +75,7 @@ export function PageFooter () {
                                 </TooltipProvider>
                                 </div>
             
-            <div className="px-12"><span className="text-gray-500 text-sm font-medium tracking-wide">Links</span>
+            <div className="px-12"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Links</span>
             </div>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:justify-between md:items-center px-8 py-4">
                         <div>
@@ -171,7 +171,7 @@ export function PageFooter () {
                         
                     </div>
                     <div className="px-12 py-4"><Separator className="md:mt-4 md:mb-4" /></div>
-                    <div className="px-12 pt-4"><span className="text-gray-500 text-sm font-medium tracking-wide">Pages</span>
+                    <div className="px-12 pt-4"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Pages</span>
                     </div>
                     <div className="flex flex-col gap-4 md:flex-row md:justify-between items-start px-8 py-4">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-2">

@@ -7,7 +7,6 @@ import { ProjectGrid } from "@/components/project-grid"
 import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/page-list"
 import { ContactPage } from "@/components/contact-page"
 import { PageFooter } from "@/components/page-footer"
-
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {
@@ -17,6 +16,7 @@ import {
 } from "@/components/ui/popover"
 
 export default function Home() {
+
   return (
     <div 
     className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
@@ -30,7 +30,7 @@ export default function Home() {
           alt="Aerial view of Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
           className="block object-cover w-full lg:h-[60vh]"
       />
-      <div className="absolute bottom-0 left-0 p-8">
+      <div className="absolute bottom-0 left-0 p-6">
         <Popover>
           <PopoverTrigger asChild>
             <Button variant="outline" className="text-sm">
