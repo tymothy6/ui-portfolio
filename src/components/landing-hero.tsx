@@ -5,10 +5,9 @@ import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
-// import { motion } from "framer-motion"
+import { useTheme } from "next-themes"
 
-import { FigmaLogoIcon } from "@radix-ui/react-icons"
-import { GitHubLogoIcon } from "@radix-ui/react-icons"
+import { FigmaLogoIcon, GitHubLogoIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -26,6 +25,23 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import {
+    Alert,
+    AlertTitle,
+    AlertDescription,
+} from "@/components/ui/alert"
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+  
 
 interface HomeProps {
     id: string;
@@ -179,7 +195,7 @@ export function PasswordHero () {
     return(
         <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
-            <p className="text-xl md:text-2xl font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
+            <p className="text-xl md:text-2xl font-medium tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
@@ -229,11 +245,11 @@ export function LicenseHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
-                        <span className="text-sm md:text-base">Contact me</span>
+                        <span className="text-base">Contact me</span>
                         </Link>
                     </Button>
                 </div>
@@ -271,7 +287,7 @@ export function LicenseHero () {
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
          
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
@@ -294,12 +310,12 @@ export function LicenseHero () {
                
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
             
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
-                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
+                        <p className="text-lg font-medium text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
                         npm i @radix-ui/react-icons</code>
                         </p>
                         <span>
@@ -319,7 +335,7 @@ export function LicenseHero () {
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-16 lg:mx-24">
             
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
@@ -350,5 +366,427 @@ export function LicenseHero () {
 
         </div>
 
+    )
+}
+
+export function StyleHero () {
+    const areaRef = React.useRef<HTMLTextAreaElement>(null)
+
+    React.useEffect(() => {
+        const textArea = areaRef.current
+        if (textArea) {
+            textArea.style.height = "auto"
+            const percentHeight = textArea.scrollHeight / 2;
+            textArea.style.height = `${percentHeight}px`
+        }
+    }, [])
+
+    async function handleCopy() {
+        if (areaRef.current !== null) {
+          const text = areaRef.current.value;
+          await navigator.clipboard.writeText(text);
+        } else {
+          console.error('Textarea ref is null');
+        }
+    }
+    
+    const { resolvedTheme } = useTheme() // use this hook to get the current theme
+
+    const bgExample = `--primary: 263.4 70% 50.4%;
+--primary-foreground: 210 20% 98%;`
+
+    const themes = `@layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 224 71.4% 4.1%;
+          --card: 0 0% 100%;
+          --card-foreground: 224 71.4% 4.1%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 224 71.4% 4.1%;
+          --primary: 262.1 83.3% 57.8%;
+          --primary-foreground: 210 20% 98%;
+          --secondary: 220 14.3% 95.9%;
+          --secondary-foreground: 220.9 39.3% 11%;
+          --muted: 220 14.3% 95.9%;
+          --muted-foreground: 220 8.9% 46.1%;
+          --accent: 220 14.3% 95.9%;
+          --accent-foreground: 220.9 39.3% 11%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 210 20% 98%;
+          --border: 220 13% 91%;
+          --input: 220 13% 91%;
+          --ring: 262.1 83.3% 57.8%;
+          --radius: 0.5rem;
+        }
+       
+        .dark {
+          --background: 222 47% 11%;
+          --foreground: 210 20% 98%;
+          --card: 229 84% 5%;
+          --card-foreground: 210 20% 98%;
+          --popover: 229 84% 5%;
+          --popover-foreground: 210 20% 98%;
+          --primary: 263.4 70% 50.4%;
+          --primary-foreground: 210 20% 98%;
+          --secondary: 215 27.9% 16.9%;
+          --secondary-foreground: 210 20% 98%;
+          --muted: 215 27.9% 16.9%;
+          --muted-foreground: 217.9 10.6% 64.9%;
+          --accent: 215 27.9% 16.9%;
+          --accent-foreground: 210 20% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 210 20% 98%;
+          --border: 215 27.9% 16.9%;
+          --input: 215 27.9% 16.9%;
+          --ring: 263.4 70% 50.4%;
+        }
+    }
+    `
+
+    const colours = [
+        {
+            name: "background",
+            hslLight: "0 0% 100%",
+            hslDark: "224 71.4% 4.1%",
+            rgbLight: "255, 255, 255",
+            hexLight: "#FFFFFF",
+            rgbDark: "3, 7, 18",
+            hexDark: "#030712",
+        },
+        {
+            name: "foreground",
+            hslLight: "224 71.4% 4.1%",
+            hslDark: "210 20% 98%",
+            rgbLight: "11, 11, 11",
+            hexLight: "#0B0B0B",
+            rgbDark: "255, 255, 255",
+            hexDark: "#FFFFFF",
+        },
+        {
+            name: "card",
+            hslLight: "0 0% 100%",
+            hslDark: "224 71.4% 4.1%",
+            rgbLight: "255, 255, 255",
+            hexLight: "#FFFFFF",
+            rgbDark: "11, 11, 11",
+            hexDark: "#0B0B0B",
+        },
+        {
+            name: "card-foreground",
+            hslLight: "224 71.4% 4.1%",
+            hslDark: "210 20% 98%",
+            rgbLight: "11, 11, 11",
+            hexLight: "#0B0B0B",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "popover",
+            hslLight: "0 0% 100%",
+            hslDark: "224 71.4% 4.1%",
+            rgbLight: "255, 255, 255",
+            hexLight: "#FFFFFF",
+            rgbDark: "3, 7, 18",
+            hexDark: "#030712",
+        },
+        {
+            name: "popover-foreground",
+            hslLight: "224 71.4% 4.1%",
+            hslDark: "210 20% 98%",
+            rgbLight: "11, 11, 11",
+            hexLight: "#0B0B0B",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "primary",
+            hslLight: "262.1 83.3% 57.8%",
+            hslDark: "263.4 70% 50.4%",
+            rgbLight: "124, 58, 237",
+            hexLight: "#7C3AED",
+            rgbDark: "109, 40, 217",
+            hexDark: "#6D28D9",
+        },
+        {
+            name: "primary-foreground",
+            hslLight: "210 20% 98%",
+            hslDark: "210 20% 98%",
+            rgbLight: "249, 250, 251",
+            hexLight: "#F9FAFB",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "secondary",
+            hslLight: "220 14.3% 95.9%",
+            hslDark: "215 27.9% 16.9%",
+            rgbLight: "243, 244, 246",
+            hexLight: "#F3F4F6",
+            rgbDark: "31, 41, 55",
+            hexDark: "#1F2937",
+        },
+        {
+            name: "secondary-foreground",
+            hslLight: "220.9 39.3% 11%",
+            hslDark: "210 20% 98%",
+            rgbLight: "17, 24, 39",
+            hexLight: "#111827",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "muted",
+            hslLight: "220 14.3% 95.9%",
+            hslDark: "215 27.9% 16.9%",
+            rgbLight: "243, 244, 246",
+            hexLight: "#F3F4F6",
+            rgbDark: "31, 41, 55",
+            hexDark: "#1F2937",
+        },
+        {
+            name: "muted-foreground",
+            hslLight: "220 8.9% 46.1%",
+            hslDark: "217.9 10.6% 64.9%",
+            rgbLight: "107, 114, 128",
+            hexLight: "#6B7280",
+            rgbDark: "156, 163, 175",
+            hexDark: "#9CA3AF",
+        },
+        {
+            name: "accent",
+            hslLight: "220 14.3% 95.9%",
+            hslDark: "215 27.9% 16.9%",
+            rgbLight: "243, 244, 246",
+            hexLight: "#F3F4F6",
+            rgbDark: "31, 41, 55",
+            hexDark: "#1F2937",
+        },
+        {
+            name: "accent-foreground",
+            hslLight: "220.9 39.3% 11%",
+            hslDark: "210 20% 98%",
+            rgbLight: "17, 24, 39",
+            hexLight: "#111827",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "destructive",
+            hslLight: "0 84.2% 60.2%",
+            hslDark: "0 62.8% 30.6%",
+            rgbLight: "239, 68, 68",
+            hexLight: "#EF4444",
+            rgbDark: "127, 29, 29",
+            hexDark: "#7F1D1D",
+        },
+        {
+            name: "destructive-foreground",
+            hslLight: "210 20% 98%",
+            hslDark: "210 20% 98%",
+            rgbLight: "249, 250, 251",
+            hexLight: "#F9FAFB",
+            rgbDark: "249, 250, 251",
+            hexDark: "#F9FAFB",
+        },
+        {
+            name: "border",
+            hslLight: "220 13% 91%",
+            hslDark: "215 27.9% 16.9%",
+            rgbLight: "229, 231, 235",
+            hexLight: "#E5E7EB",
+            rgbDark: "31, 41, 55",
+            hexDark: "#1F2937",
+        },
+        {
+            name: "input",
+            hslLight: "220 13% 91%",
+            hslDark: "215 27.9% 16.9%",
+            rgbLight: "229, 231, 235",
+            hexLight: "#E5E7EB",
+            rgbDark: "31, 41, 55",
+            hexDark: "#1F2937",
+        },
+        {
+            name: "ring",
+            hslLight: "262.1 83.3% 57.8%",
+            hslDark: "263.4 70% 50.4%",
+            rgbLight: "124, 58, 237",
+            hexLight: "#7C3AED",
+            rgbDark: "109, 40, 217",
+            hexDark: "#6D28D9",
+        }
+        
+    ]
+
+    // mapping colour names to TailwindCSS classes
+    function getBgClass(colorName: string) {
+        switch (colorName) {
+          case 'background':
+            return 'bg-background';
+          case 'foreground':
+            return 'bg-foreground';
+            case 'card':
+            return 'bg-card';
+            case 'card-foreground':
+            return 'bg-card-foreground';
+            case 'popover':
+            return 'bg-popover';
+            case 'popover-foreground':
+            return 'bg-popover-foreground';
+            case 'primary':
+            return 'bg-primary';
+            case 'primary-foreground':
+            return 'bg-primary-foreground';
+            case 'secondary':
+            return 'bg-secondary';
+            case 'secondary-foreground':
+            return 'bg-secondary-foreground';
+            case 'muted':
+            return 'bg-muted';
+            case 'muted-foreground':
+            return 'bg-muted-foreground';
+            case 'accent':
+            return 'bg-accent';
+            case 'accent-foreground':
+            return 'bg-accent-foreground';
+            case 'destructive':
+            return 'bg-destructive';
+            case 'destructive-foreground':
+            return 'bg-destructive-foreground';
+            case 'border':
+            return 'bg-border';
+            case 'input':
+            return 'bg-input';
+            case 'ring':
+            return 'bg-ring';
+          default:
+            return '';
+        }
+      }
+
+    return (
+        <div>
+            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
+                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 ">Copy and paste my base themes into your own <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">globals.css</code> file. Note that you'll need to have shadcn/ui and TailwindCSS set up in your project for these styles to apply out-of-the-box.</p>
+                    <div className="md:pl-8">
+                        <Button variant="gradient" size="default" className="relative md:w-36" asChild>
+                            <Link href="https://ui.shadcn.com/docs/installation">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-base">shadcn/ui</span>
+                            </Link>
+                        </Button>
+                    </div>
+            </div>
+            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-16 lg:mx-24">
+            <h2 className="text-3xl font-semibold mx-4">Themes</h2>
+                <div className="grid w-full gap-4">
+                    <Label htmlFor="themes"><span className="text-base text-muted-foreground mx-4">Paste in your CSS file</span></Label>
+                    <div className="relative">
+                    <Textarea
+                    ref={areaRef}
+                    defaultValue={themes}
+                    wrap="off"
+                    readOnly
+                    id="themes"
+                    className="overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    />
+                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">Copy
+                    <CopyIcon className="h-[0.8rem] w-[0.8rem] ml-2" />
+                    </Button>
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                <h2 className="text-2xl font-semibold mx-4 my-4">
+                      Semantics
+                </h2>
+            
+                    <p className="text-lg text-foreground font-regular mx-4 mb-4">
+                        For the following CSS variables:
+                    </p>
+
+                <div className="grid w-full gap-4">
+                    <Label htmlFor="default"><span className="text-base text-muted-foreground mx-4">Primary button colours</span></Label>
+                    <div className="relative">
+                    <Textarea
+                    defaultValue={bgExample}
+                    wrap="off"
+                    readOnly
+                    id="default"
+                    className="bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    />
+                    <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
+                    <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
+                    </Button>
+                    </div>
+                    <p className="text-lg text-foreground font-regular mt-4 mx-4 leading-relaxed">
+                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
+                    </p>
+                    <Alert>
+                        <AlertDescription className="text-base">
+                            The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
+                        </AlertDescription>
+                    </Alert>
+                    <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
+                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">Button</code> will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-regular">hsl(var(--primary-foreground))</code>.
+                    </p>
+                    <div className="relative">
+                    <Textarea
+                    defaultValue={`<Button className="bg-primary text-primary-foreground">Click me</Button>`}
+                    wrap="off"
+                    readOnly
+                    id="divexample"
+                    className="bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    />
+                    <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
+                    <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
+                    </Button>
+                    </div>
+                    <p className="text-lg text-foreground font-regular mx-4">
+                        Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">Theming</Link> docs for full details on the semantic use of variables.
+                    </p>
+                </div>
+                    
+                </div>
+                
+                <h2 className="text-2xl font-semibold mt-4 mx-4">
+                      Want HEX colours instead?
+                </h2>
+                <p className="text-lg text-foreground font-regular mx-4">
+                🤓 I thought you'd never ask.
+                </p>
+                <Alert>
+                {resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
+                    <AlertTitle className="font-semibold">Tip</AlertTitle>
+                        <AlertDescription className="text-base">
+                            Toggle between light and dark themes to see the relevant colours.
+                        </AlertDescription>
+                    </Alert>
+                <Table>
+                    <TableCaption>Your wish is my command</TableCaption>
+                    <TableHeader>
+                        <TableRow>
+                        <TableHead><ColorWheelIcon className="h-4 w-4" /></TableHead>
+                        <TableHead className="text-sm font-semibold">Variable</TableHead>
+                        <TableHead className="text-sm font-semibold">HEX</TableHead>
+                        <TableHead className="text-sm font-semibold">RGB</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {colours.map((colour) => (
+                        <TableRow key={colour.name}>
+                            <TableCell><div className={`${getBgClass(colour.name)} h-4 w-4 rounded-sm border border-slate-300 dark:border-slate-700`}  /></TableCell>
+                            <TableCell className="font-medium">{colour.name}</TableCell>
+                            <TableCell>{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
+                            <TableCell>{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
+                        </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+
+
+            </div>
+        </div>
     )
 }

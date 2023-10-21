@@ -11,6 +11,8 @@ import {
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
+    customNavigationMenuTriggerStyle,
+    footerNavigationMenuTriggerStyle,
     navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
 import {
@@ -32,7 +34,7 @@ export function PageFooter () {
         const totalHeight = document.body.offsetHeight;
         const scrolledAmount = window.innerHeight + window.scrollY;
         const scrolledPercentage = (scrolledAmount / totalHeight) * 100;
-        const thresholdPercentage = 95;
+        const thresholdPercentage = 85;
         const isBottomOfPage = scrolledPercentage >= thresholdPercentage;
         setIsVisible(isBottomOfPage);
     }
@@ -54,7 +56,7 @@ export function PageFooter () {
                     <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee focus-visible:none">When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
                 </PopoverTrigger>
                 <PopoverContent className="w-[24rem] md:w-full">
-                    <span className="text-sm font-regular text-foreground">Some rules to live by from <em>Humankind</em>, a 2020 novel by <a href="https://www.rutgerbregman.com/" target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-2 decoration-primary">Rutger Bregman</a>.</span>
+                    <span className="text-sm font-regular text-foreground">Some rules to live by from <em>Humankind: A Hopeful History</em>, a 2020 novel by <a href="https://www.rutgerbregman.com/" target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-2 decoration-primary">Rutger Bregman</a>.</span>
                 </PopoverContent>
             </Popover>
         </div>
@@ -83,28 +85,28 @@ export function PageFooter () {
                             <NavigationMenuList>
                             <NavigationMenuItem>
                                     <Link href="/#home" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Home
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <Link href="/#work" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Work
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <Link href="/#about" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         About
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <Link href="/#contact" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Contact
                                         </NavigationMenuLink>
                                     </Link>
@@ -121,7 +123,7 @@ export function PageFooter () {
                             <div className="block md:hidden">
                                 <NavigationMenuItem>
                                     <Link href="/not-found" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Blog
                                         </NavigationMenuLink>
                                     </Link>
@@ -129,21 +131,21 @@ export function PageFooter () {
                             </div>
                             <NavigationMenuItem>
                                     <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Resume
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <Link href="https://www.linkedin.com/in/timng88" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         LinkedIn
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
                                     <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         GitHub
                                         </NavigationMenuLink>
                                     </Link>
@@ -186,8 +188,8 @@ export function PageFooter () {
                                 </Link>
                             </Button>
                             <Button variant="link" className="h-max">
-                                <Link href="/privacy" legacyBehavior passHref>
-                                <span className="text-xs md:text-sm">Privacy</span>
+                                <Link href="/style" legacyBehavior passHref>
+                                <span className="text-xs md:text-sm">Style Guide</span>
                                 </Link>
                             </Button>
                             <Button variant="link" className="h-max">
