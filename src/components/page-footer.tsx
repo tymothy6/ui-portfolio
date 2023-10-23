@@ -49,7 +49,7 @@ export function PageFooter () {
     }, [])
 
     return (
-      <div className={`border-t-[1px] transition-transform transition-opacity duration-1000 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+      <div className={`border-t-[1px] md:transition-transform md:transition-opacity md:duration-1000 md:ease-in-out md:transform ${isVisible ? 'md:translate-y-0 md:opacity-100' : 'md:translate-y-full md:opacity-0'}`}>
         <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
                 <PopoverTrigger asChild className="focus-visible:none cursor-pointer">

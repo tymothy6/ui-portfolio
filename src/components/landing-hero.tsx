@@ -142,7 +142,7 @@ export function LicenseHero () {
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-12 md:mx-16 lg:mx-24">
            
-                    <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
+                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                         <div className="flex flex-col gap-4">
                         <h2 className="text-3xl font-semibold">Images</h2>
                         <Separator />
@@ -177,7 +177,7 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
          
-                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
                     <Separator />
@@ -201,11 +201,11 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
                     <Separator />
-                        <p className="text-lg font-medium text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
+                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
                         npm i @radix-ui/react-icons</code>
                         </p>
                         <span>
@@ -227,7 +227,7 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Components</h2>
                     <Separator />
@@ -570,9 +570,11 @@ export function StyleHero () {
                     </div>
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-16 lg:mx-24">
-                
-            <h2 className="text-3xl font-semibold mx-4">Themes</h2>
-            <Separator className="mx-4" />
+
+            <div className="mx-4">
+            <h2 className="text-3xl font-semibold mb-4">Themes</h2>
+            <Separator />
+            </div>
             <h3 className="text-2xl font-semibold mx-4">
                     Dark mode</h3>
                 
@@ -707,8 +709,10 @@ export function StyleHero () {
             </div>
             
             <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-16 lg:mx-24">
-            <h2 className="text-3xl font-semibold mx-4">Components</h2>
-            <Separator className="mx-4" />
+            <div className="mx-4">
+            <h2 className="text-3xl font-semibold mb-4">Components</h2>
+            <Separator />
+            </div>
                 <h3 className="text-2xl font-semibold mx-4">
                     Radix UI Primitives</h3>
                 

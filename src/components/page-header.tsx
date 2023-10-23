@@ -325,8 +325,8 @@ export function PageHeader() {
                 </div>
 
                 <div className="flex flex-row justify-between px-12 pb-8 w-full cursor-default">
-                    <p className="text-gray-500 text-base font-medium tracking-wide">Tim Ng</p>
-                    <p className="text-gray-500 text-base font-medium tracking-wide">Design Portfolio</p>
+                    <p className="text-gray-500 text-base font-regular tracking-wide">Tim Ng</p>
+                    <p className="text-gray-500 text-base font-regular tracking-wide">Design Portfolio</p>
                 </div>
         </div>
         
