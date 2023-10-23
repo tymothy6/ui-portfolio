@@ -21,7 +21,7 @@ export default function RichText({ document }: RichTextProps) {
             description: "Figma embeds can be finicky on mobile. Consider viewing my project pages on a desktop browser for the best experience.",
             });
         }
-    }, [])
+    }, [toast])
 
     const [isLightBoxOpen, setIsLightBoxOpen] = React.useState(false)
     const [lightBoxSource, setLightBoxSource] = React.useState("")

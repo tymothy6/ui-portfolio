@@ -15,7 +15,7 @@ export default function MessageTemplate({ name, email, topic, message }: Message
     <Html>
       <Section style={main}>
         <Container style={container}>
-          <Text style={heading}>You've got mail!</Text>
+          <Text style={heading}>You&apos;ve got mail!</Text>
           <Text style={paragraph}>Sender: {name}</Text>
           <Text style={paragraph}>Contact: {email}</Text>
           <Text style={paragraph}>Topic: {topic}</Text>

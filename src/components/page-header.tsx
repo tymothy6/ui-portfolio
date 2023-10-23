@@ -38,12 +38,12 @@ const works : { title: string; href: string; description: string }[] = [
     {
         title: "UX Design",
         href: "/#work",
-        description: "Some of the problems I've solved with design thinking",
+        description: "Some of the problems I&apos;ve solved with design thinking",
     },
     {
         title: "Science",
         href: "/work/science",
-        description: "Scientific research I've published in my PhD",
+        description: "Scientific research I&apos;ve published in my PhD",
     },
 ]
 

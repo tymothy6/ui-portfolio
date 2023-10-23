@@ -53,7 +53,7 @@ export function PageFooter () {
         <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
                 <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
-                    <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee focus-visible:none">When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
+                    <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee focus-visible:none">When in doubt, assume the best · Think in win-win scenarios · What&apos;s naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
                 </PopoverTrigger>
                 <PopoverContent className="w-[24rem] md:w-full">
                     <span className="text-sm font-regular text-foreground">Some rules to live by from <em>Humankind: A Hopeful History</em>, a 2020 novel by <a href="https://www.rutgerbregman.com/" target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-2 decoration-primary">Rutger Bregman</a>.</span>
@@ -71,7 +71,7 @@ export function PageFooter () {
                                             </Avatar>
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            <p className="font-regular"> Please don't feed the shiba 😅 </p>
+                                            <p className="font-regular"> Please don&apos;t feed the shiba 😅 </p>
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>
@@ -161,7 +161,7 @@ export function PageFooter () {
                                             </Avatar>
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            <p className="font-regular"> Please don't feed the shiba 😅 </p>
+                                            <p className="font-regular"> Please don&apos;t feed the shiba 😅 </p>
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>

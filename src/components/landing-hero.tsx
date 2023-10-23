@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
@@ -51,7 +52,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
         <div 
         id={id}
         className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg: pb-72 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl scroll-mt-48">
-            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a background in quantitative research</h1>
+            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I&apos;m Tim, experience designer with a background in quantitative research</h1>
             <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
@@ -113,7 +114,7 @@ export function NotFoundHero () {
     return (
         <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
-            <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
+            <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn&apos;t find what you&apos;re looking for</p>
             <div className="md:pl-8">
                 <Button variant="default" size="default" className="md:w-36" asChild>
                     <Link href="#" onClick={goBack}>
@@ -162,7 +163,7 @@ export function LicenseHero () {
                             </Button>
                         </div>
                         </div>
-                       
+                        
                         <img 
                         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
                         alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
@@ -559,7 +560,7 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I've made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you'll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you&apos;ll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
                     <div className="md:pl-8">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
@@ -672,7 +673,7 @@ export function StyleHero () {
                       Want HEX colours instead?
                 </h2>
                 <p className="text-lg text-foreground font-regular mx-4">
-                🤓 I thought you'd never ask.
+                🤓 I thought you&apos;d never ask.
                 </p>
                 <Alert>
                 {resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}

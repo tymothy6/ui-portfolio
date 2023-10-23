@@ -67,7 +67,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                 variant: "destructive",
                 title: "😖 Oops",
                 description:(
-                    <p className="text-sm font-medium">Please verify that you're not a robot 🤖</p>
+                    <p className="text-sm font-medium">Please verify that you&apos;re not a robot 🤖</p>
                 ),
                 action: <ToastAction altText="Try again">Try again</ToastAction>,
             });
@@ -96,7 +96,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                     "variant": "destructive",
                     title: "😣 Oops",
                     description:(
-                        <p className="text-sm font-medium">We couldn't verify that you're not a robot.</p>
+                        <p className="text-sm font-medium">We couldn&apos;t verify that you&apos;re not a robot.</p>
                     ),
                     action: <ToastAction altText="Try again">Try again</ToastAction>,
                 });
@@ -119,7 +119,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
             toast({
                 title: "📬 Thanks!",
                 description:(
-                    <p className="text-sm font-medium">Your message has been sent, I'll get back to you shortly.</p>
+                    <p className="text-sm font-medium">Your message has been sent, I&apos;ll get back to you shortly.</p>
                 ),
             });
 
@@ -200,7 +200,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                                     <FormItem>
                                         <FormLabel>Topic <span className="font-semibold">(Optional)</span></FormLabel>
                                         <FormDescription>
-                                            What's this message about?
+                                            What&apos;s this message about?
                                         </FormDescription>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>  
