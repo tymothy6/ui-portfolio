@@ -5,6 +5,7 @@ import { inter } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: {
@@ -31,6 +32,7 @@ export default function RootLayout({
           >
             <ScrollProviderWrapper>
             {children}
+            <Analytics />
             </ScrollProviderWrapper>
             <Toaster />
         </ThemeProvider>

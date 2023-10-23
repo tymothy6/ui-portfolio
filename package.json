@@ -27,6 +27,7 @@
     "@react-email/html": "0.0.4",
     "@react-email/section": "0.0.9",
     "@react-email/text": "0.0.5",
+    "@vercel/analytics": "^1.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "contentful": "^10.6.2",
