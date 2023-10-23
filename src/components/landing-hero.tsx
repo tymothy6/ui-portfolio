@@ -7,7 +7,7 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
 
-import { FigmaLogoIcon, GitHubLogoIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon } from "@radix-ui/react-icons"
+import { FigmaLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,13 +18,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import {
-    ButtonCard,
-    CardContent,
-    CardImageHeader,
-} from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -61,7 +55,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
                     <Link href="/#work">
-                        <span className="text-base md:text-lg">Meet me</span>
+                        <span className="text-base md:text-lg font-semibold">Meet me</span>
                     </Link>
                 </Button>
             </div>
@@ -69,115 +63,6 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     )
 }
 
-export function WorkHero () {
-    return (
-        <div>
-            <div className="flex flex-col md:grid md:grid-cols-2 pt-52 pb-56 mx-24">
-                <h1 className="text-6xl font-semibold mb-8">Design System</h1>
-                <div className="flex flex-col justify-start">
-                    <p className="text-lg text-foreground font-regular leading-relaxed tracking-wide mb-8">
-                    This design system is a collection of reusable components built with Radix UI and Tailwind CSS styles that can be used across projects. The goal is to create an accessible, consistent and cohesive experience for users.
-                    </p>
-                    <div className="flex flex-col justify-start space-y-4">
-                        <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Purpose</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">Freelance Project</p>
-                        </div>
-                        <Separator />
-                        <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Type</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">Front-End Development</p>
-                        </div>
-                        <Separator />
-                        <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Timeline</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-medium">3 months</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="my-6"> 
-                <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                    alt="Design System cover image"
-                    className="w-full object-cover" />
-            </div>
-
-            <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-4">Design Process</h2>
-            </div>
-
-            <div className="my-6"> 
-                <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                    alt="Design System cover image"
-                    className="w-full object-cover" />
-            </div>
-
-            <div className="flex-col space-y-4 py-56 mx-24">
-                <h2 className="text-4xl font-semibold mb-4">Design Outcome</h2>
-            </div>
-
-            <div className="flex-col space-y-8 py-56 mx-24">
-                <h2 className="text-2xl font-semibold mb-4">Other work</h2>
-                <div className="grid grid-cols-2 gap-4">
-                <ButtonCard onClick={() => window.location.href = '/work'}className="h-max">
-                    
-                    <CardImageHeader>
-                  
-                    <img
-                        src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                        alt="Design System"
-                        className="rounded-t-lg grow object-cover" />
-                   
-                    </CardImageHeader>
-                   
-                    <CardContent className="flex justify-between items-center pt-4 h-full">
-                        <div className="flex-col">
-                        <p className="text-left text-lg font-semibold text-foreground">Design System</p>
-                        <p className="text-left text-base font-medium text-gray-800 dark:text-gray-200">UI Design</p> 
-                        </div>
-                        <Button variant="ghostnobg" size="icon" asChild>
-                        <Link href="https://www.github.com/tymothy6/copilot">
-                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                            <span className="sr-only">Link to Figma prototype</span>
-                        </Link>            
-                    </Button>  
-                    </CardContent>   
-                
-                </ButtonCard>
-                <ButtonCard onClick={() => window.location.href = '/work'}className="h-max">
-                    
-                    <CardImageHeader>
-                  
-                    <img
-                        src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                        alt="Design System"
-                        className="rounded-t-lg grow object-cover" />
-                   
-                    </CardImageHeader>
-                   
-                    <CardContent className="flex justify-between items-center pt-4 h-full">
-                        <div className="flex-col">
-                        <p className="text-left text-lg font-semibold text-foreground">Design System</p>
-                        <p className="text-left text-base font-medium text-gray-800 dark:text-gray-200">UI Design</p> 
-                        </div>
-                        <Button variant="ghostnobg" size="icon" asChild>
-                        <Link href="https://www.github.com/tymothy6/copilot">
-                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                            <span className="sr-only">Link to Figma prototype</span>
-                        </Link>            
-                    </Button>  
-                    </CardContent>   
-                
-                </ButtonCard>
-                </div>
-            </div>
-
-        </div>
-    )
-}
 
 export function PasswordHero () {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -211,7 +96,7 @@ export function PasswordHero () {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit"><span className="text-sm md:text-base">Submit</span></Button>
+                    <Button type="submit"><span className="text-sm md:text-base font-semibold">Submit</span></Button>
                 </form>
             </Form>
         </div>
@@ -227,11 +112,11 @@ export function NotFoundHero () {
     return (
         <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
-            <p className="text-2xl md:text-4xl md:pl-8 font-medium tracking-wide text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
+            <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn't find what you're looking for</p>
             <div className="md:pl-8">
                 <Button variant="default" size="default" className="md:w-36" asChild>
                     <Link href="#" onClick={goBack}>
-                    <span className="text-sm md:text-base">Go back</span>
+                    <span className="text-base font-semibold">Go back</span>
                     </Link>
                 </Button>
             </div>
@@ -245,11 +130,11 @@ export function LicenseHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
-                        <span className="text-base">Contact me</span>
+                        <span className="text-base font-semibold">Contact me</span>
                         </Link>
                     </Button>
                 </div>
@@ -668,20 +553,45 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-regular tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 ">Copy and paste my base themes into your own <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">globals.css</code> file. Note that you'll need to have shadcn/ui and TailwindCSS set up in your project for these styles to apply out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I've made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-lg font-semibold">globals.css</code> file of your web app. Note that you'll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
                     <div className="md:pl-8">
                         <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-base">shadcn/ui</span>
+                            <span className="text-base font-semibold">shadcn/ui</span>
                             </Link>
                         </Button>
                     </div>
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-16 lg:mx-24">
+                
             <h2 className="text-3xl font-semibold mx-4">Themes</h2>
+          
+            <h3 className="text-2xl font-semibold mx-4">
+                    Dark mode</h3>
+                
+                <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
+                This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
+                </p>
+                <div className="mx-4 mb-4">
+                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                            <Link href="https://github.com/pacocoursey/next-themes">
+                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-sm md:text-base">next-themes</span>
+                            </Link>
+                        </Button>
+                </div>
+            <h3 className="text-2xl font-semibold mx-4">
+                    CSS variables</h3>
+            <Alert>
+            <InfoCircledIcon className="h-4 w-4" />
+                <AlertTitle className="font-semibold">Syntax</AlertTitle>
+                        <AlertDescription className="text-base">
+                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">guidelines</Link>. 
+                        </AlertDescription>
+                    </Alert>
                 <div className="grid w-full gap-4">
-                    <Label htmlFor="themes"><span className="text-base text-muted-foreground mx-4">Paste in your CSS file</span></Label>
+                    <Label htmlFor="themes"><span className="text-base text-muted-foreground mx-4">Paste desired variables into your file</span></Label>
                     <div className="relative">
                     <Textarea
                     ref={areaRef}
@@ -707,7 +617,7 @@ export function StyleHero () {
                     </p>
 
                 <div className="grid w-full gap-4">
-                    <Label htmlFor="default"><span className="text-base text-muted-foreground mx-4">Primary button colours</span></Label>
+                    <Label htmlFor="default"><span className="text-base text-muted-foreground mx-4">Primary button colours (dark)</span></Label>
                     <div className="relative">
                     <Textarea
                     defaultValue={bgExample}
@@ -721,15 +631,17 @@ export function StyleHero () {
                     </Button>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 mx-4 leading-relaxed">
-                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
+                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
                     </p>
                     <Alert>
+                        <InfoCircledIcon className="h-4 w-4" />
+                        <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
-                            The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
+                            The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
                         </AlertDescription>
                     </Alert>
                     <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
-                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">Button</code> will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-regular">hsl(var(--primary-foreground))</code>.
+                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
                     <div className="relative">
                     <Textarea
@@ -760,7 +672,7 @@ export function StyleHero () {
                 {resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
                     <AlertTitle className="font-semibold">Tip</AlertTitle>
                         <AlertDescription className="text-base">
-                            Toggle between light and dark themes to see the relevant colours.
+                            Toggle between light and dark themes in the header to see the relevant colours.
                         </AlertDescription>
                     </Alert>
                 <Table>
@@ -768,25 +680,59 @@ export function StyleHero () {
                     <TableHeader>
                         <TableRow>
                         <TableHead><ColorWheelIcon className="h-4 w-4" /></TableHead>
-                        <TableHead className="text-sm font-semibold">Variable</TableHead>
+                        <TableHead className="text-sm font-semibold">Variable name</TableHead>
                         <TableHead className="text-sm font-semibold">HEX</TableHead>
-                        <TableHead className="text-sm font-semibold">RGB</TableHead>
+                        <TableHead className="text-sm font-semibold min-w-[150px]">RGB</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {colours.map((colour) => (
                         <TableRow key={colour.name}>
-                            <TableCell><div className={`${getBgClass(colour.name)} h-4 w-4 rounded-sm border border-slate-300 dark:border-slate-700`}  /></TableCell>
-                            <TableCell className="font-medium">{colour.name}</TableCell>
-                            <TableCell>{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
-                            <TableCell>{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
+                            <TableCell><div className={`${getBgClass(colour.name)} h-[1.1rem] w-[1.1rem] rounded-sm border border-slate-300 dark:border-slate-700`}  /></TableCell>
+                            <TableCell className="font-medium font-mono">{colour.name}</TableCell>
+                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
+                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
                 </Table>
-
+                
 
             </div>
+            
+            <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-16 lg:mx-24">
+            <h2 className="text-3xl font-semibold mx-4">Components</h2>
+                <h3 className="text-2xl font-semibold mx-4">
+                    Radix UI Primitives</h3>
+                
+                <p className="text-lg text-foreground font-regular mx-4">
+                Detailed styles for customized Radix UI components coming soon!
+                </p>
+                <div className="mx-4 mb-4">
+                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                            <Link href="https://www.radix-ui.com/primitives/docs/overview/introduction">
+                            <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-sm md:text-base">Radix Primitives Docs</span>
+                            </Link>
+                        </Button>
+                </div>
+                <h3 className="text-2xl font-semibold mx-4">
+                    shadcn/ui</h3>
+                
+                <p className="text-lg text-foreground font-regular mx-4">
+                Detailed styles for customized shadcn/ui components coming soon!
+                </p>
+                <div className="mx-4 mb-4">
+                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                            <Link href="https://ui.shadcn.com/docs/components">
+                            <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-sm md:text-base">shadcn/ui Docs</span>
+                            </Link>
+                        </Button>
+                </div>
+            </div>
+
+
         </div>
     )
 }

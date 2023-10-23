@@ -5,7 +5,10 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
-  title: 'Tim Ng · Design Portfolio',
+  title: {
+    template: '%s | Tim Ng · Design Portfolio',
+    default: 'Tim Ng · Design Portfolio',
+  },
   description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
 }
 

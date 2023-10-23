@@ -6,7 +6,6 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FigmaEmbed } from "@/components/figma-embed"
 import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
-import { ToastAction } from "@/components/ui/toast"
 
 type RichTextProps = {
     document: RichTextDocument | null
@@ -19,8 +18,7 @@ export default function RichText({ document }: RichTextProps) {
         if (window.matchMedia('(max-width: 768px)').matches) {
             toast({
             title: "📱 Heads up!",
-            description: "Figma embeds aren't optimized on mobile. Please view my project pages on a desktop browser for the best experience.",
-            action: <ToastAction altText="Ok">Okay</ToastAction>,
+            description: "Figma embeds can be finicky beasts to tame on mobile. Consider viewing my project pages on a desktop browser for the best experience.",
             });
         }
     }, [])
@@ -39,7 +37,7 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8 md:mx-0 lg:mx-0">{children}</p>,
             [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-decimal">{children}</ol>,
             [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 lg:mx-0 p-8 md:p-12 bg-accent rounded-md"><blockquote className="border-l-2 border-primary pl-4 md:pl-6 italic">{children}</blockquote></div>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 lg:mx-0 p-8 md:p-12 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-2 border-primary pl-4 md:pl-6 italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (

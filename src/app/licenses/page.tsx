@@ -1,8 +1,14 @@
 import * as React from "react"
 
+import { Metadata } from "next"
+
 import { PageHeader } from "@/components/page-header"
 import { LicenseHero } from "@/components/landing-hero"
 import { PageFooter } from "@/components/page-footer"
+
+export const metadata: Metadata = {
+    title: 'Licenses',
+}
 
 export default function Licenses () {
     return(

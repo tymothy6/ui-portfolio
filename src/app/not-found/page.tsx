@@ -1,9 +1,14 @@
 import * as React from "react"
-import Link from "next/link"
+
+import { Metadata } from "next"
 
 import { PageHeader } from "@/components/page-header"
 import { NotFoundHero } from "@/components/landing-hero"
 import { PageFooter } from "@/components/page-footer"
+
+export const metadata: Metadata = {
+    title: 'Not Found',
+}
 
 export default function NotFound () {
     return(
