@@ -52,7 +52,7 @@ export function PageFooter () {
       <div className={`border-t-[1px] transition-transform transition-opacity duration-1000 ease-in-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
         <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
-                <PopoverTrigger className="focus-visible:none">
+                <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
                     <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee focus-visible:none">When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
                 </PopoverTrigger>
                 <PopoverContent className="w-[24rem] md:w-full">
