@@ -35,6 +35,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { Separator } from "@/components/ui/separator"
   
 
 interface HomeProps {
@@ -49,8 +50,8 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-6xl scroll-mt-48">
-            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a quantitative research background</h1>
+        className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg: pb-72 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl scroll-mt-48">
+            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I'm Tim, experience designer with a background in quantitative research</h1>
             <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
@@ -141,9 +142,10 @@ export function LicenseHero () {
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-12 md:mx-16 lg:mx-24">
            
-                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                    <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
                         <div className="flex flex-col gap-4">
                         <h2 className="text-3xl font-semibold">Images</h2>
+                        <Separator />
                         <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
                         <div className="flex flex-wrap gap-4">
                             <Button variant="default" asChild>
@@ -160,12 +162,13 @@ export function LicenseHero () {
                             </Button>
                         </div>
                         </div>
-
+                       
                         <img 
                         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
                         alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
-                        className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
+                        className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
                         />
+                        
                         
                     </div>
                
@@ -174,9 +177,10 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
          
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
+                    <Separator />
                     <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson.</p>
                         <span>
                         <Button variant="default" asChild>
@@ -187,9 +191,9 @@ export function LicenseHero () {
                         </span>
                     </div>
                     <img 
-                    src="https://github.com/rsms/inter/raw/master/misc/readme/intro.png"
+                    src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
                     alt="Inter typeface by Rasmus Andersson"
-                    className="rounded-lg object-cover max-h-[16rem] md:w-[32rem]"
+                    className="rounded-lg object-cover object-top max-h-[16rem] md:w-[32rem]"
                     />
                 </div>
                
@@ -197,9 +201,10 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
+                    <Separator />
                         <p className="text-lg font-medium text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
                         npm i @radix-ui/react-icons</code>
                         </p>
@@ -214,7 +219,7 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/radix-ui/icons/raw/master/icons.png"
                     alt="Icons from Radix UI"
-                    className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
+                    className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
                     />
                 </div>
                 
@@ -222,9 +227,10 @@ export function LicenseHero () {
 
             <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-16 lg:mx-24">
             
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 mx-8 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Components</h2>
+                    <Separator />
                     <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI. Read about installation and usage in their GitHub repositories and linked docs.</p>
                         <div className="flex space-x-4">
                             <Button variant="default" asChild>
@@ -242,7 +248,7 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
                     alt="Components from shadcn/ui"
-                    className="rounded-lg object-cover md:w-[32rem] max-h-[16rem]"
+                    className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
                     />
                 </div>
                
@@ -553,12 +559,12 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I've made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-lg font-semibold">globals.css</code> file of your web app. Note that you'll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I've made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you'll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
                     <div className="md:pl-8">
-                        <Button variant="gradient" size="default" className="relative md:w-36" asChild>
+                        <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-base font-semibold">shadcn/ui</span>
+                            <span className="text-base font-semibold">Install shadcn/ui</span>
                             </Link>
                         </Button>
                     </div>
@@ -566,7 +572,7 @@ export function StyleHero () {
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-16 lg:mx-24">
                 
             <h2 className="text-3xl font-semibold mx-4">Themes</h2>
-          
+            <Separator className="mx-4" />
             <h3 className="text-2xl font-semibold mx-4">
                     Dark mode</h3>
                 
@@ -574,10 +580,10 @@ export function StyleHero () {
                 This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
                 </p>
                 <div className="mx-4 mb-4">
-                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                <Button variant="default" size="default" asChild>
                             <Link href="https://github.com/pacocoursey/next-themes">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-sm md:text-base">next-themes</span>
+                            <span className="text-sm">next-themes</span>
                             </Link>
                         </Button>
                 </div>
@@ -599,9 +605,9 @@ export function StyleHero () {
                     wrap="off"
                     readOnly
                     id="themes"
-                    className="overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    className="resize-none overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
-                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">Copy
+                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4 lg:right-8">Copy
                     <CopyIcon className="h-[0.8rem] w-[0.8rem] ml-2" />
                     </Button>
                     </div>
@@ -624,7 +630,7 @@ export function StyleHero () {
                     wrap="off"
                     readOnly
                     id="default"
-                    className="bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    className="resize-none bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
                     <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
                     <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
@@ -633,7 +639,7 @@ export function StyleHero () {
                     <p className="text-lg text-foreground font-regular mt-4 mx-4 leading-relaxed">
                       The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
                     </p>
-                    <Alert>
+                    <Alert className="my-4">
                         <InfoCircledIcon className="h-4 w-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
@@ -649,7 +655,7 @@ export function StyleHero () {
                     wrap="off"
                     readOnly
                     id="divexample"
-                    className="bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
+                    className="resize-none  bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
                     <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
                     <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
@@ -702,6 +708,7 @@ export function StyleHero () {
             
             <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-16 lg:mx-24">
             <h2 className="text-3xl font-semibold mx-4">Components</h2>
+            <Separator className="mx-4" />
                 <h3 className="text-2xl font-semibold mx-4">
                     Radix UI Primitives</h3>
                 
@@ -709,10 +716,10 @@ export function StyleHero () {
                 Detailed styles for customized Radix UI components coming soon!
                 </p>
                 <div className="mx-4 mb-4">
-                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                <Button variant="default" size="default" asChild>
                             <Link href="https://www.radix-ui.com/primitives/docs/overview/introduction">
                             <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-sm md:text-base">Radix Primitives Docs</span>
+                            <span className="text-sm">Radix Primitives Docs</span>
                             </Link>
                         </Button>
                 </div>
@@ -723,10 +730,10 @@ export function StyleHero () {
                 Detailed styles for customized shadcn/ui components coming soon!
                 </p>
                 <div className="mx-4 mb-4">
-                <Button variant="default" size="default" className="relative md:w-36" asChild>
+                <Button variant="default" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/components">
                             <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-sm md:text-base">shadcn/ui Docs</span>
+                            <span className="text-sm">shadcn/ui Docs</span>
                             </Link>
                         </Button>
                 </div>

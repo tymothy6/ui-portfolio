@@ -15,7 +15,7 @@ export async function ProjectGrid ({ id }: HomeProps) {
                 <p className="text-base md:text-lg font-semibold text-foreground">Featured Work</p>
                 <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400">· 2022 - Present</p>
             </div>
-            <div className="flex flex-col md:grid md:grid-cols-6 md:gap-x-4 gap-y-8">
+            <div className="flex flex-col md:grid md:grid-cols-6 md:gap-x-8 gap-y-8">
                 {projects.map((project) => {
                     return(
                         <div key={project.slug} className="h-max col-span-3">

@@ -1,8 +1,10 @@
+import * as React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import { inter } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
+import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +29,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
           >
+            <ScrollProviderWrapper>
             {children}
+            </ScrollProviderWrapper>
             <Toaster />
         </ThemeProvider>
       </body>

@@ -146,7 +146,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                 <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Get in touch
                 </h1>
-                <p className="text-lg lg:text-xl font-medium text-gray-800 dark:text-gray-400 mb-8">Connect with me to create impactful designs that align with our values and exceed our expectations</p>
+                <p className="text-lg md:text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 mb-8">Connect with me to create impactful designs that align with our values and exceed our expectations</p>
                 <div>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -250,6 +250,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>
+                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <span className="text-foreground underline decoration-primary decoration-4 underline-offset-4">hello@tim-ng.me</span></p>
                 </div>
             </div>
         </div>

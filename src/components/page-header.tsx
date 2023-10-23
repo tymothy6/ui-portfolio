@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import { ScrollContext } from "@/lib/scroll-context"
 
 import { cn } from "@/lib/utils"
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
@@ -29,7 +30,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
   } from "@/components/ui/tooltip"
-import { Overlay } from "@/components/overlay"
+import { ProgressBar } from "@/components/progress-bar"
 
 
 
@@ -37,12 +38,12 @@ const works : { title: string; href: string; description: string }[] = [
     {
         title: "UX Design",
         href: "/#work",
-        description: "Some of the problems I've solved with design thinking.",
+        description: "Some of the problems I've solved with design thinking",
     },
     {
         title: "Science",
         href: "/work/science",
-        description: "Scientific research I've published in my PhD.",
+        description: "Scientific research I've published in my PhD",
     },
 ]
 
@@ -50,12 +51,12 @@ const about : { title: string; href: string; description: string }[] = [
     {
         title: "About me",
         href: "/#about",
-        description: "A brief introduction to who I am.",
+        description: "A brief introduction to who I am and what I do",
     },
     {
         title: "Values",
         href: "/#values",
-        description: "My design philosophy and what I care about.",
+        description: "My design philosophy and what I care about",
     },
 ]
 
@@ -63,12 +64,29 @@ const blog : { title: string; href: string, description:string }[] = [
     {
         title: "Design Blog",
         href: "/not-found",
-        description: " 🏗️ Coming soon!"
+        description: " 🏗️ Coming soon"
     },
+    {
+        title: "Licenses",
+        href: "/licenses",
+        description: "Open source resources used on this site"
+    },
+    {
+        title: "Style Guide",
+        href: "/style",
+        description: "Design system for this site"
+    },
+    {
+        title: "Resume",
+        href: "https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link",
+        description: "🔗 Link to download my resume (Google Drive)"
+    }
     
 ]
 
 export function PageHeader() {
+    const context = React.useContext(ScrollContext)
+    const { scrollProgress = 0 } = context ?? {}
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
     const menuRef = React.useRef<HTMLDivElement>(null)
@@ -162,7 +180,7 @@ export function PageHeader() {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
+                            <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
                             <NavigationMenuContent>
                                 <ul className="grid w-[300px] gap-3 p-4 lg:w-[400px] ">
                                     {blog.map((blog) => (
@@ -190,7 +208,7 @@ export function PageHeader() {
                 </div>
                 <GitHubContact />
                 <LinkedInContact />
-                <ModeToggle />
+                <div className="ml-0 md:ml-1"><ModeToggle /></div>
                 <div className="block md:hidden">
                     <Button 
                     variant="ghost"
@@ -206,6 +224,10 @@ export function PageHeader() {
                 </div>
             </div>
         </div>
+        <ProgressBar
+        progress={scrollProgress}
+        className="block md:hidden"
+        />
 
         <motion.div
                 ref={menuRef}

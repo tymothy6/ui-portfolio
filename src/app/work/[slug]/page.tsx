@@ -58,13 +58,13 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
             <PageHeader />
             <div>
-            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-4 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-12 md:mx-16 lg:mx-24">
+            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-12 md:mx-16 lg:mx-24">
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8">{data.name}</h1>
                 <div className="flex flex-col justify-start">
-                    <p className="text-lg text-foreground font-regular leading-relaxed tracking-wide mb-8">
+                    <p className="text-lg md:text-xl text-foreground font-regular leading-relaxed tracking-wide md:leading-relaxed md:tracking-wide mb-12">
                         {data.overview}
                     </p>
-                    <div className="flex flex-col justify-start gap-4">
+                    <div className="flex flex-col justify-start gap-4 bg-gray-50 dark:bg-card/70 border border-accent p-8 rounded-lg">
                         <div className="flex justify-between items-center">
                             <p className="text-base text-foreground font-semibold">Purpose</p>
                             <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.purpose}</p>
@@ -127,7 +127,8 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
             <div className="flex flex-col gap-4 py-24 md:py-36 lg:py-48 mx-0 md:mx-16 lg:mx-24">
-                <h2 className="text-3xl md:text-4xl font-semibold mx-8 md:mx-0 lg:mx-0 mb-8">Design Process</h2>
+                <h2 className="text-3xl md:text-4xl font-semibold mx-8">Design Process</h2>
+                <Separator className="mx-8 mb-8"/>
                 <RichText document={data.process} />
             </div>
 
@@ -146,7 +147,8 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
 
             {data.outcome && (
             <div className="flex flex-col gap-4 pb-24 md:pb-36 lg:pb-48 mx-0 lg:mx-24">
-                <h2 className="text-3xl md:text-4xl font-semibold mx-8 md:mx-0 lg:mx-0 mt-16 mb-8">Design Outcome</h2>
+                <h2 className="text-3xl md:text-4xl font-semibold mx-8 mt-16">Design Outcome</h2>
+                <Separator className="mx-8 mb-8"/>
                 <RichText document={data.outcome} />
             </div>
             )}
