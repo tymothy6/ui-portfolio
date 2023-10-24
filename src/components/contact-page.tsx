@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import ReCAPTCHA from "react-google-recaptcha"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -250,7 +251,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>
-                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <span className="text-foreground underline decoration-primary decoration-4 underline-offset-4">hello@tim-ng.me</span></p>
+                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <Link href="mailto:hello@tim-ng.me"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4">hello@tim-ng.me</span></Link></p>
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 
+import { VercelLogoIcon } from "@radix-ui/react-icons"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -77,7 +79,7 @@ export function PageFooter () {
                                 </TooltipProvider>
                                 </div>
             
-            <div className="px-12"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Links</span>
+            <div className="px-12"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Site</span>
             </div>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:justify-between md:items-center px-8 py-4">
                         <div>
@@ -200,10 +202,11 @@ export function PageFooter () {
                     </div>
                     
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
-                            <div className="h-10 px-4 py-1">
-                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium">Made with 💌 and 🤖 in 🇨🇦</span>
+                            <div className="flex flex-row items-center h-10 px-4 py-1">
+                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium mr-1">Built with Next.js & hosted by Vercel</span>
+                                <VercelLogoIcon className="h-3 w-3" />
                             </div>
-                            <div className="h-10 px-4 py-1">
+                            <div className="flex items-center h-10 px-4 py-1">
                                 <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium">© Tim Ng, 2023</span>
                             </div>
                         </div>
