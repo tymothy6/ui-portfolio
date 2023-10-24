@@ -38,12 +38,12 @@ const works : { title: string; href: string; description: string }[] = [
     {
         title: "UX Design",
         href: "/#work",
-        description: "Some of the problems I&apos;ve solved with design thinking",
+        description: "Some of the problems I've solved with design thinking",
     },
     {
         title: "Science",
         href: "/work/science",
-        description: "Scientific research I&apos;ve published in my PhD",
+        description: "Scientific research I've published in my PhD",
     },
 ]
 
@@ -79,7 +79,7 @@ const blog : { title: string; href: string, description:string }[] = [
     {
         title: "Resume",
         href: "https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link",
-        description: "🔗 Link to download my resume (Google Drive)"
+        description: "Google Drive link to download my resume"
     }
     
 ]
