@@ -93,6 +93,10 @@ const footerNavigationMenuTriggerStyle = cva(
   "group inline-flex h-8 w-max items-center justify-center rounded-md bg-background/0 px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/60 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 )
 
+const gradientNavigationMenuTriggerStyle = cva (
+  "hover:bg-gradient-to-br hover:from-primary/90 hover:to-indigo-500/90 hover:animate-gradient-xy group inline-flex h-10 w-max items-center justify-center rounded-md bg-background/0 px-4 py-2 text-base font-medium transition-colors text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+)
+
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
@@ -169,6 +173,7 @@ export {
   navigationMenuTriggerStyle,
   customNavigationMenuTriggerStyle,
   footerNavigationMenuTriggerStyle,
+  gradientNavigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuListVert,

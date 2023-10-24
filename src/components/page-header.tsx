@@ -21,8 +21,8 @@ import {
     NavigationMenuList,
     NavigationMenuListVert,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
-    customNavigationMenuTriggerStyle
+    customNavigationMenuTriggerStyle,
+    gradientNavigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
@@ -197,7 +197,7 @@ export function PageHeader() {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/#contact" legacyBehavior passHref>
-                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <NavigationMenuLink className={gradientNavigationMenuTriggerStyle()}>
                                 Contact
                                 </NavigationMenuLink>
                             </Link>
