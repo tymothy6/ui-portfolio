@@ -23,7 +23,8 @@ import {
     NavigationMenuListVert,
     NavigationMenuTrigger,
     customNavigationMenuTriggerStyle,
-    gradientNavigationMenuTriggerStyle
+    gradientNavigationMenuTriggerStyle,
+    footerNavigationMenuTriggerStyle,
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
@@ -244,17 +245,17 @@ export function PageHeader() {
         progress={scrollProgress}
         className="block md:hidden"
         />
-
+        
         <motion.div
-                ref={menuRef}
+                ref={menuRef} // mobile menu
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? "auto" : 0 }}
                 style={{ display: isMenuOpen ? 'block' : 'none', pointerEvents: isMenuOpen ? 'auto' : 'none' }}
-        >
+        > 
         <div className="flex flex-col justify-start items-start bg-background/20 backdrop-blur-md border-b-[1px] w-full">
             
             <div className="px-12 pt-4 cursor-default">
-                <span className="text-gray-600 dark:text-gray-400 text-base font-mono font-medium tracking-wide">Menu</span>
+                <span className="text-gray-600 dark:text-gray-400 text-sm font-mono font-medium tracking-wide">Menu</span>
             </div>
             
                     <div className="flex flex-col gap-4 justify-start items-start px-8 pt-4 pb-8 w-full">
@@ -264,28 +265,28 @@ export function PageHeader() {
                             <NavigationMenuListVert>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/#home" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Home
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/#work" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Work
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/#about" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             About
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/#contact" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Contact
                                             </NavigationMenuLink>
                                         </Link>
@@ -298,7 +299,7 @@ export function PageHeader() {
                         <Separator />
 
                         <div className="px-4 cursor-default">
-                            <span className="text-gray-600 dark:text-gray-400 text-base font-mono font-medium tracking-wide">
+                            <span className="text-gray-600 dark:text-gray-400 text-sm font-mono font-medium tracking-wide">
                                 Resources</span>
                         </div>
                         
@@ -307,28 +308,28 @@ export function PageHeader() {
                             <NavigationMenuListVert>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/not-found" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Blog
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Resume
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/licenses" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Licenses
                                             </NavigationMenuLink>
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
                                         <Link href="/style" legacyBehavior passHref>
-                                            <NavigationMenuLink className={customNavigationMenuTriggerStyle()}>
+                                            <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Style Guide
                                             </NavigationMenuLink>
                                         </Link>
@@ -341,8 +342,8 @@ export function PageHeader() {
                 </div>
 
                 <div className="flex flex-row justify-between px-12 pb-8 w-full cursor-default">
-                    <p className="text-gray-500 text-base font-regular tracking-wide">Tim Ng</p>
-                    <p className="text-gray-500 text-base font-regular tracking-wide">Design Portfolio</p>
+                    <p className="text-gray-500 text-sm font-regular tracking-wide">Tim Ng</p>
+                    <p className="text-gray-500 text-sm font-regular tracking-wide">Design Portfolio</p>
                 </div>
         </div>
         

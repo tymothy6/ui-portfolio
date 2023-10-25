@@ -13,9 +13,7 @@ import {
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    customNavigationMenuTriggerStyle,
     footerNavigationMenuTriggerStyle,
-    navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
