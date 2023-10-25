@@ -130,7 +130,7 @@ export function PageFooter () {
                                 </NavigationMenuItem>
                             </div>
                             <NavigationMenuItem>
-                                    <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
+                                    <Link href="/resume" legacyBehavior passHref>
                                         <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         Resume
                                         </NavigationMenuLink>

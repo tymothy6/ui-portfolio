@@ -75,16 +75,16 @@ const about : { title: string; href: string; id: string; description: string }[]
     },
 ]
 
-const blog : { title: string; href: string, description:string }[] = [
+const blog : { title: string; href: string; description:string }[] = [
     {
         title: "Design Blog",
         href: "/not-found",
-        description: " 🏗️ Coming soon"
+        description: " 🏗️ Coming soon!"
     },
     {
         title: "Licenses",
         href: "/licenses",
-        description: "Open source resources used on this site"
+        description: "Open source licenses used on this site"
     },
     {
         title: "Style Guide",
@@ -93,8 +93,8 @@ const blog : { title: string; href: string, description:string }[] = [
     },
     {
         title: "Resume",
-        href: "https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link",
-        description: "Google Drive link to download my resume"
+        href: "/resume",
+        description: "Download my resume"
     }
     
 ]
@@ -314,7 +314,7 @@ export function PageHeader() {
                                         </Link>
                                 </CustomNavigationMenuItem>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
-                                        <Link href="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/view?usp=drive_link" legacyBehavior passHref>
+                                        <Link href="/resume" legacyBehavior passHref>
                                             <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Resume
                                             </NavigationMenuLink>

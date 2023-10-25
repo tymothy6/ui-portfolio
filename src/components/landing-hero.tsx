@@ -7,7 +7,7 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
 
-import { FigmaLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon } from "@radix-ui/react-icons"
+import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -56,7 +56,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
                     <Link href="/#work">
-                        <span className="text-base md:text-lg font-semibold">Meet me</span>
+                        <span className="text-base md:text-lg font-medium">Meet me</span>
                     </Link>
                 </Button>
             </div>
@@ -97,7 +97,7 @@ export function PasswordHero () {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit"><span className="text-sm md:text-base font-semibold">Submit</span></Button>
+                    <Button type="submit"><span className="text-sm md:text-base font-medium">Submit</span></Button>
                 </form>
             </Form>
         </div>
@@ -117,7 +117,7 @@ export function NotFoundHero () {
             <div className="md:pl-8">
                 <Button variant="default" size="default" className="md:w-36" asChild>
                     <Link href="#" onClick={goBack}>
-                    <span className="text-base font-semibold">Go back</span>
+                    <span className="text-base font-medium">Go back</span>
                     </Link>
                 </Button>
             </div>
@@ -135,7 +135,7 @@ export function LicenseHero () {
                 <div className="md:pl-8">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
-                        <span className="text-base font-semibold">Contact me</span>
+                        <span className="text-base font-medium">Contact me</span>
                         </Link>
                     </Button>
                 </div>
@@ -559,12 +559,12 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you&apos;ll need to have shadcn/ui and TailwindCSS set up for semantic styling to work out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you&apos;ll need to have TailwindCSS and shadcn/ui set up for semantic styling to work out-of-the-box.</p>
                     <div className="md:pl-8">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-base font-semibold">Install shadcn/ui</span>
+                            <span className="text-base font-medium">Install shadcn/ui</span>
                             </Link>
                         </Button>
                     </div>
@@ -745,5 +745,24 @@ export function StyleHero () {
 
 
         </div>
+    )
+}
+
+export function ResumeHero () {
+    return (
+                <div>
+                    <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+                        <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Want to learn more about me?</h1>
+                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">🥹 I'm flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
+                        <div className="md:pl-8">
+                        <Button variant="gradient" size="default" asChild>
+                            <Link href="https://linkedin.com/in/timng88">
+                            <LinkedInLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-base font-medium">Connect</span>
+                            </Link>
+                        </Button>
+                    </div>
+                    </div>
+                </div>
     )
 }

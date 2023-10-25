@@ -30,13 +30,13 @@ export function ModeToggle() {
         <DropdownMenuLabel>Theme</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setTheme("light")}>
-          <SunIcon className="h-3 w-3 mr-2" />Light
+          <SunIcon className="h-4 w-4 mr-2" />Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <MoonIcon className="h-3 w-3 mr-2" />Dark
+          <MoonIcon className="h-4 w-4 mr-2" />Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <GearIcon className="h-3 w-3 mr-2" />System
+          <GearIcon className="h-4 w-4 mr-2" />System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
