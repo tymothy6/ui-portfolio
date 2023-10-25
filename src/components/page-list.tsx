@@ -94,7 +94,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🤗 Compassion</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                Empathy is a powerful yet strikingly limited spotlight that brightens our connections with others. By definition, we must exclude many more people than we can include. That’s why I train my compassion and temper my empathy, feeling for my users rather than with them. <strong className="font-semibold"><span className="underline decoration-4 decoration-primary underline-offset-2">Compassion is empathy <em>and</em> action</span></strong>. I strive to be compassionate and open-minded in every interaction. Every day I succeed in doing so I forge a more forgiving and productive version of myself.
+                Empathy is a powerful yet strikingly limited spotlight that brightens our connections with others. By definition, we must exclude many more people than we can include. That&apos;s why I train my compassion and temper my empathy, feeling for my users rather than with them. <strong className="font-semibold"><span className="underline decoration-4 decoration-primary underline-offset-2">Compassion is empathy <em>and</em> mindful action</span></strong>. I strive to be compassionate, kind, and open-minded in every interaction. Every day I succeed in doing so I forge a more forgiving and productive version of myself.
                 </p>
                 
             </div>
@@ -104,7 +104,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🎯 Purpose</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                I approach my design work with the vision of crafting meaningful experiences grounded in user research. As designers, we have the privilege of ensuring that digital experiences are accessible, inclusive, and safe. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I believe in strong ideas that are loosely held.</span></strong> My design philosophy reflects this premise. Learn from your user&apos;s motivations and frustrations. Tirelessly advocate for them during the design process. Communicate your design decisions using appropriate methods in every step of your solution.</p>
+                I approach my design work with the vision of crafting meaningful experiences grounded in user research. As designers, we have the privilege of ensuring that digital experiences are accessible, inclusive, and safe. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I believe in strong ideas that are loosely held.</span></strong> My design philosophy reflects this premise. Learn from your user&apos;s motivations and frustrations. Tirelessly advocate for them during the design process. Document your design decisions using appropriate methods and articulate them in every step of your solution.</p>
                 
             </div>
             
