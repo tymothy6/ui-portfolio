@@ -51,8 +51,8 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
         <div 
         id={id}
         className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg:pb-72 my-4 mx-8 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl scroll-mt-48">
-            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
-            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8 cursor-default">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
+            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4 cursor-default"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div className="lg:pl-8">
                 <Button variant="gradient" size="default" className="md:w-36" asChild>
                     <Link href="/#work">

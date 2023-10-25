@@ -57,6 +57,10 @@
     overflow-x: hidden;
     overflow-y: auto;
   }
+
+  ::selection {
+    @apply bg-violet-600 text-white;
+  }
   
 }
  
