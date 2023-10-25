@@ -753,7 +753,7 @@ export function ResumeHero () {
                 <div>
                     <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
                         <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Want to learn more about me?</h1>
-                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">🥹 I'm flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
+                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
                         <div className="md:pl-8">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://linkedin.com/in/timng88">
