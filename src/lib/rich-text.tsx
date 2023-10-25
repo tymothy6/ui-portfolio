@@ -35,8 +35,8 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
             [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6">{children}</h6>,
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8">{children}</p>,
-            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-decimal">{children}</ol>,
-            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-inside list-disc">{children}</ol>,
+            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-outside list-decimal">{children}</ol>,
+            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-outside list-disc">{children}</ol>,
             [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 p-8 md:p-12 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-2 border-primary pl-4 md:pl-6 italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields

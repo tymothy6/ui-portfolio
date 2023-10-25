@@ -63,7 +63,7 @@ export function PageFooter () {
             </Popover>
         </div>
         <div className="flex flex-col bg-background w-full pt-12 pb-12 justify-start">
-                        <div className="px-12 pb-8 block md:hidden">
+                        <div className="px-8 md:px-12 pb-8 block md:hidden">
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
@@ -79,9 +79,9 @@ export function PageFooter () {
                                 </TooltipProvider>
                                 </div>
             
-            <div className="px-12"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Site</span>
+            <div className="px-8 md:px-12"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Site</span>
             </div>
-                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:justify-between md:items-center px-8 py-4">
+                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:justify-between md:items-center px-4 md:px-8 py-4">
                         <div>
                         <NavigationMenu>
                             <NavigationMenuList>
@@ -174,11 +174,11 @@ export function PageFooter () {
                         </div>
                         
                     </div>
-                    <div className="px-12 py-4"><Separator className="md:mt-4 md:mb-4" /></div>
-                    <div className="px-12 pt-4"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Pages</span>
+                    <div className="px-4 md:px-12 py-4"><Separator className="md:mt-4 md:mb-4" /></div>
+                    <div className="px-8 md:px-12 pt-4"><span className="text-gray-500 text-sm font-mono font-medium tracking-wide">Pages</span>
                     </div>
-                    <div className="flex flex-col gap-4 md:flex-row md:justify-between items-start px-8 py-4">
-                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2">
+                    <div className="flex flex-col gap-4 md:flex-row md:justify-between items-start px-4 md:px-8 py-4">
+                    <div className="flex flex-col w-full md:flex-row items-start md:items-center gap-2">
                             <Button variant="link" className="h-max">
                                 <Link href="/password" legacyBehavior passHref>
                                 <span className="text-xs md:text-sm">Password</span>
@@ -199,15 +199,16 @@ export function PageFooter () {
                                 <span className="text-xs md:text-sm">404</span>
                                 </Link>
                             </Button>
+                            
                     </div>
                     
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
                             <div className="flex flex-row items-center h-10 px-4 py-1">
-                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium mr-1">Built with Next.js & hosted by Vercel</span>
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap mr-1">Built with <Link href="https://nextjs.org" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Next.js</Link> & hosted by <Link href="https://vercel.com" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Vercel</Link></span>
                                 <VercelLogoIcon className="h-3 w-3" />
                             </div>
                             <div className="flex items-center h-10 px-4 py-1">
-                                <span className="text-xs md:text-sm text-foreground underline-offset-4 font-medium">© Tim Ng, 2023</span>
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
                             </div>
                         </div>
                     </div>

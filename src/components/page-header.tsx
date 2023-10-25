@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
+import { useRouter, usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
@@ -32,30 +33,43 @@ import {
   } from "@/components/ui/tooltip"
 import { ProgressBar } from "@/components/progress-bar"
 
+const scrollToSection = (id: string) => {
+    setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+            })
+        }
+    }, 0)
+}
 
-
-const works : { title: string; href: string; description: string }[] = [
+const works : { title: string; href: string; id: string; description: string }[] = [
     {
         title: "UX Design",
-        href: "/#work",
+        href: "/",
+        id: "work",
         description: "Some of the problems I've solved with design thinking",
     },
     {
         title: "Science",
         href: "/work/science",
+        id: "",
         description: "Scientific research I've published in my PhD",
     },
 ]
 
-const about : { title: string; href: string; description: string }[] = [
+const about : { title: string; href: string; id: string; description: string }[] = [
     {
         title: "About me",
-        href: "/#about",
+        href: "/",
+        id: "about",
         description: "A brief introduction to who I am and what I do",
     },
     {
         title: "Values",
-        href: "/#values",
+        href: "/",
+        id: "values",
         description: "My design philosophy and what I care about",
     },
 ]
@@ -156,6 +170,7 @@ export function PageHeader() {
                                             key={work.title}
                                             title={work.title}
                                             href={work.href}
+                                            id={work.id}
                                         >
                                             {work.description}
                                         </ListItem> 
@@ -172,6 +187,7 @@ export function PageHeader() {
                                             key={about.title}
                                             title={about.title}
                                             href={about.href}
+                                            id={about.id}
                                         >
                                             {about.description}
                                         </ListItem> 
@@ -341,20 +357,40 @@ export function PageHeader() {
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, children, href, id, ...props }, ref) => {
+
+    const router = useRouter()
+    const currentPathname = usePathname()
+    
+    const handleClick = (e: any, href: string, id?: string) => {
+        e.preventDefault()
+        
+        if (href === "/" && id) {
+            if (currentPathname === "/") {
+                scrollToSection(id) // scroll to section on home page
+            } else {
+                router.push(`/#${id}`) // if on another page
+            }
+    } else {
+        router.push(href) // not an anchor link
+    }
+}
+
   return (
     <li>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
+          href={href}
+          onClick={(e) => href && handleClick(e, href, id)}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-[14px] font-medium leading-snug">{title}</div>
+          <p className="line-clamp-2 text-sm font-regular leading-snug text-muted-foreground">
             {children}
           </p>
         </a>
