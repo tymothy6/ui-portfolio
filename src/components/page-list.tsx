@@ -121,7 +121,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🌱 Growth</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                When I’m working on a problem I&apos;m 110% committed to finding a solution. Even so, maintaining my mental and physical health is very important to me. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and classic RPGs. Currently, I&apos;m studying Korean and Spanish through TV & movies. Physically, I try to push my limits with weight training and racket sports.</p>
+                When I’m working on a problem I&apos;m 110% committed to finding a solution. Even so, maintaining my mental and physical health is my top priority. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and classic RPGs. Currently, I&apos;m studying Korean and Spanish through TV & movies. Physically, I push my limits with weight training and racket sports.</p>
             </div>
             </div>
         </div>

@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "border-0 md:border md:border-input bg-background/0 hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
         secondary:
           "border border-input bg-secondary text-secondary-foreground hover:bg-secondary/50 hover:border-primary",
+        secondaryblog:
+          "border border-input bg-secondary/50 text-muted-foreground hover:bg-secondary/20 hover:text-foreground hover:border-primary",
         ghost: "text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground",
         ghostnobg: "text-slate-800 dark:text-slate-300 hover:text-accent-foreground dark:hover:text-accent-foreground",
         link: "text-foreground decoration-primary decoration-2 underline-offset-4 hover:underline",

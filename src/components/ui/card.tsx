@@ -31,6 +31,21 @@ const ButtonCard = React.forwardRef<
 ))
 ButtonCard.displayName = "ButtonCard"
 
+const BlogCard = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "flex-col rounded-lg border bg-card text-card-foreground shadow-sm",
+      className
+    )}
+    {...props}
+  />
+))
+BlogCard.displayName = "BlogCard"
+
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -102,4 +117,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, ButtonCard, CardHeader, CardImageHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, ButtonCard, BlogCard, CardHeader, CardImageHeader, CardFooter, CardTitle, CardDescription, CardContent }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
-import { inter } from './fonts'
+import { inter, noto_serif } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${noto_serif.variable} font-serif`} suppressHydrationWarning>
       <head />
       <body className={inter.className}>
         <ThemeProvider

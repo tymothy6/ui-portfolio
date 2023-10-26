@@ -66,27 +66,27 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     </p>
                     <div className="flex flex-col justify-start gap-4 bg-gray-50 dark:bg-card/70 border border-accent p-4 md:p-8 rounded-lg">
                         <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Purpose</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.purpose}</p>
+                            <p className="text-sm md:text-base text-foreground font-semibold">Purpose</p>
+                            <p className="text-sm md:text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.purpose}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Type</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.type}</p>
+                            <p className="text-sm md:text-base text-foreground font-semibold">Type</p>
+                            <p className="text-sm md:text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.type}</p>
                         </div>
                         <Separator />
                         <div className="flex justify-between items-center">
-                            <p className="text-base text-foreground font-semibold">Timeline</p>
-                            <p className="text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.timeline}</p>
+                            <p className="text-sm md:text-base text-foreground font-semibold">Timeline</p>
+                            <p className="text-sm md:text-base text-gray-800 dark:text-gray-200 font-mono font-medium tracking-tight">{data.timeline}</p>
                         </div>
                         {(data.figmaLink || data.githubLink) ? (
                             <>
                             <Separator />
                                 <div className="flex justify-between items-center">
-                                    <p className="text-base text-foreground font-semibold">Public Links</p>
+                                    <p className="text-sm md:text-base text-foreground font-semibold">Public Links</p>
                                     {data.figmaLink && (
                                         <div className="flex flex-row items-center gap-2">
-                                        <span className="text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">Figma</span>
+                                        <span className="text-sm md:text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">Figma</span>
                                         <Button variant="outline" size="icon" asChild>
                                             <Link href={data.figmaLink}>
                                                 <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
@@ -97,7 +97,7 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                                     )}
                                     {data.githubLink && (
                                         <div className="flex flex-row items-center gap-2">
-                                        <span className="text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">GitHub</span>
+                                        <span className="text-sm md:text-base text-gray-800 dark:text-gray-200 font-medium font-mono tracking-tight">GitHub</span>
                                         <Button variant="outline" size="icon" asChild>
                                             <Link href={data.githubLink}>
                                                 <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
@@ -126,7 +126,7 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                 )}
             </div>
 
-            <div className="flex flex-col gap-4 py-24 md:py-36 lg:py-48 mx-0 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-4 py-24 md:py-36 lg:py-48 mx-0 md:mx-48 lg:mx-64">
             <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mt-16 mb-4">Design Process</h2>
                 <Separator className="mb-8"/></div>
                 <RichText document={data.process} />
@@ -146,7 +146,7 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
             {data.outcome && (
-            <div className="flex flex-col gap-4 pb-24 md:pb-36 lg:pb-48 mx-0 lg:mx-24">
+            <div className="flex flex-col gap-4 pb-24 md:pb-36 lg:pb-48 mx-0 md:mx-48 lg:mx-64">
                 <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mt-16 mb-4">Design Outcome</h2>
                 <Separator className="mb-8"/></div>
                 <RichText document={data.outcome} />

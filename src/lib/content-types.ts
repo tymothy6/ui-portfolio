@@ -22,3 +22,19 @@ export interface TypeWorkFields {
 
 export type TypeWorkSkeleton = EntrySkeletonType<TypeWorkFields, "work">;
 export type TypeWork<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeWorkSkeleton, Modifiers, Locales>;
+
+export interface TypeBlogPageFields {
+    title: EntryFieldTypes.Symbol;
+    slug?: EntryFieldTypes.Symbol;
+    year?: EntryFieldTypes.Integer;
+    date?: EntryFieldTypes.Date;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    thumbnail?: EntryFieldTypes.AssetLink;
+    summary?: EntryFieldTypes.Text;
+    heroBlock?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    body?: EntryFieldTypes.RichText;
+    recommended?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<EntrySkeletonType>>;
+}
+
+export type TypeBlogPageSkeleton = EntrySkeletonType<TypeBlogPageFields, "blogPage">;
+export type TypeBlogPage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeBlogPageSkeleton, Modifiers, Locales>;

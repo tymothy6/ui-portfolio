@@ -78,8 +78,8 @@ const about : { title: string; href: string; id: string; description: string }[]
 const blog : { title: string; href: string; description:string }[] = [
     {
         title: "Design Blog",
-        href: "/not-found",
-        description: " 🏗️ Coming soon!"
+        href: "/blog",
+        description: "My thoughts on design, life, and everything in between"
     },
     {
         title: "Licenses",
@@ -307,7 +307,7 @@ export function PageHeader() {
                         <NavigationMenu>
                             <NavigationMenuListVert>
                                 <CustomNavigationMenuItem onClick={handleMenuItemClick}>
-                                        <Link href="/not-found" legacyBehavior passHref>
+                                        <Link href="/blog" legacyBehavior passHref>
                                             <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                             Blog
                                             </NavigationMenuLink>
