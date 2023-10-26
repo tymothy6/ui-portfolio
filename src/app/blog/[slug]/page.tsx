@@ -68,10 +68,12 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 <div className="flex flex-row justify-between items-center">
                 <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">{data.date ? 
                 new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' }).format(new Date(data.date)) :  ''}</p>
+                    <div className="hidden md:block">
                     <Button variant="link" asChild >
                             <Link href="/blog">
                                 <ArrowLeftIcon className="h-5 w-5 mr-1" />Back to Blog</Link>
                     </Button> 
+                    </div>
                  
                 </div>
          
@@ -94,7 +96,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                             </div>
                         </div>
                        
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-4 mb-8">
                             <p className="text-sm text-gray-800 dark:text-gray-300 font-regular">Tags</p>
                             <div className="flex flex-row flex-wrap gap-2">
                             {data.tags && data.tags.map( tag => (
@@ -124,7 +126,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
             </div>
             )}
 
-            <div className="flex flex-col gap-4 py-24 mx-4 md:mx-48 lg:mx-64 font-serif">
+            <div className="flex flex-col gap-4 py-24 mx-0 md:mx-48 lg:mx-64 font-serif">
                 <RichText document={data.body} />
             </div>
 
