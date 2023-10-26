@@ -19,7 +19,7 @@ export default function Blog () {
             <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-12 md:mx-16 lg:mx-24">
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8">Design Blog</h1>
                 <div className="flex flex-col justify-start w-full">
-                    <p className="text-lg md:text-xl text-foreground font-regular leading-relaxed tracking-wide md:leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I'll be posting about my projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
+                    <p className="text-lg md:text-xl text-foreground font-regular leading-relaxed tracking-wide md:leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
                     <div className="sm:block md:hidden">
                         <Button variant="gradient" size="default" className="md:w-36" asChild>
                             <Link href="/#contact">
