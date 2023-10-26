@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     default: 'Tim Ng · Design Portfolio',
   },
   description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
+  viewport: { width: "device-width", initialScale: 1 }, 
 }
 
 export default function RootLayout({
