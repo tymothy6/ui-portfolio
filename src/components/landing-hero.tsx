@@ -50,15 +50,15 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg:pb-72 my-4 mx-8 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl scroll-mt-48">
-            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold lg:pl-8 cursor-default">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
-            <h1 className="text-5xl md:text-6xl font-semibold lg:pl-8 pb-4 cursor-default"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
-            <div className="lg:pl-8">
-                <Button variant="gradient" size="default" className="md:w-36" asChild>
-                    <Link href="/#work">
-                        <span className="text-base md:text-lg font-medium">Meet me</span>
-                    </Link>
-                </Button>
+        className="inset-0 flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg:pb-72 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48">
+            <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold cursor-default">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
+            <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+            <div>
+            <Button variant="gradient" size="default" className="md:w-36" asChild>
+                <Link href="/#work">
+                    <span className="text-base md:text-lg font-medium">Meet me</span>
+                </Link>
+            </Button>
             </div>
         </div>
     )
@@ -79,7 +79,7 @@ export function PasswordHero () {
     }
 
     return(
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
+        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
             <p className="text-xl md:text-2xl font-medium tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
@@ -111,7 +111,7 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-5xl">
+        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
             <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn&apos;t find what you&apos;re looking for</p>
             <div className="md:pl-8">
@@ -129,7 +129,7 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
                 <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8">
@@ -140,9 +140,9 @@ export function LicenseHero () {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-12 md:mx-16 lg:mx-24">
-           
-                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
+                    
+                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
                         <div className="flex flex-col gap-4">
                         <h2 className="text-3xl font-semibold">Images</h2>
                         <Separator />
@@ -166,7 +166,7 @@ export function LicenseHero () {
                         <img 
                         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
                         alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
-                        className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
+                        className="rounded-lg object-cover object-top"
                         />
                         
                         
@@ -175,7 +175,7 @@ export function LicenseHero () {
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
          
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
@@ -193,13 +193,13 @@ export function LicenseHero () {
                     <img 
                     src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
                     alt="Inter typeface by Rasmus Andersson"
-                    className="rounded-lg object-cover object-top max-h-[16rem] md:w-[32rem]"
+                    className="rounded-lg object-cover object-top"
                     />
                 </div>
                
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
             
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
@@ -219,13 +219,13 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/radix-ui/icons/raw/master/icons.png"
                     alt="Icons from Radix UI"
-                    className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
+                    className="rounded-lg object-cover object-top"
                     />
                 </div>
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
             
                 <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
                     <div className="flex flex-col gap-4">
@@ -248,7 +248,7 @@ export function LicenseHero () {
                     <img 
                     src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
                     alt="Components from shadcn/ui"
-                    className="rounded-lg object-cover object-top md:w-[32rem] max-h-[16rem]"
+                    className="rounded-lg object-cover object-top"
                     />
                 </div>
                
@@ -557,9 +557,9 @@ export function StyleHero () {
 
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your web app. Note that you&apos;ll need to have TailwindCSS and shadcn/ui set up for semantic styling to work out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your web app. Note that you&apos;ll need to have TailwindCSS and shadcn/ui set up for semantic styling to work out-of-the-box.</p>
                     <div className="md:pl-8">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
@@ -569,19 +569,19 @@ export function StyleHero () {
                         </Button>
                     </div>
             </div>
-            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
 
-            <div className="mx-4">
+            <div>
             <h2 className="text-3xl font-semibold mb-4">Themes</h2>
             <Separator />
             </div>
-            <h3 className="text-2xl font-semibold mx-4">
+            <h3 className="text-2xl font-semibold">
                     Dark mode</h3>
                 
                 <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
                 This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
                 </p>
-                <div className="mx-4 mb-4">
+                <div className="mb-4">
                 <Button variant="default" size="default" asChild>
                             <Link href="https://github.com/pacocoursey/next-themes">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -589,7 +589,7 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
-            <h3 className="text-2xl font-semibold mx-4">
+            <h3 className="text-2xl font-semibold">
                     CSS variables</h3>
             <Alert>
             <InfoCircledIcon className="h-4 w-4" />
@@ -599,7 +599,7 @@ export function StyleHero () {
                         </AlertDescription>
                     </Alert>
                 <div className="grid w-full gap-4">
-                    <Label htmlFor="themes"><span className="text-base text-muted-foreground mx-4">Paste desired variables into your file</span></Label>
+                    <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your file</span></Label>
                     <div className="relative">
                     <Textarea
                     ref={areaRef}
@@ -616,16 +616,16 @@ export function StyleHero () {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-semibold mx-4 my-4">
+                <h2 className="text-2xl font-semibold my-4">
                       Semantics
                 </h2>
             
-                    <p className="text-lg text-foreground font-regular mx-4 mb-4">
+                    <p className="text-lg text-foreground font-regular mb-4">
                         For the following CSS variables:
                     </p>
 
                 <div className="grid w-full gap-4">
-                    <Label htmlFor="default"><span className="text-base text-muted-foreground mx-4">Primary button colours (dark)</span></Label>
+                    <Label htmlFor="default"><span className="text-base text-muted-foreground">Primary button colours (dark)</span></Label>
                     <div className="relative">
                     <Textarea
                     defaultValue={bgExample}
@@ -638,17 +638,17 @@ export function StyleHero () {
                     <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
                     </Button>
                     </div>
-                    <p className="text-lg text-foreground font-regular mt-4 mx-4 leading-relaxed">
+                    <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
                       The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
                     </p>
                     <Alert className="my-4">
-                        <InfoCircledIcon className="h-4 w-4" />
+                        <InfoCircledIcon className="h-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
                             The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
                         </AlertDescription>
                     </Alert>
-                    <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
+                    <p className="text-lg text-foreground font-regular leading-relaxed">
                     The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
                     <div className="relative">
@@ -663,17 +663,17 @@ export function StyleHero () {
                     <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
                     </Button>
                     </div>
-                    <p className="text-lg text-foreground font-regular mx-4">
+                    <p className="text-lg text-foreground font-regular">
                         Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">Theming</Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
                     
                 </div>
                 
-                <h2 className="text-2xl font-semibold mt-4 mx-4">
+                <h2 className="text-2xl font-semibold mt-4">
                       Want HEX colours instead?
                 </h2>
-                <p className="text-lg text-foreground font-regular mx-4">
+                <p className="text-lg text-foreground font-regular">
                 🤓 I thought you&apos;d never ask.
                 </p>
                 <Alert>
@@ -708,18 +708,18 @@ export function StyleHero () {
 
             </div>
             
-            <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-16 lg:mx-24">
-            <div className="mx-4">
+            <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
+            <div>
             <h2 className="text-3xl font-semibold mb-4">Components</h2>
             <Separator />
             </div>
-                <h3 className="text-2xl font-semibold mx-4">
+                <h3 className="text-2xl font-semibold">
                     Radix UI Primitives</h3>
                 
-                <p className="text-lg text-foreground font-regular mx-4">
+                <p className="text-lg text-foreground font-regular">
                 Detailed styles for customized Radix UI components coming soon!
                 </p>
-                <div className="mx-4 mb-4">
+                <div className="mb-4">
                 <Button variant="default" size="default" asChild>
                             <Link href="https://www.radix-ui.com/primitives/docs/overview/introduction">
                             <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -727,13 +727,13 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
-                <h3 className="text-2xl font-semibold mx-4">
+                <h3 className="text-2xl font-semibold">
                     shadcn/ui</h3>
                 
-                <p className="text-lg text-foreground font-regular mx-4">
+                <p className="text-lg text-foreground font-regular">
                 Detailed styles for customized shadcn/ui components coming soon!
                 </p>
-                <div className="mx-4 mb-4">
+                <div className="mb-4">
                 <Button variant="default" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/components">
                             <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -751,7 +751,7 @@ export function StyleHero () {
 export function ResumeHero () {
     return (
                 <div>
-                    <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-12 md:mx-16 lg:mx-24 max-w-xl md:max-w-2xl">
+                    <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                         <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Want to learn more about me?</h1>
                         <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
                         <div className="md:pl-8">

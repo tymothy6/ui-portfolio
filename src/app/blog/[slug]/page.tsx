@@ -64,7 +64,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 className="w-full h-[24rem] lg:h-[32rem] object-cover object-top" 
             />
     
-            <div className="flex flex-col gap-4 pt-8 lg:pt-16 mx-12 md:mx-16 lg:mx-24">
+            <div className="flex flex-col gap-4 pt-8 lg:pt-16 mx-8 md:mx-24 lg:mx-48">
                 <div className="flex flex-row justify-between items-center">
                 <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">{data.date ? 
                 new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' }).format(new Date(data.date)) :  ''}</p>
@@ -126,13 +126,13 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
             </div>
             )}
 
-            <div className="flex flex-col gap-4 py-24 mx-0 md:mx-48 lg:mx-64 font-serif">
+            <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-72 font-serif">
                 <RichText document={data.body} />
             </div>
 
 
 
-            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 mx-12 md:mx-48">
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-48">
                 <h2 className="text-2xl text-foreground font-semibold mb-4">Recommended posts</h2>
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-4 max-w-3xl">
                     {otherBlogPosts.slice(0, 2).map((project) => (
