@@ -200,12 +200,20 @@ export function PageFooter () {
                             
                     </div>
                     
+                    <div className="block md:hidden px-4 w-full">
+                        <Button variant="secondaryblog" className="w-full hover:border-accent" asChild>
+                        <Link href="mailto:hello@tim-ng.me?subject=Your%20website">
+                    <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></Link>
+                    </Button>
+                    </div>
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
                             
-                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium mr-1 whitespace-nowrap">Built with <Link href="https://nextjs.org" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Next.js</Link> & hosted by <Link href="https://vercel.com" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Vercel</Link></span>
+                            <div className="h-6 px-4 py-1">
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">Built with Next.js & hosted by Vercel</span>
+                            </div>
                                 
                             
-                            <div className="flex items-center h-10 px-4 py-1">
+                            <div className="h-6 px-4 py-1">
                                 <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
                             </div>
                         </div>
