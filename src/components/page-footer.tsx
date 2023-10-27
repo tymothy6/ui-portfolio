@@ -201,10 +201,10 @@ export function PageFooter () {
                     </div>
                     
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
-                            <div className="flex flex-row items-center h-10 px-4 py-1">
+                            
                                 <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium mr-1">Built with <Link href="https://nextjs.org" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Next.js</Link> & hosted by <Link href="https://vercel.com" className="underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80">Vercel</Link></span>
-                                <VercelLogoIcon className="h-3 w-3" />
-                            </div>
+                                
+                            
                             <div className="flex items-center h-10 px-4 py-1">
                                 <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium">© Tim Ng, 2023</span>
                             </div>
