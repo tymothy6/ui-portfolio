@@ -102,7 +102,7 @@ module.exports = {
         },
         "scrollMarquee": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-75%)" },
+          "100%": { transform: "translateX(var(--translation-value))" },
         },
       },
       backgroundSize: {

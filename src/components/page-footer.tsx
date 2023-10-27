@@ -30,21 +30,27 @@ import {
 export function PageFooter () {
     const [isVisible, setIsVisible] = React.useState(false)
 
-    const handleScroll = () => {
-        const totalHeight = document.body.offsetHeight;
-        const scrolledAmount = window.innerHeight + window.scrollY;
-        const scrolledPercentage = (scrolledAmount / totalHeight) * 100;
-        const thresholdPercentage = 85;
-        const isBottomOfPage = scrolledPercentage >= thresholdPercentage;
-        setIsVisible(isBottomOfPage);
-    }
+    const footerText = "· When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight"
+    const marqueeText = `${footerText}    ${footerText}`
 
     React.useEffect(() => {
+        function handleScroll () {
+            const totalHeight = document.body.offsetHeight;
+            const scrolledAmount = window.innerHeight + window.scrollY;
+            const scrolledPercentage = (scrolledAmount / totalHeight) * 100;
+            const thresholdPercentage = 85;
+            const isBottomOfPage = scrolledPercentage >= thresholdPercentage;
+            setIsVisible(isBottomOfPage);
+        }
+
+
         // Add event listener when mounted
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll)
+       
         return () => {
             // Clean up the event listener when the component unmounts
-            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", handleScroll)
+            
         }
     }, [])
 
@@ -53,7 +59,10 @@ export function PageFooter () {
         <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
                 <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
-                    <h1 className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block animate-scrollMarquee focus-visible:none">When in doubt, assume the best · Think in win-win scenarios · What&apos;s naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight</h1>
+                    <h1 
+                    id="marqueeText"
+                    style={{ animation: `scrollMarquee 30s linear infinite`, transform: `translateX(var(--translation-value))` }}
+                    className="text-4xl md:text-5xl font-semibold text-foreground/80 top-0 left-0 whitespace-nowrap inline-block focus-visible:none">{marqueeText}</h1>
                 </PopoverTrigger>
                 <PopoverContent className="w-[24rem] md:w-full">
                     <span className="text-sm font-regular text-foreground">Some rules to live by from <em>Humankind: A Hopeful History</em>, a 2020 novel by <a href="https://www.rutgerbregman.com/" target="_blank" rel="noopener noreferrer" className="font-medium underline decoration-2 decoration-primary">Rutger Bregman</a>.</span>

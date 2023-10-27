@@ -6,22 +6,25 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FigmaEmbed } from "@/components/figma-embed"
 import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
+import { usePathname } from "next/navigation"
 
 type RichTextProps = {
     document: RichTextDocument | null
 }
 
 export default function RichText({ document }: RichTextProps) {
+    const pathname = usePathname()
     const { toast } = useToast()
 
     React.useEffect(() => {
-        if (window.matchMedia('(max-width: 768px)').matches) {
+        const isBlogPage = pathname.startsWith('/blog') // don't show toast on blog pages
+        if (!isBlogPage && window.matchMedia('(max-width: 768px)').matches) {
             toast({
             title: "📱 Heads up!",
             description: "Figma embeds can be finicky on mobile. Consider viewing my project pages on a desktop browser for the best experience.",
             });
         }
-    }, [toast])
+    }, [toast, pathname])
 
     const [isLightBoxOpen, setIsLightBoxOpen] = React.useState(false)
     const [lightBoxSource, setLightBoxSource] = React.useState("")
