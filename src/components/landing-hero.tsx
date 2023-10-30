@@ -81,7 +81,7 @@ export function PasswordHero () {
     return(
         <div className="flex-col pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
-            <p className="text-xl md:text-2xl font-medium tracking-wide leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
+            <p className="text-xl md:text-2xl font-medium leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField

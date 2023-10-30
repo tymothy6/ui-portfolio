@@ -39,7 +39,7 @@ export function ExperiencePage () {
                 <h3 className="text-lg font-medium text-foreground">Lunenfeld-Tanenbaum Research Institute</h3>
                 <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">Senior Research Scientist</h3>
                 <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">Toronto, ON</p>
-                <p className="text-base md:text-lg font-regular text-foreground">Jan 2016 - Oct 2022</p>
+                <p className="text-base md:text-lg font-mono font-regular text-foreground">Jan 2016 - Oct 2022</p>
                 
             </div>
             <Separator className="mt-4 mb-4" />
@@ -121,7 +121,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🌱 Growth</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                When working on a problem I&apos;m 110% committed to finding a balanced solution. Even so, maintaining my mental and physical health is my top priority. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to authentic & well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and classic RPGs. Currently, I&apos;m studying Korean and Spanish with TV and movies. Physically, I push my limits with weight training and racket sports.</p>
+                When working on a problem I&apos;m 110% committed to finding a balanced solution. Even so, maintaining my mental and physical health is my top priority. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to authentic & well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and action RPGs. Currently, I&apos;m studying Korean and Spanish with TV and movies. Physically, I clear my mind and push my limits with weight training and racket sports.</p>
             </div>
             </div>
         </div>
