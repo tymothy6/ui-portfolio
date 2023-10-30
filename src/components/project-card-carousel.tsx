@@ -28,6 +28,8 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
     }
 
     React.useEffect(() => {
+        const currentCard = cardRef.current;
+
         const resizeObserver = new ResizeObserver(entries => {
             for (let entry of entries) {
                 setOverlayHeight(`${entry.contentRect.height}px`)
@@ -39,8 +41,8 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
         }
 
         return () => {
-            if (cardRef.current) {
-                resizeObserver.unobserve(cardRef.current)
+            if (currentCard) {
+                resizeObserver.unobserve(currentCard)
             }
         }
     }, [])

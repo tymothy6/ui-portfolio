@@ -63,3 +63,5 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
     )
 }
 )
+
+ProjectCard.displayName = 'ProjectCard';
