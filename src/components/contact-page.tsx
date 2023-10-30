@@ -251,7 +251,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>
-                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <Link href="mailto:hello@tim-ng.me?subject=Your%20website"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></Link></p>
+                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <Link href="mailto:hello@tim-ng.me"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></Link></p>
                 </div>
             </div>
         </div>

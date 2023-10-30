@@ -113,7 +113,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🌎 Connection</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                I believe in finding new ways to create genuine connections in a digital age. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">The solutions that I craft as a designer don’t exist in a vacuum and neither do my users.</span></strong> I aspire to build digital experiences that empower my users and give them the ability to transcend social, economic, and cultural barriers. My lifelong goal is to apply my design skills to help the people I work for realize their dreams. That means stepping out of my comfort zone and taking on challenges in new problem spaces.</p>
+                I believe in finding new ways to create genuine connections in a digital age. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">The solutions that I craft as a designer don&apos;t exist in a vacuum and neither do my users.</span></strong> I aspire to build digital experiences that empower my users and give them the ability to transcend social, economic, and cultural barriers. My lifelong goal is to apply my design skills to help the people I work for realize their dreams. That means stepping out of my comfort zone and taking on challenges in new problem spaces.</p>
             </div>
             
             <div className="flex flex-col gap-2 mb-8">
@@ -121,7 +121,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 <h3 className="text-2xl font-semibold text-foreground leading-loose mb-2">🌱 Growth</h3>
                 <Separator className="mb-2 block lg:hidden" />
                 <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-                When I’m working on a problem I&apos;m 110% committed to finding a solution. Even so, maintaining my mental and physical health is my top priority. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and classic RPGs. Currently, I&apos;m studying Korean and Spanish through TV & movies. Physically, I push my limits with weight training and racket sports.</p>
+                When working on a problem I&apos;m 110% committed to finding a balanced solution. Even so, maintaining my mental and physical health is my top priority. <strong className="font-semibold"><span className="underline decoration-primary decoration-4 underline-offset-4">I&apos;m committed to authentic & well-rounded growth in all facets of my life.</span></strong> Above all, I&apos;m a private person that cherishes time alone to recharge. My favourite hobbies that enable this include reading, language learning, and classic RPGs. Currently, I&apos;m studying Korean and Spanish with TV and movies. Physically, I push my limits with weight training and racket sports.</p>
             </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import RichText from "@/lib/rich-text"
 
 import { PageHeader } from "@/components/page-header"
 import { Separator } from "@/components/ui/separator"
-import { ProjectCard } from "@/components/project-card"
+import { ProjectCardCarousel } from "@/components/project-card-carousel"
 import { PageFooter } from "@/components/page-footer"
 import { Button } from "@/components/ui/button"
 
@@ -153,14 +153,10 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
             )}
 
-            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-48">
-                <h2 className="text-2xl font-semibold mb-4">Other work</h2>
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-4">
-                    {otherProjects.slice(0, 2).map((project) => (
-                        <div className="h-max" key={project.slug}>
-                            <ProjectCard {...project} />
-                        </div>
-                    ))}
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48">
+                <h2 className="text-2xl font-semibold mx-8 mb-4 font-mono">Other work</h2>
+                <div className="mx-0">
+                    <ProjectCardCarousel projects={otherProjects} recommended={true} noHover={true} />
                 </div>
             </div>
 

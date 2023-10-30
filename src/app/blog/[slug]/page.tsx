@@ -8,7 +8,7 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons"
 
 import { PageHeader } from "@/components/page-header"
 import { Separator } from "@/components/ui/separator"
-import { BlogPostCard } from "@/components/post-card"
+import { CardCarousel } from "@/components/blog-card-carousel"
 import { PageFooter } from "@/components/page-footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -132,15 +132,9 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
 
 
 
-            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-48">
-                <h2 className="text-2xl text-foreground font-semibold mb-4">Recommended posts</h2>
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-4 max-w-3xl">
-                    {otherBlogPosts.slice(0, 2).map((project) => (
-                        <div className="max-h-[600px]" key={project.slug}>
-                            <BlogPostCard {...project} />
-                        </div>
-                    ))}
-                </div>
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48">
+                <h2 className="text-2xl text-foreground font-semibold mx-8 font-mono mb-4">Recommended posts</h2>
+                <CardCarousel posts={otherBlogPosts} recommended={true} />
             </div>
 
         </div>

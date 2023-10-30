@@ -12,7 +12,13 @@ import {
     CardImageHeader,
 } from "@/components/ui/card"
 
-export function ProjectCard (data: Project) {
+interface ProjectCardProps {
+    data: Project
+    isFirstChild?: boolean
+    noHover?: boolean
+}
+
+export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({ data, isFirstChild, noHover }, ref) => {
     const [isClient, setIsClient] = React.useState(false)
 
     React.useEffect(() => {
@@ -21,7 +27,7 @@ export function ProjectCard (data: Project) {
 
     return(
         <Link tabIndex={-1} href={`/work/${data.slug}`}>
-        <Card tabIndex={0} className="focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+        <Card ref={ref} tabIndex={0} className={`${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noHover ? '' : 'hover:border-2 hover:border-primary hover:animate-card-translate-y'}`}>
             {isClient && (
                 <>
             <CardImageHeader>
@@ -56,3 +62,4 @@ export function ProjectCard (data: Project) {
         
     )
 }
+)

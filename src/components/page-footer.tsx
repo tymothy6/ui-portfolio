@@ -211,7 +211,7 @@ export function PageFooter () {
                     
                     <div className="block md:hidden px-4 w-full">
                         <Button variant="secondaryblog" className="w-full hover:border-accent bg-gray-100 dark:bg-slate-800" asChild>
-                        <Link href="mailto:hello@tim-ng.me?subject=Your%20website">
+                        <Link href="mailto:hello@tim-ng.me">
                     <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></Link>
                     </Button>
                     </div>

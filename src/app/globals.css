@@ -57,6 +57,16 @@
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior-x: none;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  body ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  body ::-webkit-scrollbar-thumb {
+    background-color: transparent;
   }
 
   ::selection {

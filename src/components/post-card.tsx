@@ -21,7 +21,7 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 
-export function BlogPostCard (data: Post) {
+export function BlogPostCard ({data, isFirstChild}: {data: Post, isFirstChild?: boolean}) {
     const [isClient, setIsClient] = React.useState(false)
 
     React.useEffect(() => {
@@ -29,7 +29,7 @@ export function BlogPostCard (data: Post) {
     }, [])
 
     return(
-        <BlogCard className="flex flex-col w-full h-full overflow-hidden">
+        <BlogCard className={`flex flex-col h-full ${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 overflow-hidden`}>
             {isClient && (
             <>
             <CardHeader>
@@ -39,12 +39,12 @@ export function BlogPostCard (data: Post) {
                 <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <AvatarBlog>
+                                    <AvatarBlog className="z-[1]">
                                         <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
                                         <AvatarFallback>TN</AvatarFallback>
                                     </AvatarBlog>
                                 </TooltipTrigger>
-                                <TooltipContent className="p-2">
+                                <TooltipContent className="p-2 z-[3]">
                                     <p className="text-sm font-regular"> Tim Ng </p>
                                 </TooltipContent>
                             </Tooltip>
@@ -81,4 +81,8 @@ export function BlogPostCard (data: Post) {
         </BlogCard>
    
     )
+}
+
+BlogPostCard.defaultProps = {
+    isFirstCard: false
 }

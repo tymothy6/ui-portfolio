@@ -38,9 +38,9 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
             [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6">{children}</h6>,
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8">{children}</p>,
-            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-outside list-decimal">{children}</ol>,
-            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="list-outside list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 p-8 md:p-12 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-2 border-primary pl-4 md:pl-6 italic">{children}</blockquote></div>,
+            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside list-decimal">{children}</ol>,
+            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside list-disc">{children}</ol>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 p-8 md:p-12 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-2 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (
@@ -48,7 +48,7 @@ export default function RichText({ document }: RichTextProps) {
                         setLightBoxSource(file.url);
                         setIsLightBoxOpen(true);
                     }} className="cursor-pointer">
-                        <img alt={title} src={file.url} className="lg:rounded-lg" />
+                        <img alt={title} src={file.url} className="md:rounded-lg" />
                     </div>
                 )
             },
@@ -56,7 +56,7 @@ export default function RichText({ document }: RichTextProps) {
                 const figmaUrl = node.data.target.fields.figmaUrl
                 return <FigmaEmbed figmaUrl={figmaUrl} />
             },
-            [INLINES.HYPERLINK]: (node: Block | Inline, children: React.ReactNode) => <a href={node.data.uri} className="text-foreground underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">{children}</a>,
+            [INLINES.HYPERLINK]: (node: Block | Inline, children: React.ReactNode) => <a href={node.data.uri} className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">{children}</a>,
         },
         renderMark: {
             [MARKS.BOLD]: (text: React.ReactNode) => <span className="font-semibold">{text}</span>,

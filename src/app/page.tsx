@@ -24,7 +24,7 @@ export default function Home() {
       <div className="flex-grow flex items-center justify-center"><Hero id="home" /></div>
       <ProjectGrid id="work" />
       <AboutPage id="about" />
-      <div className="relative">
+      <div className="relative my-12">
       <img
           src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
           alt="Aerial view of Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"

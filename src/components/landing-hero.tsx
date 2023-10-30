@@ -231,7 +231,7 @@ export function LicenseHero () {
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Components</h2>
                     <Separator />
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI. Read about installation and usage in their GitHub repositories and linked docs.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source React components from shadcn/ui and Radix UI. Read about installation and usage in their GitHub repositories and the linked docs.</p>
                         <div className="flex space-x-4">
                             <Button variant="default" asChild>
                                 <Link href="https://github.com/shadcn-ui/ui">
@@ -578,7 +578,7 @@ export function StyleHero () {
             <h3 className="text-2xl font-semibold">
                     Dark mode</h3>
                 
-                <p className="text-lg text-foreground font-regular mx-4 leading-relaxed">
+                <p className="text-lg text-foreground font-regular leading-relaxed">
                 This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
                 </p>
                 <div className="mb-4">
