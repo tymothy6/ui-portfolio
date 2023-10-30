@@ -142,7 +142,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     }
 
     return(
-        <div id={id} className="py-8 md:py-16 lg:px-8 my-16 md:mx-24 scroll-mt-12">
+        <div id={id} className="py-8 md:py-16 lg:px-8 my-8 md:mx-24 scroll-mt-12">
             <div className="flex-col md:rounded-lg items-center justify-center px-8 py-12 md:p-16 md:border border-y bg-card text-card-foreground md:shadow-sm">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Get in touch
