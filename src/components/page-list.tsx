@@ -10,7 +10,7 @@ interface HomeProps {
 
 export const AboutPage: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div id={id} className="flex flex-col gap-8 md:grid md:grid-cols-2 px-8 py-8 my-8 lg:py-16 lg:my-16 mx-4 md:mx-24 lg:mx-48 scroll-mt-16">
+        <div id={id} className="flex flex-col gap-8 md:grid md:grid-cols-2 px-8 py-8 my-8 lg:py-16 lg:my-16 mx-4 md:mx-24 lg:ml-48 lg:mr-36 xl:mr-48 scroll-mt-16">
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground">About me</h2>
             <div className="flex flex-col gap-6 lg:gap-8 lg:mr-8">
                 <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">I&apos;m a scientist by training and graduated with a PhD in Molecular Genetics from the University of Toronto in 2022. My research experience has bolstered my curiosity and instilled a logical way of wondering and knowing that I leverage each day.</p>

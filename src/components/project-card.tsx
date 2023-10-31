@@ -32,7 +32,10 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         tabIndex={0} 
         className={`${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noHover ? '' : 'hover:animate-card-translate-y'}`}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
+        onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={() => setIsHovered(true)}
+        onTouchEnd={() => setIsHovered(false)}
+        >
         <Link tabIndex={-1} href={`/work/${data.slug}`}>
             {isClient && (
                 <>
