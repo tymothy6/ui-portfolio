@@ -3,8 +3,6 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { VercelLogoIcon } from "@radix-ui/react-icons"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -26,12 +24,13 @@ import {
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover"
+import { IubendaLink } from "@/components/iubenda-link"
 
 export function PageFooter () {
     const [isVisible, setIsVisible] = React.useState(false)
 
-    const footerText = "· When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight"
-    const marqueeText = `${footerText}    ${footerText}`
+    const footerText = "· When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight "
+    const marqueeText = `${footerText}${footerText}`
 
     React.useEffect(() => {
         function handleScroll () {
@@ -201,15 +200,17 @@ export function PageFooter () {
                                 <span className="text-xs md:text-sm">Style Guide</span>
                                 </Link>
                             </Button>
-                            <Button variant="link" className="h-max">
+                            <Button variant="link" className="h-max mb-2 md:mb-0">
                                 <Link href="/not-found" legacyBehavior passHref>
                                 <span className="text-xs md:text-sm">404</span>
                                 </Link>
                             </Button>
+                            <IubendaLink />
+                            
                             
                     </div>
                     
-                    <div className="block md:hidden px-4 w-full">
+                    <div className="block md:hidden px-4 pt-2 w-full">
                         <Button variant="secondaryblog" className="w-full hover:border-accent bg-gray-100 dark:bg-slate-800" asChild>
                         <Link href="mailto:hello@tim-ng.me">
                     <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">Thoughts? 📧 <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></Link>
