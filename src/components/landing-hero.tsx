@@ -181,14 +181,19 @@ export function LicenseHero () {
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
                     <Separator />
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson.</p>
-                        <span>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson and Source Serif 4 by Frank Grießhammer.</p>
+                        <div className="flex flex-wrap gap-4">
                         <Button variant="default" asChild>
                             <Link href="https://rsms.me/inter/#free">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                                 Inter</Link>
                         </Button>
-                        </span>
+                        
+                        <Button variant="default" asChild>
+                            <Link href="https://fonts.google.com/specimen/Source+Serif+4?query=source+serif+4">
+                                Source Serif 4</Link>
+                        </Button>
+                        </div>
                     </div>
                     <img 
                     src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
@@ -205,7 +210,9 @@ export function LicenseHero () {
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
                     <Separator />
-                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI. <br /><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
+                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI.<br />
+                        </p>
+                        <p className="text-lg font-regular text-foreground mb-2"><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
                         npm i @radix-ui/react-icons</code>
                         </p>
                         <span>
