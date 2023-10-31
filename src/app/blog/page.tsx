@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import Link from "next/link"
 
 import { PageHeader } from "@/components/page-header"
@@ -10,6 +10,13 @@ import { BlogPostGrid } from "@/components/blog-grid"
 
 export const metadata: Metadata = {
     title: 'Design Blog',
+}
+
+export const viewport: Viewport = {
+    themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#6d28d9' },
+    { media: '(prefers-color-scheme: dark)', color: '#7c3aed' },
+    ],
 }
 
 export default function Blog () {

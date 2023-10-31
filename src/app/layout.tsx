@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { inter, source_serif } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
@@ -13,7 +13,11 @@ export const metadata: Metadata = {
     default: 'Tim Ng · Design Portfolio',
   },
   description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
-  viewport: { width: "device-width", initialScale: 1 }, 
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({

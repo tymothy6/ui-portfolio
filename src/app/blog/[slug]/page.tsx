@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Metadata, ResolvingMetadata } from "next"
+import { Metadata, ResolvingMetadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import { fetchPost, fetchAllPosts } from "@/lib/blog-posts"
 import RichText from "@/lib/rich-text"
@@ -14,6 +14,12 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
+export const viewport: Viewport = {
+    themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#6d28d9' },
+    { media: '(prefers-color-scheme: dark)', color: '#7c3aed' },
+    ],
+}
 
 interface BlogPageParams {
     slug: string
