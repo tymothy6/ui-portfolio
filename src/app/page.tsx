@@ -2,7 +2,7 @@ import * as React from "react"
 import Link from "next/link"
 
 import { PageHeader } from "@/components/page-header"
-import { Hero } from "@/components/landing-hero"
+import { HeroWrapper } from "@/components/hero-wrapper"
 import { ProjectGrid } from "@/components/project-grid"
 import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/page-list"
 import { ContactPage } from "@/components/contact-page"
@@ -21,7 +21,7 @@ export default function Home() {
     <div 
     className="flex flex-col bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
       <PageHeader />
-      <div className="flex-grow flex items-center justify-center"><Hero id="home" /></div>
+      <HeroWrapper id="home" />
       <ProjectGrid id="work" />
       <AboutPage id="about" />
       <div className="relative my-12">

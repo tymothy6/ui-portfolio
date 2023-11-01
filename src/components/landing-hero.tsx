@@ -46,6 +46,7 @@ const formSchema = z.object({
     password: z.string().min(6).max(24),
 })
 
+
 export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
