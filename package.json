@@ -11,6 +11,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.18.0",
     "@contentful/rich-text-types": "^16.3.0",
+    "@fullpage/react-fullpage": "^0.1.40",
     "@hookform/resolvers": "^3.3.1",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
