@@ -13,6 +13,7 @@ type SquareProps = {
     opacity?: number; // initial opacity
     cellSize?: number; // size of each cell
     changeFrequency?: number; // probability of changing opacity per frame
+    maxOpacity?: number;
     i: number;
     j: number;
     gridSize: number;
@@ -20,12 +21,15 @@ type SquareProps = {
     setActiveAnimation: React.Dispatch<React.SetStateAction<{i: number, j: number} | null>>;
   };
 
-const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5, changeFrequency = 0.99, activeAnimation, setActiveAnimation, i, j }) => {
+
+const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5, changeFrequency = 0.99, maxOpacity, activeAnimation, setActiveAnimation, i, j }) => {
     const meshRef = useRef<Mesh>() as React.MutableRefObject<Mesh>;
     const frameCounter = useRef(0); 
     const [isHovered, setIsHovered] = useState(false);
+    const { resolvedTheme } = useTheme(); 
 
     const gridColor = useTheme().resolvedTheme === "dark" ? "#0f172a" : "#ffffff";
+    const derivedMaxOpacity = maxOpacity !== undefined ? maxOpacity : (resolvedTheme === "dark" ? 1.0 : 0.1);
     
     useFrame(() => {
         frameCounter.current += 1;
@@ -35,7 +39,7 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
     
             if (frameCounter.current % 10 === 0 && !isHovered) {
                 if (Math.random() > changeFrequency) {
-                    material.opacity = Math.random();
+                    material.opacity = Math.min(derivedMaxOpacity, Math.random());
                 }
             }
         }
@@ -98,8 +102,8 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
     }, [])
 
     return (
-    <div className="w-full h-auto absolute inset-0">
-        <div style={{ background: `radial-gradient(circle at center, transparent 0%, ${isDarkTheme ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 1.0)'} 100%)` }} className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none backdrop-blur-[0.4px]"></div>
+    <div className={`w-full h-auto absolute inset-0 ${isDarkTheme ? 'opacity-100' : 'opacity-25'}`}>
+        <div style={{ background: `radial-gradient(circle at center, transparent 30%, ${isDarkTheme ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 1.0)'} 100%)` }} className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none backdrop-blur-[0.4px]"></div>
       <Canvas className="absolute top-0 left-0 w-full h-full z-0">
         {[...Array(gridSize)].map((_, i) =>
           [...Array(gridSize)].map((_, j) => (

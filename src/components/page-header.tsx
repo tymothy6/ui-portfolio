@@ -135,7 +135,7 @@ export function PageHeader() {
         }
     }, [])
     
-    const borderColor = useTheme().resolvedTheme === "dark" ? "rgba(30, 41, 59, 0.7)" : "rgba(250, 250, 250, 0.5)"
+    const borderColor = "rgba(250, 250, 250, 0.1)"
 
     return (
         <div ref={menuRef} className={`backdrop-blur-md ${isMenuOpen ? 'bg-background/90 dark:bg-background/90' : 'bg-background/50 dark:bg-background/50'} fixed top-0 w-full z-[49]`}
