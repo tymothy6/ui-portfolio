@@ -51,7 +51,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
         <div 
         id={id}
-        className="inset-0 flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg:pb-72 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48">
+        className="inset-0 flex flex-col gap-8 pt-24 md:pt-36 lg:pt-48 pb-64 lg:pb-72 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[1]">
             <h1 className="text-5xl mt-6 md:mt-0 md:text-6xl font-semibold cursor-default">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
             <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-600 via-blue-600 dark:to-pink-500 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div>

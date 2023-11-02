@@ -16,10 +16,10 @@ import {
 interface ProjectCardProps {
     data: Project
     isFirstChild?: boolean
-    noHover?: boolean
+    noTilt?: boolean
 }
 
-export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({ data, isFirstChild, noHover }, ref) => {
+export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({ data, isFirstChild, noTilt }, ref) => {
     const [isClient, setIsClient] = React.useState(false)
     const [isHovered, setIsHovered] = React.useState(false)
 
@@ -27,12 +27,11 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         setIsClient(true)
     }, [])
 
-    return(
-        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} >
+    const cardContent = (
         <Card 
         ref={ref} 
         tabIndex={0} 
-        className={`${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noHover ? '' : ''}`}
+        className={`${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noTilt ? '' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => setIsHovered(true)}
@@ -69,10 +68,14 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
             )}  
         </Link>
         </Card>
+    )
+
+    return noTilt 
+    ? cardContent
+    : (
+        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
+            {cardContent}
         </Tilt>
-       
-        
-        
     )
 }
 )

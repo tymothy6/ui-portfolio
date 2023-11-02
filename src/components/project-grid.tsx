@@ -19,7 +19,7 @@ export async function ProjectGrid ({ id }: HomeProps) {
                 {projects.map((project) => {
                     return(
                         <div key={project.slug} className="h-max col-span-3">
-                            <ProjectCard data={project} isFirstChild={true} />
+                            <ProjectCard data={project} isFirstChild={true} noTilt={false} />
                         </div>
                     )
                 })}

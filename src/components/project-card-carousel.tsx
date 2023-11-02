@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import Tilt from "react-parallax-tilt"
 import { Project } from "@/lib/projects"
 import { ProjectCard } from "@/components/project-card"
 
@@ -63,9 +64,10 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
            
             { (recommended ? projects.slice(0, 4) : projects).map((project, index) => (
                 <div className="flex-shrink-0 w-full" key={project.slug}>
-                    <ProjectCard ref={index === 0 ? cardRef : null} data={project} isFirstChild={index === 0} noHover={noHover} />
+                    <ProjectCard ref={index === 0 ? cardRef : null} data={project} isFirstChild={index === 0} noTilt={true} />
                 </div>
             ))}
+          
             
         </div>
     )
