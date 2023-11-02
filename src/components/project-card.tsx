@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Project } from "@/lib/projects"
 import Tilt from "react-parallax-tilt"
+import styles from "@/components/project-card.module.css"
 
 import { GitHubBadge, FigmaBadge } from "@/components/contact-button"
 import { Badge } from "@/components/ui/badge"
@@ -47,8 +48,8 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
                 className="rounded-t-lg object-cover" />
             </CardImageHeader>
             <CardContent className="flex flex-row justify-between items-start pt-4 h-full">
-                <div className="flex flex-col">
-                    <p className={`text-left text-lg font-semibold text-foreground pr-2 mb-0 ${isHovered ? 'underline decoration-primary decoration-4 underline-offset-2' : ''}`}>{data.name}</p>
+                <div className="flex flex-col ${styles.title}">
+                    <p className={`text-left text-lg font-semibold text-foreground pr-2 mb-0 ${isHovered ? 'underline decoration-primary decoration-4 underline-offset-4' : ''}`}>{data.name}</p>
                     <p className="text-left text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 pr-2 mb-2">{data.type}</p> 
                     <div className="flex flex-row flex-wrap gap-2">
                         <Badge variant="default"><span className="font-mono font-semibold">{data.year}</span></Badge>
