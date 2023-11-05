@@ -22,7 +22,7 @@ export function HeroWrapper ( { id }: { id: string }) {
           },
         }}>
         <div 
-        className="pt-24 pb-24 md:pb-0 md:pt-0 relative flex-grow flex items-center justify-center sm:h-screen">
+        className="py-24 md:py-0 relative flex-grow flex items-center justify-center h-[100vh] max-sm:h-[120vh]">
             <GridPattern />
             <Hero id={id} />
         </div>

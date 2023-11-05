@@ -5,6 +5,7 @@ import { inter, source_serif } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
+import FramerClient from '@/components/framer-client'
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ export default function RootLayout({
           disableTransitionOnChange
           >
             <ScrollProviderWrapper>
-            {children}
+            <FramerClient>{children}</FramerClient>
             <Analytics />
             </ScrollProviderWrapper>
             <Toaster />
