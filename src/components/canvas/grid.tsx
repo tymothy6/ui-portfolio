@@ -82,7 +82,7 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
     const spacing = 0.5;
     const gridHalfSize = (gridSize / 2) * spacing;
     const halfSpacing = spacing / 2; 
-    const lineColor = useTheme().resolvedTheme === "dark" ? "#334155" : "#d5d5d5";
+    const lineColor = useTheme().resolvedTheme === "dark" ? "#475569" : "#9ca3af";
     const isDarkTheme = useTheme().resolvedTheme === "dark";
 
     useEffect(() => {
