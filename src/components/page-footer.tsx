@@ -55,7 +55,7 @@ export function PageFooter () {
 
     return (
       <div className={`border-t-[1px] md:transition-transform md:transition-opacity md:duration-1000 md:ease-in-out md:transform ${isVisible ? 'md:translate-y-0 md:opacity-100' : 'md:translate-y-full md:opacity-0'}`}>
-        <div className="bg-background pt-16 pb-2 w-full h-full relative overflow-hidden">
+        <div className="bg-background pt-8 md:pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
                 <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
                     <h1 
@@ -68,7 +68,7 @@ export function PageFooter () {
                 </PopoverContent>
             </Popover>
         </div>
-        <div className="flex flex-col bg-background w-full pt-12 pb-12 justify-start">
+        <div className="flex flex-col bg-background w-full pt-8 md:pt-12 pb-4 md:pb-12 justify-start">
                         <div className="px-8 md:px-12 pb-8 block md:hidden">
                                 <TooltipProvider>
                                     <Tooltip>
