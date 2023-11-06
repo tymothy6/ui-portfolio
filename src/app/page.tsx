@@ -32,7 +32,7 @@ export default function Home() {
       <div className="absolute bottom-0 left-0 p-6">
         <Popover>
           <PopoverTrigger asChild>
-            <Button variant="outline" className="text-xs md:text-sm">
+            <Button variant="outline" className="text-xs md:text-sm font-mono">
             📍 Where is this?
             </Button>
           </PopoverTrigger>

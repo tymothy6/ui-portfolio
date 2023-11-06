@@ -138,9 +138,9 @@ export function PageFooter () {
                                 </NavigationMenuItem>
                             </div>
                             <NavigationMenuItem>
-                                    <Link href="/resume" legacyBehavior passHref>
+                                    <Link href="/blog" legacyBehavior passHref>
                                         <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
-                                        Resume
+                                        Blog
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
@@ -187,22 +187,22 @@ export function PageFooter () {
                     <div className="flex flex-col w-full md:flex-row items-start md:items-center gap-2">
                             <Button variant="link" className="h-max">
                                 <Link href="/password" legacyBehavior passHref>
-                                <span className="text-xs md:text-sm">Password</span>
+                                <span className="text-xs">Password</span>
                                 </Link>
                             </Button>
                             <Button variant="link" className="h-max">
                                 <Link href="/licenses" legacyBehavior passHref>
-                                <span className="text-xs md:text-sm">Licenses</span>
+                                <span className="text-xs">Licenses</span>
                                 </Link>
                             </Button>
                             <Button variant="link" className="h-max">
                                 <Link href="/style" legacyBehavior passHref>
-                                <span className="text-xs md:text-sm">Style Guide</span>
+                                <span className="text-xs">Style Guide</span>
                                 </Link>
                             </Button>
                             <Button variant="link" className="h-max mb-2 md:mb-0">
-                                <Link href="/not-found" legacyBehavior passHref>
-                                <span className="text-xs md:text-sm">404</span>
+                                <Link href="/resume" legacyBehavior passHref>
+                                <span className="text-xs">Resume</span>
                                 </Link>
                             </Button>
                             <IubendaLink />
@@ -218,13 +218,13 @@ export function PageFooter () {
                     </div>
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
                             
-                            <div className="h-6 px-4 py-1">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium">Built with Next.js & Vercel</span>
+                            <div className="px-4 py-1 w-fit">
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">Built with Next.js & Vercel</span>
                             </div>
                                 
                             
-                            <div className="h-6 px-4 py-1">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium">© Tim Ng, 2023</span>
+                            <div className="px-4 py-1 w-fit">
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
                             </div>
                         </div>
                     </div>

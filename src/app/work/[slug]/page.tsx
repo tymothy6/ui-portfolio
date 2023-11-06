@@ -126,8 +126,8 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                 )}
             </div>
 
-            <div className="flex flex-col gap-4 py-24 md:py-36 lg:py-48 mx-0 md:mx-48 lg:mx-64 xl:mx-72">
-            <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mt-16 mb-4">Design Process</h2>
+            <div className="flex flex-col gap-4 py-24 md:py-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
+            <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mb-4">Design Process</h2>
                 <Separator className="mb-8"/></div>
                 <RichText document={data.process} />
             </div>
@@ -146,14 +146,14 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
             {data.outcome && (
-            <div className="flex flex-col gap-4 pb-24 md:pb-36 lg:pb-48 mx-0 md:mx-48 lg:mx-64 xl:mx-72">
-                <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mt-16 mb-4">Design Outcome</h2>
+            <div className="flex flex-col gap-4 py-24 md:py-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
+                <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mb-4">Design Outcome</h2>
                 <Separator className="mb-8"/></div>
                 <RichText document={data.outcome} />
             </div>
             )}
 
-            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48">
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48 xl:mx-60">
                 <h2 className="text-2xl font-semibold mx-8 mb-4 font-mono">Other work</h2>
                 <div className="mx-0">
                     <ProjectCardCarousel projects={otherProjects} recommended={true} noHover={true} />

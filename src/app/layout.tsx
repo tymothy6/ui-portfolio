@@ -37,8 +37,8 @@ export default function RootLayout({
           disableTransitionOnChange
           >
             <ScrollProviderWrapper>
-            <FramerClient>{children}</FramerClient>
-            <Analytics />
+                {children}
+              <Analytics />
             </ScrollProviderWrapper>
             <Toaster />
         </ThemeProvider>

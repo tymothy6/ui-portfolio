@@ -10,7 +10,6 @@ export default function FramerClient({children}: { children: React.ReactNode}) {
      <motion.div key={pathname}
           initial={{ x: -200, opacity: 0 }}
           animate={{ x: 0, opacity: 1}}
-          exit={{ x: 200, opacity: 0}}
           transition= {{ 
             type: "spring",
             stiffness: 260,
