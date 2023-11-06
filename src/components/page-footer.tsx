@@ -218,12 +218,12 @@ export function PageFooter () {
                     </div>
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
                             
-                            <div className="px-4 py-1 w-fit">
+                            <div className="px-4 py-1">
                                 <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">Built with Next.js & Vercel</span>
                             </div>
                                 
                             
-                            <div className="px-4 py-1 w-fit">
+                            <div className="px-4 py-1">
                                 <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
                             </div>
                         </div>
