@@ -224,7 +224,7 @@ export function PageFooter () {
                                 
                             
                             <div className="h-6 px-4 py-1">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium">© Tim Ng, 2023</span>
                             </div>
                         </div>
                     </div>
