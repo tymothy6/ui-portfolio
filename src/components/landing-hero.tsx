@@ -56,7 +56,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
             <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div>
             <Button variant="gradient" size="default" className="md:w-36" asChild>
-                <Link href="/#work">
+                <Link href="/#about">
                     <span className="text-base md:text-lg font-medium">Meet me</span>
                 </Link>
             </Button>

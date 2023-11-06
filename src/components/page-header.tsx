@@ -150,7 +150,8 @@ export function PageHeader() {
                     if (isMenuOpen) {
                         e.preventDefault();
                     }
-                }}>
+                }}
+                passHref>
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>

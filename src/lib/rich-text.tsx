@@ -36,6 +36,7 @@ export default function RichText({ document }: RichTextProps) {
             window.addEventListener('scroll', handleScroll);
 
             return () => window.removeEventListener('scroll', handleScroll);
+
         }
     }, [toast, pathname])
 
