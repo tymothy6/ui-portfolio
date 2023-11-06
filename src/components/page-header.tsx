@@ -50,7 +50,7 @@ const works : { title: string; href: string; id: string; description: string }[]
         title: "UX Design",
         href: "/",
         id: "work",
-        description: "Some of the problems I've solved with design thinking",
+        description: "Some of the problems I've tackled with design thinking",
     },
     {
         title: "Science",
@@ -65,7 +65,7 @@ const about : { title: string; href: string; id: string; description: string }[]
         title: "About me",
         href: "/",
         id: "about",
-        description: "A brief introduction to who I am and what I do",
+        description: "A brief intro to who I am and what I do",
     },
     {
         title: "Values",
@@ -79,12 +79,12 @@ const blog : { title: string; href: string; description:string }[] = [
     {
         title: "Design Blog",
         href: "/blog",
-        description: "My thoughts on design, life, and everything in between"
+        description: "My thoughts on design, development, and more"
     },
     {
         title: "Licenses",
         href: "/licenses",
-        description: "Open source licenses used on this site"
+        description: "Open source licenses for this site"
     },
     {
         title: "Style Guide",
@@ -94,7 +94,7 @@ const blog : { title: string; href: string; description:string }[] = [
     {
         title: "Resume",
         href: "/resume",
-        description: "Download my resume"
+        description: "Get a copy of my resume"
     }
     
 ]
@@ -398,8 +398,8 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-[14px] font-medium leading-snug">{title}</div>
-          <p className="line-clamp-2 text-sm font-regular leading-snug text-muted-foreground">
+          <div className="text-base font-medium leading-snug">{title}</div>
+          <p className="line-clamp-2 text-base font-regular leading-snug text-muted-foreground">
             {children}
           </p>
         </a>

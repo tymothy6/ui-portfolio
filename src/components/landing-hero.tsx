@@ -567,7 +567,7 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your web app. Note that you&apos;ll need to have TailwindCSS and shadcn/ui set up for semantic styling to work out-of-the-box.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your codebase. Please note that you&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box.</p>
                     <div className="md:pl-8">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
@@ -617,7 +617,7 @@ export function StyleHero () {
                     id="themes"
                     className="resize-none overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
-                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4 lg:right-8">Copy
+                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4 lg:right-6">Copy to clipboard
                     <CopyIcon className="h-[0.8rem] w-[0.8rem] ml-2" />
                     </Button>
                     </div>
