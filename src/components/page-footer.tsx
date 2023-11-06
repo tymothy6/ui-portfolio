@@ -128,15 +128,6 @@ export function PageFooter () {
                         <div>
                         <NavigationMenu>
                             <NavigationMenuList>
-                            <div className="block md:hidden">
-                                <NavigationMenuItem>
-                                    <Link href="/blog" legacyBehavior passHref>
-                                        <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
-                                        Blog
-                                        </NavigationMenuLink>
-                                    </Link>
-                                </NavigationMenuItem>
-                            </div>
                             <NavigationMenuItem>
                                     <Link href="/blog" legacyBehavior passHref>
                                         <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
