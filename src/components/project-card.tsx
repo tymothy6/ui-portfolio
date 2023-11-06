@@ -37,7 +37,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         onTouchStart={() => setIsHovered(true)}
         onTouchEnd={() => setIsHovered(false)}
         >
-        <Link tabIndex={-1} href={`/work/${data.slug}`}>
+        <Link tabIndex={-1} href={`/work/${data.slug}`} passHref>
             {isClient && (
                 <>
             <CardImageHeader>
