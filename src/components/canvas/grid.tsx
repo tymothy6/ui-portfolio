@@ -82,7 +82,7 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
     const spacing = 0.5;
     const gridHalfSize = (gridSize / 2) * spacing;
     const halfSpacing = spacing / 2; 
-    const lineColor = useTheme().resolvedTheme === "dark" ? "#334155" : "#d5d5d5";
+    const lineColor = useTheme().resolvedTheme === "dark" ? "#475569" : "#9ca3af";
     const isDarkTheme = useTheme().resolvedTheme === "dark";
 
     useEffect(() => {
@@ -102,8 +102,8 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
     }, [])
 
     return (
-    <div className={`w-full h-auto absolute inset-0 ${isDarkTheme ? 'opacity-100' : 'opacity-25'}`}>
-        <div style={{ background: `radial-gradient(circle at center, transparent 30%, ${isDarkTheme ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 1.0)'} 100%)` }} className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none backdrop-blur-[0.4px]"></div>
+    <div className={`w-full h-auto absolute inset-0 ${isDarkTheme ? 'opacity-100' : 'opacity-50'}`}>
+        <div style={{ background: `radial-gradient(circle at center, transparent, ${isDarkTheme ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 1.0)'} 100%)` }} className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none backdrop-blur-[0.4px]"></div>
       <Canvas className="absolute top-0 left-0 w-full h-full z-0">
         {[...Array(gridSize)].map((_, i) =>
           [...Array(gridSize)].map((_, j) => (

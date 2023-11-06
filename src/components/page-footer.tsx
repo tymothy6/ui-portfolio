@@ -212,19 +212,19 @@ export function PageFooter () {
                     
                     <div className="block md:hidden px-4 pt-2 w-full">
                         <Button variant="secondaryblog" className="w-full hover:border-accent bg-gray-100 dark:bg-slate-800" asChild>
-                        <Link href="mailto:hello@tim-ng.me">
-                    <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">👋🏼 📧 <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></Link>
+                        <Link href="mailto:hello@tim-ng.me" passHref>
+                    <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></Link>
                     </Button>
                     </div>
                     <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
                             
                             <div className="h-6 px-4 py-1">
-                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">Built with Next.js & Vercel</span>
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium">Built with Next.js & Vercel</span>
                             </div>
                                 
                             
                             <div className="h-6 px-4 py-1">
-                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© Tim Ng, 2023</span>
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium">© Tim Ng, 2023</span>
                             </div>
                         </div>
                     </div>

@@ -69,6 +69,13 @@
     background-color: transparent;
   }
 
+  img {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;
+  }
+
   ::selection {
     @apply bg-violet-600 text-white;
   }

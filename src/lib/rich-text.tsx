@@ -18,11 +18,24 @@ export default function RichText({ document }: RichTextProps) {
 
     React.useEffect(() => {
         const isBlogPage = pathname.startsWith('/blog') // don't show toast on blog pages
-        if (!isBlogPage && window.matchMedia('(max-width: 768px)').matches) {
-            toast({
-            title: "📱 Heads up!",
-            description: "Figma embeds can be finicky on mobile. Consider viewing my project pages on a desktop browser for the best experience.",
-            });
+        const hasToastBeenShown = window.localStorage.getItem('toastShown'); // don't show if it's already been shown to the user
+
+        if (!hasToastBeenShown && !isBlogPage && window.matchMedia('(max-width: 768px)').matches) {
+            const handleScroll = () => {
+                if (window.scrollY > 0) {
+                    toast({
+                    title: "📱 Heads up!",
+                    description: "Figma embeds can be hard to navigate on mobile. Consider viewing my project pages on a desktop browser for the best experience.",
+                    });
+
+                    window.localStorage.setItem('toastShown', 'true');
+                    window.removeEventListener('scroll', handleScroll);
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+
+            return () => window.removeEventListener('scroll', handleScroll);
         }
     }, [toast, pathname])
 
