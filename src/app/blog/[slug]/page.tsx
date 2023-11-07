@@ -50,7 +50,6 @@ export async function generateMetadata({ params }: BlogPageProps, parent: Resolv
             images: [
                 {
                     url: blogItem.thumbnail?.src ?? "",
-                    alt: blogItem.title,
                 },
             ],
         },

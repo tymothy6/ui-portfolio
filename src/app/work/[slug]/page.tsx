@@ -44,7 +44,6 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
             images: [
                 {
                     url: projectItem.thumbnail?.src ?? "",
-                    alt: projectItem.name,
                 },
             ],
         },
