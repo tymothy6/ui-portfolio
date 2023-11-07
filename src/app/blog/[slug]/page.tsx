@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: BlogPageProps, parent: Resolv
                     width: blogItem.thumbnail?.width ?? 800,
                     height: blogItem.thumbnail?.height ?? 600,
                     alt: blogItem.thumbnail?.alt ?? "",
+                    type: "image/png",
                 },
             ],
         },
