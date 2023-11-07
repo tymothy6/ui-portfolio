@@ -72,7 +72,7 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
             <PageHeader />
             <div>
-            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-48">
+            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8">{data.name}</h1>
                 <div className="flex flex-col justify-start">
                     <p className="text-lg md:text-xl text-foreground font-regular leading-relaxed tracking-wide md:leading-relaxed md:tracking-wide mb-12">

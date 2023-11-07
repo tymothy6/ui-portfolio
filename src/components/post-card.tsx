@@ -21,7 +21,7 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 
-export function BlogPostCard ({data, isFirstChild}: {data: Post, isFirstChild?: boolean}) {
+export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirstChild?: boolean}) {
     const [isClient, setIsClient] = React.useState(false)
 
     React.useEffect(() => {
@@ -29,7 +29,7 @@ export function BlogPostCard ({data, isFirstChild}: {data: Post, isFirstChild?: 
     }, [])
 
     return(
-        <BlogCard className={`flex flex-col h-full ${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 overflow-hidden`}>
+        <BlogCard className={`flex flex-col h-full ${isFirstChild ? 'mx-8' : 'mr-8'} md:mx-0 overflow-hidden`}>
             {isClient && (
             <>
             <CardHeader>
@@ -81,8 +81,4 @@ export function BlogPostCard ({data, isFirstChild}: {data: Post, isFirstChild?: 
         </BlogCard>
    
     )
-}
-
-BlogPostCard.defaultProps = {
-    isFirstCard: false
 }

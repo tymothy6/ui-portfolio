@@ -31,7 +31,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         <Card 
         ref={ref} 
         tabIndex={0} 
-        className={`${isFirstChild ? 'mx-8' : 'ml-4 mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noTilt ? '' : ''}`}
+        className={`${isFirstChild ? 'mx-8' : 'mr-8'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noTilt ? '' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => setIsHovered(true)}

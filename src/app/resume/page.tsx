@@ -19,7 +19,7 @@ export default function Resume () {
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
             <PageHeader />
             <ResumeHero />
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
+            <div className="flex flex-col gap-8 md:px-8 pt-24 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
                         <div className="flex flex-col gap-4">
                             <h2 className="text-3xl font-semibold">Resume</h2>
                             <Separator />

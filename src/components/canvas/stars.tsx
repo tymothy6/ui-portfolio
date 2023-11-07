@@ -33,7 +33,7 @@ const Stars = (props: any) => {
     }
   });
 
-  const pointColor = useTheme().resolvedTheme === "dark" ? "#C2B3FF" : "#7567AD";
+  const pointColor = useTheme().resolvedTheme === "dark" ? "#C2B3FF" : "#5a32b0";
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
@@ -44,6 +44,7 @@ const Stars = (props: any) => {
           size={0.002}
           sizeAttenuation={true}
           depthWrite={false}
+          opacity={0.75}
         />
       </Points>
     </group>

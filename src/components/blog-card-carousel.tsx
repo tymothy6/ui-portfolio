@@ -29,15 +29,15 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-4">
+        className="flex flex-row relative py-4 overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-4">
             <div 
             id="overlay" 
             ref={overlayRef} 
-            className="block md:hidden h-full w-full rounded-r-lg ml-[-2rem] absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/90 z-[2] text-foreground dark:text-gray-50">
+            className="block md:hidden h-full w-[85vw] rounded-r-lg ml-[-2rem] absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50">
                 <CaretRightIcon className="h-10 w-10 absolute right-2 top-1/2 transform -translate-y-1/2" /> 
             </div>
             { (recommended ? posts.slice(0, 3) : posts).map((post, index) => (
-                <div className="flex-shrink-0 w-full" key={post.slug}>
+                <div className="flex-shrink-0 w-[85vw]" key={post.slug}>
                     <BlogPostCard data={post} isFirstChild={index === 0} />
                 </div>
             ))}

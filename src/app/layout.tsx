@@ -5,10 +5,10 @@ import { inter, source_serif } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
-import FramerClient from '@/components/framer-client'
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tim-ng.me'),
   title: {
     template: '%s | Tim Ng · Design Portfolio',
     default: 'Tim Ng · Design Portfolio',

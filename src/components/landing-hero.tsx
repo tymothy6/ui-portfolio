@@ -7,7 +7,7 @@ import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
 
-import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon } from "@radix-ui/react-icons"
+import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -36,6 +36,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
+import StarsCanvas from "@/components/canvas/stars"
   
 
 interface HomeProps {
@@ -80,7 +81,7 @@ export function PasswordHero () {
     }
 
     return(
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
+        <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
             <p className="text-xl md:text-2xl font-medium leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
@@ -112,7 +113,7 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex-col pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
+        <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
             <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn&apos;t find what you&apos;re looking for</p>
             <div className="md:pl-8">
@@ -130,16 +131,17 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Licenses</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
-                <div className="md:pl-8">
+            <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Licenses</h1>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <div className="md:pl-8 z-[3]">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
                         <span className="text-base font-medium">Contact me</span>
                         </Link>
                     </Button>
                 </div>
+                <StarsCanvas />
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
                     
@@ -349,8 +351,10 @@ export function StyleHero () {
             hslDark: "224 71.4% 4.1%",
             rgbLight: "255, 255, 255",
             hexLight: "#FFFFFF",
+            oklchLight: "100% 0 0",
             rgbDark: "3, 7, 18",
             hexDark: "#030712",
+            oklchDark: "12.96% 0.027 261.69",
         },
         {
             name: "foreground",
@@ -358,8 +362,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "11, 11, 11",
             hexLight: "#0B0B0B",
+            oklchLight: "14.96% 0 0",
             rgbDark: "255, 255, 255",
             hexDark: "#FFFFFF",
+            oklchDark: "100% 0 0",
         },
         {
             name: "card",
@@ -367,8 +373,10 @@ export function StyleHero () {
             hslDark: "224 71.4% 4.1%",
             rgbLight: "255, 255, 255",
             hexLight: "#FFFFFF",
+            oklchLight: "100% 0 0",
             rgbDark: "11, 11, 11",
             hexDark: "#0B0B0B",
+            oklchDark: "14.96% 0 0",
         },
         {
             name: "card-foreground",
@@ -376,8 +384,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "11, 11, 11",
             hexLight: "#0B0B0B",
+            oklchLight: "14.96% 0 0",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "popover",
@@ -385,8 +395,10 @@ export function StyleHero () {
             hslDark: "224 71.4% 4.1%",
             rgbLight: "255, 255, 255",
             hexLight: "#FFFFFF",
+            oklchLight: "100% 0 0",
             rgbDark: "3, 7, 18",
             hexDark: "#030712",
+            oklchDark: "12.96% 0.027 261.69",
         },
         {
             name: "popover-foreground",
@@ -394,8 +406,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "11, 11, 11",
             hexLight: "#0B0B0B",
+            oklchLight: "14.96% 0 0",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "primary",
@@ -403,8 +417,10 @@ export function StyleHero () {
             hslDark: "263.4 70% 50.4%",
             rgbLight: "124, 58, 237",
             hexLight: "#7C3AED",
+            oklchLight: "54.13% 0.247 293.01",
             rgbDark: "109, 40, 217",
             hexDark: "#6D28D9",
+            oklchDark: "49.07% 0.241 292.58",
         },
         {
             name: "primary-foreground",
@@ -412,8 +428,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "249, 250, 251",
             hexLight: "#F9FAFB",
+            oklchLight: "98.46% 0.002 247.84",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "secondary",
@@ -421,8 +439,10 @@ export function StyleHero () {
             hslDark: "215 27.9% 16.9%",
             rgbLight: "243, 244, 246",
             hexLight: "#F3F4F6",
+            oklchLight: "96.7% 0.003 264.54",
             rgbDark: "31, 41, 55",
             hexDark: "#1F2937",
+            oklchDark: "27.81% 0.03 256.85",
         },
         {
             name: "secondary-foreground",
@@ -430,8 +450,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "17, 24, 39",
             hexLight: "#111827",
+            oklchLight: "21.01% 0.032 264.66",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "muted",
@@ -439,8 +461,10 @@ export function StyleHero () {
             hslDark: "215 27.9% 16.9%",
             rgbLight: "243, 244, 246",
             hexLight: "#F3F4F6",
+            oklchLight: "96.7% 0.003 264.54",
             rgbDark: "31, 41, 55",
             hexDark: "#1F2937",
+            oklchDark: "27.81% 0.03 256.85",
         },
         {
             name: "muted-foreground",
@@ -448,8 +472,10 @@ export function StyleHero () {
             hslDark: "217.9 10.6% 64.9%",
             rgbLight: "107, 114, 128",
             hexLight: "#6B7280",
+            oklchLight: "55.1% 0.023 264.36",
             rgbDark: "156, 163, 175",
             hexDark: "#9CA3AF",
+            oklchDark: "71.37% 0.019 261.32",
         },
         {
             name: "accent",
@@ -457,8 +483,10 @@ export function StyleHero () {
             hslDark: "215 27.9% 16.9%",
             rgbLight: "243, 244, 246",
             hexLight: "#F3F4F6",
+            oklchLight: "96.7% 0.003 264.54",
             rgbDark: "31, 41, 55",
             hexDark: "#1F2937",
+            oklchDark: "27.81% 0.03 256.85",
         },
         {
             name: "accent-foreground",
@@ -466,8 +494,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "17, 24, 39",
             hexLight: "#111827",
+            oklchLight: "21.01% 0.032 264.66",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "destructive",
@@ -475,8 +505,10 @@ export function StyleHero () {
             hslDark: "0 62.8% 30.6%",
             rgbLight: "239, 68, 68",
             hexLight: "#EF4444",
+            oklchLight: "63.68% 0.208 25.33",
             rgbDark: "127, 29, 29",
             hexDark: "#7F1D1D",
+            oklchDark: "39.58% 0.133 25.72",
         },
         {
             name: "destructive-foreground",
@@ -484,8 +516,10 @@ export function StyleHero () {
             hslDark: "210 20% 98%",
             rgbLight: "249, 250, 251",
             hexLight: "#F9FAFB",
+            oklchLight: "98.46% 0.002 247.84",
             rgbDark: "249, 250, 251",
             hexDark: "#F9FAFB",
+            oklchDark: "98.46% 0.002 247.84",
         },
         {
             name: "border",
@@ -493,8 +527,10 @@ export function StyleHero () {
             hslDark: "215 27.9% 16.9%",
             rgbLight: "229, 231, 235",
             hexLight: "#E5E7EB",
+            oklchLight: "92.76% 0.006 264.53",
             rgbDark: "31, 41, 55",
             hexDark: "#1F2937",
+            oklchDark: "27.81% 0.03 256.85",
         },
         {
             name: "input",
@@ -502,8 +538,10 @@ export function StyleHero () {
             hslDark: "215 27.9% 16.9%",
             rgbLight: "229, 231, 235",
             hexLight: "#E5E7EB",
+            oklchLight: "92.76% 0.006 264.53",
             rgbDark: "31, 41, 55",
             hexDark: "#1F2937",
+            oklchDark: "27.81% 0.03 256.85",
         },
         {
             name: "ring",
@@ -511,8 +549,10 @@ export function StyleHero () {
             hslDark: "263.4 70% 50.4%",
             rgbLight: "124, 58, 237",
             hexLight: "#7C3AED",
+            oklchLight: "54.13% 0.247 293.01",
             rgbDark: "109, 40, 217",
             hexDark: "#6D28D9",
+            oklchDark: "49.07% 0.241 292.58",
         }
         
     ]
@@ -565,10 +605,10 @@ export function StyleHero () {
 
     return (
         <div>
-            <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your codebase. Please note that you&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box.</p>
-                    <div className="md:pl-8">
+            <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
+                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your codebase. Please note that you&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box.</p>
+                    <div className="md:pl-8 z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -576,6 +616,7 @@ export function StyleHero () {
                             </Link>
                         </Button>
                     </div>
+                <StarsCanvas />
             </div>
             <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
 
@@ -603,7 +644,7 @@ export function StyleHero () {
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
-                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">guidelines</Link>. 
+                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link>. 
                         </AlertDescription>
                     </Alert>
                 <div className="grid w-full gap-4">
@@ -618,7 +659,7 @@ export function StyleHero () {
                     className="resize-none overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
                     <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4 lg:right-6">Copy to clipboard
-                    <CopyIcon className="h-[0.8rem] w-[0.8rem] ml-2" />
+                    <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                     </Button>
                     </div>
                 </div>
@@ -643,7 +684,7 @@ export function StyleHero () {
                     className="resize-none bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
                     <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
-                    <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
+                    <CopyIcon className="h-[1rem] w-[1rem]" />
                     </Button>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
@@ -668,18 +709,18 @@ export function StyleHero () {
                     className="resize-none  bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
                     />
                     <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
-                    <CopyIcon className="h-[0.8rem] w-[0.8rem]" />
+                    <CopyIcon className="h-[1rem] w-[1rem]" />
                     </Button>
                     </div>
                     <p className="text-lg text-foreground font-regular">
-                        Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">Theming</Link> docs for full details on the semantic use of variables.
+                        Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
                     
                 </div>
                 
                 <h2 className="text-2xl font-semibold mt-4">
-                      Want HEX colours instead?
+                      Want HEX or RGB colours instead?
                 </h2>
                 <p className="text-lg text-foreground font-regular">
                 🤓 I thought you&apos;d never ask.
@@ -696,9 +737,10 @@ export function StyleHero () {
                     <TableHeader>
                         <TableRow>
                         <TableHead><ColorWheelIcon className="h-4 w-4" /></TableHead>
-                        <TableHead className="text-sm font-semibold">Variable name</TableHead>
+                        <TableHead className="text-sm font-semibold w-[200px]">Variable name</TableHead>
                         <TableHead className="text-sm font-semibold">HEX</TableHead>
                         <TableHead className="text-sm font-semibold min-w-[150px]">RGB</TableHead>
+                        <TableHead className="text-sm font-semibold min-w-[150px]">OKLCH</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -708,6 +750,7 @@ export function StyleHero () {
                             <TableCell className="font-medium font-mono">{colour.name}</TableCell>
                             <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
                             <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
+                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
@@ -759,18 +802,39 @@ export function StyleHero () {
 export function ResumeHero () {
     return (
                 <div>
-                    <div className="flex flex-col gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-                        <h1 className="text-4xl md:text-6xl font-semibold md:pl-8">Want to learn more about me?</h1>
-                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 ">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
-                        <div className="md:pl-8">
+                    <div className="flex flex-col justify-center min-h-[100vh] gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
+                        <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Want to learn more about me?</h1>
+                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
+                        <div className="md:pl-8 z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://linkedin.com/in/timng88">
                             <LinkedInLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                             <span className="text-base font-medium">Connect</span>
                             </Link>
                         </Button>
-                    </div>
+                        </div>
+                        <StarsCanvas />
                     </div>
                 </div>
+    )
+}
+
+export function BlogHero () {
+    return (
+        <div className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
+                <h1 className="text-5xl md:text-6xl font-semibold mb-8">Design Blog</h1>
+                <div className="flex flex-col justify-start w-full">
+                    <p className="text-xl lg:text-2xl text-foreground font-medium text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
+                    <div>
+                        <Button variant="gradient" size="default" className="md:w-36" asChild>
+                            <Link href="/#contact">
+                            <span className="text-base font-medium">Contact me</span>
+                            </Link>
+                        </Button>
+                    </div>
+                </div>
+                <StarsCanvas />
+               
+        </div>
     )
 }
