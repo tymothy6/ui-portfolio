@@ -62,7 +62,7 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
             </div>
            
             { (recommended ? projects.slice(0, 4) : projects).map((project, index) => (
-                <div className="flex-shrink-0 w-[85vw]" key={project.slug}>
+                <div className="flex-shrink-0 w-[85vw] md:w-full" key={project.slug}>
                     <ProjectCard ref={index === 0 ? cardRef : null} data={project} isFirstChild={index === 0} noTilt={true} />
                 </div>
             ))}

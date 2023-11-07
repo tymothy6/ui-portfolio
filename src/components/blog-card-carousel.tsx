@@ -37,7 +37,7 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
                 <CaretRightIcon className="h-10 w-10 absolute right-2 top-1/2 transform -translate-y-1/2" /> 
             </div>
             { (recommended ? posts.slice(0, 3) : posts).map((post, index) => (
-                <div className="flex-shrink-0 w-[85vw]" key={post.slug}>
+                <div className="flex-shrink-0 w-[85vw] md:w-full" key={post.slug}>
                     <BlogPostCard data={post} isFirstChild={index === 0} />
                 </div>
             ))}
