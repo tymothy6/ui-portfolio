@@ -29,7 +29,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
     }, [])
 
     return(
-        <BlogCard className={`flex flex-col h-full ${isFirstChild ? 'mx-8' : 'mr-8'} md:mx-0 overflow-hidden`}>
+        <BlogCard className={`flex flex-col h-full ${isFirstChild ? 'mx-4' : 'mr-4'} md:mx-0 overflow-hidden`}>
             {isClient && (
             <>
             <CardHeader>

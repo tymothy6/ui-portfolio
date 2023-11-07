@@ -51,7 +51,7 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex flex-row relative py-4 overflow-x-auto md:grid md:grid-cols-2 md:gap-4 gap-0 ">
+        className="flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 md:gap-4 gap-0 ">
             <div 
             id="start-overlay" 
             ref={overlayRef} 

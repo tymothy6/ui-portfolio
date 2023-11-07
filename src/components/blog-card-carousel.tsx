@@ -29,7 +29,7 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex flex-row relative py-4 overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-4">
+        className="flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-4">
             <div 
             id="overlay" 
             ref={overlayRef} 
