@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     default: 'Tim Ng · Design Portfolio',
   },
   description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
+  openGraph: {
+    title: 'Tim Ng · Design Portfolio',
+    description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
+    url: 'https://tim-ng.me',
+    siteName: 'Tim Ng · Design Portfolio',
+    locale: 'en_US',
+    type: 'website',
+  }
 }
 
 export const viewport: Viewport = {

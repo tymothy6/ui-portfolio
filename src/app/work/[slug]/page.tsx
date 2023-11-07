@@ -38,8 +38,19 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
 
     return {
         title: projectItem.name,
+        openGraph: {
+            title: projectItem.name,
+            description: projectItem.overview,
+            images: [
+                {
+                    url: projectItem.thumbnail?.src ?? "",
+                    alt: projectItem.name,
+                },
+            ],
+        },
     }
 }
+
 
 async function ProjectPage ( { params }: ProjectPageProps ) {
 

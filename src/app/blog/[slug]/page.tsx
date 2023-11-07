@@ -44,6 +44,16 @@ export async function generateMetadata({ params }: BlogPageProps, parent: Resolv
 
     return {
         title: blogItem.title,
+        openGraph: {
+            title: blogItem.title,
+            description: blogItem.summary,
+            images: [
+                {
+                    url: blogItem.thumbnail?.src ?? "",
+                    alt: blogItem.title,
+                },
+            ],
+        },
     }
 }
 
