@@ -51,11 +51,11 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className="flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 md:gap-4 gap-0 ">
+        className="flex flex-row relative py-4 overflow-x-auto md:grid md:grid-cols-2 md:gap-4 gap-0 ">
             <div 
             id="start-overlay" 
             ref={overlayRef} 
-            className="block md:hidden w-[85vw] ml-[-2rem] rounded-r-lg absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50"
+            className="block md:hidden w-[85vw] ml-[-1rem] rounded-r-lg absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50"
             style={{ height: overlayHeight }} // set the height of the starting overlay to the height of the first card
             > 
                 <CaretRightIcon className="h-10 w-10 absolute right-2 top-1/2 transform -translate-y-1/2" /> 

@@ -33,7 +33,7 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
             <div 
             id="overlay" 
             ref={overlayRef} 
-            className="block md:hidden h-full w-[85vw] rounded-r-lg ml-[-2rem] absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50">
+            className="block md:hidden h-full w-[85vw] rounded-r-lg ml-[-1rem] absolute pointer-events-none bg-gradient-to-r from-gray-50/0 via-gray-50/10 to-gray-50/60 dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50">
                 <CaretRightIcon className="h-10 w-10 absolute right-2 top-1/2 transform -translate-y-1/2" /> 
             </div>
             { (recommended ? posts.slice(0, 3) : posts).map((post, index) => (
