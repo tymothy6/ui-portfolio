@@ -43,10 +43,10 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
             description: projectItem.overview,
             images: [
                 {
-                    url: projectItem.thumbnail?.src ?? "",
-                    width: projectItem.thumbnail?.width ?? 800,
-                    height: projectItem.thumbnail?.height ?? 600,
-                    alt: projectItem.thumbnail?.alt ?? "",
+                    url: projectItem.thumbnail!.src ?? "",
+                    width: projectItem.thumbnail!.width ?? 800,
+                    height: projectItem.thumbnail!.height ?? 600,
+                    alt: projectItem.thumbnail!.alt ?? "",
                     type: "image/png",
                 },
             ],
