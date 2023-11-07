@@ -25,6 +25,7 @@ import {
     NavigationMenuTrigger,
     gradientNavigationMenuTriggerStyle,
     footerNavigationMenuTriggerStyle,
+    navigationMenuTriggerStyle,
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
@@ -100,6 +101,7 @@ const blog : { title: string; href: string; description:string }[] = [
 ]
 
 export function PageHeader() {
+    const [isContactHovered, setIsContactHovered] = React.useState(false);
     const context = React.useContext(ScrollContext)
     const { scrollProgress = 0 } = context ?? {}
 
@@ -222,12 +224,23 @@ export function PageHeader() {
                         </NavigationMenuItem>
                         <NavigationMenuItem>
                             <Link href="/#contact" legacyBehavior passHref>
-                                <NavigationMenuLink className={gradientNavigationMenuTriggerStyle()}>
-                                Contact
-                                </NavigationMenuLink>
+                            <div 
+                            className="relative p-[1px] rounded-md overflow-hidden bg-clip-padding cursor-pointer">
+                                <div 
+                                style={{
+                                    opacity: isContactHovered ? '100' : '0',
+                                    transition: 'opacity 200ms ease-out',
+                                }}
+                                className="absolute inset-0 bg-gradient-to-r from-violet-400 dark:from-violet-600 via-purple-400 dark:via-purple-600 to-blue-400 dark:to-blue-500 animate-gradient-xy -z-10"></div>
+                                    <NavigationMenuLink 
+                                    onMouseEnter={() => setIsContactHovered(true)}
+                                    onMouseLeave={() => setIsContactHovered(false)}
+                                    className={navigationMenuTriggerStyle()}>
+                                    Contact
+                                    </NavigationMenuLink>
+                                </div>
                             </Link>
                         </NavigationMenuItem>
-                        
                     </NavigationMenuList>
                 </NavigationMenu>
                 </div>

@@ -83,6 +83,14 @@ module.exports = {
             "background-position": "right center"
           }
         },
+        "slide-gradient": {
+          "0%": {
+            "background-position": "0% 0%",
+          },
+          "100%": {
+            "background-position": "100% 100%",
+          }
+        },
         "card-translate-y": {
           "0%": {
             "transform": "translateY(0)",
@@ -117,6 +125,7 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "gradient-xy": "gradient-xy 5s ease infinite",
         "gradient-xy-delay": "gradient-xy 10s ease infinite",
+        "slide-gradient": "slide-gradient 3s linear infinite",
         "card-translate-y": "card-translate-y 0.2s forwards",
         "card-bounce": "card-bounce 1s infinite",
         "scrollMarquee": "scrollMarquee 30s linear infinite",

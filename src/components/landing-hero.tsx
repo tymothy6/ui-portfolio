@@ -822,10 +822,10 @@ export function ResumeHero () {
 export function BlogHero () {
     return (
         <div className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
-                <h1 className="text-5xl md:text-6xl font-semibold mb-8">Design Blog</h1>
-                <div className="flex flex-col justify-start w-full">
+                <h1 className="text-5xl md:text-6xl font-semibold mb-8 z-[3]">Design Blog</h1>
+                <div className="flex flex-col justify-start w-full z-[3]">
                     <p className="text-xl lg:text-2xl text-foreground font-medium text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
-                    <div>
+                    <div className="z-[3]">
                         <Button variant="gradient" size="default" className="md:w-36" asChild>
                             <Link href="/#contact">
                             <span className="text-base font-medium">Contact me</span>
