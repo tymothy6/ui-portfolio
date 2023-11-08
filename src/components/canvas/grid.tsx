@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes"
 import React, { useRef, useState, useEffect } from "react"
 import { Canvas, useFrame, extend } from "@react-three/fiber"
-import { Mesh, Vector2, Vector3 } from "three"
+import { Mesh, Vector3 } from "three"
 import { Line } from "@react-three/drei"
 import { PlaneGeometry, BufferGeometry, BufferAttribute, LineSegments, MeshBasicMaterial } from "three"
 extend({ PlaneGeometry, BufferGeometry, BufferAttribute, LineSegments, MeshBasicMaterial })
@@ -77,6 +77,7 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
   };
 
   const GridPattern = () => {
+    
     const [gridSize, setGridSize] = useState(48);
     const [activeAnimation, setActiveAnimation] = useState<{i: number, j: number} | null>(null);
     const spacing = 0.5;
@@ -90,9 +91,11 @@ const Square: React.FC<SquareProps> = ({ position, opacity = 0.1, cellSize = 0.5
             if (window.matchMedia("(max-width: 768px)").matches) {
                 setGridSize(24);
             } else if (window.matchMedia("(max-width: 1024px)").matches) {
-                setGridSize(36);
-            } else {
+                setGridSize(32);
+            } else if (window.matchMedia("(max-width: 1920px)").matches) {
                 setGridSize(48);
+            } else {
+                setGridSize(24);
             }
         }
         handleResize();

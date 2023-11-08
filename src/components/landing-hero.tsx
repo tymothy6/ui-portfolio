@@ -6,6 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
+import { useToast } from "@/components/ui/use-toast"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { shadesOfPurple } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 
 import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
 
@@ -37,6 +41,7 @@ import {
 } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
 import StarsCanvas from "@/components/canvas/stars"
+import { StyleNavigation } from "@/components/doc-sidebar"
   
 
 interface HomeProps {
@@ -141,9 +146,10 @@ export function LicenseHero () {
                         </Link>
                     </Button>
                 </div>
-                <StarsCanvas />
+              
             </div>
-            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
+            <div className="w-full border-t-[1px]" />
+            <div className="flex flex-col gap-8 md:px-8 pt-32 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
                     
                     <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
                         <div className="flex flex-col gap-4">
@@ -271,26 +277,74 @@ export function LicenseHero () {
 }
 
 export function StyleHero () {
-    const areaRef = React.useRef<HTMLTextAreaElement>(null)
+    const { toast } = useToast()
+    const areaRef = React.useRef<HTMLDivElement>(null)
+    const bgExampleRef = React.useRef<HTMLDivElement>(null)
+    const buttonExampleRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
-        const textArea = areaRef.current
-        if (textArea) {
-            textArea.style.height = "auto"
-            const percentHeight = textArea.scrollHeight / 2;
-            textArea.style.height = `${percentHeight}px`
+        const codeContainer = areaRef.current
+        if (codeContainer) {
+            codeContainer.style.height = "auto"
+            const percentHeight = codeContainer.scrollHeight / 2;
+            codeContainer.style.height = `${percentHeight}px`
         }
     }, [])
 
-    async function handleCopy() {
-        if (areaRef.current !== null) {
-          const text = areaRef.current.value;
-          await navigator.clipboard.writeText(text);
+    const copyUrl = async (id: string) => {
+        try {
+            const urlToCopy = `${window.location.href.split('#')[0]}#${id}`;
+            await navigator.clipboard.writeText(urlToCopy);
+            toast({
+                title:"Done!",
+                description: "URL copied to your clipboard.",
+            });
+        } catch (err) {
+            toast({
+                title:"Error",
+                description: "Something went wrong. Please try again later.",
+            });
+        }  
+    }
+    
+
+    async function handleCopy(ref: React.RefObject<HTMLDivElement>) {
+        if (ref.current) {
+            // Use innerText or textContent to get the content of the div
+            const text = ref.current.innerText || ref.current.textContent!;
+            await navigator.clipboard.writeText(text);
+            toast({
+                title: "Done!",
+                description: "Code snippet has been copied to your clipboard.",
+            });
         } else {
-          console.error('Textarea ref is null');
+            console.error('Reference to code container is null');
+            toast({
+                title: "Error",
+                description: "Failed to copy the code. Please try again later.",
+            });
         }
     }
     
+    const copyColours = async (text: string) => {
+        try {
+          await navigator.clipboard.writeText(text);
+         
+          toast({
+            title: "Done!",
+            description: "Colour copied to clipboard 🌈",
+            
+          });
+        } catch (error) {
+       
+          toast({
+            title: "Error",
+            description: "Failed to copy colour. Please try again later.",
+           
+          })
+        }
+      }
+
     const { resolvedTheme } = useTheme() // use this hook to get the current theme
 
     const bgExample = `--primary: 263.4 70% 50.4%;
@@ -603,6 +657,7 @@ export function StyleHero () {
         }
       }
 
+
     return (
         <div>
             <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
@@ -616,16 +671,26 @@ export function StyleHero () {
                             </Link>
                         </Button>
                     </div>
-                <StarsCanvas />
+               
             </div>
-            <div className="flex flex-col gap-8 md:px-8 pt-28 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
+            
+            <div className="flex flex-row w-full h-full gap-0 border-t-[1px]">
+                <StyleNavigation />
 
+            <div className="flex flex-col w-full gap-8 pt-24 pb-36 px-8 md:px-24 lg:pl-24 lg:pr-48 xl:pl-40 xl:pr-64">
+               
             <div>
             <h2 className="text-3xl font-semibold mb-4">Themes</h2>
             <Separator />
             </div>
+            <div 
+            id="darkmode" 
+            className="flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
+            onClick={() => copyUrl('darkmode')}>
             <h3 className="text-2xl font-semibold">
-                    Dark mode</h3>
+                    Dark mode <Link2Icon className="inline text-muted-foreground h-6 w-6" /></h3>
+            </div>
+                    
                 
                 <p className="text-lg text-foreground font-regular leading-relaxed">
                 This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
@@ -638,54 +703,64 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
-            <h3 className="text-2xl font-semibold">
-                    CSS variables</h3>
+            <div 
+            id="variables" 
+            className="flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
+            onClick={() => copyUrl('variables')}>
+                <h3 className="text-2xl font-semibold">
+                    CSS variables <Link2Icon className="inline text-muted-foreground h-6 w-6" /></h3>
+            </div>
             <Alert>
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
-                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link>. 
+                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
                         </AlertDescription>
-                    </Alert>
-                <div className="grid w-full gap-4">
+            </Alert>
+                <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your file</span></Label>
-                    <div className="relative">
-                    <Textarea
-                    ref={areaRef}
-                    defaultValue={themes}
-                    wrap="off"
-                    readOnly
-                    id="themes"
-                    className="resize-none overflow-y-scroll bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
-                    />
-                    <Button variant="outline" size="default" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4 lg:right-6">Copy to clipboard
+                    <div className="w-full relative">
+                        <div 
+                        ref={areaRef}
+                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            <SyntaxHighlighter language="css" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }}>
+                                {themes}
+                            </SyntaxHighlighter>
+                        </div>
+                    
+                    <Button variant="outline" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground absolute top-4 right-8">Copy to clipboard
                     <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                     </Button>
-                    </div>
+                </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-semibold my-4">
-                      Semantics
-                </h2>
+                <div>
+                <div 
+                id="semantics" 
+                className="flex flex-row gap-2 w-max items-center my-4 scroll-mt-24 cursor-pointer"
+                onClick={() => copyUrl('semantics')}>
+                <h3 className="text-2xl font-semibold mb-4">
+                      Semantics <Link2Icon className="inline text-muted-foreground h-6 w-6" />
+                </h3>
+                </div>
             
                     <p className="text-lg text-foreground font-regular mb-4">
                         For the following CSS variables:
                     </p>
 
-                <div className="grid w-full gap-4">
+                <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="default"><span className="text-base text-muted-foreground">Primary button colours (dark)</span></Label>
-                    <div className="relative">
-                    <Textarea
-                    defaultValue={bgExample}
-                    wrap="off"
-                    readOnly
-                    id="default"
-                    className="resize-none bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
-                    />
-                    <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
-                    <CopyIcon className="h-[1rem] w-[1rem]" />
-                    </Button>
+                    <div className="w-full relative">
+                    <div
+                        ref={bgExampleRef}
+                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            <SyntaxHighlighter language="css" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }} wrapLines={true}>
+                                {bgExample}
+                            </SyntaxHighlighter>
+                    </div>
+                        <Button variant="outline" size="icon" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground absolute top-4 right-4">
+                            <CopyIcon className="h-[1rem] w-[1rem]" />
+                        </Button>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
                       The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
@@ -697,39 +772,44 @@ export function StyleHero () {
                             The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
                         </AlertDescription>
                     </Alert>
-                    <p className="text-lg text-foreground font-regular leading-relaxed">
-                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
+                    <p className="text-lg text-foreground font-regular leading-relaxed mb-4">
+                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
-                    <div className="relative">
-                    <Textarea
-                    defaultValue={`<Button className="bg-primary text-primary-foreground">Click me</Button>`}
-                    wrap="off"
-                    readOnly
-                    id="divexample"
-                    className="resize-none  bg-gray-50 dark:bg-card/50 font-mono text-sm font-medium p-8"
-                    />
-                    <Button variant="outline" size="icon" onClick={handleCopy} className="text-muted-foreground absolute top-4 right-4">
-                    <CopyIcon className="h-[1rem] w-[1rem]" />
-                    </Button>
+                    <div className="w-full relative">
+                    <div 
+                        ref={buttonExampleRef}
+                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            <SyntaxHighlighter language="jsx" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }} wrapLines={true}>
+                                {`<Button className="bg-primary text-primary-foreground">Click me</Button>`}
+                            </SyntaxHighlighter>
                     </div>
-                    <p className="text-lg text-foreground font-regular">
+                        <Button variant="outline" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground absolute top-4 right-4">
+                            <CopyIcon className="h-[1rem] w-[1rem]" />
+                        </Button>
+                    </div>
+                    <p className="text-lg text-foreground font-regular mt-4">
                         Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
-                    
                 </div>
+                    
                 
-                <h2 className="text-2xl font-semibold mt-4">
-                      Want HEX or RGB colours instead?
-                </h2>
+                <div 
+                id="colourspace" 
+                className="flex flex-row gap-2 w-full md:w-max items-center mt-4 scroll-mt-24 cursor-pointer"
+                onClick={() => copyUrl('colourspace')}>
+                <h3 className="text-2xl font-semibold whitespace-wrap">
+                      Want HEX or RGB colours instead? <Link2Icon className="inline text-muted-foreground h-6 w-6" />
+                </h3>
+                </div>
                 <p className="text-lg text-foreground font-regular">
                 🤓 I thought you&apos;d never ask.
                 </p>
                 <Alert>
-                {resolvedTheme === 'dark' ? <MoonIcon className="h-4 w-4" /> : <SunIcon className="h-4 w-4" />}
-                    <AlertTitle className="font-semibold">Tip</AlertTitle>
+                <InfoCircledIcon className="h-4 w-4" />
+                    <AlertTitle className="font-semibold">Tips</AlertTitle>
                         <AlertDescription className="text-base">
-                            Toggle between light and dark themes in the header to see the relevant colours.
+                        Click a table cell to copy the value to your clipboard. Toggle between light and dark themes in the header to see the relevant colours.
                         </AlertDescription>
                     </Alert>
                 <Table>
@@ -748,24 +828,30 @@ export function StyleHero () {
                         <TableRow key={colour.name}>
                             <TableCell><div className={`${getBgClass(colour.name)} h-[1.1rem] w-[1.1rem] rounded-sm border border-slate-300 dark:border-slate-700`}  /></TableCell>
                             <TableCell className="font-medium font-mono">{colour.name}</TableCell>
-                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
-                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
-                            <TableCell className="font-mono">{resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight}</TableCell>
+                            <TableCell className="font-mono cursor-pointer"
+                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight)}>{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
+                            <TableCell className="font-mono cursor-pointer"
+                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight)}>{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
+                            <TableCell className="font-mono cursor-pointer"
+                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight)}>{resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
                 </Table>
                 
-
-            </div>
-            
-            <div className="flex flex-col gap-8 md:px-8 pb-48 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
-            <div>
+                
+            <div className="pt-16">
             <h2 className="text-3xl font-semibold mb-4">Components</h2>
             <Separator />
             </div>
+            <div 
+            id="radix" 
+            className="flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
+            onClick={() => copyUrl('radix')}>
                 <h3 className="text-2xl font-semibold">
-                    Radix UI Primitives</h3>
+                    Radix Primitives</h3>
+                    <Link2Icon className="text-muted-foreground h-6 w-6" />
+            </div>
                 
                 <p className="text-lg text-foreground font-regular">
                 Detailed styles for customized Radix UI components coming soon!
@@ -778,8 +864,14 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
+                <div 
+                id="shadcnui" 
+                className="flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
+                onClick={() => copyUrl('shadcnui')}>
                 <h3 className="text-2xl font-semibold">
                     shadcn/ui</h3>
+                    <Link2Icon className="text-muted-foreground h-6 w-6" />
+                </div>
                 
                 <p className="text-lg text-foreground font-regular">
                 Detailed styles for customized shadcn/ui components coming soon!
@@ -792,9 +884,11 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
+         
+            
             </div>
 
-
+            </div>
         </div>
     )
 }

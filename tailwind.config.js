@@ -121,8 +121,8 @@ module.exports = {
       },
       animation: {
         "animated-gradient": "animated-gradient 6s ease infinite alternate",
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-down": "accordion-down 300ms cubic-bezier(0.87, 0, 0.13, 1)",
+        "accordion-up": "accordion-up 300ms cubic-bezier(0.87, 0, 0.13, 1)",
         "gradient-xy": "gradient-xy 5s ease infinite",
         "gradient-xy-delay": "gradient-xy 10s ease infinite",
         "slide-gradient": "slide-gradient 3s linear infinite",

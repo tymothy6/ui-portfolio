@@ -21,6 +21,7 @@ export default function Home() {
     className="flex flex-col bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
       <PageHeader />
       <HeroWrapper id="home" />
+      <div className="w-full border-t-[1px]" />
       <ProjectGrid id="work" />
       <AboutPage id="about" />
       <div className="relative my-12">
