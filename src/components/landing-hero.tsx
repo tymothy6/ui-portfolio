@@ -718,7 +718,7 @@ export function StyleHero () {
                         </AlertDescription>
             </Alert>
                 <div className="flex flex-col w-full gap-4">
-                    <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your file</span></Label>
+                    <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your code</span></Label>
                     <div className="w-full relative">
                         <div 
                         ref={areaRef}
