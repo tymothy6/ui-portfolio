@@ -776,7 +776,7 @@ export function StyleHero () {
                     The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
 
-                    <Tabs defaultValue="Preview" className="w-full">
+                    <Tabs defaultValue="preview" className="w-full">
                     <TabsList>
                         <TabsTrigger value="preview">Preview</TabsTrigger>
                         <TabsTrigger value="code">Code</TabsTrigger>
