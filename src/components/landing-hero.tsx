@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
 import { useToast } from "@/components/ui/use-toast"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { shadesOfPurple } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
     Alert,
     AlertTitle,
@@ -722,8 +722,8 @@ export function StyleHero () {
                     <div className="w-full relative">
                         <div 
                         ref={areaRef}
-                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
-                            <SyntaxHighlighter language="css" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }}>
+                        className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }}>
                                 {themes}
                             </SyntaxHighlighter>
                         </div>
@@ -753,8 +753,8 @@ export function StyleHero () {
                     <div className="w-full relative">
                     <div
                         ref={bgExampleRef}
-                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
-                            <SyntaxHighlighter language="css" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }} wrapLines={true}>
+                        className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} wrapLines={true}>
                                 {bgExample}
                             </SyntaxHighlighter>
                     </div>
@@ -775,24 +775,46 @@ export function StyleHero () {
                     <p className="text-lg text-foreground font-regular leading-relaxed mb-4">
                     The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
+
+                    <Tabs defaultValue="Preview" className="w-full">
+                    <TabsList>
+                        <TabsTrigger value="preview">Preview</TabsTrigger>
+                        <TabsTrigger value="code">Code</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="preview">
+                            <div className="flex grow items-center justify-center w-full h-full bg-card/50 border border-accent rounded-md p-16">
+                                <Button className="bg-primary text-primary-foreground">Click me</Button>
+                            </div>
+                    </TabsContent>
+                    <TabsContent value="code">
                     <div className="w-full relative">
-                    <div 
-                        ref={buttonExampleRef}
-                        className="w-full overflow-y-auto overflow-x-auto bg-stone-100 dark:bg-card/50 border border-accent rounded-md font-mono text-sm font-medium p-8">
-                            <SyntaxHighlighter language="jsx" style={shadesOfPurple} customStyle={{ backgroundColor: 'transparent' }} wrapLines={true}>
-                                {`<Button className="bg-primary text-primary-foreground">Click me</Button>`}
-                            </SyntaxHighlighter>
+                        <div 
+                            ref={buttonExampleRef}
+                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                                <SyntaxHighlighter language="jsx" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} showLineNumbers={true}>
+                                    {`import { Button } from "@/components/ui/button"
+
+export function Button() {
+    return <Button 
+    className="bg-primary text-primary-foreground"
+    >Click me</Button>
+}`}
+                                </SyntaxHighlighter>
+                        </div>
+                            <Button variant="outline" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground absolute top-4 right-4">
+                                <CopyIcon className="h-[1rem] w-[1rem]" />
+                            </Button>
                     </div>
-                        <Button variant="outline" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground absolute top-4 right-4">
-                            <CopyIcon className="h-[1rem] w-[1rem]" />
-                        </Button>
-                    </div>
+                    </TabsContent>
+                    </Tabs>
+
                     <p className="text-lg text-foreground font-regular mt-4">
                         Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
                 </div>
-                    
+                
+            
                 
                 <div 
                 id="colourspace" 
