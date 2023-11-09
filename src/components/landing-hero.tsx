@@ -11,7 +11,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
-import { LinkedInLogoIcon, GitHubLogoIcon, InfoCircledIcon, CopyIcon, SunIcon, MoonIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
+import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -302,7 +302,7 @@ export function StyleHero () {
         } catch (err) {
             toast({
                 title:"Error",
-                description: "Something went wrong. Please try again later.",
+                description: "Something went wrong. Ctrl/Cmd+C.",
             });
         }  
     }
@@ -315,13 +315,13 @@ export function StyleHero () {
             await navigator.clipboard.writeText(text);
             toast({
                 title: "Done!",
-                description: "Code snippet has been copied to your clipboard.",
+                description: "Code snippet copied to your clipboard.",
             });
         } else {
             console.error('Reference to code container is null');
             toast({
                 title: "Error",
-                description: "Failed to copy the code. Please try again later.",
+                description: "Something went wrong. Ctrl/Cmd+C.",
             });
         }
     }
@@ -662,14 +662,21 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-medium">globals.css</code> file of your codebase. Please note that you&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box.</p>
-                    <div className="md:pl-8 z-[3]">
+                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Otherwise, I&apos;ve included granular tokens you can use for your own components.</p>
+                    <div className="flex flex-row gap-4 md:pl-8 z-[3]">
+                        <Button variant="gradient" size="default" asChild>
+                            <Link href="https://nextjs.org/docs">
+                            <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-base font-medium">Install Next.js</span>
+                            </Link>
+                        </Button>
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                             <span className="text-base font-medium">Install shadcn/ui</span>
                             </Link>
                         </Button>
+                        
                     </div>
                
             </div>
@@ -714,24 +721,34 @@ export function StyleHero () {
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
-                            CSS variables are defined without the <code className="relative rounded bg-muted px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
+                            CSS variables are defined without the <code className="relative rounded bg-white dark:bg-slate-700 px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
                         </AlertDescription>
             </Alert>
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your code</span></Label>
-                    <div className="w-full relative">
+
+                    <div className="flex flex-col gap-0 w-full relative">
+                    <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
+                            <div className="flex flex-row items-center gap-2 px-4 py-2">
+                            styles
+                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
+                            </div>
+                            <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
+                            Copy code
+                            <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
+                            </Button>
+                        </div>
                         <div 
                         ref={areaRef}
-                        className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                        className="relative w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
+                            
                             <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }}>
                                 {themes}
                             </SyntaxHighlighter>
+                            
                         </div>
-                    
-                    <Button variant="outline" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground absolute top-4 right-8">Copy to clipboard
-                    <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
-                    </Button>
-                </div>
+                     </div>
+
                 </div>
 
                 <div>
@@ -750,17 +767,24 @@ export function StyleHero () {
 
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="default"><span className="text-base text-muted-foreground">Primary button colours (dark)</span></Label>
-                    <div className="w-full relative">
-                    <div
-                        ref={bgExampleRef}
-                        className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
-                            <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} wrapLines={true}>
-                                {bgExample}
-                            </SyntaxHighlighter>
-                    </div>
-                        <Button variant="outline" size="icon" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground absolute top-4 right-4">
-                            <CopyIcon className="h-[1rem] w-[1rem]" />
-                        </Button>
+                    <div className="flex flex-col gap-0 w-full">
+                    <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
+                            <div className="flex flex-row items-center gap-2 px-4 py-2">
+                            button-primary
+                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
+                            </div>
+                            <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                                <CopyIcon className="h-[1rem] w-[1rem]" />
+                            </Button>
+                        </div>
+                        
+                        <div
+                            ref={bgExampleRef}
+                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
+                                <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} wrapLines={true}>
+                                    {bgExample}
+                                </SyntaxHighlighter>
+                        </div>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
                       The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
@@ -769,15 +793,15 @@ export function StyleHero () {
                         <InfoCircledIcon className="h-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
-                            The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background color of the component.
+                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background colour of the component.
                         </AlertDescription>
                     </Alert>
                     <p className="text-lg text-foreground font-regular leading-relaxed mb-4">
-                    The background color of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground color will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
+                    The background colour of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground colour will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
                     </p>
 
                     <Tabs defaultValue="preview" className="w-full">
-                    <TabsList>
+                    <TabsList className="mb-2">
                         <TabsTrigger value="preview">Preview</TabsTrigger>
                         <TabsTrigger value="code">Code</TabsTrigger>
                     </TabsList>
@@ -787,24 +811,36 @@ export function StyleHero () {
                             </div>
                     </TabsContent>
                     <TabsContent value="code">
-                    <div className="w-full relative">
+
+                    <div className="flex flex-col gap-0 w-full">
+                        <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
+                            <div className="flex flex-row items-center gap-2 px-4 py-2">
+                            button-demo
+                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">jsx</div>
+                            </div>
+                            <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                                <CopyIcon className="h-[1rem] w-[1rem]" />
+                            </Button>
+                        </div>
                         <div 
                             ref={buttonExampleRef}
-                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-md font-mono text-sm font-medium p-8">
+                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
                                 <SyntaxHighlighter language="jsx" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} showLineNumbers={true}>
                                     {`import { Button } from "@/components/ui/button"
 
-export function Button() {
+export function ClickMeButton() {
     return <Button 
     className="bg-primary text-primary-foreground"
     >Click me</Button>
 }`}
                                 </SyntaxHighlighter>
+                                
                         </div>
-                            <Button variant="outline" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground absolute top-4 right-4">
-                                <CopyIcon className="h-[1rem] w-[1rem]" />
-                            </Button>
+
+                        
+                           
                     </div>
+
                     </TabsContent>
                     </Tabs>
 
