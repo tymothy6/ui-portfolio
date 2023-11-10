@@ -302,7 +302,7 @@ export function StyleHero () {
         } catch (err) {
             toast({
                 title:"Error",
-                description: "Something went wrong. Ctrl/Cmd+C.",
+                description: "Something went wrong. Ctrl/Cmd+C will have to do for now.",
             });
         }  
     }
@@ -321,7 +321,7 @@ export function StyleHero () {
             console.error('Reference to code container is null');
             toast({
                 title: "Error",
-                description: "Something went wrong. Ctrl/Cmd+C.",
+                description: "Something went wrong. Ctrl/Cmd+C will have to do for now.",
             });
         }
     }
@@ -734,7 +734,7 @@ export function StyleHero () {
                             <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
                             </div>
                             <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
-                            Copy code
+                            Copy
                             <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                             </Button>
                         </div>

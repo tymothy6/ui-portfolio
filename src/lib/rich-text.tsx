@@ -4,9 +4,13 @@ import * as React from "react"
 import { Document as RichTextDocument, BLOCKS, MARKS, INLINES, Block, Inline } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { FigmaEmbed } from "@/components/figma-embed"
+import { RichCodeBlock } from "@/components/rich-code-block"
 import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
 import { usePathname } from "next/navigation"
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { InfoCircledIcon } from "@radix-ui/react-icons"
 
 type RichTextProps = {
     document: RichTextDocument | null
@@ -47,14 +51,14 @@ export default function RichText({ document }: RichTextProps) {
         renderNode: {
             [BLOCKS.HEADING_1]: (node: Block | Inline, children: React.ReactNode) => <h1 className="text-2xl md:text-3xl font-semibold mb-4 mx-8">{children}</h1>,
             [BLOCKS.HEADING_2]: (node: Block | Inline, children: React.ReactNode) => <h2 className="text-xl md:text-2xl font-semibold mx-8">{children}</h2>,
-            [BLOCKS.HEADING_3]: (node: Block | Inline, children: React.ReactNode) => <h3>{children}</h3>,
+            [BLOCKS.HEADING_3]: (node: Block | Inline, children: React.ReactNode) => <h3 className="text-xl md:text-2xl font-medium mx-8">{children}</h3>,
             [BLOCKS.HEADING_4]: (node: Block | Inline, children: React.ReactNode) => <h4>{children}</h4>,
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
             [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6">{children}</h6>,
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8">{children}</p>,
-            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside list-decimal">{children}</ol>,
-            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 p-8 md:p-12 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-2 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
+            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-decimal">{children}</ol>,
+            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-disc">{children}</ol>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 px-8 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-4 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (
@@ -67,13 +71,49 @@ export default function RichText({ document }: RichTextProps) {
                 )
             },
             [BLOCKS.EMBEDDED_ENTRY]: (node: Block | Inline) => {
-                const figmaUrl = node.data.target.fields.figmaUrl
-                return <FigmaEmbed figmaUrl={figmaUrl} />
+                const contentType = node.data.target.sys.contentType.sys.id;
+            
+                switch (contentType) {
+                    case 'embed':
+                    if (node.data.target.fields.figmaUrl) {
+                        const figmaUrl = node.data.target.fields.figmaUrl;
+                        return <FigmaEmbed figmaUrl={figmaUrl} />;
+                    }
+                    break;
+                    case 'codeBlock':
+                        const title = node.data.target.fields.title;
+                        const code = node.data.target.fields.code;
+                        const lang = node.data.target.fields.language;
+                        const lineNumber = node.data.target.fields.lineNumber;
+                        return (
+                        <div className="px-8 mb-8">
+                            <RichCodeBlock title={title} code={code} lang={lang} lineNumber={lineNumber}/>
+                        </div>
+                        )
+
+                    case 'alert':
+                        const alertTitle = node.data.target.fields.title;
+                        const alertDescription = node.data.target.fields.description;
+                        return (
+                            <div className="px-8">
+                            <Alert className="mb-8">
+                                <InfoCircledIcon className="h-4 w-4" />
+                                <AlertTitle className="font-semibold font-sans">{alertTitle}</AlertTitle>
+                                <AlertDescription className="text-base font-sans">{alertDescription}</AlertDescription>
+                            </Alert>
+                            </div>
+                        )
+
+                    default:
+                        return <div> Unsupported content type</div>;
+                }
+                
             },
             [INLINES.HYPERLINK]: (node: Block | Inline, children: React.ReactNode) => <a href={node.data.uri} className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">{children}</a>,
         },
         renderMark: {
             [MARKS.BOLD]: (text: React.ReactNode) => <span className="font-semibold">{text}</span>,
+            [MARKS.CODE]: (text: React.ReactNode) => <code className="bg-gray-100 dark:bg-card/90 py-1 px-2 text-base rounded-md text-teal-600 dark:text-teal-400">{text}</code>,
         },
         
     }
