@@ -5,7 +5,6 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
 import { useRouter, usePathname } from "next/navigation"
-import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
@@ -23,7 +22,6 @@ import {
     NavigationMenuList,
     NavigationMenuListVert,
     NavigationMenuTrigger,
-    gradientNavigationMenuTriggerStyle,
     footerNavigationMenuTriggerStyle,
     navigationMenuTriggerStyle,
   } from "@/components/ui/navigation-menu"
@@ -141,7 +139,7 @@ export function PageHeader() {
     const borderColor = "rgba(250, 250, 250, 0.1)"
 
     return (
-        <div ref={menuRef} className={`backdrop-blur-md ${isMenuOpen ? 'bg-background/90 dark:bg-background/90' : 'bg-background/50 dark:bg-background/50'} fixed top-0 w-full z-[49]`}
+        <div ref={menuRef} className={`backdrop-blur-md ${isMenuOpen ? 'bg-background/90 dark:bg-background/90' : 'bg-background/50 dark:bg-background/60'} fixed top-0 w-full z-[49]`}
         style={{
             borderBottomColor: isMenuOpen ? 'transparent' : borderColor,
             borderBottomWidth: isMenuOpen ? '0px' : '1px',
