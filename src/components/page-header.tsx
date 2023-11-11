@@ -107,6 +107,7 @@ export function PageHeader() {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
     const menuRef = React.useRef<HTMLDivElement>(null)
+    
 
     const handleClick = (event: Event) => {
         if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -146,7 +147,11 @@ export function PageHeader() {
             borderBottomWidth: isMenuOpen ? '0px' : '1px',
             borderBottomStyle: isMenuOpen ? 'none' : 'solid'
           }}>
-            <div className="flex justify-between items-center pl-8 pr-4 md:px-8 py-4">
+            <ProgressBar
+            progress={scrollProgress}
+            className="block md:hidden"
+            />
+            <div className="flex justify-between items-center pl-8 pr-4 md:px-8 py-2 md:py-4">
                 <Link href="/#home" className="rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4" 
                 onClick={(e) => {
                     if (isMenuOpen) {
@@ -254,18 +259,14 @@ export function PageHeader() {
                         setIsMenuOpen(!isMenuOpen);
                     }}
                     className="text-slate-800 dark:text-slate-300 hover:text-foreground hover:dark:text-foreground">
-                        {isMenuOpen ? <span className="mr-2 text-base">Close</span> : <span className="mr-2 text-base">Menu</span>}
+                        {isMenuOpen ? <span className="mr-2 text-sm">Close</span> : <span className="mr-2 text-sm">Menu</span>}
             
-                        {isMenuOpen ? <Cross1Icon className="w-5 h-5" /> : <HamburgerMenuIcon className="w-5 h-5" />}
+                        {isMenuOpen ? <Cross1Icon className="w-4 h-4" /> : <HamburgerMenuIcon className="w-4 h-4" />}
                         
                     </Button>
                 </div>
             </div>
         </div>
-        <ProgressBar
-        progress={scrollProgress}
-        className="block md:hidden"
-        />
         
         <motion.div
                 ref={menuRef} // mobile menu

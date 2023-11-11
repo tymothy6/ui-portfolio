@@ -113,7 +113,7 @@ export default function RichText({ document }: RichTextProps) {
         },
         renderMark: {
             [MARKS.BOLD]: (text: React.ReactNode) => <span className="font-semibold">{text}</span>,
-            [MARKS.CODE]: (text: React.ReactNode) => <code className="bg-gray-100 dark:bg-card/90 py-1 px-2 text-base rounded-md text-teal-600 dark:text-teal-400">{text}</code>,
+            [MARKS.CODE]: (text: React.ReactNode) => <code className="bg-gray-100/50 dark:bg-card/90 py-1 px-2 text-base rounded-md text-teal-600 dark:text-teal-400">{text}</code>,
         },
         
     }
