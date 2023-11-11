@@ -17,7 +17,7 @@ const buttonVariants = cva(
         outlineinverse:
           "border border-input bg-accent hover:bg-background hover:text-accent-foreground dark:hover:text-accent-foreground",
         outlinebg60:
-          "border-0 md:border md:border-input bg-background/0 hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
+          "border-0 bg-background/0 hover:bg-accent hover:text-accent-foreground dark:hover:text-accent-foreground",
         secondary:
           "border border-input bg-secondary text-secondary-foreground hover:bg-secondary/50 hover:border-primary",
         secondaryblog:
@@ -25,7 +25,7 @@ const buttonVariants = cva(
         ghost: "text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground",
         ghostnobg: "text-slate-800 dark:text-slate-300 hover:text-accent-foreground dark:hover:text-accent-foreground",
         link: "text-foreground decoration-primary decoration-2 underline-offset-4 hover:underline",
-        gradient: "bg-gradient-to-br from-primary to-indigo-600 text-primary-foreground hover:from-primary/80 hover:to-blue-500/90 hover:animate-gradient-xy active:from-primary/90 active:to-pink-500/90 active:animate-gradient-xy",
+        gradient: "bg-gradient-to-br from-primary to-indigo-600 text-primary-foreground hover:from-indigo-600/80 hover:to-teal-500/90 hover:animate-gradient-xy active:from-primary/90 active:to-pink-500/90 active:animate-gradient-xy",
       },
       size: {
         default: "h-10 px-4 py-2",
