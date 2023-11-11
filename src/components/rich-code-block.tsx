@@ -40,7 +40,7 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
                     {title}
                 <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">{lang}</div>
                 </div>
-                <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
+                <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
                 Copy
                 <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                 </Button>
