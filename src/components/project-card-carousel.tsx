@@ -22,7 +22,7 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
         if (carousel && overlay) {
             const firstCard = carousel.children[0] as HTMLDivElement;
             if (firstCard) {
-                const scrollPercentage = carousel.scrollLeft / firstCard.clientWidth;
+                const scrollPercentage = ( carousel.scrollLeft / firstCard.clientWidth ) / 0.25;
                 const opacity = 1 - Math.min(scrollPercentage, 1);  
                 overlay.style.opacity = opacity.toString();
             }
@@ -57,7 +57,7 @@ export function ProjectCardCarousel ({ projects, recommended, noHover } :  { pro
             <div 
             id="start-overlay" 
             ref={overlayRef} 
-            className="block md:hidden w-[85vw] ml-[-1rem] rounded-r-lg absolute pointer-events-none bg-gradient-to-r from-gray-50/0 from-60% via-gray-50/10 via-80% to-gray-50/60 to-100% dark:from-slate-950/0 dark:via-slate-950/10 dark:to-slate-950/60 z-[2] text-foreground dark:text-gray-50"
+            className="block md:hidden w-[85vw] ml-[-1rem] rounded-r-lg absolute pointer-events-none bg-gradient-to-r from-gray-50/0 to-gray-50/50 dark:from-slate-950/0 from-60% dark:to-slate-950/50 to-100% z-[2] text-foreground dark:text-gray-50"
             style={{ height: overlayHeight }} // set the height of the starting overlay to the height of the first card
             > 
                 <CaretRightIcon className="h-10 w-10 absolute right-0 top-1/2 transform -translate-y-1/2" /> 
