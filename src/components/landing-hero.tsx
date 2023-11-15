@@ -978,7 +978,7 @@ export function BlogHero () {
                 <div className="flex flex-col justify-start w-full z-[3]">
                     <p className="text-xl lg:text-2xl text-foreground font-medium text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
                     <div className="z-[3]">
-                        <Button variant="gradient" size="default" className="md:w-36" asChild>
+                        <Button variant="gradient" size="default" asChild>
                             <Link href="/#contact">
                             <span className="text-base font-medium">Contact me</span>
                             </Link>

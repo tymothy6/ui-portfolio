@@ -7,6 +7,7 @@ import RichText from "@/lib/rich-text"
 import { ArrowLeftIcon } from "@radix-ui/react-icons"
 
 import { PageHeader } from "@/components/page-header"
+import { SearchWrapper } from "@/components/search-wrapper"
 import { Separator } from "@/components/ui/separator"
 import { CardCarousel } from "@/components/blog-card-carousel"
 import { PageFooter } from "@/components/page-footer"
@@ -75,7 +76,9 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
 
     return(
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
-            <PageHeader />
+            <PageHeader>
+                <SearchWrapper />
+            </PageHeader>
             <div>
             <img
                 src={data.thumbnail?.src}

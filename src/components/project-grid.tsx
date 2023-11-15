@@ -1,4 +1,3 @@
-import * as React from "react"
 import { fetchAllProjects } from "@/lib/projects"
 import { ProjectCard } from "@/components/project-card"
 
@@ -16,13 +15,13 @@ export async function ProjectGrid ({ id }: HomeProps) {
                 <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400 font-mono">· 2022 - Present</p>
             </div>
             <div className="flex flex-col w-full md:grid md:grid-cols-6 md:gap-x-8 gap-y-8">
-                {projects.map((project) => {
-                    return(
-                        <div key={project.slug} className="h-max col-span-3">
-                            <ProjectCard data={project} isFirstChild={true} noTilt={false} />
-                        </div>
-                    )
-                })}
+                    {projects.map((project) => {
+                        return(
+                            <div key={project.slug} className="h-max col-span-3">
+                                <ProjectCard data={project} isFirstChild={true} noTilt={false} />
+                            </div>
+                        )
+                    })}
             </div>
         </div>
     )

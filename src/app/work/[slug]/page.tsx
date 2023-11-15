@@ -6,6 +6,7 @@ import { fetchProject, fetchAllProjects } from "@/lib/projects"
 import RichText from "@/lib/rich-text"
 
 import { PageHeader } from "@/components/page-header"
+import { SearchWrapper } from "@/components/search-wrapper"
 import { Separator } from "@/components/ui/separator"
 import { ProjectCardCarousel } from "@/components/project-card-carousel"
 import { PageFooter } from "@/components/page-footer"
@@ -70,9 +71,11 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
 
     return(
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
-            <PageHeader />
+            <PageHeader>
+                <SearchWrapper />
+            </PageHeader>
             <div>
-            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
+            <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-16 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8">{data.name}</h1>
                 <div className="flex flex-col justify-start">
                     <p className="text-lg md:text-xl text-foreground font-regular leading-relaxed tracking-wide md:leading-relaxed md:tracking-wide mb-12">

@@ -42,9 +42,9 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
                 <>
             <CardImageHeader>
                 <img
-                src={data.thumbnail ? data.thumbnail.src : undefined}
-                alt={data.thumbnail ? data.thumbnail.alt : ''}
-                className="rounded-t-lg object-cover" />
+                    src={data.thumbnail ? data.thumbnail.src : undefined}
+                    alt={data.thumbnail ? data.thumbnail.alt : ''}
+                    className="rounded-t-lg object-cover" />
             </CardImageHeader>
             <CardContent className="flex flex-row justify-between items-start pt-4 h-full">
                 <div className="flex flex-col ${styles.title}">

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import { TagContext } from "@/lib/tag-context"
 import styles from "@/components/modules/blog-card-carousel.module.css"
 
 import { Post } from "@/lib/blog-posts"
@@ -10,6 +11,12 @@ import { BlogPostCard } from "@/components/post-card"
 import { CaretRightIcon } from "@radix-ui/react-icons"
 
 export function CardCarousel ({ posts, recommended } :  { posts: Post[], recommended?: boolean }) {
+    const { selectedTag } = React.useContext(TagContext);
+    const filteredPosts = selectedTag
+        ? posts.filter(post => 
+            post.tags?.some(tag => tag.toLowerCase() === selectedTag.toLowerCase()))
+        : posts; // convert to lowercase to avoid case sensitivity
+
     const carouselRef = React.useRef<HTMLDivElement>(null);
     const overlayRef = React.useRef<HTMLDivElement>(null);
 
@@ -38,7 +45,7 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
             className="block md:hidden h-full w-[85vw] rounded-r-lg ml-[-1rem] absolute pointer-events-none bg-gradient-to-r from-gray-50/0 to-gray-50/50 dark:from-slate-950/0 from-60% dark:to-slate-950/50 to-100% z-[2] text-foreground dark:text-gray-50">
                 <CaretRightIcon className="h-10 w-10 absolute right-0 top-1/2 transform -translate-y-1/2" /> 
             </div>
-            { (recommended ? posts.slice(0, 3) : posts).map((post, index) => (
+            { (recommended ? posts.slice(0, 3) : filteredPosts).map((post, index) => (
                 <div className="flex-shrink-0 w-[85vw] md:w-full" key={post.slug}>
                     <BlogPostCard data={post} isFirstChild={index === 0} />
                 </div>

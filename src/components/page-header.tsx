@@ -98,8 +98,7 @@ const blog : { title: string; href: string; description:string }[] = [
     
 ]
 
-export function PageHeader() {
-    const [isContactHovered, setIsContactHovered] = React.useState(false);
+export function PageHeader({ children }: { children?: React.ReactNode}) {
     const context = React.useContext(ScrollContext)
     const { scrollProgress = 0 } = context ?? {}
 
@@ -150,7 +149,7 @@ export function PageHeader() {
             className="block md:hidden"
             />
             <div className="flex justify-between items-center pl-8 pr-4 md:px-8 py-2 md:py-4">
-                <Link href="/#home" className="rounded-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4" 
+                <Link href="/#home" className="rounded-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4" 
                 onClick={(e) => {
                     if (isMenuOpen) {
                         e.preventDefault();
@@ -228,8 +227,6 @@ export function PageHeader() {
                         <NavigationMenuItem>
                             <Link href="/#contact" legacyBehavior passHref>
                                     <NavigationMenuLink 
-                                    onMouseEnter={() => setIsContactHovered(true)}
-                                    onMouseLeave={() => setIsContactHovered(false)}
                                     className={gradientNavigationMenuTriggerStyle()}>
                                     Contact
                                     </NavigationMenuLink>
@@ -241,6 +238,9 @@ export function PageHeader() {
                 <GitHubContact />
                 <LinkedInContact />
                 <div className="ml-0 md:ml-1"><ModeToggle /></div>
+                    <div className="ml-1 hidden md:block">
+                    {children}
+                    </div>
                 <div className="block md:hidden">
                     <Button 
                     variant="ghost"
