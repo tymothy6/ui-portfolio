@@ -61,7 +61,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
     </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
     
-        <CommandInput className="text-[1rem]" placeholder="Start typing to search..." />
+        <CommandInput className="text-[1rem]" placeholder="Start typing to search..." showEsc={true} />
       
         <div className="relative">
         <CommandList>
@@ -147,7 +147,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
         </CommandList>
         
         <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-background/50 backdrop-blur-lg">
-            <div className="w-max h-max flex py-1 px-2 rounded-md bg-primary border border-accent-muted tracking-wide text-[12px] text-accent-foreground/90 cursor-default">Tim&apos;s Portfolio</div>
+            <div className="w-max h-max flex py-1 px-2 rounded-md bg-primary border tracking-wide text-[12px] text-primary-foreground/90 cursor-default">Tim&apos;s Portfolio</div>
             <div className="flex flex-row items-center gap-2">
             <Button variant="ghost" className="pl-3 pr-2 cursor-default">
                 Open page
