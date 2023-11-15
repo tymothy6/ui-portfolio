@@ -23,7 +23,7 @@ import {
     NavigationMenuListVert,
     NavigationMenuTrigger,
     footerNavigationMenuTriggerStyle,
-    gradientNavigationMenuTriggerStyle,
+    navigationMenuTriggerStyle
   } from "@/components/ui/navigation-menu"
 import {
     Tooltip,
@@ -227,7 +227,7 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                         <NavigationMenuItem>
                             <Link href="/#contact" legacyBehavior passHref>
                                     <NavigationMenuLink 
-                                    className={gradientNavigationMenuTriggerStyle()}>
+                                    className={navigationMenuTriggerStyle()}>
                                     Contact
                                     </NavigationMenuLink>
                             </Link>
