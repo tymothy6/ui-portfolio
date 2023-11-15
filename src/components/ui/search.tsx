@@ -55,7 +55,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
       <p className="text-[15px]">
         Search{" "}
         <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[13px] font-medium text-muted-foreground opacity-100">
-          <span className="text-[15px]">⌘</span>K
+          <span className="text-[13px]">⌘</span>K
         </kbd>
       </p>
     </Button>

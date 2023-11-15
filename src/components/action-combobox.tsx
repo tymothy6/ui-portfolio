@@ -41,7 +41,7 @@ export function ActionCombobox() {
         <PopoverTrigger asChild>
           <Button variant="ghost" className="pl-2 pr-2 justify-start">
             Actions
-            <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">⌘</kbd>
+            <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[12px] font-medium text-muted-foreground opacity-100">⌘</kbd>
             <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[12px] font-medium text-muted-foreground opacity-100">K</kbd>
           </Button>
         </PopoverTrigger>
