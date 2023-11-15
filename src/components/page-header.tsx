@@ -235,12 +235,14 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                     </NavigationMenuList>
                 </NavigationMenu>
                 </div>
-                <GitHubContact />
-                <LinkedInContact />
-                <div className="ml-0 md:ml-1"><ModeToggle /></div>
-                    <div className="ml-1 hidden md:block">
+                <div className="ml-1 hidden md:block">
                     {children}
                     </div>
+                <LinkedInContact />
+                <GitHubContact />
+              
+                <div className="ml-0 md:ml-1"><ModeToggle /></div>
+                
                 <div className="block md:hidden">
                     <Button 
                     variant="ghost"

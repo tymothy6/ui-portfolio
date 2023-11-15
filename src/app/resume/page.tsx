@@ -3,6 +3,7 @@ import * as React from "react"
 import { Metadata } from "next"
 
 import { PageHeader } from "@/components/page-header"
+import { SearchWrapper } from "@/components/search-wrapper"
 import { ResumeHero } from "@/components/landing-hero"
 import { PageFooter } from "@/components/page-footer"
 import { Separator } from "@/components/ui/separator"
@@ -17,7 +18,9 @@ export const metadata: Metadata = {
 export default function Resume () {
     return(
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
-            <PageHeader />
+            <PageHeader>
+                <SearchWrapper />
+            </PageHeader>
             <ResumeHero />
             <div className="w-full border-t-[1px]" />
             <div className="flex flex-col gap-8 md:px-8 pt-24 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">

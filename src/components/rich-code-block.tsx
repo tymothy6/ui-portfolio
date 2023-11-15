@@ -34,7 +34,7 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
     }
 
     return (
-        <div className="flex flex-col gap-0 w-full relative">
+        <div className="flex flex-col gap-0 max-w-4xl mx-auto">
             <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                 <div className="flex flex-row items-center gap-2 px-4 py-2">
                     {title}

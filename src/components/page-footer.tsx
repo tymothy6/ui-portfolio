@@ -136,14 +136,14 @@ export function PageFooter () {
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <Link href="https://www.linkedin.com/in/timng88" legacyBehavior passHref>
+                                    <Link href="https://www.linkedin.com/in/timng88" target="_blank" rel="noopener noreferrer" legacyBehavior passHref>
                                         <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         LinkedIn
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
                                 <NavigationMenuItem>
-                                    <Link href="https://www.github.com/tymothy6" legacyBehavior passHref>
+                                    <Link href="https://www.github.com/tymothy6" target="_blank" rel="noopener noreferrer" legacyBehavior passHref>
                                         <NavigationMenuLink className={footerNavigationMenuTriggerStyle()}>
                                         GitHub
                                         </NavigationMenuLink>

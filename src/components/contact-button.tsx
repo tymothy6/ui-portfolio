@@ -3,14 +3,14 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { GitHubLogoIcon, LinkedInLogoIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
+import { GitHubLogoIcon, LinkedInLogoIcon, FigmaLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 
 export function GitHubContact() {
 
   return (
     <Button variant="ghost" size="icon" asChild>
-        <Link href="https://www.github.com/tymothy6">
+        <Link href="https://www.github.com/tymothy6" target="_blank" rel="noopener noreferrer">
         <GitHubLogoIcon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
         <span className="sr-only">My Github profile</span>
         </Link>
@@ -39,10 +39,35 @@ export function FigmaBadge() {
 export function LinkedInContact() {
     return (
         <Button variant="ghost" size="icon" asChild>
-        <Link href="https://www.linkedin.com/in/timng88">
+        <Link href="https://www.linkedin.com/in/timng88" target="_blank" rel="noopener noreferrer">
         <LinkedInLogoIcon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
         <span className="sr-only">My LinkedIn profile</span>
         </Link>
     </Button>
   )
 }
+
+export function LinkedInShare({url}: {url:string}) {
+  return (
+    <Button variant="ghost" size="icon" asChild>
+        <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}target="_blank" rel="noopener noreferrer">
+        <LinkedInLogoIcon className="h-[0.8rem] w-[0.8rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
+        <span className="sr-only">Share this post on LinkedIn</span>
+        </Link>
+    </Button>
+  )
+}
+
+export function TwitterShare({url}: {url:string}) {
+  return (
+    <Button variant="ghost" size="icon" asChild>
+        <Link href={`https://twitter.com/intent/tweet?url=${url}`} target="_blank" rel="noopener noreferrer">
+        <TwitterLogoIcon className="h-[0.8rem] w-[0.8rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
+        <span className="sr-only">Share this post on Twitter</span>
+        </Link>
+    </Button>
+  )
+}
+
+
+

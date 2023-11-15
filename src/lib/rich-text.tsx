@@ -56,16 +56,16 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.HEADING_5]: (node: Block | Inline, children: React.ReactNode) => <h5>{children}</h5>,
             [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => <h6 className="text-sm font-medium text-center mb-8 mx-6">{children}</h6>,
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8">{children}</p>,
-            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-decimal">{children}</ol>,
-            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-disc">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="mx-12 px-8 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border border-accent rounded-md"><blockquote className="border-l-4 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
+            [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-decimal md:ml-12">{children}</ol>,
+            [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-disc md:ml-12">{children}</ol>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="px-8 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border border-accent rounded-md max-w-3xl mx-auto"><blockquote className="border-l-4 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 return (
                     <div onClick={() => {
                         setLightBoxSource(file.url);
                         setIsLightBoxOpen(true);
-                    }} className="cursor-pointer">
+                    }} className="cursor-pointer md:max-w-4xl mx-auto">
                         <img alt={title} src={file.url} className="md:rounded-lg" />
                     </div>
                 )
@@ -95,7 +95,7 @@ export default function RichText({ document }: RichTextProps) {
                         const alertTitle = node.data.target.fields.title;
                         const alertDescription = node.data.target.fields.description;
                         return (
-                            <div className="px-8">
+                            <div className="px-8 md:max-w-3xl mx-auto">
                             <Alert className="mb-8">
                                 <InfoCircledIcon className="h-4 w-4" />
                                 <AlertTitle className="font-semibold font-sans">{alertTitle}</AlertTitle>
