@@ -10,6 +10,7 @@ export interface TypeWorkFields {
     purpose?: EntryFieldTypes.Symbol;
     timeline?: EntryFieldTypes.Symbol;
     year?: EntryFieldTypes.Integer;
+    summary?: EntryFieldTypes.Text;
     overview?: EntryFieldTypes.Text;
     heroBlock1?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     process?: EntryFieldTypes.RichText;

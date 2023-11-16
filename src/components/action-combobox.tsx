@@ -22,6 +22,10 @@ import { CopyIcon } from "@radix-ui/react-icons"
 
 export function ActionCombobox() {
   const [open, setOpen] = React.useState(false)
+  const handleCopy = () => {
+    navigator.clipboard.writeText(window.location.href)
+    setOpen(false)
+  }
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -49,9 +53,15 @@ export function ActionCombobox() {
           <Command>
             <CommandList>
               <CommandGroup>
-                  <CommandItem>
+                  <CommandItem
+                  onSelect={() => handleCopy()}>
                     <CopyIcon className="w-4 h-4 mr-2" />
                     Copy link
+                  </CommandItem>
+                  <CommandItem
+                  >
+                    Open in new tab
+                    <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">↵</kbd>
                   </CommandItem>
                 
               </CommandGroup>

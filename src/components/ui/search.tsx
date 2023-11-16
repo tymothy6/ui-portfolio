@@ -4,7 +4,7 @@ import * as React from "react"
 import { useRouter } from "next/navigation"
 import { useCommandState } from "cmdk"
 
-import { HomeIcon, TextAlignLeftIcon, ChatBubbleIcon, QuestionMarkCircledIcon, BackpackIcon, EnvelopeClosedIcon, FileIcon, FrameIcon, TokensIcon, LockClosedIcon, RocketIcon } from "@radix-ui/react-icons"
+import { HomeIcon, ChatBubbleIcon, QuestionMarkCircledIcon, BackpackIcon, EnvelopeClosedIcon, FileIcon, FrameIcon, TokensIcon, LockClosedIcon, RocketIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,7 +16,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command"
-import { ActionCombobox } from "@/components/action-combobox"
+import { Badge } from "@/components/ui/badge"
 
 import { Post } from "@/lib/blog-posts"
 import { Project } from "@/lib/projects"
@@ -29,11 +29,11 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
     setOpen(false)
   }
 
-  const SubItem = ({ children }: { children: React.ReactNode }) => {
-    const search = useCommandState(state => state.search);
-    if (!search) return null;
-    return <CommandItem>{children}</CommandItem>;
-  };
+  const SubItem = (props: any) => {
+    const search = useCommandState((state) => state.search)
+    if (!search) return null
+    return <CommandItem {...props} />
+  }
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -68,29 +68,71 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Links">
               <CommandItem
-              onSelect={() => handleNavigation('/#home')}>
+              onSelect={() => handleNavigation('/#home')}
+              className="cursor-pointer">
                 <HomeIcon className="mr-3 h-4 w-4" />
-                <span>Home</span>
+                <div className="flex flex-row gap-2">
+                <span className="font-medium">Home</span>
+                <div className="hidden">
+                <Badge variant="secondary">#main</Badge>
+                <Badge variant="secondary">#start</Badge>
+                </div>
+                </div>
               </CommandItem>
               <CommandItem
-              onSelect={() => handleNavigation('/#work')}>
+              onSelect={() => handleNavigation('/#work')}
+              className="cursor-pointer">
                 <BackpackIcon className="mr-3 h-4 w-4" />
-                <span>Work</span>
+                <div className="flex flex-row gap-2">
+                <span className="font-medium">Work</span>
+                <span className="text-muted-foreground hidden">See my work</span>
+                <div className="hidden">
+                <Badge variant="secondary">#projects</Badge>
+                <Badge variant="secondary">#design</Badge>
+                <Badge variant="secondary">#development</Badge>
+                <Badge variant="secondary">#ux</Badge>
+                </div>
+                </div>
               </CommandItem>
               <CommandItem
-              onSelect={() => handleNavigation('/#about')}>
+              onSelect={() => handleNavigation('/#about')}
+              className="cursor-pointer">
                 <QuestionMarkCircledIcon className="mr-3 h-4 w-4" />
-                <span>About</span>
+                <div className="flex flex-row gap-2">
+                <span className="font-medium">About</span>
+                <span className="text-muted-foreground hidden">Who I am and what I care about</span>
+                <div className="hidden">
+                <Badge variant="secondary">#education</Badge>
+                <Badge variant="secondary">#experience</Badge>
+                <Badge variant="secondary">#values</Badge>
+                </div>
+                </div>
               </CommandItem>
               <CommandItem
-              onSelect={() => handleNavigation('/#contact')}>
+              onSelect={() => handleNavigation('/#contact')}
+              className="cursor-pointer">
                 <EnvelopeClosedIcon className="mr-3 h-4 w-4" />
-                <span>Contact</span>
+                <div className="flex flex-row gap-2">
+                <span className="font-medium">Contact</span>
+                <span className="text-muted-foreground hidden">Get in touch with me</span>
+                <div className="hidden">
+                <Badge variant="secondary">#email</Badge>
+                <Badge variant="secondary">#linkedin</Badge>
+                </div>
+                </div>
               </CommandItem>
               <CommandItem
-              onSelect={() => handleNavigation('/blog')}>
+              onSelect={() => handleNavigation('/blog')}
+              className="cursor-pointer">
                 <ChatBubbleIcon className="mr-3 h-4 w-4" />
-                <p>Blog</p>
+                <div className="flex flex-row gap-2">
+                <span className="font-medium">Blog</span>
+                <span className="text-muted-foreground hidden">My thoughts on design & development</span>
+                <div className="hidden">
+                <Badge variant="secondary">#thoughts</Badge>
+                <Badge variant="secondary">#writing</Badge>
+                </div>
+                </div>
               </CommandItem>
           </CommandGroup>
           <CommandSeparator />
@@ -98,9 +140,18 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
           {projects.map((project) => (
               <CommandItem
                 key={project.slug}
-                onSelect={() => handleNavigation(`/work/${project.slug}`)}>
+                onSelect={() => handleNavigation(`/work/${project.slug}`)}
+                className="cursor-pointer">
                   <FrameIcon className="mr-3 h-4 w-4" />
-                  <span>{project.name}</span>
+                  <div className="flex flex-row items-center gap-2">
+                    <span className="font-medium w-[260px] truncate">{project.name}</span>
+                    <Badge variant="default"><span className="tracking-tight">{project.type}</span></Badge>
+                    <div className="flex-row flex-wrap gap-2 hidden">
+                      {project.tools && project.tools.map( tool => (
+                                    <Badge key={tool} variant="secondaryblog"><span className="tracking-tight">{tool}</span></Badge>
+                      ))}
+                    </div>
+                  </div>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -109,9 +160,13 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
           {posts.map((post) => (
               <CommandItem
                  key={post.slug}
-                 onSelect={() => handleNavigation(`/work/${post.slug}`)}>
+                 onSelect={() => handleNavigation(`/work/${post.slug}`)}
+                 className="cursor-pointer">
                   <FileIcon className="mr-3 h-4 w-4" />
-                  <span>{post.title}</span>
+                  <div className="flex flex-col gap-1">
+                  <span className="font-medium whitespace-nowrap">{post.title}</span>
+                  <span className="text-muted-foreground w-[420px] truncate">{post.summary}</span>
+                  </div>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -119,27 +174,33 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
           <CommandGroup heading="Resources">
               <CommandItem
                onSelect={() => handleNavigation('/licenses')}
-               >
+               className="cursor-pointer">
                 <LockClosedIcon className="mr-3 h-2 w-2" />
-
-                <span>Licenses</span>
+                <div className="flex flex-col gap-1">
+                <span className="font-medium">Licenses</span>
+                <span className="text-muted-foreground">Open-source licenses</span>
+                </div>
 
               </CommandItem>
               <CommandItem
               onSelect={() => handleNavigation('/style')}
-              >
+              className="cursor-pointer">
                 <TokensIcon className="mr-3 h-4 w-4" />
-
-                <span>Style Guide</span>
+                <div className="flex flex-col gap-1">
+                <span className="font-medium">Style Guide</span>
+                <span className="text-muted-foreground">Design system for this website</span>
+                </div>
 
 
               </CommandItem>
               <CommandItem
-              onSelect={() => handleNavigation('/resume')}>
+              onSelect={() => handleNavigation('/resume')}
+              className="cursor-pointer">
                 <RocketIcon className="mr-3 h-4 w-4" />
-
-                <span>Resume</span>
-
+                <div className="flex flex-col gap-1">
+                <span className="font-medium">Resume</span>
+                <span className="text-muted-foreground">Download my resume</span>
+                </div>
 
               </CommandItem>
           </CommandGroup>
@@ -147,13 +208,12 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
         </CommandList>
         
         <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-background/50 backdrop-blur-lg">
-            <div className="w-max h-max flex py-1 px-2 rounded-md bg-primary border tracking-wide text-[12px] text-primary-foreground/90 cursor-default">Tim&apos;s Portfolio</div>
+            <div className="w-max h-max flex py-1 px-2 rounded-md bg-accent border tracking-wide font-medium text-[13px] text-primary-foreground cursor-default">Tim&apos;s Portfolio</div>
             <div className="flex flex-row items-center gap-2">
-            <Button variant="ghost" className="pl-3 pr-2 cursor-default">
+            <div className="text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
                 Open page
                 <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">↵</kbd>
-            </Button>
-            <ActionCombobox />
+            </div>
             </div>
         </div>
        </div>

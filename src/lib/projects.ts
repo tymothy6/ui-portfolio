@@ -15,6 +15,7 @@ export interface Project {
     purpose: string
     timeline: string
     year: number
+    summary: string
     overview: string
     heroBlock1: (ContentImage | null)[]
     process: RichTextDocument | null 
@@ -40,6 +41,7 @@ export function parseContentfulProject(projectWork?: ProjectWork): Project | nul
         purpose: projectWork.fields.purpose || "",
         timeline: projectWork.fields.timeline || "",
         year: projectWork.fields.year || 0,
+        summary: projectWork.fields.summary || "",
         overview: projectWork.fields.overview || "",
         heroBlock1: projectWork.fields.heroBlock1?.map(parseContentfulContentImage) || [],
         process: projectWork.fields.process || null,
