@@ -89,7 +89,7 @@ export function LinkShare({url}: {url:string}) {
   }
 
   return (
-    <Button variant="ghost" size="icon" onClick={() => handleCopy(url)}>
+    <Button variant="ghost" size="icon" onClick={() => handleCopy()}>
         <Link2Icon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
         <span className="sr-only">Copy link to this post</span>
     </Button>
