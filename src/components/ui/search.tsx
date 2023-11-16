@@ -51,7 +51,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
 
   return (
     <>
-    <Button variant="outlinebg60" className="px-3 border" onClick={() => setOpen(true)}>
+    <Button variant="outlinebg60" className="px-3 border border-primary-foreground/10" onClick={() => setOpen(true)}>
       <p className="text-[15px]">
         Search{" "}
         <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[13px] font-medium text-muted-foreground opacity-100">
@@ -146,11 +146,6 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
                   <div className="flex flex-row items-center gap-2">
                     <span className="font-medium w-[260px] truncate">{project.name}</span>
                     <Badge variant="default"><span className="tracking-tight">{project.type}</span></Badge>
-                    <div className="flex-row flex-wrap gap-2 hidden">
-                      {project.tools && project.tools.map( tool => (
-                                    <Badge key={tool} variant="secondaryblog"><span className="tracking-tight">{tool}</span></Badge>
-                      ))}
-                    </div>
                   </div>
               </CommandItem>
             ))}

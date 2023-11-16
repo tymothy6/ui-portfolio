@@ -258,4 +258,182 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     )
 }
 
+export const BlogContact = () => {
+    const recaptcha = React.useRef<ReCAPTCHA | null>(null);
+    const { toast } = useToast()
+
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            message: "",
+        },
+    })
+  
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log('Form values:', values);
+        const captchaValue = recaptcha.current ? recaptcha.current.getValue() : null; 
+        if (!captchaValue) {
+            toast({
+                variant: "destructive",
+                title: "Oops!",
+                description:(
+                    <p className="text-sm font-medium">Please verify that you&apos;re not a robot 🤖</p>
+                ),
+                action: <ToastAction altText="Try again">Try again</ToastAction>,
+            });
+            console.error('No captcha value found');
+            return; 
+        }
+
+        try {
+            const captchaResponse = await fetch('/api/verify-recaptcha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ captchaValue }),
+            });
+
+            if (!captchaResponse.ok) {
+                const errorData = await captchaResponse.json();
+                throw new Error('Failed to verify captcha: ' + errorData.message);
+            }
+
+            const captchaData = await captchaResponse.json();
+            if (!captchaData.success) {
+                toast({
+                    "variant": "destructive",
+                    title: "Oops!",
+                    description:(
+                        <p className="text-sm font-medium">We couldn&apos;t verify that you&apos;re not a robot.</p>
+                    ),
+                    action: <ToastAction altText="Try again">Try again</ToastAction>,
+                });
+                return;
+            }
+
+            // If the captcha is valid, send the email
+            const emailResponse = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+            if (!emailResponse.ok) {
+                throw new Error('Failed to send email');
+            }
+
+            const data = await emailResponse.json();
+            toast({
+                title: "📬 Thanks!",
+                description:(
+                    <p className="text-sm font-medium">Your message has been sent, I&apos;ll get back to you shortly.</p>
+                ),
+            });
+
+            // Reset the form
+            form.reset({
+                name: "",
+                email: "",
+                message: "",
+            });
+        } catch (error) {
+            toast({
+                title: "😖 Error",
+                description:(
+                    <p className="text-sm font-medium">Your message failed to send, please try again later or reach out to me directly.</p>
+                ),
+            });
+        }
+    }
+
+    return(
+        <div className="my-8">
+            <div className="flex-col md:rounded-lg items-center justify-center p-8 md:p-12 border bg-card text-card-foreground shadow-sm">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold text-foreground font-sans mb-8">
+                👋🏼 Any thoughts? Get in touch
+                </h1>
+                <div>
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
+
+                            <div className="w-full h-full md:flex-grow font-sans">
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Name</FormLabel>
+                                        <FormDescription>
+                                            Who are you?
+                                        </FormDescription>
+                                        <FormControl>
+                                            <Input placeholder="Your name" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            </div>
+
+                            <div className="w-full h-full md:flex-grow font-sans">
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Email <span className="font-semibold">(Optional)</span></FormLabel>
+                                        <FormDescription>
+                                               Where can I reach you?  
+                                        </FormDescription>
+                                        <FormControl>
+                                            <Input placeholder="yourname@mail.com" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            </div>
+
+                            </div>
+
+                            <div className="font-sans">
+                            <FormField
+                                control={form.control}
+                                name="message"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Message</FormLabel>
+                                        <FormDescription>
+                                            What did you think about this post?
+                                        </FormDescription>
+                                        <FormControl>
+                                            <Textarea
+                                            placeholder="Your thoughts..."
+                                            className="resize-y"
+                                            {...field}
+                                        />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            </div>
+                            <ReCAPTCHA
+                            ref={recaptcha} 
+                            sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY ?? "sitekey"} />
+                            <Button type="submit" className="w-full font-sans">Send message</Button>
+                        </form>
+                    </Form>
+                   
+                </div>
+            </div>
+        </div>
+    )
+}
+
 

@@ -5,7 +5,7 @@ import { fetchPost, fetchAllPosts } from "@/lib/blog-posts"
 import RichText from "@/lib/rich-text"
 
 import { ArrowLeftIcon } from "@radix-ui/react-icons"
-import { TagIcon, LibraryIcon, ShareIcon } from "lucide-react"
+import { TagIcon, LibraryIcon } from "lucide-react"
 
 import { PageHeader } from "@/components/page-header"
 import { SearchWrapper } from "@/components/search-wrapper"
@@ -15,12 +15,13 @@ import { PageFooter } from "@/components/page-footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { LinkedInShare, TwitterShare } from "@/components/contact-button"
+import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/contact-button"
+import { BlogContact } from "@/components/contact-page"
 
 export const viewport: Viewport = {
     themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#6d28d9' },
-    { media: '(prefers-color-scheme: dark)', color: '#7c3aed' },
+    { media: '(prefers-color-scheme: light)', color: '#5b47d8' },
+    { media: '(prefers-color-scheme: dark)', color: '#654ff0' },
     ],
 }
 
@@ -93,7 +94,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">{data.date ? 
                 new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' }).format(new Date(data.date)) :  ''}</p>
                     <div className="hidden md:block">
-                    <Button variant="link" asChild >
+                    <Button variant="link" className="text-[15px]" asChild >
                             <Link href="/blog">
                                 <ArrowLeftIcon className="h-5 w-5 mr-1" />Back to Blog</Link>
                     </Button> 
@@ -106,10 +107,9 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                     
                     <div className="flex flex-col justify-start gap-4">
                         
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-row gap-2 mb-4">
                         <div className="flex flex-row gap-2 items-center">
                         <LibraryIcon className="h-4 w-4 text-gray-800 dark:text-gray-300" />
-                        <p className="text-sm font-mono text-gray-800 dark:text-gray-300 font-regular">Posted by</p>
                         </div>
                             <div className="flex flex-row gap-2 justify-start self-start items-center rounded-lg p-2 hover:bg-accent">
                                 <AvatarBlog>
@@ -123,11 +123,11 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                             </div>
                         </div>
                        
-                        <div className="flex flex-row justify-between items-start">
-                        <div className="flex flex-col gap-6 mb-4">
+                        
+                        <div className="flex flex-row gap-4 mb-4">
                             <div className="flex flex-row gap-2 items-center">
                             <TagIcon className="h-4 w-4 text-gray-800 dark:text-gray-300" />
-                            <p className="text-sm font-mono text-gray-800 dark:text-gray-300 font-regular">Tags</p>
+                            
                             </div>
                             <div className="flex flex-row flex-wrap gap-2">
                             {data.tags && data.tags.map( tag => (
@@ -136,18 +136,13 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-4 mb-4">
-                            <div className="ml-2 flex flex-row gap-2 items-center">
-                            <ShareIcon className="h-4 w-4 text-gray-800 dark:text-gray-300" />
-                            <p className="text-sm font-mono text-gray-800 dark:text-gray-300 font-regular">Share</p>
-                           
-                            </div>
-                            <div className="flex flex-row gap-2 items-center">
+                       <div className="flex flex-row gap-2 items-center mb-4">
                             <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
                             <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                            </div>
+                            <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                            <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
                         </div>
-                        </div>
+                            
                         <Separator />
                        
                         
@@ -173,16 +168,16 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
             <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-72 font-serif">
                 <RichText document={data.body} />
                 
-                <div className="flex flex-row gap-4">
-                            <div className="flex flex-row gap-2 items-center">
-                            <p className="ml-2 text-base font-mono text-gray-800 dark:text-gray-300 font-regular">Share this post</p>
-                            </div>
-                            <div className="flex flex-row gap-2 items-center">
-                            <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                            <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                            </div>
-                        </div>
-                        <Separator />
+
+            <div className="flex flex-row gap-2 items-center mb-8">
+                <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
+            </div>
+
+            <BlogContact />        
+                        
             </div>
 
             <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48">

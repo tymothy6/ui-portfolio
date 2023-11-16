@@ -138,7 +138,7 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
     const borderColor = "rgba(250, 250, 250, 0.1)"
 
     return (
-        <div ref={menuRef} className={`backdrop-blur-md ${isMenuOpen ? 'bg-background/90 dark:bg-background/90' : 'bg-background/50 dark:bg-background/60'} fixed top-0 w-full z-[49]`}
+        <div ref={menuRef} className={`backdrop-blur-md ${isMenuOpen ? 'bg-background/90 dark:bg-background/90' : 'bg-background/50 dark:bg-background/70'} fixed top-0 w-full z-[49]`}
         style={{
             borderBottomColor: isMenuOpen ? 'transparent' : borderColor,
             borderBottomWidth: isMenuOpen ? '0px' : '1px',
@@ -235,13 +235,12 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                     </NavigationMenuList>
                 </NavigationMenu>
                 </div>
-                <div className="ml-1 hidden md:block">
+                <div className="mx-1 hidden md:block">
                     {children}
                     </div>
                 <LinkedInContact />
                 <GitHubContact />
-              
-                <div className="ml-0 md:ml-1"><ModeToggle /></div>
+                <ModeToggle />
                 
                 <div className="block md:hidden">
                     <Button 

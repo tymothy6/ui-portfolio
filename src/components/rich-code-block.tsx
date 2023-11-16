@@ -36,9 +36,10 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
     return (
         <div className="flex flex-col gap-0 max-w-4xl mx-auto">
             <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
+                
                 <div className="flex flex-row items-center gap-2 px-4 py-2">
-                    {title}
                 <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">{lang}</div>
+                    <span className="text-[15px]">{title}</span>
                 </div>
                 <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
                 Copy
