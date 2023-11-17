@@ -38,7 +38,7 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className={`flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 xl:grid-cols-3 gap-0 md:gap-4 ${styles.horizontalScroll}`}>
+        className={`flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 ${!recommended && 'xl:grid-cols-3'} gap-0 md:gap-4 ${styles.horizontalScroll}`}>
             <div 
             id="overlay" 
             ref={overlayRef} 
