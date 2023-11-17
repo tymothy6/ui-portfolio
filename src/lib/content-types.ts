@@ -39,3 +39,36 @@ export interface TypeBlogPageFields {
 
 export type TypeBlogPageSkeleton = EntrySkeletonType<TypeBlogPageFields, "blogPage">;
 export type TypeBlogPage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeBlogPageSkeleton, Modifiers, Locales>;
+
+export interface TypeAlertFields {
+    title: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
+    reference?: EntryFieldTypes.EntryLink<EntrySkeletonType>;
+}
+
+export type TypeAlertSkeleton = EntrySkeletonType<TypeAlertFields, "alert">;
+export type TypeAlert<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeAlertSkeleton, Modifiers, Locales>;
+
+export interface TypeCodeBlockFields {
+    title?: EntryFieldTypes.Symbol;
+    code?: EntryFieldTypes.Text;
+    language: EntryFieldTypes.Symbol;
+    lineNumber?: EntryFieldTypes.Symbol;
+    reference: EntryFieldTypes.EntryLink<EntrySkeletonType>;
+}
+
+export type TypeCodeBlockSkeleton = EntrySkeletonType<TypeCodeBlockFields, "codeBlock">;
+export type TypeCodeBlock<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCodeBlockSkeleton, Modifiers, Locales>;
+
+export interface TypeOpenGraphEmbedFields {
+    title?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Symbol;
+    url?: EntryFieldTypes.Symbol;
+    author?: EntryFieldTypes.Symbol;
+    datePosted?: EntryFieldTypes.Date;
+    image?: EntryFieldTypes.AssetLink;
+    source?: EntryFieldTypes.Symbol;
+}
+
+export type TypeOpenGraphEmbedSkeleton = EntrySkeletonType<TypeOpenGraphEmbedFields, "openGraphEmbed">;
+export type TypeOpenGraphEmbed<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeOpenGraphEmbedSkeleton, Modifiers, Locales>;

@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/contact-button"
-import { BlogContact } from "@/components/contact-page"
+import { GiscusWrapper } from "@/components/giscus-wrapper"
 
 export const viewport: Viewport = {
     themeColor: [
@@ -168,15 +168,14 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
             <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-72 font-serif">
                 <RichText document={data.body} />
                 
+                <div className="flex flex-row gap-2 items-center mx-8 mb-8">
+                    <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                    <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                    <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                    <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
+                </div>
 
-            <div className="flex flex-row gap-2 items-center mb-8">
-                <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
-                <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
-            </div>
-
-            <BlogContact />        
+                <GiscusWrapper />
                         
             </div>
 

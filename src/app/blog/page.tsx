@@ -27,7 +27,7 @@ export default function Blog () {
                 <SearchWrapper />
             </PageHeader>
                <BlogHero />
-            <div className="md:mx-24 lg:mx-36 mb-36">
+            <div className="md:mx-24 mb-36">
             <BlogPostGrid />
             </div>
             <PageFooter />

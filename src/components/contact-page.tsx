@@ -143,7 +143,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
 
     return(
         <div id={id} className="py-8 md:py-16 lg:px-8 my-8 md:mx-24 scroll-mt-12">
-            <div className="flex-col md:rounded-lg items-center justify-center px-8 py-12 md:p-16 md:border border-y bg-card text-card-foreground md:shadow-sm">
+            <div className="flex-col md:rounded-lg items-center justify-center px-8 py-12 md:p-16 md:border border-y-[1px] bg-card text-card-foreground md:shadow-sm">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Get in touch
                 </h1>
@@ -352,9 +352,9 @@ export const BlogContact = () => {
 
     return(
         <div className="my-8">
-            <div className="flex-col md:rounded-lg items-center justify-center p-8 md:p-12 border bg-card text-card-foreground shadow-sm">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold text-foreground font-sans mb-8">
-                👋🏼 Any thoughts? Get in touch
+            <div className="flex-col md:rounded-lg items-center justify-center p-8 md:p-12 border-y-[1px] md:border bg-card text-card-foreground shadow-sm">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl text-center font-semibold text-foreground font-sans mb-4 md:mb-8">
+                👋🏼 What did you think of this post? Get in touch
                 </h1>
                 <div>
                     <Form {...form}>
@@ -409,7 +409,7 @@ export const BlogContact = () => {
                                     <FormItem>
                                         <FormLabel>Message</FormLabel>
                                         <FormDescription>
-                                            What did you think about this post?
+                                            Liked this post? Disagree with it? Tell me why!
                                         </FormDescription>
                                         <FormControl>
                                             <Textarea

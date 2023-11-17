@@ -985,7 +985,7 @@ export function BlogHero () {
                         </Button>
                     </div>
                 </div>
-                <StarsCanvas />
+                
                
         </div>
     )

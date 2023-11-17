@@ -12,6 +12,7 @@
     "@contentful/rich-text-react-renderer": "^15.18.0",
     "@contentful/rich-text-types": "^16.3.0",
     "@fullpage/react-fullpage": "^0.1.40",
+    "@giscus/react": "^2.3.0",
     "@hookform/resolvers": "^3.3.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",

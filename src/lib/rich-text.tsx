@@ -3,8 +3,10 @@
 import * as React from "react"
 import { Document as RichTextDocument, BLOCKS, MARKS, INLINES, Block, Inline } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { parseContentfulContentImage } from "./content-image"
 import { FigmaEmbed } from "@/components/figma-embed"
 import { RichCodeBlock } from "@/components/rich-code-block"
+import { RichEmbedBlock } from "@/components/rich-embed-block"
 import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
 import { usePathname } from "next/navigation"
@@ -101,6 +103,19 @@ export default function RichText({ document }: RichTextProps) {
                                 <AlertTitle className="font-semibold font-sans">{alertTitle}</AlertTitle>
                                 <AlertDescription className="text-base font-sans">{alertDescription}</AlertDescription>
                             </Alert>
+                            </div>
+                        )
+
+                    case 'openGraphEmbed':
+                        const openGraphTitle = node.data.target.fields.title;
+                        const openGraphDescription = node.data.target.fields.description;
+                        const openGraphImage = parseContentfulContentImage(node.data.target.fields.image);
+                        const openGraphUrl = node.data.target.fields.url;
+                        const openGraphAuthor = node.data.target.fields.author;
+                        const openGraphSource = node.data.target.fields.source;
+                        return (
+                            <div className="px-8 md:max-w-3xl mx-auto">
+                                <RichEmbedBlock title={openGraphTitle} description={openGraphDescription} image={openGraphImage} url={openGraphUrl} author={openGraphAuthor} source={openGraphSource} />
                             </div>
                         )
 

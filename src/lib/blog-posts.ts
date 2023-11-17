@@ -45,7 +45,15 @@ export async function fetchAllPosts(): Promise<Post[]> {
         content_type: "blogPage",
     })
 
-    return posts.items.map((post) => parseContentfulPost(post) as Post)
+    return posts.items
+        .map((post) => parseContentfulPost(post) as Post)
+        .sort((a, b) => {
+            // Sort by date in descending order
+            if (!a.date) return 1; // posts without dates should be last
+            if (!b.date) return -1;
+
+            return b.date.getTime() - a.date.getTime();
+        })
 }
 
 // Fetch a single post by its slug to render a page
