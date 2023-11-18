@@ -10,7 +10,7 @@ export function GiscusWrapper () {
     const giscusTheme = resolvedTheme === "dark" ? "dark" : "light"
 
     return (
-        <div className="flex flex-col gap-2 items-center">
+       <div className="mx-8 md:mx-0">
             <Giscus
                 id="comments"
                 repo="tymothy6/giscus-blog"
@@ -26,7 +26,7 @@ export function GiscusWrapper () {
                 lang="en"
                 loading="lazy"
             />
-            <p className="text-gray-800 dark:text-gray-200 font- italic font-sans">Powered by <Link href="https://giscus.app" target="_blank" rel="noopener noreferrer" className="underline decoration-2 underline-offset-2 decoration-primary hover:decoration-1">Giscus</Link></p>
         </div>
+        
     )
 }
