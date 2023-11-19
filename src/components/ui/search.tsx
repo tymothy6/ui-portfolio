@@ -203,7 +203,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
         </CommandList>
         
         <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-background/50 backdrop-blur-lg">
-            <div className="w-max h-max flex py-1 px-2 rounded-md bg-accent border tracking-wide font-medium text-[13px] text-primary-foreground cursor-default">Tim&apos;s Portfolio</div>
+            <div className="w-max h-max flex py-1 px-2 rounded-md bg-accent border tracking-wide font-medium text-[13px] text-foreground cursor-default">Tim&apos;s Portfolio</div>
             <div className="flex flex-row items-center gap-2">
             <div className="text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
                 Open page
