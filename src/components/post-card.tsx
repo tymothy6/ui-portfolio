@@ -63,7 +63,9 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                         src={data.thumbnail ? data.thumbnail.src : ''}
                         alt={data.thumbnail ? data.thumbnail.alt : ''}
                         fill={true}
-                        className="object-cover object-top" />
+                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover object-top" 
+                        />
                     </div>
                     <p className="text-left text-base font-regular text-gray-900 dark:text-gray-100 pl-2">{data.summary}</p>
                    

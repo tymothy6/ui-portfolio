@@ -32,6 +32,8 @@ export default function Home() {
         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
         alt="Aerial view of Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
         fill={true}
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8eCakHgAHWQKS+xqDVgAAAABJRU5ErkJggg=="
         className="block object-cover"
         />
       <div className="absolute bottom-0 left-0 p-6">

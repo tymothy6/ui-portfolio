@@ -61,7 +61,10 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.PARAGRAPH]: (node: Block | Inline, children: React.ReactNode) => <p className="text-lg leading-relaxed mb-8 mx-8">{children}</p>,
             [BLOCKS.OL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-decimal md:ml-12">{children}</ol>,
             [BLOCKS.UL_LIST]: (node: Block | Inline, children: React.ReactNode) => <ol className="md:list-outside md:list-disc md:ml-12">{children}</ol>,
-            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="px-8 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border border-accent rounded-md max-w-3xl mx-auto"><blockquote className="border-l-4 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
+            [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => 
+            <div className="px-2 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border-l-4 border-l-primary border border-accent rounded-md mx-8 max-w-3xl md:mx-auto">
+                <blockquote className="font-serif italic">{children}</blockquote>
+            </div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
                 let src = file.url;

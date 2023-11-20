@@ -50,7 +50,7 @@ export function BlogCombobox({data}: {data: Post[]}) {
         <Command>
           <CommandInput placeholder="Search tags..." />
           <CommandEmpty>No tags found.</CommandEmpty>
-          <CommandGroup className="overflow-y-scroll max-h-[300px]">
+          <CommandGroup className="overflow-y-scroll max-h-[175px] md:max-h-[300px]">
             {tags.map((tag) => (
               <CommandItem
                 key={tag.value}

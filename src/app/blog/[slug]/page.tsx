@@ -6,7 +6,7 @@ import { fetchPost, fetchAllPosts } from "@/lib/blog-posts"
 import RichText from "@/lib/rich-text"
 import Image from "next/image"
 
-import { ArrowLeftIcon } from "@radix-ui/react-icons"
+import { ArrowLeftIcon, Share2Icon } from "@radix-ui/react-icons"
 import { TagIcon, LibraryIcon } from "lucide-react"
 
 import { PageHeader } from "@/components/page-header"
@@ -90,6 +90,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 src={data.thumbnail?.src || ''}
                 alt={data.thumbnail?.alt || ''}
                 fill={true}
+                priority={true}
                 className="object-cover" 
                 />
             </div>
@@ -101,7 +102,8 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                     <div className="hidden md:block">
                     <Button variant="link" className="text-[15px]" asChild >
                             <Link href="/blog">
-                                <ArrowLeftIcon className="h-5 w-5 mr-1" />Back to Blog</Link>
+                                <ArrowLeftIcon className="h-5 w-5 mr-1" />Back to Blog
+                            </Link>
                     </Button> 
                     </div>
                  
@@ -142,6 +144,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                         </div>
 
                        <div className="flex flex-row gap-2 items-center mb-4">
+                       <Share2Icon className="mr-1 h-[18px] w-[18px] text-gray-800 dark:text-gray-300" />
                             <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />
                             <TwitterShare url={`https://tim-ng.me/blog/${data.slug}`} />
                             <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
