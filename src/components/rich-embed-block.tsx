@@ -44,7 +44,7 @@ import { Link2Icon } from "@radix-ui/react-icons"
     }
 
     return(
-        <div className="flex flex-col px-8 max-w-[400px] mx-auto">
+        <div className="flex flex-col px-8 max-w-[420px] mx-auto">
             <div className="relative w-full h-[200px] rounded-t-lg border-t-[1px] border-x-[1px] overflow-hidden">
                 <Image
                 src={openGraphImage}

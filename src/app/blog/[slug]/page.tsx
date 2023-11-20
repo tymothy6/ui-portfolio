@@ -85,7 +85,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 <SearchWrapper />
             </PageHeader>
             <div>
-            <div className="relative w-full h-[24rem] lg:h-[32rem]">
+            <div className="relative w-full h-[24rem] lg:h-[30rem]">
                 <Image
                 src={data.thumbnail?.src || ''}
                 alt={data.thumbnail?.alt || ''}
