@@ -2,6 +2,7 @@
 
 import * as React from "react"
 
+import Image from "next/image"
 import { ContentImage } from "@/lib/content-image"
 import { Button } from "@/components/ui/button"
 import { 
@@ -15,8 +16,8 @@ import { Link2Icon } from "@radix-ui/react-icons"
 
 
  export function RichEmbedBlock ({ title, description, image, url, author, source }: { title: string, description: string, image: ContentImage | null, url?: string, author?: string, source?: string }) {
-    const openGraphImage = image?.src;
-    const openGraphImageAlt = image?.alt;
+    const openGraphImage = image?.src || '';
+    const openGraphImageAlt = image?.alt || '';
 
     const handleClick = () => {
         if (url) {
@@ -44,16 +45,20 @@ import { Link2Icon } from "@radix-ui/react-icons"
 
     return(
         <div className="flex flex-col px-8 max-w-[400px] mx-auto">
-            <img
+            <div className="relative w-full h-[200px] rounded-t-lg border-t-[1px] border-x-[1px] overflow-hidden">
+                <Image
                 src={openGraphImage}
                 alt={openGraphImageAlt}
-                className="w-full max-h-[200px] object-cover rounded-t-lg border-t-[1px] border-x-[1px]" />
+                fill={true}
+                className="object-cover" 
+                />
+            </div>
             <Alert className="mb-8 flex flex-col gap-4 rounded-none rounded-b-lg border-t-[0px]">
-                <div className="flex flex-col gap-1">
-                <AlertTitle className="font-semibold font-sans">{title}</AlertTitle>
+                <div className="flex flex-col gap-2">
                 <div className="flex flex-row items-center justify-between">
                     <AlertDescription className="text-sm font-sans text-gray-800 dark:text-gray-200">{author}</AlertDescription>
                 </div>
+                <AlertTitle className="font-semibold font-sans">{title}</AlertTitle>
                 <AlertDescription className="text-base font-sans text-gray-800 dark:text-gray-200 mb-2">{description}</AlertDescription>
                 <div className="flex flex-row justify-between items-center">
                 {url && 

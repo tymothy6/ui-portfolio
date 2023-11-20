@@ -2,6 +2,9 @@
 
 import * as React from "react"
 import Link from "next/link"
+
+import styles from "@/components/modules/bg-styles.module.css"
+
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
@@ -729,9 +732,10 @@ export function StyleHero () {
 
                     <div className="flex flex-col gap-0 w-full relative">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
+                        
                             <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            styles
                             <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
+                            styles
                             </div>
                             <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
                             Copy
@@ -770,8 +774,8 @@ export function StyleHero () {
                     <div className="flex flex-col gap-0 w-full">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                             <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            button-primary
                             <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
+                            button-primary
                             </div>
                             <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
                                 <CopyIcon className="h-[1rem] w-[1rem]" />
@@ -806,7 +810,7 @@ export function StyleHero () {
                         <TabsTrigger value="code">Code</TabsTrigger>
                     </TabsList>
                     <TabsContent value="preview">
-                            <div className="flex grow items-center justify-center w-full h-full bg-card/50 border border-accent rounded-md p-16">
+                            <div className={`${styles.gridBackground} flex grow items-center justify-center w-full h-full bg-card/90 border border-accent rounded-md p-16`}>
                                 <Button className="bg-primary text-primary-foreground">Click me</Button>
                             </div>
                     </TabsContent>
@@ -815,8 +819,8 @@ export function StyleHero () {
                     <div className="flex flex-col gap-0 w-full">
                         <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                             <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            button-demo
                             <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">jsx</div>
+                            button-demo
                             </div>
                             <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
                                 <CopyIcon className="h-[1rem] w-[1rem]" />

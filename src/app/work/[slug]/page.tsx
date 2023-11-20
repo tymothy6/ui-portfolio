@@ -4,6 +4,7 @@ import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { fetchProject, fetchAllProjects } from "@/lib/projects"
 import RichText from "@/lib/rich-text"
+import Image from "next/image"
 
 import { PageHeader } from "@/components/page-header"
 import { SearchWrapper } from "@/components/search-wrapper"
@@ -133,12 +134,15 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             <div className="my-6 flex flex-col"> 
                 {data.heroBlock1 && data.heroBlock1.map((image, index) =>
                    image && (
-                        <img
-                            key={`${data.slug}-${index}`}
+                        <div key={`${data.slug}-${index}`} className="relative w-full">
+                            <Image
                             src={image.src}
-                            alt={`Hero image ${index + 1}`}
-                            className="w-full object-cover" 
-                        />
+                            alt={image.alt}
+                            width={image.width}
+                            height={image.height}
+                            className="object-cover" 
+                            />
+                        </div>
                     )
                 )}
             </div>
@@ -152,12 +156,15 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             <div className="my-6 flex flex-col"> 
                 {data.heroBlock2 && data.heroBlock2.map((image, index) =>
                    image && (
-                        <img
-                            key={`${data.slug}-${index}`}
+                        <div key={`${data.slug}-${index}`} className="relative w-full">
+                            <Image
                             src={image.src}
-                            alt={`Design process image ${index + 1}`}
-                            className="w-full object-cover" 
-                        />
+                            alt={image.alt}
+                            width={image.width}
+                            height={image.height}
+                            className="object-cover" 
+                            />
+                        </div>
                     )
                 )}
             </div>

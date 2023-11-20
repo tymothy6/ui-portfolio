@@ -27,34 +27,12 @@ import {
 import { IubendaLink } from "@/components/iubenda-link"
 
 export function PageFooter () {
-    const [isVisible, setIsVisible] = React.useState(false)
 
     const footerText = "· When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight "
     const marqueeText = `${footerText}${footerText}`
 
-    React.useEffect(() => {
-        function handleScroll () {
-            const totalHeight = document.body.offsetHeight;
-            const scrolledAmount = window.innerHeight + window.scrollY;
-            const scrolledPercentage = (scrolledAmount / totalHeight) * 100;
-            const thresholdPercentage = 85;
-            const isBottomOfPage = scrolledPercentage >= thresholdPercentage;
-            setIsVisible(isBottomOfPage);
-        }
-
-
-        // Add event listener when mounted
-        window.addEventListener("scroll", handleScroll)
-       
-        return () => {
-            // Clean up the event listener when the component unmounts
-            window.removeEventListener("scroll", handleScroll)
-            
-        }
-    }, [])
-
     return (
-      <div className={`border-t-[1px] md:transition-transform md:transition-opacity md:duration-1000 md:ease-in-out md:transform ${isVisible ? 'md:translate-y-0 md:opacity-100' : 'md:translate-y-full md:opacity-0'}`}>
+      <div className="border-t-[1px]">
         <div className="bg-background pt-8 md:pt-16 pb-2 w-full h-full relative overflow-hidden">
             <Popover>
                 <PopoverTrigger asChild className="focus-visible:none cursor-pointer">

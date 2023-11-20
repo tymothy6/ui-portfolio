@@ -1,8 +1,10 @@
 import Link from "next/link"
+
 import { Metadata, ResolvingMetadata, Viewport } from "next"
 import { notFound } from "next/navigation"
 import { fetchPost, fetchAllPosts } from "@/lib/blog-posts"
 import RichText from "@/lib/rich-text"
+import Image from "next/image"
 
 import { ArrowLeftIcon } from "@radix-ui/react-icons"
 import { TagIcon, LibraryIcon } from "lucide-react"
@@ -83,11 +85,14 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 <SearchWrapper />
             </PageHeader>
             <div>
-            <img
-                src={data.thumbnail?.src}
-                alt={data.thumbnail?.alt}
-                className="w-full h-[24rem] lg:h-[32rem] object-cover object-top" 
-            />
+            <div className="relative w-full h-[24rem] lg:h-[32rem]">
+                <Image
+                src={data.thumbnail?.src || ''}
+                alt={data.thumbnail?.alt || ''}
+                fill={true}
+                className="object-cover" 
+                />
+            </div>
     
             <div className="flex flex-col gap-4 pt-8 lg:pt-16 mx-8 md:mx-24 lg:mx-48">
                 <div className="flex flex-row justify-between items-center">

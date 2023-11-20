@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { Post } from "@/lib/blog-posts"
+import Image from "next/image"
 
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -57,10 +58,13 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
             </CardHeader>
             <CardContent className="flex flex-col items-start w-full">
                 <div className="flex flex-col gap-4 w-full">
-                    <img
-                    src={data.thumbnail ? data.thumbnail.src : undefined}
-                    alt={data.thumbnail ? data.thumbnail.alt : ''}
-                    className="max-h-[200px] w-full rounded-lg object-cover object-top border border-accent" />
+                    <div className="relative h-[200px] w-full rounded-lg border border-accent overflow-hidden">
+                        <Image
+                        src={data.thumbnail ? data.thumbnail.src : ''}
+                        alt={data.thumbnail ? data.thumbnail.alt : ''}
+                        fill={true}
+                        className="object-cover object-top" />
+                    </div>
                     <p className="text-left text-base font-regular text-gray-900 dark:text-gray-100 pl-2">{data.summary}</p>
                    
                     <div className="flex flex-row flex-wrap gap-2">

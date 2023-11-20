@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Project } from "@/lib/projects"
 import Tilt from "react-parallax-tilt"
+import Image from "next/image"
 
 import { GitHubBadge, FigmaBadge } from "@/components/contact-button"
 import { Badge } from "@/components/ui/badge"
@@ -40,11 +41,13 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         <Link tabIndex={-1} href={`/work/${data.slug}`} passHref>
             {isClient && (
                 <>
-            <CardImageHeader>
-                <img
-                    src={data.thumbnail ? data.thumbnail.src : undefined}
-                    alt={data.thumbnail ? data.thumbnail.alt : ''}
-                    className="rounded-t-lg object-cover" />
+            <CardImageHeader className="relative">
+                <Image
+                src={data.thumbnail ? data.thumbnail.src : ''}
+                alt={data.thumbnail ? data.thumbnail.alt : ''}
+                width={data.thumbnail ? data.thumbnail.width: 400}
+                height={data.thumbnail ? data.thumbnail.height: 400}
+                className="rounded-t-lg object-cover" />
             </CardImageHeader>
             <CardContent className="flex flex-row justify-between items-start pt-4 h-full">
                 <div className="flex flex-col ${styles.title}">
@@ -73,7 +76,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
     return noTilt 
     ? cardContent
     : (
-        <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
+        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
             {cardContent}
         </Tilt>
     )

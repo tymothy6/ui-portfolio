@@ -22,8 +22,14 @@ export function parseContentfulContentImage(
 		return null
 	}
 
+	// replace relative protocol for Next Image component
+	let src = asset.fields.file?.url || '';
+    if (src.startsWith('//')) {
+        src = 'https:' + src;
+    }
+
 	return {
-		src: asset.fields.file?.url || '',
+		src: src,
 		alt: asset.fields.description || '',
 		width: asset.fields.file?.details.image?.width || 0,
 		height: asset.fields.file?.details.image?.height || 0,

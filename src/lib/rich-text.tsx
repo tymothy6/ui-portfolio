@@ -10,6 +10,7 @@ import { RichEmbedBlock } from "@/components/rich-embed-block"
 import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
@@ -63,12 +64,17 @@ export default function RichText({ document }: RichTextProps) {
             [BLOCKS.QUOTE]: (node: Block | Inline, children: React.ReactNode) => <div className="px-8 pt-8 pb-0 bg-gray-50 dark:bg-card/50 border border-accent rounded-md max-w-3xl mx-auto"><blockquote className="border-l-4 border-primary pl-2 md:pl-6 font-serif italic">{children}</blockquote></div>,
             [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
                 const { title, file } = node.data.target.fields
+                let src = file.url;
+                if (src.startsWith('//')) {
+                    src = 'https:' + src;
+                }
+
                 return (
                     <div onClick={() => {
-                        setLightBoxSource(file.url);
+                        setLightBoxSource(src);
                         setIsLightBoxOpen(true);
                     }} className="cursor-pointer md:max-w-4xl mx-auto">
-                        <img alt={title} src={file.url} className="md:rounded-lg" />
+                        <Image alt={title} src={src} width={file.details.image.width} height={file.details.image.height} className="md:rounded-lg" />
                     </div>
                 )
             },
