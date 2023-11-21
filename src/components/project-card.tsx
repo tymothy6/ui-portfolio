@@ -76,7 +76,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
     return noTilt 
     ? cardContent
     : (
-        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
+        <Tilt tiltMaxAngleX={1} tiltMaxAngleY={2}>
             {cardContent}
         </Tilt>
     )

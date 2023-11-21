@@ -58,7 +58,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
             </CardHeader>
             <CardContent className="flex flex-col items-start w-full">
                 <div className="flex flex-col gap-4 w-full">
-                    <div className="relative h-[200px] w-full rounded-lg border border-accent overflow-hidden">
+                    <div className="relative h-[200px] lg:h-[300px] w-full rounded-lg border border-accent overflow-hidden">
                         <Image
                         src={data.thumbnail ? data.thumbnail.src : ''}
                         alt={data.thumbnail ? data.thumbnail.alt : ''}
