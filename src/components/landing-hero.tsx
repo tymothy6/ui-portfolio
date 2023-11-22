@@ -13,7 +13,6 @@ import { useToast } from "@/components/ui/use-toast"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-
 import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
@@ -43,7 +42,6 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
-import StarsCanvas from "@/components/canvas/stars"
 import { StyleNavigation } from "@/components/doc-sidebar"
   
 
@@ -968,7 +966,6 @@ export function ResumeHero () {
                             </Link>
                         </Button>
                         </div>
-                        <StarsCanvas />
                     </div>
                 </div>
     )

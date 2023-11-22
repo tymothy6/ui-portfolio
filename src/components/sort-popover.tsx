@@ -41,6 +41,7 @@ export function SortButton ({data}: {data: Post[]}) {
     }
 
     return (
+        <div className="z-[2]">
         <Popover>
         <PopoverTrigger className="w-[150px] mr-2" asChild>
             <Button variant="outline" className="w-[150px] pl-4 pr-2"> 
@@ -87,5 +88,6 @@ export function SortButton ({data}: {data: Post[]}) {
         </Command>
         </PopoverContent>
         </Popover>
+        </div>
     )
 }

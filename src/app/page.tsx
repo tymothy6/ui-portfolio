@@ -14,15 +14,19 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import styles from "@/components/modules/landing.module.css"
+
 export default function Home() {
   return (
     <div 
     className="flex flex-col bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
       <HeroWrapper id="home" />
-      <div className="w-full border-t-[1px]" />
+      <div 
+      className="w-full border-t-[1px]" />
+      <div className={styles.grid}>
       <ProjectGrid id="work" />
       <AboutPage id="about" />
-      <div className="relative w-full h-[80vh] lg:h-[60vh] my-12">
+      <div className="relative w-full h-[80vh] lg:h-[60vh] my-12 z-[2]">
         <Image
         src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
         alt="Aerial view of Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
@@ -57,7 +61,9 @@ export default function Home() {
       <SkillsPage />
       <ValuesPage id="values" />
       <ContactPage id="contact" />
+      </div>
       <PageFooter />
+
     </div>
   )
 }

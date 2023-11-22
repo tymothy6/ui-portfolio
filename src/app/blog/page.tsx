@@ -6,6 +6,7 @@ import { PageFooter } from "@/components/page-footer"
 import { BlogHero } from "@/components/landing-hero"
 import { BlogPostGrid } from "@/components/blog-grid"
 
+import styles from "@/components/modules/landing.module.css"
 
 export const metadata: Metadata = {
     title: 'Design Blog',
@@ -21,11 +22,15 @@ export const viewport: Viewport = {
 export default function Blog () {
     return(
         <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
-               <BlogHero />
+            <div className={styles.grid}>
+            <div className={styles.gradient}>
+            <BlogHero />
             <div className="md:mx-24 mb-36">
             <BlogPostGrid />
             </div>
+            </div>
             <PageFooter />
+            </div>
         </div>
     )
 }

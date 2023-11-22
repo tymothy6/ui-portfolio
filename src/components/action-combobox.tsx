@@ -40,7 +40,7 @@ export function ActionCombobox() {
   }, [])
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center z-[2]">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button variant="ghost" className="pl-2 pr-2 justify-start">

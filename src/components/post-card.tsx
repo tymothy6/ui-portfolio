@@ -79,7 +79,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
             </CardContent>
             <CardFooter className="mt-auto">
                    <Button variant="secondaryblog" className="w-full text-base" asChild>
-                    <Link href={`/blog/${data.slug}`} className="hover:underline hover:underline-offset-2 hover:decoration-2 hover:decoration-primary">Read more</Link>
+                    <Link href={`/blog/${data.slug}`}>Read more</Link>
                    </Button> 
             </CardFooter>
             </>

@@ -15,7 +15,7 @@ export async function BlogPostGrid () {
                     <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400 font-mono hidden md:block">· 2023 - </p>
                 </div>
                 <div className="flex flex-row gap-2 mr-8 md:mr-0">
-                    <div className="hidden md:block"><SortButton data={posts} /></div>
+                    <div className="hidden md:block z-[2]"><SortButton data={posts} /></div>
                     <BlogCombobox data={posts} />
                 </div>
             </div>

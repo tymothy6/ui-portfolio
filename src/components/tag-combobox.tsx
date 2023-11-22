@@ -52,6 +52,7 @@ export function BlogCombobox({data}: {data: Post[]}) {
   }
 
   return (
+    <div className="z-[2]">
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
@@ -91,5 +92,6 @@ export function BlogCombobox({data}: {data: Post[]}) {
         </Command>
       </PopoverContent>
     </Popover>
+    </div>
   )
 }

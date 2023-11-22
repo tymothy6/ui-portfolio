@@ -32,7 +32,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
         <Card 
         ref={ref} 
         tabIndex={0} 
-        className={`${isFirstChild ? 'mx-4' : 'mr-4'} md:mx-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noTilt ? '' : ''}`}
+        className={`${isFirstChild ? 'mx-4' : 'mr-4'} md:mx-0 overflow-hidden focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${noTilt ? '' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => setIsHovered(true)}
@@ -47,7 +47,7 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
                 alt={data.thumbnail ? data.thumbnail.alt : ''}
                 width={data.thumbnail ? data.thumbnail.width: 400}
                 height={data.thumbnail ? data.thumbnail.height: 400}
-                className="rounded-t-lg object-cover" />
+                className="object-cover" />
             </CardImageHeader>
             <CardContent className="flex flex-row justify-between items-start pt-4 h-full">
                 <div className="flex flex-col ${styles.title}">
