@@ -18,9 +18,9 @@ export default function NotFound () {
                 <Image
                 src={shibaNotFound}
                 alt="A shiba inu with papers in its mouth." 
-                width={384}
-                height={384}
-                className="absolute bottom-0 md:right-[12rem]"
+                width={350}
+                height={350}
+                className="absolute bottom-0 right-4 md:right-[12rem]"
                 />
             </div>
             <PageFooter />
