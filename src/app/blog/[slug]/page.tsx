@@ -9,8 +9,6 @@ import Image from "next/image"
 import { ArrowLeftIcon, Share2Icon } from "@radix-ui/react-icons"
 import { TagIcon, LibraryIcon } from "lucide-react"
 
-import { PageHeader } from "@/components/page-header"
-import { SearchWrapper } from "@/components/search-wrapper"
 import { Separator } from "@/components/ui/separator"
 import { CardCarousel } from "@/components/blog-card-carousel"
 import { PageFooter } from "@/components/page-footer"
@@ -80,10 +78,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
     const otherBlogPosts = blogPosts.filter((post) => post.slug !== data.slug)
 
     return(
-        <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-800 dark:via-slate-900 dark:animate-gradient-xy">
-            <PageHeader>
-                <SearchWrapper />
-            </PageHeader>
+        <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
             <div>
             <div className="relative w-full h-[24rem] lg:h-[30rem]">
                 <Image
@@ -91,7 +86,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 alt={data.thumbnail?.alt || ''}
                 fill={true}
                 priority={true}
-                className="object-cover" 
+                className="object-cover object-top" 
                 />
             </div>
     
@@ -187,7 +182,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                         
             </div>
 
-            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48">
+            <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 xl:mx-48">
                 <h2 className="text-2xl text-foreground font-semibold mx-8 font-mono mb-4">Recommended posts</h2>
                 <CardCarousel posts={otherBlogPosts} recommended={true} />
             </div>

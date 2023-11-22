@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { TagContext } from "@/lib/tag-context"
-import { Check, ChevronsUpDown } from "lucide-react"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
+import { Check, ChevronsUpDown, TagIcon } from "lucide-react"
 
 import { Post } from "@/lib/blog-posts"
 
@@ -22,15 +22,34 @@ import {
 } from "@/components/ui/popover"
 
 export function BlogCombobox({data}: {data: Post[]}) {
-  const { selectedTag, setSelectedTag } = React.useContext(TagContext);
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [open, setOpen] = React.useState(false);
+
+  const currentTag = searchParams.get("tag") || "";
 
   const tags = Array.from(new Set(data.flatMap(post => post.tags || [] )))
   .map(tag => ({ value: tag, label: tag }));
 
   // Find the label that matches the selectedTag
-  const displayLabel = tags.find(tag => tag.value.toLowerCase() === selectedTag.toLowerCase())?.label;
+  const displayLabel = tags.find(tag => tag.value.toLowerCase() === currentTag.toLowerCase())?.label || 'Filter posts';
+
+  const handleChange = (newTag: string) => {
+
+    const newSearchParams = new URLSearchParams(searchParams);
+    if (newTag === currentTag) {
+      newSearchParams.delete("tag");
+    } else {
+      newSearchParams.set("tag", newTag);
+    }
+
+    // update the URL using useRouter
+    const url = `${pathname}?${newSearchParams.toString()}`;
+    router.push(url, { scroll: false });
+    setOpen(false);
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -41,8 +60,10 @@ export function BlogCombobox({data}: {data: Post[]}) {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {selectedTag ? displayLabel
-            : "Filter posts"}
+          <div className="flex flex-row gap-2 items-center">
+          <TagIcon className="h-4 w-4 text-muted-foreground" />
+          {displayLabel}
+          </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -50,21 +71,17 @@ export function BlogCombobox({data}: {data: Post[]}) {
         <Command>
           <CommandInput placeholder="Search tags..." />
           <CommandEmpty>No tags found.</CommandEmpty>
-          <CommandGroup className="overflow-y-scroll max-h-[175px] md:max-h-[300px]">
+          <CommandGroup className="overflow-y-scroll max-h-[150px] md:max-h-[200px]">
             {tags.map((tag) => (
               <CommandItem
                 key={tag.value}
                 value={tag.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
-                  setSelectedTag(currentValue === value ? "" : currentValue);
-                  setOpen(false)
-                }}
+                onSelect={() => handleChange(tag.value)}
               >
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    selectedTag.toLowerCase() === tag.value.toLowerCase() ? "opacity-100" : "opacity-0"
+                    currentTag.toLowerCase() === tag.value.toLowerCase() ? "opacity-100" : "opacity-0"
                   )}
                 />
                 {tag.label}

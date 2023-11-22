@@ -11,6 +11,7 @@ import FsLightbox from "fslightbox-react"
 import { useToast } from "@/components/ui/use-toast"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
+import { inter } from "@/app/fonts"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
@@ -106,11 +107,11 @@ export default function RichText({ document }: RichTextProps) {
                         const alertTitle = node.data.target.fields.title;
                         const alertDescription = node.data.target.fields.description;
                         return (
-                            <div className="px-8 md:max-w-3xl mx-auto">
+                            <div className={` ${inter.className} px-8 md:max-w-3xl mx-auto`}>
                             <Alert className="mb-8">
                                 <InfoCircledIcon className="h-4 w-4" />
-                                <AlertTitle className="font-semibold font-sans">{alertTitle}</AlertTitle>
-                                <AlertDescription className="text-base font-sans">{alertDescription}</AlertDescription>
+                                <AlertTitle className="font-semibold">{alertTitle}</AlertTitle>
+                                <AlertDescription className="text-base">{alertDescription}</AlertDescription>
                             </Alert>
                             </div>
                         )

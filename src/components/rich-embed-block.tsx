@@ -11,6 +11,7 @@ import {
     AlertDescription
  } from "@/components/ui/alert"
 import { useToast } from "@/components/ui/use-toast"
+import { inter } from "@/app/fonts"
 
 import { Link2Icon } from "@radix-ui/react-icons"
 
@@ -44,7 +45,7 @@ import { Link2Icon } from "@radix-ui/react-icons"
     }
 
     return(
-        <div className="flex flex-col px-8 max-w-[420px] mx-auto">
+        <div className={`${inter.className} flex flex-col max-w-[420px] mx-auto`}>
             <div className="relative w-full h-[200px] rounded-t-lg border-t-[1px] border-x-[1px] overflow-hidden">
                 <Image
                 src={openGraphImage}
@@ -54,15 +55,15 @@ import { Link2Icon } from "@radix-ui/react-icons"
                 />
             </div>
             <Alert className="mb-8 flex flex-col gap-4 rounded-none rounded-b-lg border-t-[0px]">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
                 <div className="flex flex-row items-center justify-between">
-                    <AlertDescription className="text-sm font-sans text-gray-800 dark:text-gray-200">{author}</AlertDescription>
+                    <AlertDescription className="text-sm text-gray-800 dark:text-gray-200">{author}</AlertDescription>
                 </div>
-                <AlertTitle className="font-semibold font-sans">{title}</AlertTitle>
-                <AlertDescription className="text-base font-sans text-gray-800 dark:text-gray-200 mb-2">{description}</AlertDescription>
+                <AlertTitle className="font-semibold text-[17px]">{title}</AlertTitle>
+                <AlertDescription className="text-base text-gray-800 dark:text-gray-200 mb-2">{description}</AlertDescription>
                 <div className="flex flex-row justify-between items-center">
                 {url && 
-                <Button variant="default" className="font-sans w-max" onClick={handleClick}>
+                <Button variant="default" className="w-max" onClick={handleClick}>
                     View {source}
                 </Button>
                 }

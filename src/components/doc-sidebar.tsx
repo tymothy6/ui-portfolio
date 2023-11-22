@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
 import Link from "next/link"
 
 import { 
@@ -11,11 +10,13 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 
 export function StyleNavigation () {
     return (
-        <div className="sticky top-8 hidden lg:block h-full w-full pl-24 pt-24 pb-16 min-w-[16rem] max-w-[24rem]">
+        <div className="sticky top-8 hidden lg:block h-full w-full pl-16 pr-12 pt-24 pb-16 min-w-[16rem] max-w-[24rem]">
             <p className="text-sm text-gray-800 dark:text-gray-300 font-mono pb-4">Navigation</p>
+            <Separator />
             <Accordion type="single" defaultValue="item-1" collapsible>
                 <AccordionItem value="item-1">
                     <AccordionTrigger>Themes</AccordionTrigger>

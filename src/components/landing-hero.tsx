@@ -89,9 +89,9 @@ export function PasswordHero () {
     }
 
     return(
-        <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
+        <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl min-h-[100vh]">
             <h1 className="text-4xl md:text-6xl font-semibold mb-4">Protected page</h1>
-            <p className="text-xl md:text-2xl font-medium leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
+            <p className="text-xl md:text-2xl font-[450] leading-relaxed text-gray-800 dark:text-gray-200 mb-8">🔐 Enter your password to proceed </p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                     <FormField
@@ -121,9 +121,9 @@ function goBack(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
 
 export function NotFoundHero () {
     return (
-        <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl">
+        <div className="flex flex-col justify-center pt-0 md:pt-24 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl min-h-[100vh] z-[10]">
             <h1 className="text-6xl md:text-8xl md:pl-8 font-semibold mb-4">404</h1>
-            <p className="text-2xl md:text-4xl md:pl-8 font-medium text-gray-800 dark:text-gray-200 mb-8">😖 Hmm, we couldn&apos;t find what you&apos;re looking for</p>
+            <p className="text-2xl md:text-3xl lg:text-4xl md:pl-8 font-[450] text-gray-800 dark:text-gray-200 mb-4">😖 Hmm, we couldn&apos;t find what you&apos;re looking for. He might have something to do with it..</p>
             <div className="md:pl-8">
                 <Button variant="default" size="default" className="md:w-36" asChild>
                     <Link href="#" onClick={goBack}>
@@ -141,7 +141,7 @@ export function LicenseHero () {
         <div>
             <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Licenses</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8 z-[3]">
                     <Button variant="gradient" size="default" className="relative md:w-36" asChild>
                         <Link href="/#contact">
@@ -163,7 +163,6 @@ export function LicenseHero () {
                             <Button variant="default" asChild>
                                 <Link href="https://unsplash.com/license">Unsplash</Link>
                             </Button>
-                        
                             <Button variant="default" asChild>
                                 <Link href="https://openai.com/dall-e-3">
                                OpenAI</Link>
@@ -665,7 +664,7 @@ export function StyleHero () {
         <div>
             <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Otherwise, I&apos;ve included granular tokens you can use for your own components.</p>
+                <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Not using a framework? I&apos;ve defined agnostic tokens you can use for your own components.</p>
                     <div className="flex flex-row flex-wrap gap-4 md:pl-8 z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://nextjs.org/docs">
@@ -882,7 +881,7 @@ export function ClickMeButton() {
                         <TableHead className="text-sm font-semibold w-[200px]">Variable name</TableHead>
                         <TableHead className="text-sm font-semibold">HEX</TableHead>
                         <TableHead className="text-sm font-semibold min-w-[150px]">RGB</TableHead>
-                        <TableHead className="text-sm font-semibold min-w-[150px]">OKLCH</TableHead>
+                        <TableHead className="text-sm font-semibold min-w-[150px]">LCH</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -960,7 +959,7 @@ export function ResumeHero () {
                 <div>
                     <div className="flex flex-col justify-center min-h-[100vh] gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                         <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Want to learn more about me?</h1>
-                        <p className="text-xl md:text-2xl md:pl-8 font-medium leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
+                        <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">🥹 I&apos;m flattered. Get a copy of my resume here and connect with me on LinkedIn.</p>
                         <div className="md:pl-8 z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://linkedin.com/in/timng88">
@@ -980,7 +979,7 @@ export function BlogHero () {
         <div className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8 z-[3]">Design Blog</h1>
                 <div className="flex flex-col justify-start w-full z-[3]">
-                    <p className="text-xl lg:text-2xl text-foreground font-medium text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
+                    <p className="text-xl lg:text-2xl text-foreground font-[450] text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
                     <div className="z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="/#contact">

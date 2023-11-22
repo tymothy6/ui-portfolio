@@ -7,6 +7,9 @@ import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
 import { Analytics } from "@vercel/analytics/react"
 
+import { PageHeader } from '@/components/page-header'
+import { SearchWrapper } from '@/components/search-wrapper'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://tim-ng.me'),
   title: {
@@ -45,6 +48,9 @@ export default function RootLayout({
           disableTransitionOnChange
           >
             <ScrollProviderWrapper>
+            <PageHeader>
+              <SearchWrapper />
+            </PageHeader>
                 {children}
               <Analytics />
             </ScrollProviderWrapper>

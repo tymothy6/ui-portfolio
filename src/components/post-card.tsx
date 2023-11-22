@@ -38,18 +38,18 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                 <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">{data.date ? 
                 new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: '2-digit' }).format(new Date(data.date)) :  ''}</p>
                 <TooltipProvider>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <AvatarBlog className="z-[1]">
-                                        <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
-                                        <AvatarFallback>TN</AvatarFallback>
-                                    </AvatarBlog>
-                                </TooltipTrigger>
-                                <TooltipContent className="p-2 z-[3]">
-                                    <p className="text-sm font-regular"> Tim Ng </p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <AvatarBlog className="z-[1]">
+                            <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
+                                <AvatarFallback>TN</AvatarFallback>
+                            </AvatarBlog>
+                        </TooltipTrigger>
+                        <TooltipContent className="p-2 z-[3]">
+                            <p className="text-sm font-regular"> Tim Ng </p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
             </div>
             <Link href={`/blog/${data.slug}`}>
                 <h1 className="text-xl md:text-2xl font-medium text-foreground">{data.title}</h1>
@@ -58,7 +58,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
             </CardHeader>
             <CardContent className="flex flex-col items-start w-full">
                 <div className="flex flex-col gap-4 w-full">
-                    <div className="relative h-[200px] lg:h-[300px] w-full rounded-lg border border-accent overflow-hidden">
+                    <div className="relative h-[200px] lg:h-[250px] w-full rounded-lg border border-accent overflow-hidden">
                         <Image
                         src={data.thumbnail ? data.thumbnail.src : ''}
                         alt={data.thumbnail ? data.thumbnail.alt : ''}
@@ -67,7 +67,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                         className="object-cover object-top" 
                         />
                     </div>
-                    <p className="text-left text-base font-regular text-gray-900 dark:text-gray-100 pl-2">{data.summary}</p>
+                    <p className="text-left text-base md:text-lg font-regular text-gray-900 dark:text-gray-100 pl-2">{data.summary}</p>
                    
                     <div className="flex flex-row flex-wrap gap-2">
                 
@@ -78,8 +78,8 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                 </div>
             </CardContent>
             <CardFooter className="mt-auto">
-                   <Button variant="secondaryblog" className="w-full" asChild>
-                    <Link href={`/blog/${data.slug}`}>Read more</Link>
+                   <Button variant="secondaryblog" className="w-full text-base" asChild>
+                    <Link href={`/blog/${data.slug}`} className="hover:underline hover:underline-offset-2 hover:decoration-2 hover:decoration-primary">Read more</Link>
                    </Button> 
             </CardFooter>
             </>

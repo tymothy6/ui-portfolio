@@ -1,8 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import { PageHeader } from "@/components/page-header"
-import { SearchWrapper } from "@/components/search-wrapper"
 import { HeroWrapper } from "@/components/hero-wrapper"
 import { ProjectGrid } from "@/components/project-grid"
 import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/page-list"
@@ -20,9 +18,6 @@ export default function Home() {
   return (
     <div 
     className="flex flex-col bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
-      <PageHeader>
-        <SearchWrapper />
-      </PageHeader>
       <HeroWrapper id="home" />
       <div className="w-full border-t-[1px]" />
       <ProjectGrid id="work" />
