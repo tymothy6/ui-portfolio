@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
 import { useRouter, usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
@@ -32,6 +33,7 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 import { ProgressBar } from "@/components/progress-bar"
+
 
 const scrollToSection = (id: string) => {
     setTimeout(() => {
@@ -99,6 +101,7 @@ const blog : { title: string; href: string; description:string }[] = [
 ]
 
 export function PageHeader({ children }: { children?: React.ReactNode}) {
+    const { resolvedTheme } = useTheme()
     const context = React.useContext(ScrollContext)
     const { scrollProgress = 0 } = context ?? {}
 
@@ -160,12 +163,14 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                         <Tooltip>
                             <TooltipTrigger asChild>
                                 <Avatar>
-                                    <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
+                                    <AvatarImage src={resolvedTheme === 'dark' ? 
+            'https://images.ctfassets.net/mzyich089xy0/3it1Ee1attFtq5TDAfTWdb/39309148d9d40c4b368ce33b86455342/avatar-dark.png' : 
+            'https://images.ctfassets.net/mzyich089xy0/1UHHXxWnN5LVkdkiylVcBc/9cfa320f91b36c46a7bc393626b216e9/avatar-light.png'} />
                                     <AvatarFallback>TN</AvatarFallback>
                                 </Avatar>
                             </TooltipTrigger>
                             <TooltipContent className="p-2 md:block hidden">
-                                <p className="text-sm font-regular"> 🐾 Doggo will guide you back to the start 🐾 </p>
+                                <p className="text-sm font-regular"> 🔙 Go back to the start </p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
