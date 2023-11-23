@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-import styles from "@/components/modules/bg-styles.module.css"
+import styles from "@/components/modules/landing.module.css"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -717,7 +717,7 @@ export function StyleHero () {
                 <h3 className="text-2xl font-semibold">
                     CSS variables <Link2Icon className="inline text-muted-foreground h-6 w-6" /></h3>
             </div>
-            <Alert>
+            <Alert className="max-w-2xl mx-auto">
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
@@ -790,7 +790,7 @@ export function StyleHero () {
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
                       The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
                     </p>
-                    <Alert className="my-4">
+                    <Alert className="my-4 max-w-2xl mx-auto">
                         <InfoCircledIcon className="h-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
@@ -807,8 +807,8 @@ export function StyleHero () {
                         <TabsTrigger value="code">Code</TabsTrigger>
                     </TabsList>
                     <TabsContent value="preview">
-                            <div className={`${styles.gridBackground} flex grow items-center justify-center w-full h-full bg-card/90 border border-accent rounded-md p-16`}>
-                                <Button className="bg-primary text-primary-foreground">Click me</Button>
+                            <div className={`${styles.card} bg-card/50 flex grow items-center justify-center w-full h-full border border-accent rounded-md p-16`}>
+                                <Button className="bg-primary text-primary-foreground z-[2]">Click me</Button>
                             </div>
                     </TabsContent>
                     <TabsContent value="code">
@@ -864,7 +864,7 @@ export function ClickMeButton() {
                 <p className="text-lg text-foreground font-regular">
                 🤓 I thought you&apos;d never ask.
                 </p>
-                <Alert>
+                <Alert className="max-w-2xl mx-auto">
                 <InfoCircledIcon className="h-4 w-4" />
                     <AlertTitle className="font-semibold">Tips</AlertTitle>
                         <AlertDescription className="text-base">
