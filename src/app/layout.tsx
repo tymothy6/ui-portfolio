@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react"
 
 import { PageHeader } from '@/components/page-header'
 import { SearchWrapper } from '@/components/search-wrapper'
+import { PageFooter } from '@/components/page-footer'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tim-ng.me'),
@@ -16,10 +17,10 @@ export const metadata: Metadata = {
     template: '%s | Tim Ng · Design Portfolio',
     default: 'Tim Ng · Design Portfolio',
   },
-  description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
+  description: 'Tim Ng is an experience designer and scientist based in Toronto, Canada.',
   openGraph: {
     title: 'Tim Ng · Design Portfolio',
-    description: 'Tim Ng is a product designer and scientist based in Toronto, Canada.',
+    description: 'Tim Ng is an experience designer and scientist based in Toronto, Canada.',
     url: 'https://tim-ng.me',
     siteName: 'Tim Ng · Design Portfolio',
     locale: 'en_US',
@@ -52,6 +53,7 @@ export default function RootLayout({
               <SearchWrapper />
             </PageHeader>
                 {children}
+            <PageFooter />
               <Analytics />
             </ScrollProviderWrapper>
             <Toaster />

@@ -3,6 +3,9 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { useCommandState } from "cmdk"
+import { useTheme } from "next-themes"
+
+import Image from "next/image"
 
 import { HomeIcon, ChatBubbleIcon, QuestionMarkCircledIcon, BackpackIcon, EnvelopeClosedIcon, FileIcon, FrameIcon, TokensIcon, LockClosedIcon, RocketIcon } from "@radix-ui/react-icons"
 
@@ -22,6 +25,7 @@ import { Post } from "@/lib/blog-posts"
 import { Project } from "@/lib/projects"
 
 export function SearchDialog({ posts, projects }: { posts: Post[], projects: Project[] }) {
+  const { resolvedTheme } = useTheme()
   const [open, setOpen] = React.useState(false)
   const router = useRouter()
   const handleNavigation = (url: string) => {
@@ -203,7 +207,15 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
         </CommandList>
         
         <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-background/50 backdrop-blur-lg">
-            <div className="w-max h-max flex py-1 px-2 rounded-md bg-accent border border-primary tracking-wide font-medium text-[13px] text-accent-foreground cursor-default">Tim&apos;s Portfolio</div>
+            <div className="w-max h-max flex p-[3px] rounded-md bg-accent border tracking-wide font-medium text-[13px] text-accent-foreground cursor-default">
+              <Image
+              src={resolvedTheme === 'dark' ? 'https://images.ctfassets.net/mzyich089xy0/3it1Ee1attFtq5TDAfTWdb/39309148d9d40c4b368ce33b86455342/avatar-dark.png' : 
+              'https://images.ctfassets.net/mzyich089xy0/1UHHXxWnN5LVkdkiylVcBc/9cfa320f91b36c46a7bc393626b216e9/avatar-light.png'}
+              width={20}
+              height={20}
+              alt="Tim Ng Design Logo"
+              />
+            </div>
             <div className="flex flex-row items-center gap-2">
             <div className="text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
                 Open page

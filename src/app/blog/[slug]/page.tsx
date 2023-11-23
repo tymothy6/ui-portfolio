@@ -11,7 +11,6 @@ import { TagIcon, LibraryIcon } from "lucide-react"
 
 import { Separator } from "@/components/ui/separator"
 import { CardCarousel } from "@/components/blog-card-carousel"
-import { PageFooter } from "@/components/page-footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
@@ -188,7 +187,6 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
             </div>
 
         </div>
-            <PageFooter />
         </div>
     )
 }

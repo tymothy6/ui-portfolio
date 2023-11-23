@@ -11,7 +11,7 @@ export async function ProjectGrid ({ id }: HomeProps) {
     const projects = await fetchAllProjects()
 
     return (
-        <div id={id} className={` ${styles.gradient} flex flex-col justify-center items-start my-16 mx-0 md:mx-24 lg:mx-36 scroll-mt-32 z-[2]`}>
+        <div id={id} className="flex flex-col justify-center items-start my-16 mx-0 md:mx-24 lg:mx-36 scroll-mt-32">
             <div className="flex flex-row items-center gap-2 mb-8 mx-8">
                 <p className="text-base md:text-lg font-semibold text-foreground font-mono">Featured Work</p>
                 <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400 font-mono">· 2022 - Present</p>

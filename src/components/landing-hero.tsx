@@ -137,6 +137,7 @@ export function NotFoundHero () {
 export function LicenseHero () {
     return (
         <div>
+            <div className={styles.grid}>
             <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Licenses</h1>
                 <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
@@ -148,6 +149,7 @@ export function LicenseHero () {
                     </Button>
                 </div>
               
+            </div>
             </div>
             <div className="w-full border-t-[1px]" />
             <div className="flex flex-col gap-8 md:px-8 pt-32 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
@@ -660,6 +662,7 @@ export function StyleHero () {
 
     return (
         <div>
+            <div className={styles.grid}>
             <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
                 <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Not using a framework? I&apos;ve defined agnostic tokens you can use for your own components.</p>
@@ -679,6 +682,7 @@ export function StyleHero () {
                         
                     </div>
                
+            </div>
             </div>
             
             <div className="flex flex-row w-full h-full gap-0 border-t-[1px]">

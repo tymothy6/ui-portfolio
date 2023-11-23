@@ -8,7 +8,6 @@ import Image from "next/image"
 
 import { Separator } from "@/components/ui/separator"
 import { ProjectCardCarousel } from "@/components/project-card-carousel"
-import { PageFooter } from "@/components/page-footer"
 import { Button } from "@/components/ui/button"
 
 import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons"
@@ -180,7 +179,6 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
             </div>
 
         </div>
-            <PageFooter />
         </div>
     )
 }

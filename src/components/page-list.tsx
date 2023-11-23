@@ -87,7 +87,7 @@ export function SkillsPage () {
 export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
     return (
         
-        <div id={id} className="flex-col px-8 py-8 my-8 mx-4 md:mx-24 lg:mx-48 scroll-mt-16 z-[2]">
+        <div id={id} className="flex-col px-8 py-8 my-8 mx-4 md:mx-16 lg:mx-24 xl:mx-36 scroll-mt-16 z-[2]">
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-8">Values</h2>
             <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-16 gap-y-8">
             <div className="flex flex-col gap-2 mb-8">

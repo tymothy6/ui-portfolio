@@ -3,7 +3,6 @@ import * as React from "react"
 import { Metadata } from "next"
 
 import { ResumeHero } from "@/components/landing-hero"
-import { PageFooter } from "@/components/page-footer"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { DownloadIcon } from "@radix-ui/react-icons"
@@ -16,9 +15,11 @@ export const metadata: Metadata = {
 
 export default function Resume () {
     return(
-        <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
+        <div>
+            <div className={styles.grid}>
             <div className={styles.gradient}>
             <ResumeHero />
+            </div>
             </div>
             <div className="w-full border-t-[1px]" />
             <div className="flex flex-col gap-8 md:px-8 pt-24 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
@@ -33,7 +34,7 @@ export default function Resume () {
                                 allow="autoplay"
                                 className="absolute top-0 w-full h-full"
                                 ></iframe>
-                                <div>
+                            <div>
                                 <a href="https://drive.google.com/uc?export=download&id=1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc">
                                     <Button
                                     variant="outline"
@@ -44,12 +45,10 @@ export default function Resume () {
                                     <DownloadIcon className="h-[0.9rem] w-[0.9rem] ml-2" />
                                     </Button>
                                 </a>
-                                </div>
                             </div>
                         </div>
+                    </div>
             </div>
-            
-            <PageFooter />
         </div>
     )
 }
