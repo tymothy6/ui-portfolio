@@ -23,7 +23,6 @@ export default function NotFound () {
                 className="absolute bottom-0 right-4 md:right-[12rem]"
                 />
             </div>
-            <PageFooter />
         </div>
     )
 }
