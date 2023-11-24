@@ -6,6 +6,7 @@ import { useCommandState } from "cmdk"
 import { useTheme } from "next-themes"
 
 import Image from "next/image"
+import shibaNotFound from "public/shiba-404.png"
 
 import { HomeIcon, ChatBubbleIcon, QuestionMarkCircledIcon, BackpackIcon, EnvelopeClosedIcon, FileIcon, FrameIcon, TokensIcon, LockClosedIcon, RocketIcon } from "@radix-ui/react-icons"
 
@@ -69,7 +70,20 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
       
         <div className="relative">
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>
+            <div className="flex flex-col items-center gap-2">
+            No results found.
+            <div className="w-[72px] h-[56px]">
+            <Image
+              src={shibaNotFound}
+              width={72}
+              height={72}
+              alt="A shiba inu with papers in its mouth."
+              className="absolute bottom-14"
+              />
+            </div>
+            </div>
+          </CommandEmpty>
           <CommandGroup heading="Links">
               <CommandItem
               onSelect={() => handleNavigation('/#home')}
@@ -120,6 +134,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
                 <span className="font-medium">Contact</span>
                 <span className="text-muted-foreground hidden">Get in touch with me</span>
                 <div className="hidden">
+                <Badge variant="secondary">#hello</Badge>
                 <Badge variant="secondary">#email</Badge>
                 <Badge variant="secondary">#linkedin</Badge>
                 </div>
@@ -148,7 +163,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
                 className="cursor-pointer">
                   <FrameIcon className="mr-3 h-4 w-4" />
                   <div className="flex flex-row items-center gap-2">
-                    <span className="font-medium w-[260px] truncate">{project.name}</span>
+                    <span className="font-medium w-[240px] truncate">{project.name}</span>
                     <Badge variant="default"><span className="tracking-tight">{project.type}</span></Badge>
                   </div>
               </CommandItem>
