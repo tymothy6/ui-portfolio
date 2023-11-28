@@ -70,7 +70,7 @@ export function PageFooter2 () {
                                             </AvatarFooter>
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            <p className="font-regular"> Why don't you say hi instead? 😉 </p>
+                                            <p className="font-regular"> Why don&apos;t you say hi instead? 😉 </p>
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>
