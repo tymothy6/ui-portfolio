@@ -170,7 +170,7 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                                 </Avatar>
                             </TooltipTrigger>
                             <TooltipContent className="p-2 md:block hidden">
-                                <p className="text-sm font-regular"> 🔙 Go back to the start </p>
+                                <p className="text-sm font-regular"> Go back to the homepage 🏁 </p>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>

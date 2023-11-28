@@ -53,12 +53,14 @@ export const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(({
                 <div className="flex flex-col ${styles.title}">
                     <p className={`text-left text-lg font-semibold text-foreground pr-2 mb-0 ${isHovered ? 'underline decoration-primary/90 decoration-4 underline-offset-4' : ''}`}>{data.name}</p>
                     <p className="text-left text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 pr-2 mb-2">{data.type}</p> 
-                    <div className="flex flex-row flex-wrap gap-2">
+                    
+                    <div className="flex flex-row items-center flex-wrap gap-2">
                         <Badge variant="default"><span className="font-mono font-semibold">{data.year}</span></Badge>
                             {data.tools && data.tools.map( tool => (
                                 <Badge key={tool} variant="secondary"><span className="font-mono font-semibold tracking-tight">{tool}</span></Badge>
                             ))}
                     </div>  
+                    
                 </div>
             
                 <div className="flex flex-row gap-0">

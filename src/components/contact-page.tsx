@@ -142,7 +142,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     }
 
     return(
-        <div id={id} className="py-8 md:pb-16 lg:px-8 my-8 md:mx-24 scroll-mt-12 z-[3]">
+        <div id={id} className="pb-8 md:pb-16 lg:px-8 my-8 md:mx-24 scroll-mt-12 z-[3]">
             <div className="flex-col md:rounded-lg items-center justify-center px-8 py-12 md:p-16 md:border border-y-[1px] bg-card text-card-foreground md:shadow-sm">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
                 🤝🏼 Want to work together? Get in touch
@@ -251,7 +251,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                             <Button type="submit" className="w-full">Send message</Button>
                         </form>
                     </Form>
-                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center">Prefer email? 📧  <Link href="mailto:hello@tim-ng.me" className="ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:rounded-sm"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></Link></p>
+                    <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center hidden md:block">Prefer email? 📧  <a href="mailto:hello@tim-ng.me" className="ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:rounded-sm"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></a></p>
                 </div>
             </div>
         </div>

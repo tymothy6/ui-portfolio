@@ -90,7 +90,7 @@ const customNavigationMenuTriggerStyle = cva(
 )
 
 const footerNavigationMenuTriggerStyle = cva(
-  "group inline-flex h-8 w-max items-center justify-center rounded-md bg-background/0 px-4 py-2 text-sm font-medium transition-colors hover:bg-accent/60 hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+  "group inline-flex h-8 w-max items-center justify-center rounded-md bg-background/0 px-4 py-2 text-gray-800 dark:text-gray-400 text-sm font-medium transition-colors hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-primary-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 )
 
 const gradientNavigationMenuTriggerStyle = cva (

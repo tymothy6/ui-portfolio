@@ -27,6 +27,17 @@ export function GitHubBadge() {
   )
 }
 
+export function FigmaContact() {
+  return (
+    <Button variant="ghost" size="icon" asChild>
+        <Link href="https://www.figma.com/@tymothy6" target="_blank" rel="noopener noreferrer">
+        <FigmaLogoIcon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
+        <span className="sr-only">My Figma Community profile</span>
+        </Link>
+    </Button>
+  )
+}
+
 export function FigmaBadge() {
   return (
   <div className="h-10 w-10 inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-800 dark:text-slate-300 bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground">

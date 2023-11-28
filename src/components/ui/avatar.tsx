@@ -35,9 +35,24 @@ const AvatarBlog = React.forwardRef<
 ))
 AvatarBlog.displayName = AvatarPrimitive.Root.displayName
 
+const AvatarFooter = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Root
+    ref={ref}
+    className={cn(
+      "relative flex h-8 w-8 md:h-10 md:w-10 shrink-0 overflow-hidden rounded-lg",
+      className
+    )}
+    {...props}
+  />
+))
+AvatarFooter.displayName = AvatarPrimitive.Root.displayName
+
 const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image> 
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
@@ -62,4 +77,4 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-export { Avatar, AvatarBlog, AvatarImage, AvatarFallback }
+export { Avatar, AvatarBlog, AvatarFooter, AvatarImage, AvatarFallback }

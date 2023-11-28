@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { PageHeader } from '@/components/page-header'
 import { SearchWrapper } from '@/components/search-wrapper'
 import { PageFooter } from '@/components/page-footer'
+import { PageFooter2 } from '@/components/footer-2'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tim-ng.me'),
@@ -53,7 +54,7 @@ export default function RootLayout({
               <SearchWrapper />
             </PageHeader>
                 {children}
-            <PageFooter />
+            <PageFooter2 />
               <Analytics />
             </ScrollProviderWrapper>
             <Toaster />
