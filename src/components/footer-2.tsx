@@ -89,12 +89,6 @@ export function PageFooter2 () {
                                         <span className="text-sm font-regular text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="group-hover:text-foreground group-hover:underline group-hover:decoration-primary/90 group-hover:underline-offset-4 group-hover:decoration-2">hello@tim-ng.me</span></span></a>
                                     </Button>
                                 </div>
-                                <div className="block md:hidden pt-2 pb-4 w-full">
-                                    <Button variant="secondaryblog" className="w-full hover:border-accent hover:bg-gray-100/60 dark:hover:bg-slate-800/60 bg-gray-100 dark:bg-slate-800" asChild>
-                                        <a href="mailto:hello@tim-ng.me">
-                                        <span className="text-sm font-medium text-gray-800 dark:text-gray-400 my-8 text-left">📧 Questions? <span className="text-foreground underline decoration-primary decoration-2 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></span></a>
-                                    </Button>
-                                </div>
 
                                 <div className="items-center space-x-2 my-4 w-max hidden md:flex">
                                     <Switch id="marquee" onCheckedChange={toggleMarquee} checked={isMarqueeEnabled} />
