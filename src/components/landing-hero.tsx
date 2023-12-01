@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import styles from "@/components/modules/landing.module.css"
 
@@ -13,7 +14,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon } from "@radix-ui/react-icons"
+import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -43,6 +44,7 @@ import {
 } from "@/components/ui/table"
 import { Separator } from "@/components/ui/separator"
 import { StyleNavigation } from "@/components/doc-sidebar"
+import { FigmaEmbed } from "@/components/figma-embed"
   
 
 interface HomeProps {
@@ -138,7 +140,7 @@ export function LicenseHero () {
     return (
         <div>
             <div className={styles.grid}>
-            <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
+            <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
                 <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Licenses</h1>
                 <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">All graphical assets on this website are licensed for personal use. If you would like to use a specific asset, please check the license below or reach out to me 😊</p>
                 <div className="md:pl-8 z-[3]">
@@ -152,33 +154,35 @@ export function LicenseHero () {
             </div>
             </div>
             <div className="w-full border-t-[1px]" />
-            <div className="flex flex-col gap-8 md:px-8 pt-32 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">
-                    
-                    <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2">
+            <div className="flex flex-col max-w-5xl gap-8 px-8 py-32 mx-auto">
+                    <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:gap-20">
                         <div className="flex flex-col gap-4">
-                        <h2 className="text-3xl font-semibold">Images</h2>
-                        <Separator />
-                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
-                        <div className="flex flex-wrap gap-4">
-                            <Button variant="default" asChild>
-                                <Link href="https://unsplash.com/license">Unsplash</Link>
-                            </Button>
-                            <Button variant="default" asChild>
-                                <Link href="https://openai.com/dall-e-3">
-                               OpenAI</Link>
-                            </Button>
-                            <Button variant="default" asChild>
-                                <Link href="https://www.biorender.com">
-                                BioRender</Link>
-                            </Button>
-                        </div>
+                            <h2 className="text-3xl font-semibold">Images</h2>
+                            <Separator />
+                            <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
+                            <div className="flex flex-wrap gap-4">
+                                <Button variant="default" asChild>
+                                    <Link href="https://unsplash.com/license">Unsplash</Link>
+                                </Button>
+                                <Button variant="default" asChild>
+                                    <Link href="https://openai.com/dall-e-3">
+                                OpenAI</Link>
+                                </Button>
+                                <Button variant="default" asChild>
+                                    <Link href="https://www.biorender.com">
+                                    BioRender</Link>
+                                </Button>
+                            </div>
                         </div>
                         
-                        <img 
-                        src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
-                        alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
-                        className="rounded-lg object-cover object-top"
-                        />
+                        <div className="relative w-full min-h-[16rem] overflow-hidden">
+                            <Image 
+                            src="https://images.unsplash.com/photo-1620359536552-e165a11d34c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3502&q=80"
+                            alt="Vancouver, Canada at dusk, looking north towards downtown and the North Shore mountains"
+                            fill={true}
+                            className="rounded-lg object-cover object-top"
+                            />
+                        </div>
                         
                         
                     </div>
@@ -186,9 +190,9 @@ export function LicenseHero () {
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
+            <div className="flex flex-col max-w-5xl gap-8 px-8 pb-32 mx-auto">
          
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:gap-20">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
                     <Separator />
@@ -206,22 +210,28 @@ export function LicenseHero () {
                         </Button>
                         </div>
                     </div>
-                    <img 
-                    src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
-                    alt="Inter typeface by Rasmus Andersson"
-                    className="rounded-lg object-cover object-top"
-                    />
+                    <div className="relative w-full min-h-[16rem] overflow-hidden">
+                        <Image 
+                        src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
+                        alt="Inter typeface by Rasmus Andersson"
+                        fill={true}
+                        className="rounded-lg object-cover object-top"
+                        />
+                    </div>
                 </div>
                
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-36 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
+            <div className="flex flex-col max-w-5xl gap-8 px-8 pb-32 mx-auto">
             
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:gap-20">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Icons</h2>
                     <Separator />
-                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Radix UI.<br />
+                        <p className="text-lg font-regular text-gray-800 dark:text-gray-200">This website uses open-source icons from Lucide and Radix UI.<br />
+                        </p>
+                        <p className="text-lg font-regular text-foreground mb-2"><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
+                        npm i lucide-react</code>
                         </p>
                         <p className="text-lg font-regular text-foreground mb-2"><code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium md:font-semibold">
                         npm i @radix-ui/react-icons</code>
@@ -234,18 +244,21 @@ export function LicenseHero () {
                             </Button>
                         </span>
                     </div>
-                    <img 
-                    src="https://github.com/radix-ui/icons/raw/master/icons.png"
-                    alt="Icons from Radix UI"
-                    className="rounded-lg object-cover object-top"
-                    />
+                    <div className="relative w-full min-h-[16rem] overflow-hidden">
+                        <Image 
+                        src="https://github.com/radix-ui/icons/raw/master/icons.png"
+                        alt="Icons from Radix UI"
+                        fill={true}
+                        className="rounded-lg object-cover object-top"
+                        />
+                    </div>
                 </div>
                 
             </div>
 
-            <div className="flex flex-col gap-8 md:px-8 pb-32 md:pb-48 mx-12 md:mx-24 lg:mx-48 xl:mx-64">
+            <div className="flex flex-col max-w-5xl gap-8 px-8 pb-36 mx-auto">
             
-                <div className="flex flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-16">
+                <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:gap-20">
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Components</h2>
                     <Separator />
@@ -263,11 +276,14 @@ export function LicenseHero () {
                             </Button>
                         </div>
                     </div>
-                    <img 
-                    src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
-                    alt="Components from shadcn/ui"
-                    className="rounded-lg object-cover object-top"
-                    />
+                    <div className="relative w-full min-h-[16rem] overflow-hidden">
+                        <Image 
+                        src="https://github.com/shadcn-ui/ui/raw/main/apps/www/public/og.jpg"
+                        alt="shadcn/ui components built with Radix UI and TailwindCSS"
+                        fill={true}
+                        className="rounded-lg object-cover object-left"
+                        />
+                    </div>
                 </div>
                
             </div>
@@ -309,7 +325,6 @@ export function StyleHero () {
         }  
     }
     
-
     async function handleCopy(ref: React.RefObject<HTMLDivElement>) {
         if (ref.current) {
             // Use innerText or textContent to get the content of the div
@@ -659,34 +674,31 @@ export function StyleHero () {
         }
       }
 
-
     return (
         <div>
             <div className={styles.grid}>
-            <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-                <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
-                <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Not using a framework? I&apos;ve defined agnostic tokens you can use for your own components.</p>
+                <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
+                    <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">Style Guide</h1>
+                    <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">This website is a React app built on the Next.js framework with TailwindCSS. I&apos;ve made it easy for you to duplicate my styles. You can copy and paste the CSS variables into the <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-xl font-semibold">globals.css</code> file of your codebase. You&apos;ll need to have shadcn/ui set up for semantic styling of components to work out-of-the-box. Not using a framework? I&apos;ve defined agnostic tokens you can use for your own components.</p>
                     <div className="flex flex-row flex-wrap gap-4 md:pl-8 z-[3]">
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://nextjs.org/docs">
-                            <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-base font-medium">Install Next.js</span>
+                                <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                <span className="text-base font-medium">Install Next.js</span>
                             </Link>
                         </Button>
                         <Button variant="gradient" size="default" asChild>
                             <Link href="https://ui.shadcn.com/docs/installation">
-                            <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-base font-medium">Install shadcn/ui</span>
+                                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                <span className="text-base font-medium">Install shadcn/ui</span>
                             </Link>
                         </Button>
-                        
                     </div>
-               
-            </div>
+                </div>
             </div>
             
             <div className="flex flex-row w-full h-full gap-0 border-t-[1px]">
-                <StyleNavigation />
+            <StyleNavigation />
 
             <div className="flex flex-col w-full gap-8 pt-24 pb-36 px-8 md:px-24 lg:pl-24 lg:pr-48 xl:pl-40 xl:pr-64">
                
@@ -694,12 +706,14 @@ export function StyleHero () {
             <h2 className="text-3xl font-semibold mb-4">Themes</h2>
             <Separator />
             </div>
+            <div id="darkmode" className="flex flex-col gap-8 scroll-mt-24">
             <div 
-            id="darkmode" 
-            className="flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
-            onClick={() => copyUrl('darkmode')}>
-            <h3 className="text-2xl font-semibold">
-                    Dark mode <Link2Icon className="inline text-muted-foreground h-6 w-6" /></h3>
+            id="darkmode-header" 
+            className="group flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
+            onClick={() => copyUrl('darkmode-header')}>
+                <h3 className="text-2xl font-semibold">
+                    Dark mode <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
+                </h3>
             </div>
                     
                 
@@ -714,12 +728,14 @@ export function StyleHero () {
                             </Link>
                         </Button>
                 </div>
+                </div>
+            <div id="variables" className="flex flex-col gap-8 scroll-mt-24">
             <div 
-            id="variables" 
-            className="flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
-            onClick={() => copyUrl('variables')}>
+            id="variables-header" 
+            className="group flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
+            onClick={() => copyUrl('variables-header')}>
                 <h3 className="text-2xl font-semibold">
-                    CSS variables <Link2Icon className="inline text-muted-foreground h-6 w-6" /></h3>
+                    CSS variables <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" /></h3>
             </div>
             <Alert className="max-w-2xl mx-auto">
             <InfoCircledIcon className="h-4 w-4" />
@@ -734,19 +750,18 @@ export function StyleHero () {
                     <div className="flex flex-col gap-0 w-full relative">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                         
-                            <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
-                            styles
+                            <div className="flex flex-row items-center px-4 py-2">
+                            globals.css
                             </div>
                             <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
+                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
                             Copy
                             <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                             </Button>
                         </div>
                         <div 
                         ref={areaRef}
-                        className="relative w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
-                            
+                        className="relative w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6 mb-4">
                             <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }}>
                                 {themes}
                             </SyntaxHighlighter>
@@ -755,18 +770,19 @@ export function StyleHero () {
                      </div>
 
                 </div>
+                </div>
 
-                <div>
+                <div id="semantics" className="flex flex-col gap-8 scroll-mt-24">
                 <div 
-                id="semantics" 
-                className="flex flex-row gap-2 w-max items-center my-4 scroll-mt-24 cursor-pointer"
-                onClick={() => copyUrl('semantics')}>
-                <h3 className="text-2xl font-semibold mb-4">
-                      Semantics <Link2Icon className="inline text-muted-foreground h-6 w-6" />
+                id="semantics-header" 
+                className="group flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
+                onClick={() => copyUrl('semantics-header')}>
+                <h3 className="text-2xl font-semibold">
+                      Semantics <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
                 </h3>
                 </div>
             
-                    <p className="text-lg text-foreground font-regular mb-4">
+                    <p className="text-lg text-foreground font-regular">
                         For the following CSS variables:
                     </p>
 
@@ -775,10 +791,10 @@ export function StyleHero () {
                     <div className="flex flex-col gap-0 w-full">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                             <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
                             button-primary
                             </div>
-                            <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                            <Button variant="outlineinverse" size="default" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
                                 <CopyIcon className="h-[1rem] w-[1rem]" />
                             </Button>
                         </div>
@@ -820,10 +836,10 @@ export function StyleHero () {
                     <div className="flex flex-col gap-0 w-full">
                         <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                             <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            <div className="flex p-1 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">jsx</div>
                             button-demo
                             </div>
-                            <Button variant="outlineinverse" size="icon" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                            <Button variant="outlineinverse" size="default" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
+                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">jsx</div>
                                 <CopyIcon className="h-[1rem] w-[1rem]" />
                             </Button>
                         </div>
@@ -838,31 +854,25 @@ export function ClickMeButton() {
     className="bg-primary text-primary-foreground"
     >Click me</Button>
 }`}
-                                </SyntaxHighlighter>
-                                
+                                </SyntaxHighlighter>                       
                         </div>
-
-                        
-                           
                     </div>
-
                     </TabsContent>
                     </Tabs>
-
                     <p className="text-lg text-foreground font-regular mt-4">
-                        Check the <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
+                        Check the shadcn/ui <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
                 </div>
                 
             
-                
+                <div id="colourspace" className="flex flex-col gap-8 scroll-mt-24">
                 <div 
-                id="colourspace" 
-                className="flex flex-row gap-2 w-full md:w-max items-center mt-4 scroll-mt-24 cursor-pointer"
-                onClick={() => copyUrl('colourspace')}>
+                id="colourspace-header" 
+                className="group flex flex-row gap-2 w-full md:w-max items-center mt-4 scroll-mt-24 cursor-pointer"
+                onClick={() => copyUrl('colourspace-header')}>
                 <h3 className="text-2xl font-semibold whitespace-wrap">
-                      Want HEX or RGB colours instead? <Link2Icon className="inline text-muted-foreground h-6 w-6" />
+                      Want HEX or RGB colours instead? <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
                 </h3>
                 </div>
                 <p className="text-lg text-foreground font-regular">
@@ -901,19 +911,21 @@ export function ClickMeButton() {
                         ))}
                     </TableBody>
                 </Table>
+            </div>
                 
                 
             <div className="pt-16">
             <h2 className="text-3xl font-semibold mb-4">Components</h2>
             <Separator />
             </div>
+            <div id="radix" className="flex flex-col gap-8 scroll-mt-20">
             <div 
-            id="radix" 
-            className="flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
-            onClick={() => copyUrl('radix')}>
+            id="radix-header" 
+            className="group flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
+            onClick={() => copyUrl('radix-header')}>
                 <h3 className="text-2xl font-semibold">
                     Radix Primitives</h3>
-                    <Link2Icon className="text-muted-foreground h-6 w-6" />
+                    <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
             </div>
                 
                 <p className="text-lg text-foreground font-regular">
@@ -927,13 +939,15 @@ export function ClickMeButton() {
                             </Link>
                         </Button>
                 </div>
+                </div>
+                <div id="shadcnui" className="flex flex-col gap-8 scroll-mt-20">
                 <div 
-                id="shadcnui" 
-                className="flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
-                onClick={() => copyUrl('shadcnui')}>
+                id="shadcnui-header" 
+                className="group flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
+                onClick={() => copyUrl('shadcnui-header')}>
                 <h3 className="text-2xl font-semibold">
                     shadcn/ui</h3>
-                    <Link2Icon className="text-muted-foreground h-6 w-6" />
+                    <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
                 </div>
                 
                 <p className="text-lg text-foreground font-regular">
@@ -947,9 +961,38 @@ export function ClickMeButton() {
                             </Link>
                         </Button>
                 </div>
-         
-            
+                </div>
+                
+                <div id="figma" className="flex flex-col gap-8 scroll-mt-20">
+            <div 
+            id="figma-header" 
+            className="group flex flex-row gap-2 w-max items-center cursor-pointer scroll-mt-24"
+            onClick={() => copyUrl('figma-header')}>
+                <h3 className="text-2xl font-semibold">
+                    Figma UI kit</h3>
+                    <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
             </div>
+                
+                <p className="text-lg text-foreground font-regular">
+                You can access a Figma design kit with all the components used on this website with support for variables, props, and dark mode. Credit to @skirano for creating the original Figma kit for shadcn/ui.
+                </p>
+                <div className="flex flex-col w-full gap-4">
+                    <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
+                    <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fs1wpbtMatXiDpkbSDaWTmA%2F%2540shadcn%252Fui---Design-System-(Variables)-%255Bedited-by-Tim-Ng%255D%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DP63fQl3MgfFswPOj-1" />
+                </div>
+                <div className="mb-4">
+                <Button variant="default" size="default" asChild>
+                            <Link href="https://www.figma.com/file/s1wpbtMatXiDpkbSDaWTmA/%40shadcn%2Fui---Design-System-(Variables)-%5Bedited-by-Tim-Ng%5D?type=design&node-id=2%3A287&mode=design&t=P63fQl3MgfFswPOj-1">
+                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                            <span className="text-sm">Download file</span>
+                            </Link>
+                        </Button>
+                </div>
+                </div>
+
+
+                </div>
+                
 
             </div>
         </div>

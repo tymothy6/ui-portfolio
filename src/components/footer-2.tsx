@@ -78,13 +78,16 @@ export function PageFooter2 () {
                                 <div className="flex flex-col gap-2">
                                 <span className="text-gray-800 dark:text-gray-400 text-sm font-[450]">Tim Ng</span>
                                 <span className="text-gray-800 dark:text-gray-400 font-[450] text-sm">Toronto, ON 🇨🇦</span>
-                                
-                                <a href="mailto:hello@tim-ng.me" className="hover:decoration-primary hover:underline hover:decoration-2 w-max hidden md:block"><div className="text-gray-800 dark:text-gray-400 font-[450] text-sm">hello@tim-ng.me</div>
-                                </a>
-                                <div className="flex flex-row gap-2 md:gap-0 mt-2">
+                                <div className="flex flex-row gap-2 md:gap-0">
                                     <LinkedInContact />
                                     <GitHubContact />
                                     <FigmaContact />
+                                </div>
+                                <div className="pt-2 w-full">
+                                    <Button variant="secondaryblog" className="p-2 group w-full hover:border-accent hover:bg-gray-100/60 dark:hover:bg-slate-800/60 bg-gray-100 dark:bg-slate-800" asChild>
+                                        <a href="mailto:hello@tim-ng.me">
+                                        <span className="text-sm font-regular text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="group-hover:text-foreground group-hover:underline group-hover:decoration-primary/90 group-hover:underline-offset-4 group-hover:decoration-2">hello@tim-ng.me</span></span></a>
+                                    </Button>
                                 </div>
                                 <div className="block md:hidden pt-2 pb-4 w-full">
                                     <Button variant="secondaryblog" className="w-full hover:border-accent hover:bg-gray-100/60 dark:hover:bg-slate-800/60 bg-gray-100 dark:bg-slate-800" asChild>

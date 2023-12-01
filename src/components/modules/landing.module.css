@@ -55,7 +55,7 @@
 .card:after {
     background-image: url('https://images.ctfassets.net/mzyich089xy0/6fwdOvaqRYLNhiqN1txP77/43989c025dad364c95540d27b922741c/Grid.svg');
     z-index: 0;
-    opacity: 0.75;
+    opacity: 0.2;
     filter: invert(1);
 }
 
