@@ -978,11 +978,11 @@ export function ClickMeButton() {
                 </p>
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
-                    <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fs1wpbtMatXiDpkbSDaWTmA%2F%2540shadcn%252Fui---Design-System-(Variables)-%255Bedited-by-Tim-Ng%255D%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DP63fQl3MgfFswPOj-1" />
+                    <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FyL8Az42Z3NBnP23EfnSxpk%2F%2540shadcn%252Fui---Design-System-(Variables-%2526-Themes)-%255BTim-Ng%255D-(Original)%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DlFMOx6VFYkfT2wkU-1" />
                 </div>
                 <div className="mb-4">
                 <Button variant="default" size="default" asChild>
-                            <Link href="https://www.figma.com/file/s1wpbtMatXiDpkbSDaWTmA/%40shadcn%2Fui---Design-System-(Variables)-%5Bedited-by-Tim-Ng%5D?type=design&node-id=2%3A287&mode=design&t=P63fQl3MgfFswPOj-1">
+                            <Link href="https://www.figma.com/file/yL8Az42Z3NBnP23EfnSxpk/%40shadcn%2Fui---Design-System-(Variables-%26-Themes)-%5BTim-Ng%5D-(Original)?type=design&node-id=2%3A287&mode=design&t=lFMOx6VFYkfT2wkU-1">
                             <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                             <span className="text-sm">Download file</span>
                             </Link>
