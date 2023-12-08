@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
-import { inter, source_serif } from './fonts'
+import { inter, source_serif, roboto_mono } from './fonts'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
@@ -9,7 +9,6 @@ import { Analytics } from "@vercel/analytics/react"
 
 import { PageHeader } from '@/components/page-header'
 import { SearchWrapper } from '@/components/search-wrapper'
-import { PageFooter } from '@/components/page-footer'
 import { PageFooter2 } from '@/components/footer-2'
 
 export const metadata: Metadata = {

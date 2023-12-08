@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form"
 import { useTheme } from "next-themes"
 import { useToast } from "@/components/ui/use-toast"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
 import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
 
@@ -42,6 +42,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { StyleNavigation } from "@/components/doc-sidebar"
 import { FigmaEmbed } from "@/components/figma-embed"
@@ -718,7 +719,7 @@ export function StyleHero () {
                     
                 
                 <p className="text-lg text-foreground font-regular leading-relaxed">
-                This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-medium">ThemeProvider</code> is used to wrap the root layout.
+                This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">ThemeProvider</code> is used to wrap the root layout.
                 </p>
                 <div className="mb-4">
                 <Button variant="default" size="default" asChild>
@@ -741,34 +742,32 @@ export function StyleHero () {
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
-                            CSS variables are defined without the <code className="relative rounded bg-white dark:bg-slate-700 px-[0.2rem] py-[0.1rem] font-mono text-base font-medium">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
+                            CSS variables are defined without the <code className="relative rounded bg-white dark:bg-slate-700 px-[0.2rem] py-[0.1rem] font-mono text-base font-semibold">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
                         </AlertDescription>
             </Alert>
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="themes"><span className="text-base text-muted-foreground">Paste desired variables into your code</span></Label>
-
                     <div className="flex flex-col gap-0 w-full relative">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
-                        
-                            <div className="flex flex-row items-center px-4 py-2">
+                            <div className="font-semibold flex flex-row items-center px-4 py-2">
                             globals.css
                             </div>
-                            <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-sans w-max px-4">
-                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
+                            <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none w-max px-4">
                             Copy
                             <CopyIcon className="h-[1rem] w-[1rem] ml-2" />
                             </Button>
                         </div>
-                        <div 
-                        ref={areaRef}
-                        className="relative w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6 mb-4">
-                            <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }}>
-                                {themes}
-                            </SyntaxHighlighter>
-                            
-                        </div>
+                        <ScrollArea className="w-full h-[500px] whitespace-nowrap rounded-b-md mb-4">
+                            <div 
+                            ref={areaRef}
+                            className="relative w-full rounded-b-md text-sm">
+                                <SyntaxHighlighter language="css" style={nightOwl} customStyle={{ margin: '0px', padding: '2rem' }}>
+                                    {themes}
+                                </SyntaxHighlighter>
+                            </div>
+                            <ScrollBar orientation="horizontal" />
+                        </ScrollArea>   
                      </div>
-
                 </div>
                 </div>
 
@@ -790,35 +789,36 @@ export function StyleHero () {
                     <Label htmlFor="default"><span className="text-base text-muted-foreground">Primary button colours (dark)</span></Label>
                     <div className="flex flex-col gap-0 w-full">
                     <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
-                            <div className="flex flex-row items-center gap-2 px-4 py-2">
+                            <div className="font-semibold flex flex-row items-center gap-2 px-4 py-2">
                             button-primary
                             </div>
                             <Button variant="outlineinverse" size="default" onClick={() => handleCopy(bgExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
-                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">css</div>
                                 <CopyIcon className="h-[1rem] w-[1rem]" />
                             </Button>
                         </div>
-                        
+                        <ScrollArea className="w-full whitespace-nowrap rounded-b-md mb-4">
                         <div
                             ref={bgExampleRef}
-                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
-                                <SyntaxHighlighter language="css" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} wrapLines={true}>
+                            className="relative w-full overflow-y-auto overflow-x-auto rounded-b-md text-sm">
+                                <SyntaxHighlighter language="css" style={nightOwl} customStyle={{ margin: '0px', padding: '2rem' }} wrapLines={true}>
                                     {bgExample}
                                 </SyntaxHighlighter>
                         </div>
+                        <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
-                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">foreground</code> variable is used for the text colour.
+                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">foreground</code> variable is used for the text colour.
                     </p>
                     <Alert className="my-4 max-w-2xl mx-auto">
                         <InfoCircledIcon className="h-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
-                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-medium">background</code> suffix is omitted when the variable is used for the background colour of the component.
+                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">background</code> suffix is omitted when the variable is used for the background colour of the component.
                         </AlertDescription>
                     </Alert>
                     <p className="text-lg text-foreground font-regular leading-relaxed mb-4">
-                    The background colour of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary))</code> and the foreground colour will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-medium">hsl(var(--primary-foreground))</code>.
+                    The background colour of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">hsl(var(--primary))</code> and the foreground colour will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">hsl(var(--primary-foreground))</code>.
                     </p>
 
                     <Tabs defaultValue="preview" className="w-full">
@@ -835,18 +835,18 @@ export function StyleHero () {
 
                     <div className="flex flex-col gap-0 w-full">
                         <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
-                            <div className="flex flex-row items-center gap-2 px-4 py-2">
-                            button-demo
+                            <div className="font-semibold flex flex-row items-center gap-2 px-4 py-2">
+                            button-demo.jsx
                             </div>
                             <Button variant="outlineinverse" size="default" onClick={() => handleCopy(buttonExampleRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none">
-                            <div className="w-max h-max flex p-1 mr-2 rounded-lg bg-primary text-primary-foreground text-xs font-mono cursor-default">jsx</div>
                                 <CopyIcon className="h-[1rem] w-[1rem]" />
                             </Button>
                         </div>
+                        <ScrollArea className="w-full whitespace-nowrap rounded-b-md mb-4">
                         <div 
                             ref={buttonExampleRef}
-                            className="w-full overflow-y-auto overflow-x-auto bg-slate-800 dark:bg-slate-950 border border-accent rounded-b-md font-mono text-sm font-medium py-4 px-6">
-                                <SyntaxHighlighter language="jsx" style={a11yDark} customStyle={{ backgroundColor: '#02061700' }} showLineNumbers={true}>
+                            className="relative w-full overflow-y-auto overflow-x-auto rounded-b-md text-sm">
+                                <SyntaxHighlighter language="jsx" style={nightOwl} customStyle={{ margin: '0px', padding: '2rem' }} >
                                     {`import { Button } from "@/components/ui/button"
 
 export function ClickMeButton() {
@@ -856,6 +856,8 @@ export function ClickMeButton() {
 }`}
                                 </SyntaxHighlighter>                       
                         </div>
+                        <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
                     </div>
                     </TabsContent>
                     </Tabs>
@@ -972,21 +974,20 @@ export function ClickMeButton() {
                     Figma UI kit</h3>
                     <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
             </div>
-                
                 <p className="text-lg text-foreground font-regular">
-                You can access a Figma design kit with all the components used on this website with support for variables, props, and dark mode. Credit to @skirano for creating the original Figma kit for shadcn/ui.
+                You can access a design kit with all the components used on this website with support for Figma variables, props, and theming (dark mode). Use it as a starting point for your own customization with Tailwind CSS and CSS variables. Credit to Pietro Schirano (@skirano) for creating the original Figma kit for shadcn/ui.
                 </p>
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
                     <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FyL8Az42Z3NBnP23EfnSxpk%2F%2540shadcn%252Fui---Design-System-(Variables-%2526-Theming)%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DbS19L3DMltz9mhXM-1" />
                 </div>
                 <div className="mb-4">
-                <Button variant="default" size="default" asChild>
+                    <Button variant="default" size="default" asChild>
                             <Link href="https://www.figma.com/file/yL8Az42Z3NBnP23EfnSxpk/%40shadcn%2Fui---Design-System-(Variables-%26-Theming)?type=design&node-id=2%3A287&mode=design&t=bS19L3DMltz9mhXM-1">
-                            <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            <span className="text-sm">Download file</span>
+                                <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                <span className="text-sm">Download file</span>
                             </Link>
-                        </Button>
+                    </Button>
                 </div>
                 </div>
 

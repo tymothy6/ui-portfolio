@@ -25,8 +25,8 @@ export default function RichText({ document }: RichTextProps) {
     const { toast } = useToast()
 
     React.useEffect(() => {
-        const isBlogPage = pathname.startsWith('/blog') // don't show toast on blog pages
-        const hasToastBeenShown = window.localStorage.getItem('toastShown'); // don't show if it's already been shown to the user
+        const isBlogPage = pathname.startsWith('/blog') // don't show the mobile toast on blog pages
+        const hasToastBeenShown = window.localStorage.getItem('toastShown'); // don't show the toast if it's already been shown once
 
         if (!hasToastBeenShown && !isBlogPage && window.matchMedia('(max-width: 768px)').matches) {
             const handleScroll = () => {
@@ -138,7 +138,7 @@ export default function RichText({ document }: RichTextProps) {
         },
         renderMark: {
             [MARKS.BOLD]: (text: React.ReactNode) => <span className="font-semibold">{text}</span>,
-            [MARKS.CODE]: (text: React.ReactNode) => <code className="bg-gray-100/50 dark:bg-card/90 py-1 px-2 text-base rounded-md text-teal-600 dark:text-teal-400">{text}</code>,
+            [MARKS.CODE]: (text: React.ReactNode) => <code className="bg-gray-100 dark:bg-card/90 py-1 px-2 text-base font-semibold dark:font-regular rounded-md text-indigo-600 dark:text-teal-400">{text}</code>,
         },
         
     }

@@ -65,23 +65,21 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
       </p>
     </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-    
         <CommandInput className="text-[1rem]" placeholder="Start typing to search..." showEsc={true} />
-      
         <div className="relative">
         <CommandList>
           <CommandEmpty>
             <div className="flex flex-col items-center gap-2">
             No results found.
-            <div className="w-[72px] h-[56px]">
-            <Image
-              src={shibaNotFound}
-              width={72}
-              height={72}
-              alt="A shiba inu with papers in its mouth."
-              className="absolute bottom-14"
-              />
-            </div>
+              <div className="w-[72px] h-[56px]">
+              <Image
+                src={shibaNotFound}
+                width={72}
+                height={72}
+                alt="A shiba inu with papers in its mouth."
+                className="absolute bottom-14"
+                />
+              </div>
             </div>
           </CommandEmpty>
           <CommandGroup heading="Links">
