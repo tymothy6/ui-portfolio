@@ -39,6 +39,7 @@
     "@react-three/flex": "^1.0.1",
     "@react-three/postprocessing": "^2.15.10",
     "@vercel/analytics": "^1.1.1",
+    "@vercel/speed-insights": "^1.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",

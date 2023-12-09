@@ -55,7 +55,7 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
                     customStyle={{ margin: '0px' }}
                     showLineNumbers={true}
                     wrapLines={true}
-                    lineProps={lineNumber => ({ style: highlightLines.includes(lineNumber) ? { backgroundColor: '#334155', display: 'block' } : {}, 
+                    lineProps={lineNumber => ({ style: highlightLines.includes(lineNumber) ? { backgroundColor: '#1e293b', borderLeft: '3px solid #94a3b8', display: 'block' } : {}, 
                     })}>
                         {code}
                     </SyntaxHighlighter>
