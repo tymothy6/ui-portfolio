@@ -862,7 +862,7 @@ export function ClickMeButton() {
                     </TabsContent>
                     </Tabs>
                     <p className="text-lg text-foreground font-regular mt-4">
-                        Check the shadcn/ui <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-5 w-5 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
+                        Check the shadcn/ui <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
                 </div>
                 </div>
@@ -975,7 +975,7 @@ export function ClickMeButton() {
                     <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
             </div>
                 <p className="text-lg text-foreground font-regular">
-                You can access a design kit with all the components used on this website with support for Figma variables, props, and theming (dark mode). Use it as a starting point for your own customization with Tailwind CSS and CSS variables. Credit to Pietro Schirano (@skirano) for creating the original Figma kit for shadcn/ui.
+                You can access a design kit with all the components used on this website with support for Figma variables, props, and theming (dark mode). Use it as a starting point for your own customization with CSS variables and/or Tailwind CSS. Credit to Pietro Schirano (@<a href="https://twitter.com/skirano" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>skirano<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></a>) for creating the original Figma kit for shadcn/ui.
                 </p>
                 <div className="flex flex-col w-full gap-4">
                     <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
