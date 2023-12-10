@@ -46,7 +46,6 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { StyleNavigation } from "@/components/doc-sidebar"
 import { FigmaEmbed } from "@/components/figma-embed"
-import { ComponentTabDocs } from "@/components/component-docs"
 
 interface HomeProps {
     id: string;
