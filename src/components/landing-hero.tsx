@@ -46,7 +46,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { StyleNavigation } from "@/components/doc-sidebar"
 import { FigmaEmbed } from "@/components/figma-embed"
-  
+import { ComponentTabDocs } from "@/components/component-docs"
 
 interface HomeProps {
     id: string;
@@ -700,9 +700,7 @@ export function StyleHero () {
             
             <div className="flex flex-row w-full h-full gap-0 border-t-[1px]">
             <StyleNavigation />
-
             <div className="flex flex-col w-full gap-8 pt-24 pb-36 px-8 md:px-24 lg:pl-24 lg:pr-48 xl:pl-40 xl:pr-64">
-               
             <div>
             <h2 className="text-3xl font-semibold mb-4">Themes</h2>
             <Separator />
@@ -716,8 +714,6 @@ export function StyleHero () {
                     Dark mode <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
                 </h3>
             </div>
-                    
-                
                 <p className="text-lg text-foreground font-regular leading-relaxed">
                 This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">ThemeProvider</code> is used to wrap the root layout.
                 </p>
@@ -920,6 +916,7 @@ export function ClickMeButton() {
             <h2 className="text-3xl font-semibold mb-4">Components</h2>
             <Separator />
             </div>
+            
             <div id="radix" className="flex flex-col gap-8 scroll-mt-20">
             <div 
             id="radix-header" 
@@ -939,9 +936,10 @@ export function ClickMeButton() {
                             <Link2Icon className="h-[1.2rem] w-[1.2rem] mr-2" />
                             <span className="text-sm">Radix Primitives Docs</span>
                             </Link>
-                        </Button>
+                </Button>
                 </div>
                 </div>
+
                 <div id="shadcnui" className="flex flex-col gap-8 scroll-mt-20">
                 <div 
                 id="shadcnui-header" 

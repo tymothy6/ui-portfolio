@@ -58,7 +58,7 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
                     lineProps={lineNumber => ({ style: highlightLines.includes(lineNumber) ? { backgroundColor: '#1e293b', borderLeft: '3px solid #94a3b8', display: 'block' } : {}, 
                     })}>
                         {code}
-                    </SyntaxHighlighter>
+                    </SyntaxHighlighter>      
                 </div>    
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>    
