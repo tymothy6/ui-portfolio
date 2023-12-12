@@ -6,7 +6,7 @@ import { useCommandState } from "cmdk"
 import { useTheme } from "next-themes"
 
 import Image from "next/image"
-import shibaNotFound from "public/shiba-404.png"
+import shibaNotFound from "../../../public/shiba-404.png"
 
 import { HomeIcon, ChatBubbleIcon, QuestionMarkCircledIcon, BackpackIcon, EnvelopeClosedIcon, FileIcon, FrameIcon, TokensIcon, LockClosedIcon, RocketIcon } from "@radix-ui/react-icons"
 

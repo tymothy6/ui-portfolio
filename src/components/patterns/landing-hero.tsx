@@ -448,7 +448,7 @@ export function StyleHero () {
                 </h3>
             </div>
                 <p className="text-lg text-foreground font-regular leading-relaxed">
-                This website uses <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded bg-muted px-[0.4rem] py-[0.3rem] font-mono text-base font-semibold">ThemeProvider</code> is used to wrap the root layout.
+                This website uses <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">next-themes</code> to manage light & dark styles and match them to system preferences. The <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">useTheme</code> hook is used to set and access the current theme and a <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">ThemeProvider</code> is used to wrap the root layout.
                 </p>
                 <div className="mb-4">
                 <Button variant="default" size="default" asChild>
@@ -471,7 +471,7 @@ export function StyleHero () {
             <InfoCircledIcon className="h-4 w-4" />
                 <AlertTitle className="font-semibold">Syntax</AlertTitle>
                         <AlertDescription className="text-base">
-                            CSS variables are defined without the <code className="relative rounded bg-white dark:bg-slate-700 px-[0.2rem] py-[0.1rem] font-mono text-base font-semibold">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
+                            CSS variables are defined without the <code className="relative rounded border bg-white dark:bg-slate-700 px-[0.2rem] py-[0.1rem] font-mono text-sm font-semibold">hsl()</code> colour space function according to TailwindCSS <Link href="https://tailwindcss.com/docs/customizing-colors#using-css-variables" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>guidelines<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link>. 
                         </AlertDescription>
             </Alert>
                 <div className="flex flex-col w-full gap-4">
@@ -506,7 +506,7 @@ export function StyleHero () {
                 className="group flex flex-row gap-2 w-max items-center scroll-mt-24 cursor-pointer"
                 onClick={() => copyUrl('semantics-header')}>
                 <h3 className="text-2xl font-semibold">
-                      Semantics <Link2Icon className="hidden group-hover:inline text-muted-foreground h-6 w-6" />
+                      Semantics <Link2Icon className="hidden group-hover:inline hover:text-primary text-muted-foreground h-6 w-6" />
                 </h3>
                 </div>
             
@@ -537,17 +537,17 @@ export function StyleHero () {
                         </ScrollArea>
                     </div>
                     <p className="text-lg text-foreground font-regular mt-4 leading-relaxed">
-                      The <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">background</code> variable is used for the background colour of the button and the <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">foreground</code> variable is used for the text colour.
+                      The <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">background</code> variable is used for the background colour of the button and the <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">foreground</code> variable is used for the text colour.
                     </p>
                     <Alert className="my-4 max-w-2xl mx-auto">
                         <InfoCircledIcon className="h-4" />
                         <AlertTitle className="font-semibold">Naming</AlertTitle>
                         <AlertDescription className="text-base">
-                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">background</code> suffix is omitted when the variable is used for the background colour of the component.
+                            The <code className="relative rounded border bg-white dark:bg-slate-700 px-[0.4rem] py-[0.1rem] font-mono text-sm font-semibold">background</code> suffix is omitted when the variable is used for the background colour of the component.
                         </AlertDescription>
                     </Alert>
                     <p className="text-lg text-foreground font-regular leading-relaxed mb-4">
-                    The background colour of the following <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">Button</code> styled with Tailwind utility classes will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">hsl(var(--primary))</code> and the foreground colour will be <code className="relative rounded bg-muted px-[0.4rem] py-[0.2rem] font-mono text-base font-semibold">hsl(var(--primary-foreground))</code>.
+                    The background colour of the following <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">Button</code> styled with Tailwind utility classes will be <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">hsl(var(--primary))</code> and the foreground colour will be <code className="relative rounded border bg-muted px-[0.4rem] py-[0.1rem] font-mono text-base font-semibold">hsl(var(--primary-foreground))</code>.
                     </p>
 
                     <Tabs defaultValue="preview" className="w-full">
@@ -597,7 +597,7 @@ export function ClickMeButton() {
                         <InfoCircledIcon className="h-4 w-4" />
                         <AlertTitle className="font-semibold">Custom variables</AlertTitle>
                         <AlertDescription className="text-base">
-                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">selection</code> variable is used for the background colour of the selection highlight. The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">selection-foreground</code> variable is used for the text colour of the selection highlight.
+                            The <code className="relative rounded border bg-white dark:bg-slate-700 px-[0.4rem] py-[0.1rem] font-mono text-sm font-semibold">selection</code> variable is used for the background colour of the selection highlight. The <code className="relative rounded border bg-white dark:bg-slate-700 px-[0.4rem] py-[0.1rem] font-mono text-sm font-semibold">selection-foreground</code> variable is used for the text colour of the selection highlight.
                         </AlertDescription>
                     </Alert>
                 </div>
@@ -621,10 +621,10 @@ export function ClickMeButton() {
                 <InfoCircledIcon className="h-4 w-4" />
                     <AlertTitle className="font-semibold">Tips</AlertTitle>
                         <AlertDescription className="text-base">
-                        Click a table cell to copy the value to your clipboard. Toggle between light and dark themes in the header to see the relevant colours.
+                        Click a cell value to copy the colour to your clipboard. Toggle between light and dark themes in the header to see the relevant colours.
                         </AlertDescription>
                     </Alert>
-
+                
                 <ColourVariablesTable />
             </div>
                 

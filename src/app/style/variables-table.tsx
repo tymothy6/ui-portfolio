@@ -14,6 +14,7 @@ const colours= [
         rgbDark: "3, 7, 18",
         hexDark: "#030712",
         oklchDark: "12.96%, 0.027, 261.69",
+        tooltip: "Default background colour of <body />",
     },
     {
         id: "foreground",
@@ -25,6 +26,7 @@ const colours= [
         rgbDark: "255, 255, 255",
         hexDark: "#FFFFFF",
         oklchDark: "100%, 0, 0",
+        tooltip: "Text colour for default background",
     },
     {
         id: "card",
@@ -36,6 +38,7 @@ const colours= [
         rgbDark: "11, 11, 11",
         hexDark: "#0B0B0B",
         oklchDark: "14.96%, 0, 0",
+        tooltip: "Background colour of <Card /> component",
     },
     {
         id: "card-foreground",
@@ -47,6 +50,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46% 0.002 247.84",
+        tooltip: "Text colour for <Card /> component",
     },
     {
         id: "popover",
@@ -58,6 +62,7 @@ const colours= [
         rgbDark: "3, 7, 18",
         hexDark: "#030712",
         oklchDark: "12.96%, 0.027, 261.69",
+        tooltip: "Background colour of popovers such as  <Popover />, <HoverCard />, <DropdownMenu />",
     },
     {
         id: "popover-foreground",
@@ -69,6 +74,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46%, 0.002, 247.84",
+        tooltip: "Text colour for popover components",
     },
     {
         id: "primary",
@@ -80,6 +86,7 @@ const colours= [
         rgbDark: "109, 40, 217",
         hexDark: "#6D28D9",
         oklchDark: "49.07%, 0.241, 292.58",
+        tooltip: "Primary colour for <Button /> component",
     },
     {
         id: "primary-foreground",
@@ -91,6 +98,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46%, 0.002, 247.84",
+        tooltip: "Primary text colour for <Button /> component",
     },
     {
         id: "secondary",
@@ -102,6 +110,7 @@ const colours= [
         rgbDark: "31, 41, 55",
         hexDark: "#1F2937",
         oklchDark: "27.81%, 0.03, 256.85",
+        tooltip: "Secondary colour for <Button /> component",
     },
     {
         id: "secondary-foreground",
@@ -113,6 +122,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46%, 0.002, 247.84",
+        tooltip: "Secondary text colour for <Button /> component",
     },
     {
         id: "muted",
@@ -124,6 +134,7 @@ const colours= [
         rgbDark: "31, 41, 55",
         hexDark: "#1F2937",
         oklchDark: "27.81%, 0.03, 256.85",
+        tooltip: "Muted backgrounds such as <TabsList />, <Switch />, <Skeleton />",
     },
     {
         id: "muted-foreground",
@@ -135,6 +146,7 @@ const colours= [
         rgbDark: "156, 163, 175",
         hexDark: "#9CA3AF",
         oklchDark: "71.37%, 0.019, 261.32",
+        tooltip: "Text colour for muted backgrounds",
     },
     {
         id: "accent",
@@ -146,6 +158,7 @@ const colours= [
         rgbDark: "31, 41, 55",
         hexDark: "#1F2937",
         oklchDark: "27.81%, 0.03, 256.85",
+        tooltip: "Accents and hover effects on <DropdownMenuItem />, <SelectItem />, etc.",
     },
     {
         id: "accent-foreground",
@@ -157,6 +170,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46%, 0.002, 247.84",
+        tooltip: "Text colour for accents and hover effects",
     },
     {
         id: "destructive",
@@ -168,6 +182,7 @@ const colours= [
         rgbDark: "127, 29, 29",
         hexDark: "#7F1D1D",
         oklchDark: "39.58%, 0.133, 25.72",
+        tooltip: "Background colour for destructive actions",
     },
     {
         id: "destructive-foreground",
@@ -179,6 +194,7 @@ const colours= [
         rgbDark: "249, 250, 251",
         hexDark: "#F9FAFB",
         oklchDark: "98.46%, 0.002, 247.84",
+        tooltip: "Text colour for destructive actions",
     },
     {
         id: "border",
@@ -190,6 +206,7 @@ const colours= [
         rgbDark: "31, 41, 55",
         hexDark: "#1F2937",
         oklchDark: "27.81%, 0.03, 256.85",
+        tooltip: "Default border colour",
     },
     {
         id: "input",
@@ -201,6 +218,7 @@ const colours= [
         rgbDark: "31, 41, 55",
         hexDark: "#1F2937",
         oklchDark: "27.81%, 0.03, 256.85",
+        tooltip: "Border colour for inputs such as <Input />, <Select />, <TextArea />",
     },
     {
         id: "ring",
@@ -212,6 +230,7 @@ const colours= [
         rgbDark: "109, 40, 217",
         hexDark: "#6D28D9",
         oklchDark: "49.07%, 0.241, 292.58",
+        tooltip: "Default colour for focus ring",
     },
     {
         id: "selection",
@@ -223,6 +242,7 @@ const colours= [
         rgbDark: "90, 72, 229",
         hexDark: "#5A48E5",
         oklchDark: "42%, 92, 303",
+        tooltip: "Default colour for selection highlight",
     },
     {
         id: "selection-foreground",
@@ -234,6 +254,7 @@ const colours= [
         rgbDark: "250, 250, 255",
         hexDark: "#FAFAFF",
         oklchDark: "98%, 3, 290",
+        tooltip: "Text colour for selection highlight",
     }
     
 ]
@@ -246,6 +267,7 @@ export default function ColourVariablesTable() {
         rgb: resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight,
         hsl: resolvedTheme === 'dark' ? colour.hslDark : colour.hslLight,
         oklch: resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight,
+        tooltip: colour.tooltip,
     }))
 
     return (

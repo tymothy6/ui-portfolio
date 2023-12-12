@@ -78,7 +78,7 @@ export function DataTable<TData, TValue>({
                     <ChevronLeftIcon className="h-4 w-4" />
                     <span className="sr-only">Go to previous page</span>
                     </Button>
-                    <div className="flex w-[100px] items-center justify-center text-sm font-medium">
+                    <div className="flex w-[100px] items-center justify-center text-sm text-foreground/70 font-medium">
                     Page {table.getState().pagination.pageIndex + 1} of{" "}
                     {table.getPageCount()}
                     </div>
@@ -100,7 +100,7 @@ export function DataTable<TData, TValue>({
                         <TableRow key={headerGroup.id}>
                         {headerGroup.headers.map((header) => {
                             return (
-                            <TableHead key={header.id} className="first:min-w-[50px] min-w-[150px]">
+                            <TableHead key={header.id} className="first:min-w-[150px] min-w-[150px]">
                                 {header.isPlaceholder
                                 ? null
                                 : flexRender(
