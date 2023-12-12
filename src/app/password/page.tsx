@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { Metadata } from "next"
 
-import { PasswordHero } from "@/components/landing-hero"
+import { PasswordHero } from "@/components/patterns/landing-hero"
 
 export const metadata: Metadata = {
     title: 'Protected page',

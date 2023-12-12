@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation"
 import styles from "@/components/modules/blog-card-carousel.module.css"
 
 import { Post } from "@/lib/blog-posts"
-import { BlogPostCard } from "@/components/post-card"
+import { BlogPostCard } from "@/components/patterns/post-card"
 
 export function CardCarousel ({ posts, recommended } :  { posts: Post[], recommended?: boolean }) {
     const searchParams = useSearchParams();

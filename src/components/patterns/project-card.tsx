@@ -6,7 +6,7 @@ import { Project } from "@/lib/projects"
 import Tilt from "react-parallax-tilt"
 import Image from "next/image"
 
-import { GitHubBadge, FigmaBadge } from "@/components/contact-button"
+import { GitHubBadge, FigmaBadge } from "@/components/patterns/contact-button"
 import { Badge } from "@/components/ui/badge"
 import {
     Card,

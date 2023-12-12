@@ -5,7 +5,7 @@ import * as React from "react"
 import styles from "@/components/modules/project-card.module.css"
 
 import { Project } from "@/lib/projects"
-import { ProjectCard } from "@/components/project-card"
+import { ProjectCard } from "@/components/patterns/project-card"
 
 import { CaretRightIcon } from "@radix-ui/react-icons"
 

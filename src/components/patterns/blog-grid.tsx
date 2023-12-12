@@ -1,7 +1,7 @@
 import { fetchAllPosts } from "@/lib/blog-posts"
-import { CardCarousel } from "@/components/blog-card-carousel"
-import { SortButton } from "@/components/sort-popover"
-import { BlogCombobox } from "@/components/tag-combobox"
+import { CardCarousel } from "@/components/patterns/blog-card-carousel"
+import { SortButton } from "@/components/patterns/sort-popover"
+import { BlogCombobox } from "@/components/patterns/tag-combobox"
 
 
 export async function BlogPostGrid () {

@@ -1,8 +1,8 @@
 import { Metadata } from "next"
 import Image from "next/image"
 
-import { NotFoundHero } from "@/components/landing-hero"
-import { PageFooter } from "@/components/page-footer"
+import { NotFoundHero } from "@/components/patterns/landing-hero"
+import { PageFooter } from "@/components/patterns/page-footer"
 
 import shibaNotFound from "public/shiba-404.png"
 

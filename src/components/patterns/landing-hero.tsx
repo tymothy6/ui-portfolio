@@ -9,12 +9,11 @@ import styles from "@/components/modules/landing.module.css"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { useForm } from "react-hook-form"
-import { useTheme } from "next-themes"
 import { useToast } from "@/components/ui/use-toast"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { nightOwl } from "react-syntax-highlighter/dist/cjs/styles/prism"
 
-import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon, ColorWheelIcon, Link2Icon, ExternalLinkIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
+import { LinkedInLogoIcon, GitHubLogoIcon, VercelLogoIcon, InfoCircledIcon, CopyIcon,Link2Icon, ExternalLinkIcon, FigmaLogoIcon } from "@radix-ui/react-icons"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -33,19 +32,11 @@ import {
     AlertTitle,
     AlertDescription,
 } from "@/components/ui/alert"
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import { StyleNavigation } from "@/components/doc-sidebar"
-import { FigmaEmbed } from "@/components/figma-embed"
+import { StyleNavigation } from "@/components/patterns/doc-sidebar"
+import { FigmaEmbed } from "@/components/patterns/figma-embed"
+import ColourVariablesTable from "@/app/style/variables-table"
 
 interface HomeProps {
     id: string;
@@ -360,9 +351,7 @@ export function StyleHero () {
            
           })
         }
-      }
-
-    const { resolvedTheme } = useTheme() // use this hook to get the current theme
+    }
 
     const bgExample = `--primary: 263.4 70% 50.4%;
 --primary-foreground: 210 20% 98%;`
@@ -389,6 +378,8 @@ export function StyleHero () {
           --input: 220 13% 91%;
           --ring: 262.1 83.3% 57.8%;
           --radius: 0.5rem;
+          --selection: 229 84% 5%;
+          --selection-foreground: 240 100% 99%;
         }
        
         .dark {
@@ -411,268 +402,11 @@ export function StyleHero () {
           --border: 215 27.9% 16.9%;
           --input: 215 27.9% 16.9%;
           --ring: 263.4 70% 50.4%;
+          --selection: 247 75% 59%;
+          --selection-foreground: 240 100% 99%;
         }
     }
     `
-
-    const colours = [
-        {
-            name: "background",
-            hslLight: "0 0% 100%",
-            hslDark: "224 71.4% 4.1%",
-            rgbLight: "255, 255, 255",
-            hexLight: "#FFFFFF",
-            oklchLight: "100% 0 0",
-            rgbDark: "3, 7, 18",
-            hexDark: "#030712",
-            oklchDark: "12.96% 0.027 261.69",
-        },
-        {
-            name: "foreground",
-            hslLight: "224 71.4% 4.1%",
-            hslDark: "210 20% 98%",
-            rgbLight: "11, 11, 11",
-            hexLight: "#0B0B0B",
-            oklchLight: "14.96% 0 0",
-            rgbDark: "255, 255, 255",
-            hexDark: "#FFFFFF",
-            oklchDark: "100% 0 0",
-        },
-        {
-            name: "card",
-            hslLight: "0 0% 100%",
-            hslDark: "224 71.4% 4.1%",
-            rgbLight: "255, 255, 255",
-            hexLight: "#FFFFFF",
-            oklchLight: "100% 0 0",
-            rgbDark: "11, 11, 11",
-            hexDark: "#0B0B0B",
-            oklchDark: "14.96% 0 0",
-        },
-        {
-            name: "card-foreground",
-            hslLight: "224 71.4% 4.1%",
-            hslDark: "210 20% 98%",
-            rgbLight: "11, 11, 11",
-            hexLight: "#0B0B0B",
-            oklchLight: "14.96% 0 0",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "popover",
-            hslLight: "0 0% 100%",
-            hslDark: "224 71.4% 4.1%",
-            rgbLight: "255, 255, 255",
-            hexLight: "#FFFFFF",
-            oklchLight: "100% 0 0",
-            rgbDark: "3, 7, 18",
-            hexDark: "#030712",
-            oklchDark: "12.96% 0.027 261.69",
-        },
-        {
-            name: "popover-foreground",
-            hslLight: "224 71.4% 4.1%",
-            hslDark: "210 20% 98%",
-            rgbLight: "11, 11, 11",
-            hexLight: "#0B0B0B",
-            oklchLight: "14.96% 0 0",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "primary",
-            hslLight: "262.1 83.3% 57.8%",
-            hslDark: "263.4 70% 50.4%",
-            rgbLight: "124, 58, 237",
-            hexLight: "#7C3AED",
-            oklchLight: "54.13% 0.247 293.01",
-            rgbDark: "109, 40, 217",
-            hexDark: "#6D28D9",
-            oklchDark: "49.07% 0.241 292.58",
-        },
-        {
-            name: "primary-foreground",
-            hslLight: "210 20% 98%",
-            hslDark: "210 20% 98%",
-            rgbLight: "249, 250, 251",
-            hexLight: "#F9FAFB",
-            oklchLight: "98.46% 0.002 247.84",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "secondary",
-            hslLight: "220 14.3% 95.9%",
-            hslDark: "215 27.9% 16.9%",
-            rgbLight: "243, 244, 246",
-            hexLight: "#F3F4F6",
-            oklchLight: "96.7% 0.003 264.54",
-            rgbDark: "31, 41, 55",
-            hexDark: "#1F2937",
-            oklchDark: "27.81% 0.03 256.85",
-        },
-        {
-            name: "secondary-foreground",
-            hslLight: "220.9 39.3% 11%",
-            hslDark: "210 20% 98%",
-            rgbLight: "17, 24, 39",
-            hexLight: "#111827",
-            oklchLight: "21.01% 0.032 264.66",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "muted",
-            hslLight: "220 14.3% 95.9%",
-            hslDark: "215 27.9% 16.9%",
-            rgbLight: "243, 244, 246",
-            hexLight: "#F3F4F6",
-            oklchLight: "96.7% 0.003 264.54",
-            rgbDark: "31, 41, 55",
-            hexDark: "#1F2937",
-            oklchDark: "27.81% 0.03 256.85",
-        },
-        {
-            name: "muted-foreground",
-            hslLight: "220 8.9% 46.1%",
-            hslDark: "217.9 10.6% 64.9%",
-            rgbLight: "107, 114, 128",
-            hexLight: "#6B7280",
-            oklchLight: "55.1% 0.023 264.36",
-            rgbDark: "156, 163, 175",
-            hexDark: "#9CA3AF",
-            oklchDark: "71.37% 0.019 261.32",
-        },
-        {
-            name: "accent",
-            hslLight: "220 14.3% 95.9%",
-            hslDark: "215 27.9% 16.9%",
-            rgbLight: "243, 244, 246",
-            hexLight: "#F3F4F6",
-            oklchLight: "96.7% 0.003 264.54",
-            rgbDark: "31, 41, 55",
-            hexDark: "#1F2937",
-            oklchDark: "27.81% 0.03 256.85",
-        },
-        {
-            name: "accent-foreground",
-            hslLight: "220.9 39.3% 11%",
-            hslDark: "210 20% 98%",
-            rgbLight: "17, 24, 39",
-            hexLight: "#111827",
-            oklchLight: "21.01% 0.032 264.66",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "destructive",
-            hslLight: "0 84.2% 60.2%",
-            hslDark: "0 62.8% 30.6%",
-            rgbLight: "239, 68, 68",
-            hexLight: "#EF4444",
-            oklchLight: "63.68% 0.208 25.33",
-            rgbDark: "127, 29, 29",
-            hexDark: "#7F1D1D",
-            oklchDark: "39.58% 0.133 25.72",
-        },
-        {
-            name: "destructive-foreground",
-            hslLight: "210 20% 98%",
-            hslDark: "210 20% 98%",
-            rgbLight: "249, 250, 251",
-            hexLight: "#F9FAFB",
-            oklchLight: "98.46% 0.002 247.84",
-            rgbDark: "249, 250, 251",
-            hexDark: "#F9FAFB",
-            oklchDark: "98.46% 0.002 247.84",
-        },
-        {
-            name: "border",
-            hslLight: "220 13% 91%",
-            hslDark: "215 27.9% 16.9%",
-            rgbLight: "229, 231, 235",
-            hexLight: "#E5E7EB",
-            oklchLight: "92.76% 0.006 264.53",
-            rgbDark: "31, 41, 55",
-            hexDark: "#1F2937",
-            oklchDark: "27.81% 0.03 256.85",
-        },
-        {
-            name: "input",
-            hslLight: "220 13% 91%",
-            hslDark: "215 27.9% 16.9%",
-            rgbLight: "229, 231, 235",
-            hexLight: "#E5E7EB",
-            oklchLight: "92.76% 0.006 264.53",
-            rgbDark: "31, 41, 55",
-            hexDark: "#1F2937",
-            oklchDark: "27.81% 0.03 256.85",
-        },
-        {
-            name: "ring",
-            hslLight: "262.1 83.3% 57.8%",
-            hslDark: "263.4 70% 50.4%",
-            rgbLight: "124, 58, 237",
-            hexLight: "#7C3AED",
-            oklchLight: "54.13% 0.247 293.01",
-            rgbDark: "109, 40, 217",
-            hexDark: "#6D28D9",
-            oklchDark: "49.07% 0.241 292.58",
-        }
-        
-    ]
-
-    // mapping colour names to TailwindCSS classes
-    function getBgClass(colorName: string) {
-        switch (colorName) {
-          case 'background':
-            return 'bg-background';
-          case 'foreground':
-            return 'bg-foreground';
-            case 'card':
-            return 'bg-card';
-            case 'card-foreground':
-            return 'bg-card-foreground';
-            case 'popover':
-            return 'bg-popover';
-            case 'popover-foreground':
-            return 'bg-popover-foreground';
-            case 'primary':
-            return 'bg-primary';
-            case 'primary-foreground':
-            return 'bg-primary-foreground';
-            case 'secondary':
-            return 'bg-secondary';
-            case 'secondary-foreground':
-            return 'bg-secondary-foreground';
-            case 'muted':
-            return 'bg-muted';
-            case 'muted-foreground':
-            return 'bg-muted-foreground';
-            case 'accent':
-            return 'bg-accent';
-            case 'accent-foreground':
-            return 'bg-accent-foreground';
-            case 'destructive':
-            return 'bg-destructive';
-            case 'destructive-foreground':
-            return 'bg-destructive-foreground';
-            case 'border':
-            return 'bg-border';
-            case 'input':
-            return 'bg-input';
-            case 'ring':
-            return 'bg-ring';
-          default:
-            return '';
-        }
-      }
 
     return (
         <div>
@@ -859,7 +593,15 @@ export function ClickMeButton() {
                     <p className="text-lg text-foreground font-regular mt-4">
                         Check the shadcn/ui <Link href="https://ui.shadcn.com/docs/theming" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>Theming<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></Link> docs for full details on the semantic use of variables.
                     </p>
+                    <Alert className="my-4 max-w-2xl mx-auto">
+                        <InfoCircledIcon className="h-4 w-4" />
+                        <AlertTitle className="font-semibold">Custom variables</AlertTitle>
+                        <AlertDescription className="text-base">
+                            The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">selection</code> variable is used for the background colour of the selection highlight. The <code className="relative rounded bg-white dark:bg-slate-700 px-[0.4rem] py-[0.2rem] font-mono text-sm font-semibold">selection-foreground</code> variable is used for the text colour of the selection highlight.
+                        </AlertDescription>
+                    </Alert>
                 </div>
+
                 </div>
                 
             
@@ -882,32 +624,8 @@ export function ClickMeButton() {
                         Click a table cell to copy the value to your clipboard. Toggle between light and dark themes in the header to see the relevant colours.
                         </AlertDescription>
                     </Alert>
-                <Table>
-                    <TableCaption>Your wish is my command</TableCaption>
-                    <TableHeader>
-                        <TableRow>
-                        <TableHead><ColorWheelIcon className="h-4 w-4" /></TableHead>
-                        <TableHead className="text-sm font-semibold w-[200px]">Variable name</TableHead>
-                        <TableHead className="text-sm font-semibold">HEX</TableHead>
-                        <TableHead className="text-sm font-semibold min-w-[150px]">RGB</TableHead>
-                        <TableHead className="text-sm font-semibold min-w-[150px]">LCH</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {colours.map((colour) => (
-                        <TableRow key={colour.name}>
-                            <TableCell><div className={`${getBgClass(colour.name)} h-[1.1rem] w-[1.1rem] rounded-sm border border-slate-300 dark:border-slate-700`}  /></TableCell>
-                            <TableCell className="font-medium font-mono">{colour.name}</TableCell>
-                            <TableCell className="font-mono cursor-pointer"
-                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight)}>{resolvedTheme === 'dark' ? colour.hexDark : colour.hexLight}</TableCell>
-                            <TableCell className="font-mono cursor-pointer"
-                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight)}>{resolvedTheme === 'dark' ? colour.rgbDark : colour.rgbLight}</TableCell>
-                            <TableCell className="font-mono cursor-pointer"
-                            onClick={() => copyColours(resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight)}>{resolvedTheme === 'dark' ? colour.oklchDark : colour.oklchLight}</TableCell>
-                        </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+
+                <ColourVariablesTable />
             </div>
                 
                 

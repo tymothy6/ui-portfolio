@@ -1,4 +1,4 @@
-import { BlogCardSkeleton } from "@/components/card-skeleton"
+import { BlogCardSkeleton } from "@/components/patterns/card-skeleton"
 
 export function BlogGridSkeleton () {
     return(

@@ -2,8 +2,8 @@ import * as React from "react"
 
 import { Metadata, Viewport } from "next"
 
-import { BlogHero } from "@/components/landing-hero"
-import { BlogPostGrid } from "@/components/blog-grid"
+import { BlogHero } from "@/components/patterns/landing-hero"
+import { BlogPostGrid } from "@/components/patterns/blog-grid"
 
 import styles from "@/components/modules/landing.module.css"
 

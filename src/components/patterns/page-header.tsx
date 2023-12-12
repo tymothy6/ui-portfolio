@@ -10,8 +10,8 @@ import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { GitHubContact, LinkedInContact } from "@/components/contact-button"
-import { ModeToggle } from "@/components/mode-toggle"
+import { GitHubContact, LinkedInContact } from "@/components/patterns/contact-button"
+import { ModeToggle } from "@/components/patterns/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -32,7 +32,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
   } from "@/components/ui/tooltip"
-import { ProgressBar } from "@/components/progress-bar"
+import { ProgressBar } from "@/components/patterns/progress-bar"
 
 
 const scrollToSection = (id: string) => {

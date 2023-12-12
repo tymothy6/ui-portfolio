@@ -1,10 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
 
-import { HeroWrapper } from "@/components/hero-wrapper"
-import { ProjectGrid } from "@/components/project-grid"
-import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/page-list"
-import { ContactPage } from "@/components/contact-page"
+import { HeroWrapper } from "@/components/patterns/hero-wrapper"
+import { ProjectGrid } from "@/components/patterns/project-grid"
+import { AboutPage, ExperiencePage, SkillsPage, ValuesPage } from "@/components/patterns/page-list"
+import { ContactPage } from "@/components/patterns/contact-page"
 import { ExternalLinkIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import {

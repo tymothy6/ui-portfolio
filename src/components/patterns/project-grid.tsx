@@ -1,5 +1,5 @@
 import { fetchAllProjects } from "@/lib/projects"
-import { ProjectCard } from "@/components/project-card"
+import { ProjectCard } from "@/components/patterns/project-card"
 
 import styles from "@/components/modules/landing.module.css"
 

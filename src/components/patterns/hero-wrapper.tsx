@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Hero } from "@/components/landing-hero"
+import { Hero } from "@/components/patterns/landing-hero"
 import GridPattern from "@/components/canvas/grid"
 
 export function HeroWrapper ( { id }: { id: string }) {

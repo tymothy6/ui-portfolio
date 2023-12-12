@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { Metadata } from "next"
 
-import { ResumeHero } from "@/components/landing-hero"
+import { ResumeHero } from "@/components/patterns/landing-hero"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import { DownloadIcon } from "@radix-ui/react-icons"

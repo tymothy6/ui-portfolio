@@ -8,9 +8,9 @@ import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
-import { PageHeader } from '@/components/page-header'
-import { SearchWrapper } from '@/components/search-wrapper'
-import { PageFooter2 } from '@/components/footer-2'
+import { PageHeader } from '@/components/patterns/page-header'
+import { SearchWrapper } from '@/components/patterns/search-wrapper'
+import { PageFooter2 } from '@/components/patterns/footer-2'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tim-ng.me'),

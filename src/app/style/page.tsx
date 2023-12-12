@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { Metadata } from "next"
 
-import { StyleHero } from "@/components/landing-hero"
+import { StyleHero } from "@/components/patterns/landing-hero"
 
 import styles from "@/components/modules/landing.module.css"
 

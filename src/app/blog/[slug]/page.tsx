@@ -10,12 +10,12 @@ import { ArrowLeftIcon, Share2Icon } from "@radix-ui/react-icons"
 import { TagIcon, LibraryIcon } from "lucide-react"
 
 import { Separator } from "@/components/ui/separator"
-import { CardCarousel } from "@/components/blog-card-carousel"
+import { CardCarousel } from "@/components/patterns/blog-card-carousel"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/contact-button"
-import { GiscusWrapper } from "@/components/giscus-wrapper"
+import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/patterns/contact-button"
+import { GiscusWrapper } from "@/components/patterns/giscus-wrapper"
 
 export const viewport: Viewport = {
     themeColor: [

@@ -7,7 +7,7 @@ import RichText from "@/lib/rich-text"
 import Image from "next/image"
 
 import { Separator } from "@/components/ui/separator"
-import { ProjectCardCarousel } from "@/components/project-card-carousel"
+import { ProjectCardCarousel } from "@/components/patterns/project-card-carousel"
 import { Button } from "@/components/ui/button"
 
 import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons"

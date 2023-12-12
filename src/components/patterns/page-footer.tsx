@@ -24,7 +24,7 @@ import {
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover"
-import { IubendaLink } from "@/components/iubenda-link"
+import { IubendaLink } from "@/components/patterns/iubenda-link"
 
 export function PageFooter () {
 

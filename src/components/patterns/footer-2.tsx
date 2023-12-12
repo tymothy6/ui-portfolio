@@ -27,8 +27,8 @@ import {
 } from "@/components/ui/popover"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-import { IubendaLink } from "@/components/iubenda-link"
-import { GitHubContact, LinkedInContact, FigmaContact } from "@/components/contact-button"
+import { IubendaLink } from "@/components/patterns/iubenda-link"
+import { GitHubContact, LinkedInContact, FigmaContact } from "@/components/patterns/contact-button"
 
 export function PageFooter2 () {
     const footerText = "· When in doubt, assume the best · Think in win-win scenarios · What's naive today might be common sense tomorrow · Ask more questions · Do good in broad daylight "
