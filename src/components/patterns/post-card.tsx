@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Post } from "@/lib/blog-posts"
 import Image from "next/image"
 
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -41,7 +42,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <AvatarBlog className="z-[1]">
-                            <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="A shiba inu wearing a Grogu costume" />
+                            <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="The author's GitHub avatar" />
                                 <AvatarFallback>TN</AvatarFallback>
                             </AvatarBlog>
                         </TooltipTrigger>
@@ -58,29 +59,29 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
             </CardHeader>
             <CardContent className="flex flex-col items-start w-full">
                 <div className="flex flex-col gap-4 w-full">
-                    <div className="relative h-[200px] lg:h-[250px] w-full rounded-lg border border-accent overflow-hidden">
-                        <Image
-                        src={data.thumbnail ? data.thumbnail.src : ''}
-                        alt={data.thumbnail ? data.thumbnail.alt : ''}
-                        fill={true}
-                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover object-top" 
-                        />
+                    <div className="relative rounded-lg border border-accent overflow-hidden">
+                        <AspectRatio ratio={4 / 3}>
+                            <Image
+                            src={data.thumbnail ? data.thumbnail.src : ''}
+                            alt={data.thumbnail ? data.thumbnail.alt : ''}
+                            fill={true}
+                            sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover object-top" 
+                            />
+                        </AspectRatio>
                     </div>
                     <p className="text-left text-base md:text-lg font-regular text-gray-900 dark:text-gray-100 pl-2">{data.summary}</p>
-                   
                     <div className="flex flex-row flex-wrap gap-2">
-                
                             {data.tags && data.tags.map( tag => (
-                                <Badge key={tag} variant="secondaryblog"><span className="font-mono tracking-tight">{tag}</span></Badge>
+                                <Badge key={tag} variant="secondaryblog"><span className="font-mono tracking-tight cursor-default">{tag}</span></Badge>
                             ))}
                     </div>  
                 </div>
             </CardContent>
             <CardFooter className="mt-auto">
-                   <Button variant="secondaryblog" className="w-full text-base" asChild>
+                <Button variant="secondaryblog" className="w-full text-base" asChild>
                     <Link href={`/blog/${data.slug}`}>Read more</Link>
-                   </Button> 
+                </Button> 
             </CardFooter>
             </>
             )}  

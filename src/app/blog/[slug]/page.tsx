@@ -88,8 +88,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 className="object-cover object-top" 
                 />
             </div>
-    
-            <div className="flex flex-col gap-4 pt-8 lg:pt-16 mx-8 md:mx-24 lg:mx-48">
+            <div className="flex flex-col gap-4 pt-12 lg:pt-8 mx-8 md:mx-24 lg:mx-48">
                 <div className="flex flex-row justify-between items-center">
                 <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">{data.date ? 
                 new Intl.DateTimeFormat('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' }).format(new Date(data.date)) :  ''}</p>
@@ -132,7 +131,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                             </div>
                             <div className="flex flex-row flex-wrap gap-2">
                             {data.tags && data.tags.map( tag => (
-                                <Badge key={tag} variant="secondaryblog"><span className="font-mono tracking-tight">{tag}</span></Badge>
+                                <Badge key={tag} variant="secondaryblog"><span className="font-mono tracking-tight cursor-default">{tag}</span></Badge>
                             ))}
                             </div>
                         </div>
