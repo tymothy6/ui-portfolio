@@ -44,7 +44,6 @@ const formSchema = z.object({
     message: z.string().min(2, { message: "Your message must be at least 2 characters", }).max(1000, { message: "Your message can be a maximum of 1000 characters.",}),
 })
 
-
 export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     const recaptcha = React.useRef<ReCAPTCHA | null>(null);
     const { toast } = useToast()

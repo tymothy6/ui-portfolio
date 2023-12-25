@@ -14,7 +14,7 @@ const colours= [
         rgbDark: "3, 7, 18",
         hexDark: "#030712",
         oklchDark: "12.96%, 0.027, 261.69",
-        tooltip: "Default background colour of <body />",
+        tooltip: "Default background colour of <body />, etc.",
     },
     {
         id: "foreground",
@@ -62,7 +62,7 @@ const colours= [
         rgbDark: "3, 7, 18",
         hexDark: "#030712",
         oklchDark: "12.96%, 0.027, 261.69",
-        tooltip: "Background colour of popovers such as  <Popover />, <HoverCard />, <DropdownMenu />",
+        tooltip: "Background colour of popovers such as <Popover />, <HoverCard />, <DropdownMenu />",
     },
     {
         id: "popover-foreground",

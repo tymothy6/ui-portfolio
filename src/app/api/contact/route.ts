@@ -11,8 +11,8 @@ export async function POST( req: NextRequest ) {
         const emailHtml = render(MessageTemplate({ name, email, topic, message }));
 
         await sendEmail({
-            to: "ng.tymothy@gmail.com",
-            subject: "New message from your website",
+            to: "hello@tim-ng.me",
+            subject: "New message from your website contact form",
             html: emailHtml,
         });
 
