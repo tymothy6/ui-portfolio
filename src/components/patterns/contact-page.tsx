@@ -30,6 +30,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components/ui/use-toast"
 import { ToastAction } from "@/components/ui/toast"
 
+import { Loader } from "lucide-react"
+
 interface HomeProps {
     id: string;
 }
@@ -45,6 +47,7 @@ const formSchema = z.object({
 })
 
 export const ContactPage: React.FC<HomeProps> = ({ id }) => {
+    const [isLoading, setIsLoading] = React.useState(false);
     const recaptcha = React.useRef<ReCAPTCHA | null>(null);
     const { toast } = useToast()
 
@@ -59,7 +62,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     })
   
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log('Form values:', values);
+        setIsLoading(true);
         const captchaValue = recaptcha.current ? recaptcha.current.getValue() : null; 
         if (!captchaValue) {
             toast({
@@ -136,6 +139,8 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                     <p className="text-sm font-medium">Your message failed to send, please try again later or reach out to me elsewhere.</p>
                 ),
             });
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -246,7 +251,13 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
                             <ReCAPTCHA
                             ref={recaptcha} 
                             sitekey={process.env.NEXT_PUBLIC_GOOGLE_SITE_KEY ?? "sitekey"} />
+                            { isLoading ? 
+                            <Button className="w-full" disabled>
+                                <Loader className="mr-2 h-4 w-4 animate-spin" />
+                                Sending...
+                            </Button> :
                             <Button type="submit" className="w-full">Send message</Button>
+                            }
                         </form>
                     </Form>
                     <p className="text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 my-8 text-center hidden md:block">Prefer email? 📧  <a href="mailto:hello@tim-ng.me" className="ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:rounded-sm"><span className="text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:decoration-primary/80 hover:decoration-2">hello@tim-ng.me</span></a></p>
