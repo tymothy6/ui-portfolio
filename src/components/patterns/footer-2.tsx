@@ -188,7 +188,7 @@ export function PageFooter2 () {
                                 <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© 2024, Tim Ng</span>
                             </div>
                             <div className="px-4">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">Built with Next.js & Vercel</span>
+                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-normal">Built with Next.js. The code is available on <a href="https://github.com/tymothy6/ui-portfolio" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">GitHub</a>.</span>
                             </div>
                         </div>
                     </div>
