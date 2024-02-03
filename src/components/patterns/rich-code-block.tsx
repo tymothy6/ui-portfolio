@@ -38,7 +38,7 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
             <div id="codeHeader" className="flex flex-row justify-between w-full bg-gray-100 dark:bg-slate-800 text-foreground font-mono rounded-t-md text-sm">
                 <div className="flex flex-row items-center gap-2 px-4 py-2">
                     <span className="font-semibold text-sm">{title}</span>
-                    <div className="flex px-[6px] py-[2px] rounded-md bg-primary text-primary-foreground text-xs font-mono cursor-default">{lang}</div>
+                    <div className="flex px-[6px] py-[2px] rounded-md bg-primary text-primary-foreground text-xs font-mono font-semibold cursor-default">{lang}</div>
                 </div>
                 <Button variant="outlineinverse" size="default" onClick={() => handleCopy(areaRef)} className="text-muted-foreground rounded-none rounded-tr-md border-none font-mono w-max px-4">
                 Copy
@@ -52,10 +52,10 @@ export function RichCodeBlock ({ title, code, lang, lineNumber = "" }: { title: 
                     <SyntaxHighlighter 
                     language={lang} 
                     style={nightOwl} 
-                    customStyle={{ margin: '0px' }}
+                    customStyle={{ margin: '0px', paddingLeft: '0px' }}
                     showLineNumbers={true}
                     wrapLines={true}
-                    lineProps={lineNumber => ({ style: highlightLines.includes(lineNumber) ? { backgroundColor: '#1e293b', borderLeft: '3px solid #94a3b8', display: 'block' } : {}, 
+                    lineProps={lineNumber => ({ style: highlightLines.includes(lineNumber) ? { backgroundColor: '#1e293b', borderLeft: '4px solid #94a3b8', display: 'block' } : {}, 
                     })}>
                         {code}
                     </SyntaxHighlighter>      

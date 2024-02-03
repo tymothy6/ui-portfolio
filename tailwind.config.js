@@ -153,6 +153,9 @@ module.exports = {
       },
       fontFamily: {
         serif: ["var(--font-serif)"],
+        mono: ["var(--font-geist-mono)"],
+        monaSans: ["var(--font-mona-sans)"],
+        geistSans: ["var(--font-geist-sans)"],
       }
     },
   },

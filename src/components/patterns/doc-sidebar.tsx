@@ -16,30 +16,30 @@ export function StyleNavigation () {
     const [activeSection, setActiveSection] = React.useState("");
     const [lastScrollTop, setLastScrollTop] = React.useState(0);
 
-    const checkSection = () => {
-        const sections = ["darkmode", "variables", "semantics", "colourspace", "radix", "shadcnui", "figma"];
-        let activeSection = "";
-        const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
-
-        for (let id of sections) {
-            const section = document.getElementById(id);
-            if (section) {
-                const rect = section.getBoundingClientRect();
-                const isScrollingDown = currentScrollTop > lastScrollTop;
-
-                if (isScrollingDown && rect.top < window.innerHeight && rect.bottom >= 0) {
-                    activeSection = id; // when scrolling down, update when the top of the section enters the bottom of the viewport
-                } else if (!isScrollingDown && rect.top <= 0) {
-                    activeSection = id; // when scrolling up, update when the top of the section exits the top of the viewport
+    React.useEffect(() => {
+        const checkSection = () => {
+            const sections = ["darkmode", "variables", "semantics", "colourspace", "radix", "shadcnui", "figma"];
+            let activeSection = "";
+            const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+            for (let id of sections) {
+                const section = document.getElementById(id);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    const isScrollingDown = currentScrollTop > lastScrollTop;
+    
+                    if (isScrollingDown && rect.top < window.innerHeight && rect.bottom >= 0) {
+                        activeSection = id; // when scrolling down, update when the top of the section enters the bottom of the viewport
+                    } else if (!isScrollingDown && rect.top <= 0) {
+                        activeSection = id; // when scrolling up, update when the top of the section exits the top of the viewport
+                    }
                 }
             }
-        }
+    
+            setLastScrollTop(currentScrollTop); // update the last scroll position
+            return activeSection;
+        };
 
-        setLastScrollTop(currentScrollTop); // update the last scroll position
-        return activeSection;
-    };
-
-    React.useEffect(() => {
         const handleScroll = () => {
             const active = checkSection();
             setActiveSection(active);
@@ -47,7 +47,7 @@ export function StyleNavigation () {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [lastScrollTop]);
 
     const isActive = (id: string) => activeSection === id;
 

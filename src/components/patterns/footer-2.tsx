@@ -86,7 +86,7 @@ export function PageFooter2 () {
                                 <div className="pt-2 w-full">
                                     <Button variant="secondaryblog" className="p-2 group w-full hover:border-primary hover:bg-gray-100/60 dark:hover:bg-slate-800/60 bg-gray-100 dark:bg-slate-800" asChild>
                                         <a href="mailto:hello@tim-ng.me">
-                                        <span className="text-sm font-regular text-gray-800 dark:text-gray-400 my-8 text-left">📧 <span className="group-hover:text-foreground group-hover:underline-offset-4 group-hover:decoration-2">hello@tim-ng.me</span></span></a>
+                                        <span className="text-sm font-regular text-gray-800 dark:text-gray-300 my-8 text-left">📧 <span className="group-hover:text-foreground group-hover:underline-offset-4 group-hover:decoration-2">hello@tim-ng.me</span></span></a>
                                     </Button>
                                 </div>
 
@@ -183,12 +183,11 @@ export function PageFooter2 () {
                         </div>
                     
                         <div className="flex flex-row w-full md:w-max justify-between md:justify-start md:gap-2">
-                                    
                             <div className="px-4">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-nowrap">© 2024, Tim Ng</span>
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-normal md:whitespace-nowrap">Built with Next.js. The code is available on <a href="https://github.com/tymothy6/ui-portfolio" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">GitHub</a>.</span>
                             </div>
                             <div className="px-4">
-                                <span className="text-xs text-gray-800 dark:text-gray-200 font-medium whitespace-normal">Built with Next.js. The code is available on <a href="https://github.com/tymothy6/ui-portfolio" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">GitHub</a>.</span>
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-nowrap">© 2024, Tim Ng</span>
                             </div>
                         </div>
                     </div>

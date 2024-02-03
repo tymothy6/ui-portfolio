@@ -10,8 +10,13 @@ import {
     AlertTitle,
     AlertDescription
  } from "@/components/ui/alert"
+import {
+    Tooltip,
+    TooltipProvider,
+    TooltipTrigger,
+    TooltipContent,
+} from "@/components/ui/tooltip"
 import { useToast } from "@/components/ui/use-toast"
-import { inter } from "@/app/fonts"
 
 import { Link2Icon } from "@radix-ui/react-icons"
 
@@ -45,7 +50,7 @@ import { Link2Icon } from "@radix-ui/react-icons"
     }
 
     return(
-        <div className={`${inter.className} flex flex-col max-w-[420px] mx-auto`}>
+        <div className="flex flex-col max-w-[420px] mx-auto font-geistSans">
             <div className="relative w-full h-[200px] rounded-t-lg border-t-[1px] border-x-[1px] overflow-hidden">
                 <Image
                 src={openGraphImage}
@@ -68,10 +73,17 @@ import { Link2Icon } from "@radix-ui/react-icons"
                 </Button>
                 }
                 {url &&
-                <Button variant="ghost" size="icon" onClick={() => handleCopy()}>
-                    <Link2Icon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
-                    <span className="sr-only">Copy link</span>
-                </Button>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="ghost" size="icon" onClick={() => handleCopy()}>
+                                <Link2Icon className="h-[1rem] w-[1rem] md:h-[1.2rem] md:w-[1.2rem] rotate-0 scale-100 transition-all" />
+                                <span className="sr-only">Copy link</span>
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>Copy link</TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
                 }
                 </div>
                 </div>

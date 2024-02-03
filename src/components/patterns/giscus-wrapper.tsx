@@ -3,7 +3,6 @@
 import * as React from "react"
 import Giscus from "@giscus/react"
 import { useTheme } from "next-themes"
-import Link from "next/link"
 
 export function GiscusWrapper () {
     const { resolvedTheme } = useTheme()

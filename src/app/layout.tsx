@@ -1,7 +1,12 @@
 import * as React from 'react'
 import './globals.css'
+
 import type { Metadata, Viewport } from 'next'
 import { inter, source_serif } from './fonts'
+import localFont from 'next/font/local'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
@@ -29,6 +34,12 @@ export const metadata: Metadata = {
   }
 }
 
+const monaSans = localFont({
+  src: './Mona-Sans.woff2',
+  display: 'swap',
+  variable: '--font-mona-sans',
+})
+
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -40,9 +51,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${source_serif.variable} font-serif`} suppressHydrationWarning>
+    <html lang="en" className={`${monaSans.variable} ${GeistSans.variable} ${GeistMono.variable} ${source_serif.variable} font-serif`} suppressHydrationWarning>
       <head />
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
