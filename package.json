@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.18.0",
-    "@contentful/rich-text-types": "^16.3.0",
+    "@contentful/rich-text-react-renderer": "^15.19.6",
+    "@contentful/rich-text-types": "^16.3.5",
     "@fullpage/react-fullpage": "^0.1.40",
     "@giscus/react": "^2.4.0",
     "@hookform/resolvers": "^3.3.1",
@@ -48,7 +48,7 @@
     "algoliasearch": "^4.23.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "cmdk": "^0.2.0",
+    "cmdk": "^1.0.0",
     "contentful": "^10.6.2",
     "dotenv": "^16.3.1",
     "embla-carousel-react": "^8.0.0-rc18",
@@ -58,7 +58,7 @@
     "geist": "^1.2.1",
     "localview": "^0.0.9",
     "lucide-react": "^0.284.0",
-    "next": "14.0.4",
+    "next": "14.1.4",
     "next-themes": "^0.2.1",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.13",
