@@ -1,4 +1,3 @@
-import { Suspense } from "react"
 import { motion } from "framer-motion"
 
 interface ProgressBarProps {
@@ -8,12 +7,10 @@ interface ProgressBarProps {
 
 export function ProgressBar({ progress, className }: ProgressBarProps) {
   return (
-    <Suspense>
       <motion.div
         className={`w-full h-1 bg-teal-400 dark:bg-teal-500 ${className}`}
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
       />
-    </Suspense>
   )
 }

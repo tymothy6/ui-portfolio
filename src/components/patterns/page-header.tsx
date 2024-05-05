@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Suspense } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
@@ -97,7 +98,6 @@ const blog : { title: string; href: string; description:string }[] = [
         href: "/resume",
         description: "Get a copy of my resume"
     }
-    
 ]
 
 export function PageHeader({ children }: { children?: React.ReactNode}) {
@@ -147,10 +147,12 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
             borderBottomWidth: isMenuOpen ? '0px' : '1px',
             borderBottomStyle: isMenuOpen ? 'none' : 'solid'
           }}>
-            <ProgressBar
-            progress={scrollProgress}
-            className="block md:hidden"
-            />
+            <Suspense>
+                <ProgressBar
+                  progress={scrollProgress}
+                  className="block md:hidden"
+                />
+            </Suspense>
             <div className="flex justify-between items-center pl-8 pr-4 md:px-8 py-2 md:py-4">
                 <Link href="/#home" className="rounded-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4" 
                 onClick={(e) => {

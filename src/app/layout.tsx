@@ -12,8 +12,8 @@ import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import algoliasearch from "algoliasearch"
-import { InstantSearch } from "react-instantsearch"
+// import algoliasearch from "algoliasearch"
+// import { InstantSearch } from "react-instantsearch"
 
 import { PageHeader } from '@/components/patterns/page-header'
 import { SearchWrapper } from '@/components/patterns/search-wrapper'
