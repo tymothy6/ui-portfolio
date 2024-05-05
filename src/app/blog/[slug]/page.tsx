@@ -19,8 +19,8 @@ import { GiscusWrapper } from "@/components/patterns/giscus-wrapper"
 
 export const viewport: Viewport = {
     themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#5b47d8' },
-    { media: '(prefers-color-scheme: dark)', color: '#654ff0' },
+      { media: '(prefers-color-scheme: light)', color: '#5b47d8' },
+      { media: '(prefers-color-scheme: dark)', color: '#654ff0' },
     ],
 }
 

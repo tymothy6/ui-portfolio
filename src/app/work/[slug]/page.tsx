@@ -55,7 +55,6 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
 
 
 async function ProjectPage ( { params }: ProjectPageProps ) {
-
     // fetch a single project by slug
     const data = await fetchProject({ slug: params.slug })
 
