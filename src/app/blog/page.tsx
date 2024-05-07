@@ -25,7 +25,9 @@ export default function Blog () {
             <div className={styles.gradient}>
                 <BlogHero />
                     <div className="md:mx-24 mb-36">
-                        <BlogPostGrid />
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <BlogPostGrid />
+                        </Suspense>
                     </div>
             </div>
         </div>
