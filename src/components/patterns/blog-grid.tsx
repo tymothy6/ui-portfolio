@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import { fetchAllPosts } from "@/lib/blog-posts"
 import { CardCarousel } from "@/components/patterns/blog-card-carousel"
 import { SortButton } from "@/components/patterns/sort-popover"
@@ -20,7 +22,9 @@ export async function BlogPostGrid () {
                 </div>
             </div>
             <div className="mb-4 w-full">
+                <Suspense fallback={<div>Loading...</div>}>
                     <CardCarousel posts={posts} />
+                </Suspense>
             </div>
         </div>
     )

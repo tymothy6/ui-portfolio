@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Suspense } from "react"
 
 import { Metadata, ResolvingMetadata, Viewport } from "next"
 import { notFound } from "next/navigation"
@@ -64,7 +65,6 @@ export async function generateMetadata({ params }: BlogPageProps, parent: Resolv
 }
 
 async function BlogPostPage ( { params }: BlogPageProps ) {
-
     // fetch a single blog post by its slug
     const data = await fetchPost({ slug: params.slug })
 
@@ -182,7 +182,9 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
 
             <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 xl:mx-48">
                 <h2 className="text-2xl text-foreground font-semibold mx-8 font-mono mb-4">Recommended posts</h2>
-                <CardCarousel posts={otherBlogPosts} recommended={true} />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <CardCarousel posts={otherBlogPosts} recommended={true} />
+                </Suspense>
             </div>
 
         </div>

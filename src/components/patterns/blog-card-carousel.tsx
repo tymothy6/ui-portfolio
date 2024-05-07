@@ -60,14 +60,13 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
         <div 
         ref={carouselRef}
         onScroll={handleScroll}
-        className={`flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 z-[2] ${!recommended && 'xl:grid-cols-3'} gap-0 md:gap-4 ${styles.horizontalScroll}`}>
-            
+        className={`flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 z-[2] ${!recommended && 'xl:grid-cols-3'} gap-0 md:gap-4 ${styles.horizontalScroll}`}
+        >
             { (recommended ? posts.slice(0, 2) : sortedPosts).map((post, index) => (
                 <div className="flex-shrink-0 w-[85vw] md:w-full" key={post.slug}>
                     <BlogPostCard data={post} isFirstChild={index === 0} />
                 </div>
             ))}
-            
         </div>
     )
 }
