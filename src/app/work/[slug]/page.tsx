@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import Link from "next/link"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
@@ -52,7 +53,6 @@ export async function generateMetadata({ params }: ProjectPageProps, parent: Res
         },
     }
 }
-
 
 async function ProjectPage ( { params }: ProjectPageProps ) {
     // fetch a single project by slug
@@ -123,7 +123,6 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     </div>
                 </div>
             </div>
-
             <div className="my-6 flex flex-col"> 
                 {data.heroBlock1 && data.heroBlock1.map((image, index) =>
                    image && (
@@ -139,13 +138,11 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     )
                 )}
             </div>
-
             <div className="flex flex-col gap-4 py-24 md:py-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
             <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mb-4">Design Process</h2>
                 <Separator className="mb-8"/></div>
                 <RichText document={data.process} />
             </div>
-
             <div className="my-6 flex flex-col"> 
                 {data.heroBlock2 && data.heroBlock2.map((image, index) =>
                    image && (
@@ -161,7 +158,6 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                     )
                 )}
             </div>
-
             {data.outcome && (
             <div className="flex flex-col gap-4 py-24 md:py-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
                 <div className="mx-8"><h2 className="text-3xl md:text-4xl font-semibold mb-4">Design Outcome</h2>
@@ -169,14 +165,12 @@ async function ProjectPage ( { params }: ProjectPageProps ) {
                 <RichText document={data.outcome} />
             </div>
             )}
-
             <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48 xl:mx-60">
                 <h2 className="text-2xl font-semibold mx-8 mb-4 font-mono">Other work</h2>
                 <div className="mx-0">
                     <ProjectCardCarousel projects={otherProjects} recommended={true} noHover={true} />
                 </div>
             </div>
-
         </div>
         </div>
     )

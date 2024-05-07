@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/patterns/contact-button"
 import { GiscusWrapper } from "@/components/patterns/giscus-wrapper"
+import { BuyMeCoffee } from "@/components/patterns/buy-me-coffee"
 
 export const viewport: Viewport = {
     themeColor: [
@@ -143,14 +144,10 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                             <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
                             <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
                         </div>
-                            
                         <Separator />
-                       
-                        
                     </div>
                 </div>
             </div>
-
             { data.heroBlock && (
             <div className="flex flex-col"> 
                 {data.heroBlock && data.heroBlock.map((image, index) =>
@@ -165,7 +162,6 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                 )}
             </div>
             )}
-
             <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-72 font-serif">
                 <RichText document={data.body} />
                 
@@ -175,18 +171,15 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                     <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
                     <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
                 </div>
-
-                <GiscusWrapper />
-                        
+                <BuyMeCoffee />  
+                <GiscusWrapper />   
             </div>
-
             <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 xl:mx-48">
                 <h2 className="text-2xl text-foreground font-semibold mx-8 font-mono mb-4">Recommended posts</h2>
                 <Suspense fallback={<div>Loading...</div>}>
                     <CardCarousel posts={otherBlogPosts} recommended={true} />
                 </Suspense>
             </div>
-
         </div>
         </div>
     )

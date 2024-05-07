@@ -37,6 +37,7 @@ import { Separator } from "@/components/ui/separator"
 import { StyleNavigation } from "@/components/patterns/doc-sidebar"
 import { FigmaEmbed } from "@/components/patterns/figma-embed"
 import ColourVariablesTable from "@/app/style/variables-table"
+import { BuyMeCoffee } from "./buy-me-coffee"
 
 interface HomeProps {
     id: string;
@@ -692,24 +693,21 @@ export function ClickMeButton() {
                 <p className="text-lg text-foreground font-regular">
                 You can access a design kit with all the components used on this website with support for Figma variables, props, and theming (dark mode). Use it as a starting point for your own customization with CSS variables and/or Tailwind CSS. Credit to Pietro Schirano (@<a href="https://twitter.com/skirano" className="text-foreground font-medium underline decoration-primary decoration-2 underline-offset-2 hover:decoration-primary/80 rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"><span>skirano<ExternalLinkIcon className="inline ml-1 h-4 w-4 text-muted-foreground"/></span></a>) for creating the original Figma kit for shadcn/ui.
                 </p>
-                <div className="flex flex-col w-full gap-4">
-                    <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
-                    <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FyL8Az42Z3NBnP23EfnSxpk%2F%2540shadcn%252Fui---Design-System-(Variables-%2526-Theming)%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DbS19L3DMltz9mhXM-1" />
+                    <div className="flex flex-col w-full gap-4">
+                        <Label htmlFor="figma"><span className="text-base text-muted-foreground">Preview file</span></Label>
+                        <FigmaEmbed figmaUrl="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FyL8Az42Z3NBnP23EfnSxpk%2F%2540shadcn%252Fui---Design-System-(Variables-%2526-Theming)%3Ftype%3Ddesign%26node-id%3D2%253A287%26mode%3Ddesign%26t%3DbS19L3DMltz9mhXM-1" />
+                    </div>
+                        <div className="mb-4">
+                            <Button variant="default" size="default" asChild>
+                                    <Link href="https://www.figma.com/community/file/1314057472629730742/shadcn-ui-design-system-variables-theming">
+                                        <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                        <span className="text-sm">Get a copy</span>
+                                    </Link>
+                            </Button>
+                        </div>
+                    </div>
+                    <BuyMeCoffee />
                 </div>
-                <div className="mb-4">
-                    <Button variant="default" size="default" asChild>
-                            <Link href="https://www.figma.com/file/yL8Az42Z3NBnP23EfnSxpk/%40shadcn%2Fui---Design-System-(Variables-%26-Theming)?type=design&node-id=2%3A287&mode=design&t=bS19L3DMltz9mhXM-1">
-                                <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                                <span className="text-sm">Download file</span>
-                            </Link>
-                    </Button>
-                </div>
-                </div>
-
-
-                </div>
-                
-
             </div>
         </div>
     )
