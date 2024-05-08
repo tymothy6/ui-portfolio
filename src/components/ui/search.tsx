@@ -173,7 +173,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
                   <FrameIcon className="mr-3 h-4 w-4" />
                   <div className="flex flex-row items-center gap-2">
                     <span className="font-medium w-[240px] truncate">{project.name}</span>
-                    <Badge variant="default"><span className="tracking-tight">{project.type}</span></Badge>
+                    <Badge variant="default" className="text-white"><span className="tracking-tight">{project.type}</span></Badge>
                   </div>
               </CommandItem>
             ))}
@@ -237,14 +237,14 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
               />
             </div>
             <div className="flex flex-row items-center gap-2">
-              <div className="text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
+              <div className="text-slate-600 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
                   Select
-                  <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">↑</kbd>
-                  <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">↓</kbd>
+                  <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">↑</kbd>
+                  <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">↓</kbd>
               </div>
-              <div className="text-slate-800 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
+              <div className="text-slate-600 dark:text-slate-300 hover:bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground py-2 pl-3 pr-2 inline-flex items-center justify-center rounded-md text-sm font-medium cursor-default">
                   Open
-                  <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[14px] font-medium text-muted-foreground opacity-100">↵</kbd>
+                  <kbd className="ml-2 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-xs font-medium text-muted-foreground opacity-100">↵</kbd>
               </div>
             </div>
         </div>

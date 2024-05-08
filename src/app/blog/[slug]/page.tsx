@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge"
 import { AvatarBlog, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { LinkedInShare, TwitterShare, LinkShare, EmailShare } from "@/components/patterns/contact-button"
 import { GiscusWrapper } from "@/components/patterns/giscus-wrapper"
-import { BuyMeCoffee } from "@/components/patterns/buy-me-coffee"
+import { BlogBuyMeCoffee } from "@/components/patterns/buy-me-coffee"
 
 export const viewport: Viewport = {
     themeColor: [
@@ -171,7 +171,7 @@ async function BlogPostPage ( { params }: BlogPageProps ) {
                     <EmailShare url={`https://tim-ng.me/blog/${data.slug}`} />
                     <LinkShare url={`https://tim-ng.me/blog/${data.slug}`} />
                 </div>
-                <BuyMeCoffee />  
+                <BlogBuyMeCoffee />  
                 <GiscusWrapper />   
             </div>
             <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 xl:mx-48">

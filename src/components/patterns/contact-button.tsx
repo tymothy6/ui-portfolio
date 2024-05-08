@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 
-import { GitHubLogoIcon, LinkedInLogoIcon, FigmaLogoIcon, TwitterLogoIcon, Link2Icon, EnvelopeClosedIcon } from "@radix-ui/react-icons"
+import { ArrowTopRightIcon, GitHubLogoIcon, LinkedInLogoIcon, FigmaLogoIcon, TwitterLogoIcon, Link2Icon, EnvelopeClosedIcon } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import { 
   Tooltip,
@@ -25,7 +25,12 @@ export function GitHubContact() {
             </Link>
         </Button>
     </TooltipTrigger>
-    <TooltipContent side="bottom">GitHub profile</TooltipContent>
+    <TooltipContent side="bottom">
+      <div className="flex items-center gap-1">
+          GitHub 
+        <ArrowTopRightIcon className="h-4 w-4" />
+      </div>
+    </TooltipContent>
     </Tooltip>
     </TooltipProvider>
   )
@@ -59,7 +64,12 @@ export function FigmaContact() {
               </Link>
           </Button>
       </TooltipTrigger>
-      <TooltipContent side="bottom">Figma community profile</TooltipContent>
+      <TooltipContent side="bottom">
+        <div className="flex items-center gap-1">
+            Figma Community 
+          <ArrowTopRightIcon className="h-4 w-4" />
+        </div>
+      </TooltipContent>
       </Tooltip>
     </TooltipProvider>
   )
@@ -93,7 +103,12 @@ export function LinkedInContact() {
               </Link>
             </Button>
           </TooltipTrigger>
-          <TooltipContent side="bottom">LinkedIn profile</TooltipContent>
+          <TooltipContent side="bottom">
+            <div className="flex items-center gap-1">
+              LinkedIn 
+            <ArrowTopRightIcon className="h-4 w-4" />
+            </div>
+          </TooltipContent>
         </Tooltip>
     </TooltipProvider>
   )
