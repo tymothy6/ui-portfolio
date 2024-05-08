@@ -20,6 +20,15 @@ export function CardCarousel ({ posts, recommended } :  { posts: Post[], recomme
     
     let sortedPosts = filteredPosts;
     switch (currentSortType) {
+        case 'default':
+            sortedPosts = filteredPosts.sort((a, b) => {
+                if (b.date !== null && a.date !== null) {
+                  return b.date.getTime() - a.date.getTime();
+                } else {
+                  return 0; // If either date is null, treat them as equal
+                }
+              });
+            break;
         case 'lastdate':
             sortedPosts = filteredPosts.sort((a, b) => {
                 if (b.date !== null && a.date !== null) {

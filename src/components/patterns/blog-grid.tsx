@@ -13,7 +13,7 @@ export async function BlogPostGrid () {
             <div className="flex flex-row justify-between items-center w-full mb-8">
                 <div className="flex flex-row items-center justify-center gap-2 mx-8 md:mx-4">
                     <p className="text-base md:text-lg font-semibold text-foreground font-mono">Posts</p>
-                    <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400 font-mono hidden md:block">· 2023 - </p>
+                    <p className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400 font-mono hidden md:block">· 2023 →  </p>
                 </div>
                 <div className="flex flex-row gap-2 mr-8 md:mr-0">
                     <div className="hidden md:block z-[2]"><SortButton data={posts} /></div>

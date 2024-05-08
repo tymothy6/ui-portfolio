@@ -68,10 +68,10 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
   return (
     <>
     <Button variant="outlinebg60" className="px-3 border border-primary-foreground/10" onClick={() => setOpen(true)}>
-      <p className="text-[15px]">
+      <p className="text-[14px]">
         Search{" "}
-        <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[13px] font-medium text-muted-foreground opacity-100">
-          <span className="text-[13px]">⌘</span>K
+        <kbd className="ml-1 pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border border-gray-200 dark:border-slate-700 bg-muted px-1.5 font-mono text-[12px] font-medium text-muted-foreground opacity-100">
+          <span className="text-[12px]">⌘</span>K
         </kbd>
       </p>
     </Button>
@@ -226,7 +226,7 @@ export function SearchDialog({ posts, projects }: { posts: Post[], projects: Pro
           </CommandGroup>
           <CommandSeparator />
         </CommandList>
-        <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-background/50 backdrop-blur-lg">
+        <div id="footer" className="flex flex-row items-center py-4 pl-4 pr-2 justify-between w-full h-[56px] border-t-[1px] bg-popover">
             <div className="w-max h-max flex p-[3px] rounded-md bg-accent border tracking-wide font-medium text-[13px] text-accent-foreground cursor-default">
               <Image
                 src={resolvedTheme === 'dark' ? 'https://images.ctfassets.net/mzyich089xy0/3it1Ee1attFtq5TDAfTWdb/39309148d9d40c4b368ce33b86455342/avatar-dark.png' : 

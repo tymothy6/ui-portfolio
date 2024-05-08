@@ -92,7 +92,9 @@ export function PageFooter2 () {
 
                                 <div className="items-center space-x-2 my-4 w-max hidden md:flex">
                                     <Switch id="marquee" onCheckedChange={toggleMarquee} checked={isMarqueeEnabled} />
-                                    <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">Toggle marquee</Label>
+                                    <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">
+                                        {isMarqueeEnabled ? 'Disable footer animation' : 'Enable footer animation'}
+                                    </Label>
                                 </div>
                                 </div>
                         </div>
@@ -176,7 +178,9 @@ export function PageFooter2 () {
                 <div className="flex flex-col gap-4 md:flex-row md:justify-between items-start px-4 md:px-10 pb-8 md:pb-12">
                         <div className="mx-4 flex items-center space-x-2 my-2 w-max md:hidden">
                                     <Switch id="marquee" onCheckedChange={toggleMarquee} checked={isMarqueeEnabled} />
-                                    <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">Toggle marquee</Label>
+                                    <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">
+                                        {isMarqueeEnabled ? 'Disable footer animation' : 'Enable footer animation'}
+                                    </Label>
                                 </div>
                         <div className="flex flex-col w-full md:flex-row items-start md:items-center gap-2 pb-2 md:pb-0">
                             <IubendaLink />
@@ -187,7 +191,7 @@ export function PageFooter2 () {
                                 <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-normal md:whitespace-nowrap">Built with Next.js. The code is available on <a href="https://github.com/tymothy6/ui-portfolio" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">GitHub</a>.</span>
                             </div>
                             <div className="px-4">
-                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-nowrap">© 2024, Tim Ng</span>
+                                <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-nowrap">© 2023-2024, Tim Ng</span>
                             </div>
                         </div>
                     </div>

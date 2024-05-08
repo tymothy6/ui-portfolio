@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useCycle } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
 import { useRouter, usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
-import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons"
+import { HamburgerMenuIcon, Cross1Icon, ArrowTopRightIcon } from "@radix-ui/react-icons"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { GitHubContact, LinkedInContact } from "@/components/patterns/contact-button"
 import { ModeToggle } from "@/components/patterns/mode-toggle"
@@ -33,6 +33,7 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 import { ProgressBar } from "@/components/patterns/progress-bar"
+import { MenuToggle } from "@/components/motion/menu-toggle"
 
 
 const scrollToSection = (id: string) => {
@@ -107,7 +108,6 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
     const menuRef = React.useRef<HTMLDivElement>(null)
     
-
     const handleClick = (event: Event) => {
         if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
             setIsMenuOpen(false);
@@ -169,7 +169,12 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                                 </Avatar>
                             </TooltipTrigger>
                             <TooltipContent className="p-2 md:block hidden">
-                                <p className="text-sm font-regular"> Go back to the homepage 🏁 </p>
+                            <div className="flex items-center gap-1">
+                                <p className="text-sm font-regular"> 
+                                    Homepage
+                                </p> 
+                            <ArrowTopRightIcon className="h-4 w-4" />
+                            </div>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
@@ -249,14 +254,13 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                 <div className="block md:hidden">
                     <Button 
                     variant="ghost"
+                    size="icon"
                     onClick={(event) => {
                         setIsMenuOpen(!isMenuOpen);
                     }}
-                    className="text-slate-800 dark:text-slate-300 hover:text-foreground hover:dark:text-foreground">
-                        {isMenuOpen ? <span className="mr-2 text-sm">Close</span> : <span className="mr-2 text-sm">Menu</span>}
-            
-                        {isMenuOpen ? <Cross1Icon className="w-4 h-4" /> : <HamburgerMenuIcon className="w-4 h-4" />}
-                        
+                    >
+                    {isMenuOpen ? <span className="sr-only">Close menu</span> : <span className="sr-only">Open menu</span>}
+                        <MenuToggle isMenuOpen={isMenuOpen} />
                     </Button>
                 </div>
             </div>

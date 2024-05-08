@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/popover"
 import { 
     Command,
+    CommandList,
     CommandGroup,
     CommandItem,
 } from "@/components/ui/command"
@@ -54,39 +55,50 @@ export function SortButton ({data}: {data: Post[]}) {
             </div>
             </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[150px] p-0">
-        <Command>
-            <CommandGroup heading="Options">
-                <CommandItem onSelect={() => handleSort("lastdate")}>
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    currentSortType === "lastdate" ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                    <span>Date (oldest)</span>
-                </CommandItem>
-                <CommandItem onSelect={() => handleSort("az")}>
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    currentSortType === "az" ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                    <span>Title (A-Z)</span>
-                </CommandItem>
-                <CommandItem onSelect={() => handleSort("za")}>
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    currentSortType === "za" ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                    <span>Title (Z-A)</span>
-                </CommandItem>
-            </CommandGroup>
-        </Command>
-        </PopoverContent>
+            <PopoverContent className="w-[150px] p-0">
+                <Command>
+                    <CommandList>
+                    <CommandGroup heading="Options">
+                        <CommandItem onSelect={() => handleSort("default")}>
+                        <Check
+                        className={cn(
+                            "mr-2 h-4 w-4",
+                            currentSortType === "default" ? "opacity-100" : "opacity-0"
+                        )}
+                        />
+                            <span>Most recent</span>
+                        </CommandItem>
+                        <CommandItem onSelect={() => handleSort("lastdate")}>
+                        <Check
+                        className={cn(
+                            "mr-2 h-4 w-4",
+                            currentSortType === "lastdate" ? "opacity-100" : "opacity-0"
+                        )}
+                        />
+                            <span>Least recent</span>
+                        </CommandItem>
+                        <CommandItem onSelect={() => handleSort("az")}>
+                        <Check
+                        className={cn(
+                            "mr-2 h-4 w-4",
+                            currentSortType === "az" ? "opacity-100" : "opacity-0"
+                        )}
+                        />
+                            <span>Title (A→Z)</span>
+                        </CommandItem>
+                        <CommandItem onSelect={() => handleSort("za")}>
+                        <Check
+                        className={cn(
+                            "mr-2 h-4 w-4",
+                            currentSortType === "za" ? "opacity-100" : "opacity-0"
+                        )}
+                        />
+                            <span>Title (Z→A)</span>
+                        </CommandItem>
+                    </CommandGroup>
+                    </CommandList>
+                </Command>
+            </PopoverContent>
         </Popover>
         </div>
     )

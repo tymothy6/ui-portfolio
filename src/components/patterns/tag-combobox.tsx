@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   Command,
+  CommandList,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -71,24 +72,26 @@ export function BlogCombobox({data}: {data: Post[]}) {
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search tags..." />
-          <CommandEmpty>No tags found.</CommandEmpty>
-          <CommandGroup className="overflow-y-scroll max-h-[150px] md:max-h-[200px]">
-            {tags.map((tag) => (
-              <CommandItem
-                key={tag.value}
-                value={tag.value}
-                onSelect={() => handleChange(tag.value)}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    currentTag.toLowerCase() === tag.value.toLowerCase() ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                {tag.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          <CommandList>
+            <CommandEmpty>No tags found.</CommandEmpty>
+            <CommandGroup className="overflow-y-scroll max-h-[150px] md:max-h-[200px]">
+              {tags.map((tag) => (
+                <CommandItem
+                  key={tag.value}
+                  value={tag.value}
+                  onSelect={() => handleChange(tag.value)}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4",
+                      currentTag.toLowerCase() === tag.value.toLowerCase() ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                  {tag.label}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
