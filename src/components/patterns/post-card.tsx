@@ -41,7 +41,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <AvatarBlog className="z-[1]">
+                            <AvatarBlog className="z-[1] cursor-help">
                             <AvatarImage src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4" alt="The author's GitHub avatar" />
                                 <AvatarFallback>TN</AvatarFallback>
                             </AvatarBlog>
@@ -53,7 +53,7 @@ export function BlogPostCard ({data, isFirstChild = false}: {data: Post, isFirst
                 </TooltipProvider>
             </div>
             <Link href={`/blog/${data.slug}`}>
-                <h1 className="text-xl md:text-2xl font-medium text-foreground">{data.title}</h1>
+                <h1 className="text-xl md:text-2xl font-medium text-foreground hover:text-foreground/90 decoration-primary decoration-2 md:decoration-4 hover:underline-offset-2 hover:underline">{data.title}</h1>
             </Link>
             <Separator />
             </CardHeader>

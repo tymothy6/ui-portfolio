@@ -2,13 +2,13 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { motion, useCycle } from "framer-motion"
+import { motion } from "framer-motion"
 import { ScrollContext } from "@/lib/scroll-context"
 import { useRouter, usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
-import { HamburgerMenuIcon, Cross1Icon, ArrowTopRightIcon } from "@radix-ui/react-icons"
+import { ArrowTopRightIcon } from "@radix-ui/react-icons"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { GitHubContact, LinkedInContact } from "@/components/patterns/contact-button"
 import { ModeToggle } from "@/components/patterns/mode-toggle"

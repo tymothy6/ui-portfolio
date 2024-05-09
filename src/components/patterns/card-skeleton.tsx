@@ -1,6 +1,5 @@
 import { BlogCard, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { Separator } from "@/components/ui/separator"
 
 export function BlogCardSkeleton () {
     return (
@@ -11,7 +10,6 @@ export function BlogCardSkeleton () {
                     <Skeleton className="h-8 w-8 rounded-full" />
                 </div>
                 <Skeleton className="h-8 w-full" />
-                <Separator />
             </CardHeader>
             <CardContent className="flex flex-col items-start w-full">
                 <div className="flex flex-col gap-4 w-full">

@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 import styles from "@/components/modules/landing.module.css"
 
@@ -50,9 +51,10 @@ const formSchema = z.object({
 
 export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
-        <div 
-        id={id}
-        className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]">
+        <div
+            id={id}
+            className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]"
+        >
             <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
             <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
             <div>
@@ -734,7 +736,12 @@ export function ResumeHero () {
 
 export function BlogHero () {
     return (
-        <div className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
+        <motion.div
+        initial={{ opacity: 0, y: "-80%" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
+        >
                 <h1 className="text-5xl md:text-6xl font-semibold mb-8 z-[3]">Design Blog</h1>
                 <div className="flex flex-col justify-start w-full z-[3]">
                     <p className="text-xl lg:text-2xl text-foreground font-[450] text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">Welcome to my blog! I&apos;ll be posting about my personal projects, design ideas, and professional development here. Thoughts? I look forward to our conversation.</p>
@@ -746,8 +753,6 @@ export function BlogHero () {
                         </Button>
                     </div>
                 </div>
-                
-               
-        </div>
+        </motion.div>
     )
 }

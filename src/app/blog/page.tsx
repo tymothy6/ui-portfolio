@@ -5,6 +5,7 @@ import { Metadata, Viewport } from "next"
 
 import { BlogHero } from "@/components/patterns/landing-hero"
 import { BlogPostGrid } from "@/components/patterns/blog-grid"
+import { BlogGridSkeleton } from "@/components/patterns/grid-skeleton"
 
 import styles from "@/components/modules/landing.module.css"
 

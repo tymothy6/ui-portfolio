@@ -1,8 +1,10 @@
+import { Suspense } from "react"
 
 import { fetchAllPosts } from "@/lib/blog-posts"
 import { CardCarousel } from "@/components/patterns/blog-card-carousel"
 import { SortButton } from "@/components/patterns/sort-popover"
 import { BlogCombobox } from "@/components/patterns/tag-combobox"
+import { BlogGridSkeleton } from "./grid-skeleton"
 
 
 export async function BlogPostGrid () {
@@ -20,9 +22,11 @@ export async function BlogPostGrid () {
                     <BlogCombobox data={posts} />
                 </div>
             </div>
-            <div className="mb-4 w-full">
-                <CardCarousel posts={posts} />
-            </div>
+            <Suspense fallback={<BlogGridSkeleton />}>
+                <div className="mb-4 w-full">
+                    <CardCarousel posts={posts} />
+                </div>
+            </Suspense>
         </div>
     )
 }
