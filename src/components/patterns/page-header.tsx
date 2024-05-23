@@ -171,7 +171,7 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                             <TooltipContent className="p-2 md:block hidden">
                             <div className="flex items-center gap-1">
                                 <p className="text-sm font-regular"> 
-                                    Homepage
+                                    Home
                                 </p> 
                             <ArrowTopRightIcon className="h-4 w-4" />
                             </div>
@@ -246,7 +246,7 @@ export function PageHeader({ children }: { children?: React.ReactNode}) {
                 </div>
                 <div className="mx-1 hidden md:block">
                     {children}
-                    </div>
+                </div>
                 <LinkedInContact />
                 <GitHubContact />
                 <ModeToggle />

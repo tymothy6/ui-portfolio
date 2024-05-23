@@ -12,12 +12,13 @@ import { Toaster } from '@/components/ui/toaster'
 import { ScrollProviderWrapper } from '@/lib/scroll-wrapper'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-// import algoliasearch from "algoliasearch"
-// import { InstantSearch } from "react-instantsearch"
 
 import { PageHeader } from '@/components/patterns/page-header'
 import { SearchWrapper } from '@/components/patterns/search-wrapper'
 import { PageFooter2 } from '@/components/patterns/footer-2'
+
+// Algolia search
+import { Search } from '@/components/algolia/search'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://tim-ng.me'),
@@ -65,6 +66,7 @@ export default function RootLayout({
             <ScrollProviderWrapper>
             <PageHeader>
               <SearchWrapper />
+              <Search />
             </PageHeader>
                 {children}
             <PageFooter2 />
