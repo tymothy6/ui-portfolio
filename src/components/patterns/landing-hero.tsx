@@ -39,6 +39,7 @@ import { StyleNavigation } from "@/components/patterns/doc-sidebar"
 import { FigmaEmbed } from "@/components/patterns/figma-embed"
 import ColourVariablesTable from "@/app/style/variables-table"
 import { BuyMeCoffee } from "./buy-me-coffee"
+import { Typewriter } from "@/components/motion/typewriter"
 
 interface HomeProps {
     id: string;
@@ -48,6 +49,13 @@ const formSchema = z.object({
     password: z.string().min(6).max(24),
 })
 
+const texts = [
+    "complex ideas accessible",
+    "writing accessible",
+    "design accessible",
+    "data accessible",
+]
+
 
 export const Hero: React.FC<HomeProps> = ({ id }) => {
     return (
@@ -56,7 +64,11 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
             className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]"
         >
             <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
-            <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none"> 🤗 I care about making <span className="bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]">complex ideas accessible</span> to everyone</h1>
+            <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none">
+                {/* <span className="ml-4 bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]"> */}
+                    <Typewriter texts={texts} delay={1} baseText="🤗 I care about making " />
+                {/* </span> */}
+            </h1>
             <div>
             <Button variant="gradient" size="default" className="md:w-36" asChild>
                 <Link href="/#about">
