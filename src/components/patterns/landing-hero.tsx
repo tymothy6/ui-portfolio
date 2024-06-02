@@ -50,7 +50,7 @@ const formSchema = z.object({
 })
 
 const texts = [
-    "complex ideas accessible",
+    "ideas accessible",
     "writing accessible",
     "design accessible",
     "data accessible",
@@ -64,10 +64,11 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
             className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]"
         >
             <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">👋🏼 I&apos;m Tim, experience designer and quantitative researcher</h1>
-            <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none">
-                {/* <span className="ml-4 bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 inline-block text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]"> */}
-                    <Typewriter texts={texts} delay={1} baseText="🤗 I care about making " />
-                {/* </span> */}
+            <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold pb-4 cursor-default pointer-events-none">
+                <div className="sm:block hidden"><Typewriter texts={texts} delay={1} baseText="🤗 I care about making " /></div>
+                <span className="inline-block sm:hidden">🤗 I care about making </span>
+                <span className="inline-block sm:hidden bg-gradient-to-r from-primary to-pink-500 via-blue-600 dark:to-pink-600 dark:via-blue-500 text-transparent bg-clip-text bg-300% animate-animated-gradient tracking-[0.0025em]"> complex ideas accessible
+                </span>
             </h1>
             <div>
             <Button variant="gradient" size="default" className="md:w-36" asChild>
