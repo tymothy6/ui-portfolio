@@ -77,7 +77,7 @@ export function PageFooter2 () {
                                 <div><span className="text-sm font-mono font-medium tracking-wide">Design Portfolio</span></div>
                                 <div className="flex flex-col gap-2">
                                 <span className="text-gray-800 dark:text-gray-400 text-sm font-[450]">Tim Ng</span>
-                                <span className="text-gray-800 dark:text-gray-400 font-[450] text-sm">Toronto, ON 🇨🇦</span>
+                                <span className="text-gray-800 dark:text-gray-400 font-[450] text-sm">Vancouver, BC 🇨🇦</span>
                                 <div className="flex flex-row gap-2 md:gap-0">
                                     <LinkedInContact />
                                     <GitHubContact />

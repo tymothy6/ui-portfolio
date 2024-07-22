@@ -28,14 +28,14 @@ export default function Resume () {
                             <Separator />
                             <div className="rounded-lg max-w-4xl relative overflow-hidden mt-4" style={{ paddingBottom: '120.41%' }}>
                                 <iframe
-                                src="https://drive.google.com/file/d/1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc/preview"
+                                src="https://drive.google.com/file/d/1HUebfShmJvFA7GGVnBMno8KLqILeSK6T/preview"
                                 width="100%"
                                 height="100%"
                                 allow="autoplay"
                                 className="absolute top-0 w-full h-full"
                                 ></iframe>
                             <div>
-                                <a href="https://drive.google.com/uc?export=download&id=1IbtFgUMnnUT2elUv0pvttkrtwpI1vUMc">
+                                <a href="https://drive.google.com/uc?export=download&id=1HUebfShmJvFA7GGVnBMno8KLqILeSK6T">
                                     <Button
                                     variant="outline"
                                     size="default"
