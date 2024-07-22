@@ -46,7 +46,7 @@ export function GitHubBadge() {
             <span className="sr-only">This project has an associated GitHub repo</span>
           </div>
         </TooltipTrigger>
-        <TooltipContent side="bottom">This project has an associated GitHub repo</TooltipContent>
+        <TooltipContent side="bottom" align="end">Available GitHub repo</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   )
@@ -82,10 +82,10 @@ export function FigmaBadge() {
       <TooltipTrigger>
         <div className="h-10 w-10 inline-flex items-center justify-center rounded-md text-sm font-medium text-slate-800 dark:text-slate-300 bg-accent/60 hover:text-accent-foreground dark:hover:text-accent-foreground">
           <FigmaLogoIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-          <span className="sr-only">This project has a public Figma file</span>
+          <span className="sr-only">This project has an associated Figma file</span>
         </div>
       </TooltipTrigger>
-      <TooltipContent side="bottom">This project has a public Figma file</TooltipContent>
+      <TooltipContent side="bottom" align="end">Available Figma file</TooltipContent>
       </Tooltip>
     </TooltipProvider>
   )
