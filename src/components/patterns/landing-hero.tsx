@@ -166,7 +166,7 @@ export function LicenseHero () {
                         <div className="flex flex-col gap-4">
                             <h2 className="text-3xl font-semibold">Images</h2>
                             <Separator />
-                            <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using OpenAI DALL-E. Some project images were made with BioRender and licensed for personal use only.</p>
+                            <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses images sourced from Unsplash and generated with AI using the OpenAI DALL-E model. Some project images were made with BioRender and licensed for personal use only.</p>
                             <div className="flex flex-wrap gap-4">
                                 <Button variant="default" asChild>
                                     <Link href="https://unsplash.com/license">Unsplash</Link>
@@ -203,12 +203,12 @@ export function LicenseHero () {
                     <div className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Fonts</h2>
                     <Separator />
-                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Inter typeface by Rasmus Andersson and Source Serif 4 by Frank Grießhammer.</p>
+                    <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">This website uses the Geist typeface by Vercel and Source Serif 4 by Frank Grießhammer.</p>
                         <div className="flex flex-wrap gap-4">
                         <Button variant="default" asChild>
-                            <Link href="https://rsms.me/inter/#free">
+                            <Link href="https://github.com/vercel/geist-font?tab=readme-ov-file">
                             <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                                Inter</Link>
+                                Geist</Link>
                         </Button>
                         
                         <Button variant="default" asChild>
@@ -219,8 +219,8 @@ export function LicenseHero () {
                     </div>
                     <div className="relative w-full min-h-[16rem] overflow-hidden">
                         <Image 
-                        src="https://images.ctfassets.net/mzyich089xy0/5FaS7kdSLAjGgYaM6UsqQB/d3f169458fb94a49b105cb8797f02a12/licenses-inter.png"
-                        alt="Inter typeface by Rasmus Andersson"
+                        src="https://github.com/vercel/geist-font/raw/main/.docs/img/geist-banner--light.png"
+                        alt="Geist typeface by Vercel"
                         fill={true}
                         className="rounded-lg object-cover object-top"
                         />
