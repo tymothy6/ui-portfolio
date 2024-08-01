@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        'xs': '639px' 
+        xs: "639px",
       },
       colors: {
         selection: {
@@ -80,12 +80,12 @@ module.exports = {
         "gradient-xy": {
           "0%, 100%": {
             "background-size": "400% 400%",
-            "background-position": "left center"
+            "background-position": "left center",
           },
           "50%": {
             "background-size": "200% 200%",
-            "background-position": "right center"
-          }
+            "background-position": "right center",
+          },
         },
         "slide-gradient": {
           "0%": {
@@ -93,29 +93,29 @@ module.exports = {
           },
           "100%": {
             "background-position": "100% 100%",
-          }
+          },
         },
         "card-translate-y": {
           "0%": {
-            "transform": "translateY(0)",
+            transform: "translateY(0)",
             "animation-timing-function": "cubic-bezier(0.9, 0, 1, 1)",
           },
           "100%": {
-            "transform": "translateY(-0.5%)",
+            transform: "translateY(-0.5%)",
             "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
-          }
+          },
         },
         "card-bounce": {
           "0%, 100%": {
-            "transform": "translateY(-0.5%)",
+            transform: "translateY(-0.5%)",
             "animation-timing-function": "cubic-bezier(0.9, 0, 1, 1)",
           },
-          "50%" : {
-            "transform": "translateY(0)",
+          "50%": {
+            transform: "translateY(0)",
             "animation-timing-function": "cubic-bezier(0, 0, 0.1, 1)",
-          }
+          },
         },
-        "scrollMarquee": {
+        scrollMarquee: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(var(--translation-value))" },
         },
@@ -132,32 +132,32 @@ module.exports = {
         "slide-gradient": "slide-gradient 3s linear infinite",
         "card-translate-y": "card-translate-y 0.2s forwards",
         "card-bounce": "card-bounce 1s infinite",
-        "scrollMarquee": "scrollMarquee 30s linear infinite",
+        scrollMarquee: "scrollMarquee 30s linear infinite",
       },
       transitionProperty: {
-        "transform": "transform",
+        transform: "transform",
         "transform-opacity": "transform, opacity",
       },
       transitionDuration: {
-        "1000": "1000ms",
+        1000: "1000ms",
       },
       transitionTimingFunction: {
         "ease-in-out": "ease-in-out",
       },
       translate: {
-        "full": "100%",
-        "0": "0",
+        full: "100%",
+        0: "0",
       },
       boxShadow: {
-        glow: '0 0 10px 4px rgba(109, 40, 217, 0.8)',
+        glow: "0 0 10px 4px rgba(109, 40, 217, 0.8)",
       },
       fontFamily: {
         serif: ["var(--font-serif)"],
         mono: ["var(--font-geist-mono)"],
         monaSans: ["var(--font-mona-sans)"],
         geistSans: ["var(--font-geist-sans)"],
-      }
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

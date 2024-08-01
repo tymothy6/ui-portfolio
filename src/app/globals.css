@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 @layer base {
   :root {
@@ -28,7 +27,7 @@
     --selection: 229 84% 5%;
     --selection-foreground: 240 100% 99%;
   }
- 
+
   .dark {
     --background: 222 47% 11%;
     --foreground: 210 20% 98%;
@@ -67,22 +66,24 @@
   img {
     user-select: none;
     -webkit-user-select: none;
-    -moz-user-select: none; 
+    -moz-user-select: none;
     -ms-user-select: none;
   }
 
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
-  
 }
 
 @keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
- 
 @layer base {
   * {
     @apply border-border;

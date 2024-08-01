@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { animate, motion, useMotionValue, useTransform } from "framer-motion"
+import { useEffect, useState } from "react";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 export interface ITypewriterProps {
-  delay: number
-  texts: string[]
-  baseText?: string
+  delay: number;
+  texts: string[];
+  baseText?: string;
 }
 
 export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
-  const [animationComplete, setAnimationComplete] = useState(false)
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const [animationComplete, setAnimationComplete] = useState(false);
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
-    baseText.slice(0, latest)
-  )
+    baseText.slice(0, latest),
+  );
 
   useEffect(() => {
     const controls = animate(count, baseText.length, {
@@ -24,11 +24,11 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
       duration: 1,
       ease: "easeInOut",
       onComplete: () => setAnimationComplete(true),
-    })
+    });
     return () => {
-      controls.stop && controls.stop()
-    }
-  }, [count, baseText.length, delay])
+      controls.stop && controls.stop();
+    };
+  }, [count, baseText.length, delay]);
 
   return (
     <span>
@@ -38,33 +38,33 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
       )}
       <BlinkingCursor />
     </span>
-  )
+  );
 }
 
 export interface IRepeatedTextAnimationProps {
-  delay: number
-  texts: string[]
+  delay: number;
+  texts: string[];
 }
 
 const defaultTexts = [
   "complex ideas accessible",
   "writing accessible",
   "design accessible",
-  "data accessible"
-]
+  "data accessible",
+];
 function RepeatedTextAnimation({
   delay,
   texts = defaultTexts,
 }: IRepeatedTextAnimationProps) {
-  const textIndex = useMotionValue(0)
+  const textIndex = useMotionValue(0);
 
-  const baseText = useTransform(textIndex, (latest) => texts[latest] || "")
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const baseText = useTransform(textIndex, (latest) => texts[latest] || "");
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
   const displayText = useTransform(rounded, (latest) =>
-    baseText.get().slice(0, latest)
-  )
-  const updatedThisRound = useMotionValue(true)
+    baseText.get().slice(0, latest),
+  );
+  const updatedThisRound = useMotionValue(true);
 
   useEffect(() => {
     const animation = animate(count, 60, {
@@ -77,19 +77,19 @@ function RepeatedTextAnimation({
       repeatDelay: 1,
       onUpdate(latest) {
         if (updatedThisRound.get() && latest > 0) {
-          updatedThisRound.set(false)
+          updatedThisRound.set(false);
         } else if (!updatedThisRound.get() && latest === 0) {
-          textIndex.set((textIndex.get() + 1) % texts.length)
-          updatedThisRound.set(true)
+          textIndex.set((textIndex.get() + 1) % texts.length);
+          updatedThisRound.set(true);
         }
       },
-    })
+    });
     return () => {
-      animation.stop && animation.stop()
-    }
-  }, [count, delay, textIndex, texts, updatedThisRound])
+      animation.stop && animation.stop();
+    };
+  }, [count, delay, textIndex, texts, updatedThisRound]);
 
-  return <motion.span className="inline">{displayText}</motion.span>
+  return <motion.span className="inline">{displayText}</motion.span>;
 }
 
 const cursorVariants = {
@@ -103,7 +103,7 @@ const cursorVariants = {
       times: [0, 0.5, 0.5, 1],
     },
   },
-}
+};
 
 function BlinkingCursor() {
   return (
@@ -112,5 +112,5 @@ function BlinkingCursor() {
       animate="blinking"
       className="inline-block h-12 w-[2px] translate-y-1 bg-neutral-900 dark:bg-gray-100"
     />
-  )
+  );
 }

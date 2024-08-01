@@ -1,10 +1,11 @@
 interface OverlayProps {
-    isMenuOpen: boolean;
-  }
+  isMenuOpen: boolean;
+}
 
 export function Overlay({ isMenuOpen }: OverlayProps) {
-    return (
-      <div className={`fixed inset-0 bg-black opacity-70 ${isMenuOpen ? 'block' : 'hidden'}`} />
-    );
-  }
-  
+  return (
+    <div
+      className={`fixed inset-0 bg-black opacity-70 ${isMenuOpen ? "block" : "hidden"}`}
+    />
+  );
+}

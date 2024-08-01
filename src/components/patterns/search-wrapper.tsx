@@ -1,15 +1,15 @@
-import { fetchAllProjects } from "@/lib/projects"
-import { fetchAllPosts } from "@/lib/blog-posts"
+import { fetchAllProjects } from "@/lib/projects";
+import { fetchAllPosts } from "@/lib/blog-posts";
 
-import { SearchDialog } from "@/components/ui/search"
+import { SearchDialog } from "@/components/ui/search";
 
-export async function SearchWrapper () {
-    const projects = await fetchAllProjects()
-    const posts = await fetchAllPosts()
+export async function SearchWrapper() {
+  const projects = await fetchAllProjects();
+  const posts = await fetchAllPosts();
 
-    return (
-        <>
-            <SearchDialog projects={projects} posts={posts} />
-        </>
-    )
+  return (
+    <>
+      <SearchDialog projects={projects} posts={posts} />
+    </>
+  );
 }
