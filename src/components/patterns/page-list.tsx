@@ -247,7 +247,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             </strong>{" "}
             Above all, I&apos;m a private person that cherishes time alone to
             recharge. My favourite hobbies that enable this include reading,
-            language learning, and board gaming. Recently, I've been working on
+            language learning, and board gaming. Recently, I&apos;ve been working on
             my TCG collection and dabbling in tabletop game design. Physically,
             I like to clear my mind and push my limits with weight training and
             racket sports.
