@@ -177,7 +177,7 @@ export function LicenseHero() {
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
             All graphical assets on this website are licensed for personal use.
             If you would like to use a specific asset, please check the license
-            below or reach out to me 😊
+            below or reach out to me! 😊
           </p>
           <div className="md:pl-8 z-[3]">
             <Button
@@ -479,16 +479,10 @@ export function StyleHero() {
             </code>{" "}
             file of your codebase. You&apos;ll need to have shadcn/ui set up for
             semantic styling of components to work out-of-the-box. Not using a
-            framework? I&apos;ve defined agnostic tokens you can use for your
-            own components.
+            framework? I&apos;ve included agnostic tokens you can use for your
+            own styling.
           </p>
           <div className="flex flex-row flex-wrap gap-4 md:pl-8 z-[3]">
-            <Button variant="gradient" size="default" asChild>
-              <Link href="https://nextjs.org/docs">
-                <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                <span className="text-base font-medium">Install Next.js</span>
-              </Link>
-            </Button>
             <Button variant="gradient" size="default" asChild>
               <Link href="https://ui.shadcn.com/docs/installation">
                 <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -957,7 +951,7 @@ export function ResumeHero() {
 export function BlogHero() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: "-80%" }}
+      initial={{ opacity: 0, y: "-10%" }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
