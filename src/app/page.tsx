@@ -44,22 +44,22 @@ export default function Home() {
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
-                  className="text-xs md:text-sm font-mono"
+                  className="text-xs md:text-sm font-geistSans px-2 py-1"
                 >
                   📍 Where is this?
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-60">
+              <PopoverContent className="w-60" align="start">
                 <p className="text-sm font-regular text-foreground mb-2">
                   {" "}
-                  🏠 Tim was born and raised in Vancouver, Canada
+                  Tim was born and raised in Vancouver 🇨🇦
                 </p>
                 <Link href="https://unsplash.com/photos/GVr33-rHTDU" passHref>
                   <div className="flex justify-start items-center space-x-1">
-                    <ExternalLinkIcon className="h-3 w-3" />
-                    <p className="text-xs text-gray-800 dark:text-gray-300 font-regular text-foreground">
+                    <p className="text-xs text-gray-500 dark:text-gray-300 font-regular text-foreground hover:underline decoration-primary decoration-2">
                       Download image from Unsplash
                     </p>
+                    <ExternalLinkIcon className="h-3 w-3" />
                   </div>
                 </Link>
               </PopoverContent>
