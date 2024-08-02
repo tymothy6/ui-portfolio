@@ -128,7 +128,7 @@ export function BlogCombobox({ data }: { data: Post[] }) {
         </DrawerTrigger>
         <DrawerContent className="flex flex-col">
           <DrawerHeader>
-            <DrawerTitle className="text-left">Filter posts</DrawerTitle>
+            <DrawerTitle className="text-left font-monaSans">Filter posts</DrawerTitle>
           </DrawerHeader>
           <div className="px-4">
             <Command>

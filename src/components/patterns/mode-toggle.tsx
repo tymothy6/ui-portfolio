@@ -3,6 +3,7 @@
 import * as React from "react";
 import { MoonIcon, SunIcon, DesktopIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import { useMediaQuery } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +23,7 @@ import {
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <TooltipProvider>
@@ -40,7 +42,7 @@ export function ModeToggle() {
               </Button>
             </DropdownMenuTrigger>
           </TooltipTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent align="end" side={isDesktop ? "bottom" : "top"}>
             <DropdownMenuLabel>Theme</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => setTheme("light")}>
@@ -56,7 +58,7 @@ export function ModeToggle() {
               System
             </DropdownMenuItem>
           </DropdownMenuContent>
-          <TooltipContent>Theme</TooltipContent>
+          <TooltipContent side={isDesktop ? "bottom" : "top"}>Theme</TooltipContent>
         </DropdownMenu>
       </Tooltip>
     </TooltipProvider>

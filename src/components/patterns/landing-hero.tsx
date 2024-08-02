@@ -67,10 +67,10 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
       id={id}
       className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]"
     >
-      <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">
+      <h1 className="text-5xl md:text-6xl font-semibold font-monaSans cursor-default pointer-events-none">
         👋🏼 I&apos;m Tim, experience designer and quantitative researcher
       </h1>
-      <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold pb-4 cursor-default pointer-events-none">
+      <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold font-monaSans pb-4 cursor-default pointer-events-none">
         <div className="sm:block hidden">
           <Typewriter
             texts={texts}
@@ -110,7 +110,7 @@ export function PasswordHero() {
 
   return (
     <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl min-h-[100vh]">
-      <h1 className="text-4xl md:text-6xl font-semibold mb-4">
+      <h1 className="text-4xl md:text-6xl font-semibold font-monaSans mb-4">
         Protected page
       </h1>
       <p className="text-xl md:text-2xl font-[450] leading-relaxed text-gray-800 dark:text-gray-200 mb-8">
@@ -171,7 +171,7 @@ export function LicenseHero() {
     <div>
       <div className={styles.grid}>
         <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+          <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
             Licenses
           </h1>
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
@@ -467,7 +467,7 @@ export function StyleHero() {
     <div>
       <div className={styles.grid}>
         <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+          <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
             Style Guide
           </h1>
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">
@@ -816,8 +816,8 @@ export function ClickMeButton() {
               <AlertTitle className="font-semibold">Tips</AlertTitle>
               <AlertDescription className="text-base">
                 Click a cell value to copy the colour to your clipboard. Toggle
-                between light and dark themes in the header to see the relevant
-                colours.
+                between light and dark themes in the header or mobile menu to
+                see the relevant colours.
               </AlertDescription>
             </Alert>
 
@@ -928,7 +928,7 @@ export function ResumeHero() {
   return (
     <div>
       <div className="flex flex-col justify-center min-h-[100vh] gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+        <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
           Want to learn more about me?
         </h1>
         <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
@@ -956,7 +956,7 @@ export function BlogHero() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
     >
-      <h1 className="text-5xl md:text-6xl font-semibold mb-8 z-[3]">
+      <h1 className="text-5xl md:text-6xl font-semibold font-monaSans mb-8 z-[3]">
         Design Blog
       </h1>
       <div className="flex flex-col justify-start w-full z-[3]">
