@@ -117,49 +117,48 @@ export function BlogCombobox({ data }: { data: Post[] }) {
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground>
-      <DrawerTrigger>
-        <Button
-          variant="outline"
-          className="w-[160px] justify-between"
-        >
-          <TagIcon className="h-4 w-4 text-muted-foreground mr-2" />
-          {displayLabel}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </DrawerTrigger>
-      <DrawerContent className="flex flex-col">
-        <DrawerHeader>
-          <DrawerTitle className="text-left">Filter posts</DrawerTitle>
-        </DrawerHeader>
-        <div className="px-4">
-          <Command>
-            <CommandInput placeholder="Search tags..." />
-            <CommandList>
-              <CommandEmpty>No tags found.</CommandEmpty>
-              <CommandGroup className="overflow-y-scroll max-h-[30vh]">
-                {tags.map((tag) => (
-                  <CommandItem
-                    key={tag.value}
-                    value={tag.value}
-                    onSelect={() => handleChange(tag.value)}
-                  >
-                    <Check
-                      className={cn(
-                        "mr-2 h-4 w-4",
-                        currentTag.toLowerCase() === tag.value.toLowerCase()
-                          ? "opacity-100"
-                          : "opacity-0",
-                      )}
-                    />
-                    {tag.label}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </div>
-      </DrawerContent>
-    </Drawer>
+    <div className="z-[2]">
+      <Drawer open={open} onOpenChange={setOpen} shouldScaleBackground>
+        <DrawerTrigger>
+          <Button variant="outline" className="w-[160px] justify-between">
+            <TagIcon className="h-4 w-4 text-muted-foreground mr-2" />
+            {displayLabel}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent className="flex flex-col">
+          <DrawerHeader>
+            <DrawerTitle className="text-left">Filter posts</DrawerTitle>
+          </DrawerHeader>
+          <div className="px-4">
+            <Command>
+              <CommandInput placeholder="Search tags..." />
+              <CommandList>
+                <CommandEmpty>No tags found.</CommandEmpty>
+                <CommandGroup className="overflow-y-scroll max-h-[30vh]">
+                  {tags.map((tag) => (
+                    <CommandItem
+                      key={tag.value}
+                      value={tag.value}
+                      onSelect={() => handleChange(tag.value)}
+                    >
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          currentTag.toLowerCase() === tag.value.toLowerCase()
+                            ? "opacity-100"
+                            : "opacity-0",
+                        )}
+                      />
+                      {tag.label}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </div>
   );
 }
