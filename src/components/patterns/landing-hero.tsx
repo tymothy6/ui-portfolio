@@ -67,10 +67,10 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
       id={id}
       className="inset-0 flex flex-col gap-8 my-4 mx-12 md:mx-16 lg:mx-24 max-w-2xl md:max-w-4xl lg:max-w-5xl scroll-mt-48 z-[11]"
     >
-      <h1 className="text-5xl md:text-6xl font-semibold font-monaSans cursor-default pointer-events-none">
+      <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">
         👋🏼 I&apos;m Tim, experience designer and quantitative researcher
       </h1>
-      <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold font-monaSans pb-4 cursor-default pointer-events-none">
+      <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold pb-4 cursor-default pointer-events-none">
         <div className="sm:block hidden">
           <Typewriter
             texts={texts}
