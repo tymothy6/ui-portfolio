@@ -52,6 +52,21 @@ export function ExperiencePage() {
       </h2>
       <div className="flex flex-col gap-3 lg:px-8">
         <div className="flex flex-col gap-1 md:gap-2">
+          <h3 className="text-lg font-medium text-foreground">
+            BC Public Service
+          </h3>
+          <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+            User Experience Designer
+          </h3>
+          <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
+            Vancouver, BC
+          </p>
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
+            Jul 2024 - Present
+          </p>
+        </div>
+        <Separator className="mt-4 mb-4" />
+        <div className="flex flex-col gap-1 md:gap-2">
           <h3 className="text-lg font-medium text-foreground">Freelance</h3>
           <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
             User Experience Designer
@@ -59,8 +74,8 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Toronto, ON
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
-            May 2022 - Present
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
+            May 2022 - December 2023
           </p>
         </div>
         <Separator className="mt-4 mb-4" />
@@ -74,7 +89,7 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Toronto, ON
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
             Jan 2016 - Oct 2022
           </p>
         </div>
@@ -89,7 +104,7 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Montreal, QC
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
             May 2014 - Jun 2015
           </p>
         </div>
@@ -167,10 +182,8 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             exclude many more people than we can include. That&apos;s why I
             train my compassion and temper my empathy, feeling for my users
             rather than with them.{" "}
-            <strong className="font-semibold italic">
-              <span className="underline decoration-4 decoration-primary underline-offset-2">
-                Compassion is a mindful balance of humility, empathy, and action
-              </span>
+            <strong className="font-semibold">
+              Compassion is a mindful balance of humility, empathy, and action
             </strong>
             . I strive to be compassionate, kind, and open-minded in every
             interaction. Every day I succeed in doing so I forge a more
@@ -188,10 +201,8 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             experiences grounded in user research. As designers, we have the
             privilege of ensuring that digital experiences are accessible,
             inclusive, and safe.{" "}
-            <strong className="font-semibold italic">
-              <span className="underline decoration-primary decoration-4 underline-offset-4">
-                I believe in strong ideas that are loosely held.
-              </span>
+            <strong className="font-semibold">
+              I believe in strong ideas that are loosely held.
             </strong>{" "}
             My design philosophy reflects this premise. Learn from your
             user&apos;s motivations and frustrations. Tirelessly advocate for
@@ -209,11 +220,9 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
           <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
             I believe in finding new ways to create genuine connections in a
             digital age.{" "}
-            <strong className="font-semibold italic">
-              <span className="underline decoration-primary decoration-4 underline-offset-4">
-                The solutions that I craft as a designer don&apos;t exist in a
-                vacuum and neither do my users.
-              </span>
+            <strong className="font-semibold">
+              The solutions that I craft as a designer don&apos;t exist in a
+              vacuum and neither do my users.
             </strong>{" "}
             I aspire to build digital experiences that empower my users and give
             them the ability to transcend social, economic, and cultural
@@ -232,17 +241,16 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             When working on a problem I&apos;m 110% committed to finding a
             balanced solution. Even so, maintaining my mental and physical
             health is my top priority.{" "}
-            <strong className="font-semibold italic">
-              <span className="underline decoration-primary decoration-4 underline-offset-4">
-                I&apos;m committed to authentic & well-rounded growth in all
-                facets of my life.
-              </span>
+            <strong className="font-semibold">
+              I&apos;m committed to authentic & well-rounded growth in all
+              facets of my life.
             </strong>{" "}
             Above all, I&apos;m a private person that cherishes time alone to
             recharge. My favourite hobbies that enable this include reading,
-            language learning, and action RPGs. Currently, I&apos;m studying
-            Korean and Spanish with TV and movies. Physically, I clear my mind
-            and push my limits with weight training and racket sports.
+            language learning, and board gaming. Recently, I&apos;ve been working on
+            my TCG collection and dabbling in tabletop game design. Physically,
+            I like to clear my mind and push my limits with weight training and
+            racket sports.
           </p>
         </div>
       </div>

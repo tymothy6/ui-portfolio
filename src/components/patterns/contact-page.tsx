@@ -172,12 +172,12 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
       className="pb-8 md:pb-16 lg:px-8 my-8 md:mx-24 scroll-mt-12 z-[3]"
     >
       <div className="flex-col md:rounded-lg items-center justify-center px-8 py-12 md:p-16 md:border border-y-[1px] bg-card text-card-foreground md:shadow-sm">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-foreground mb-8">
-          🤝🏼 Want to work together? Get in touch
+        <h1 className="text-4xl md:text-5xl lg:text-6xl text-left sm:text-center font-semibold text-foreground mb-8">
+          Want to work together? Get in touch
         </h1>
-        <p className="text-lg text-center md:text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 mb-8">
+        <p className="text-lg text-left md:text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 mb-8">
           Connect with me to create impactful designs that align with our values
-          and exceed our expectations
+          and exceed our expectations 🤝🏼
         </p>
         <div>
           <Form {...form}>

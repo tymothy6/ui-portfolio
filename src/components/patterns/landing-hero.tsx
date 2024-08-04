@@ -110,7 +110,7 @@ export function PasswordHero() {
 
   return (
     <div className="flex flex-col justify-center pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 max-w-xl md:max-w-5xl min-h-[100vh]">
-      <h1 className="text-4xl md:text-6xl font-semibold mb-4">
+      <h1 className="text-4xl md:text-6xl font-semibold font-monaSans mb-4">
         Protected page
       </h1>
       <p className="text-xl md:text-2xl font-[450] leading-relaxed text-gray-800 dark:text-gray-200 mb-8">
@@ -171,13 +171,13 @@ export function LicenseHero() {
     <div>
       <div className={styles.grid}>
         <div className="flex flex-col justify-center gap-8 min-h-[100vh] pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+          <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
             Licenses
           </h1>
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
             All graphical assets on this website are licensed for personal use.
             If you would like to use a specific asset, please check the license
-            below or reach out to me 😊
+            below or reach out to me! 😊
           </p>
           <div className="md:pl-8 z-[3]">
             <Button
@@ -467,7 +467,7 @@ export function StyleHero() {
     <div>
       <div className={styles.grid}>
         <div className="flex flex-col justify-center gap-8 pt-36 min-h-[100vh] lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+          <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
             Style Guide
           </h1>
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3] ">
@@ -479,16 +479,10 @@ export function StyleHero() {
             </code>{" "}
             file of your codebase. You&apos;ll need to have shadcn/ui set up for
             semantic styling of components to work out-of-the-box. Not using a
-            framework? I&apos;ve defined agnostic tokens you can use for your
-            own components.
+            framework? I&apos;ve included agnostic tokens you can use for your
+            own styling.
           </p>
           <div className="flex flex-row flex-wrap gap-4 md:pl-8 z-[3]">
-            <Button variant="gradient" size="default" asChild>
-              <Link href="https://nextjs.org/docs">
-                <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                <span className="text-base font-medium">Install Next.js</span>
-              </Link>
-            </Button>
             <Button variant="gradient" size="default" asChild>
               <Link href="https://ui.shadcn.com/docs/installation">
                 <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
@@ -822,8 +816,8 @@ export function ClickMeButton() {
               <AlertTitle className="font-semibold">Tips</AlertTitle>
               <AlertDescription className="text-base">
                 Click a cell value to copy the colour to your clipboard. Toggle
-                between light and dark themes in the header to see the relevant
-                colours.
+                between light and dark themes in the header or mobile menu to
+                see the relevant colours.
               </AlertDescription>
             </Alert>
 
@@ -934,7 +928,7 @@ export function ResumeHero() {
   return (
     <div>
       <div className="flex flex-col justify-center min-h-[100vh] gap-8 pt-36 lg:pt-48 pb-56 mx-8 md:mx-24 lg:mx-48 xl:mx-64 max-w-xl md:max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-semibold md:pl-8 z-[3]">
+        <h1 className="text-4xl md:text-6xl font-semibold font-monaSans md:pl-8 z-[3]">
           Want to learn more about me?
         </h1>
         <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
@@ -957,12 +951,12 @@ export function ResumeHero() {
 export function BlogHero() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: "-80%" }}
+      initial={{ opacity: 0, y: "-10%" }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
     >
-      <h1 className="text-5xl md:text-6xl font-semibold mb-8 z-[3]">
+      <h1 className="text-5xl md:text-6xl font-semibold font-monaSans mb-8 z-[3]">
         Design Blog
       </h1>
       <div className="flex flex-col justify-start w-full z-[3]">

@@ -61,7 +61,7 @@ export function GitHubBadge() {
           </div>
         </TooltipTrigger>
         <TooltipContent side="bottom" align="end">
-          Available GitHub repo
+          Public GitHub repo
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -108,7 +108,7 @@ export function FigmaBadge() {
           </div>
         </TooltipTrigger>
         <TooltipContent side="bottom" align="end">
-          Available Figma file
+          Public Figma file
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
