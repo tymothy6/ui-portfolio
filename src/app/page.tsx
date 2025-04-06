@@ -18,17 +18,15 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import styles from "@/components/modules/landing.module.css";
+// import styles from "@/components/modules/landing.module.css";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroWrapper id="home" />
       <div className="w-full border-t-[1px]" />
-      <div className={styles.grid}>
-        <div className={styles.gradient}>
+      <div>
           <ProjectGrid id="work" />
-        </div>
         <AboutPage id="about" />
         <div className="relative w-full h-[80vh] lg:h-[60vh] my-12 z-[2]">
           <Image

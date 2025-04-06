@@ -177,7 +177,7 @@ export function LicenseHero() {
           <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
             All graphical assets on this website are licensed for personal use.
             If you would like to use a specific asset, please check the license
-            below or reach out to me 😊
+            below or reach out to me.
           </p>
           <div className="md:pl-8 z-[3]">
             <Button
@@ -231,7 +231,7 @@ export function LicenseHero() {
       <div className="flex flex-col max-w-5xl gap-8 px-8 pb-32 mx-auto">
         <div className="flex flex-col gap-12 md:grid md:grid-cols-2 lg:gap-20">
           <div className="flex flex-col gap-4">
-            <h2 className="text-3xl font-semibold">Fonts</h2>
+            <h2 className="text-3xl font-semibold">Typeface</h2>
             <Separator />
             <p className="text-lg font-regular text-gray-800 dark:text-gray-200 leading-relaxed">
               This website uses the Geist typeface by Vercel and Source Serif 4
@@ -487,12 +487,6 @@ export function StyleHero() {
               <Link href="https://nextjs.org/docs">
                 <VercelLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
                 <span className="text-base font-medium">Install Next.js</span>
-              </Link>
-            </Button>
-            <Button variant="gradient" size="default" asChild>
-              <Link href="https://ui.shadcn.com/docs/installation">
-                <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem] mr-2" />
-                <span className="text-base font-medium">Install shadcn/ui</span>
               </Link>
             </Button>
           </div>
@@ -938,7 +932,7 @@ export function ResumeHero() {
           Want to learn more about me?
         </h1>
         <p className="text-xl md:text-2xl md:pl-8 font-[450] leading-relaxed text-gray-800 dark:text-gray-200 z-[3]">
-          🥹 I&apos;m flattered. Get a copy of my resume here and connect with
+          I&apos;m flattered. Get a copy of my resume here and connect with
           me on LinkedIn.
         </p>
         <div className="md:pl-8 z-[3]">

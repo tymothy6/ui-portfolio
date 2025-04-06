@@ -167,7 +167,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             exclude many more people than we can include. That&apos;s why I
             train my compassion and temper my empathy, feeling for my users
             rather than with them.{" "}
-            <strong className="font-semibold italic">
+            <strong className="font-semibold">
               <span className="underline decoration-4 decoration-primary underline-offset-2">
                 Compassion is a mindful balance of humility, empathy, and action
               </span>
@@ -188,7 +188,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             experiences grounded in user research. As designers, we have the
             privilege of ensuring that digital experiences are accessible,
             inclusive, and safe.{" "}
-            <strong className="font-semibold italic">
+            <strong className="font-semibold">
               <span className="underline decoration-primary decoration-4 underline-offset-4">
                 I believe in strong ideas that are loosely held.
               </span>
@@ -209,7 +209,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
           <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
             I believe in finding new ways to create genuine connections in a
             digital age.{" "}
-            <strong className="font-semibold italic">
+            <strong className="font-semibold">
               <span className="underline decoration-primary decoration-4 underline-offset-4">
                 The solutions that I craft as a designer don&apos;t exist in a
                 vacuum and neither do my users.
@@ -232,7 +232,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             When working on a problem I&apos;m 110% committed to finding a
             balanced solution. Even so, maintaining my mental and physical
             health is my top priority.{" "}
-            <strong className="font-semibold italic">
+            <strong className="font-semibold">
               <span className="underline decoration-primary decoration-4 underline-offset-4">
                 I&apos;m committed to authentic & well-rounded growth in all
                 facets of my life.

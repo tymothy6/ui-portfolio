@@ -6,7 +6,7 @@ import { Metadata, Viewport } from "next";
 import { BlogHero } from "@/components/patterns/landing-hero";
 import { BlogPostGrid } from "@/components/patterns/blog-grid";
 
-import styles from "@/components/modules/landing.module.css";
+// import styles from "@/components/modules/landing.module.css";
 
 export const metadata: Metadata = {
   title: "Design Blog",
@@ -21,8 +21,8 @@ export const viewport: Viewport = {
 
 export default function Blog() {
   return (
-    <div className={styles.grid}>
-      <div className={styles.gradient}>
+    <div>
+      <div>
         <BlogHero />
         <div className="md:mx-24 mb-36">
           <Suspense fallback={<div>Loading...</div>}>
