@@ -36,10 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Optimize font loading with display: swap for better performance
 const monaSans = localFont({
   src: "./Mona-Sans.woff2",
   display: "swap",
   variable: "--font-mona-sans",
+  preload: true,
 });
 
 export const viewport: Viewport = {
@@ -58,7 +60,16 @@ export default function RootLayout({
       className={`${monaSans.variable} ${GeistSans.variable} ${GeistMono.variable} ${source_serif.variable} font-serif`}
       suppressHydrationWarning
     >
-      <head />
+      <head>
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="/Mona-Sans.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className={GeistSans.className}>
         <ThemeProvider
           attribute="class"
