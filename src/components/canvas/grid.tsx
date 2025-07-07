@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Canvas, useFrame, extend, invalidate } from "@react-three/fiber";
 import { Mesh, Vector3 } from "three";
 import { Line } from "@react-three/drei";
@@ -22,9 +22,9 @@ extend({
 
 type SquareProps = {
   position: [number, number, number];
-  opacity?: number; // initial opacity
-  cellSize?: number; // size of each cell
-  changeFrequency?: number; // probability of changing opacity per frame
+  opacity?: number;
+  cellSize?: number;
+  changeFrequency?: number;
   maxOpacity?: number;
   i: number;
   j: number;
@@ -35,7 +35,7 @@ type SquareProps = {
   >;
 };
 
-const Square: React.FC<SquareProps> = ({
+const Square: React.FC<SquareProps> = React.memo(({
   position,
   opacity = 0.1,
   cellSize = 0.5,
@@ -52,46 +52,47 @@ const Square: React.FC<SquareProps> = ({
   const { resolvedTheme } = useTheme();
 
   const gridColor = useTheme().resolvedTheme === "dark" ? "#0f172a" : "#ffffff";
-  const derivedMaxOpacity =
+  const derivedMaxOpacity = useMemo(() =>
     maxOpacity !== undefined
       ? maxOpacity
       : resolvedTheme === "dark"
         ? 1.0
-        : 0.1;
+        : 0.1,
+    [maxOpacity, resolvedTheme]
+  );
 
+  // Optimize frame updates - only update every 30 frames (~500ms) instead of every 10
   useFrame(() => {
     frameCounter.current += 1;
 
-    if (meshRef.current) {
+    if (meshRef.current && frameCounter.current % 30 === 0 && !isHovered) {
       const material = meshRef.current.material as MeshBasicMaterial;
-
-      if (frameCounter.current % 10 === 0 && !isHovered) {
-        if (Math.random() > changeFrequency) {
-          material.opacity = Math.min(derivedMaxOpacity, Math.random());
-        }
+      if (Math.random() > changeFrequency) {
+        material.opacity = Math.min(derivedMaxOpacity, Math.random());
+        material.needsUpdate = true;
       }
     }
   });
 
-  const handlePointerOver = () => {
+  const handlePointerOver = React.useCallback(() => {
     setIsHovered(true);
     if (meshRef.current) {
       const material = meshRef.current.material as MeshBasicMaterial;
-      material.opacity = 1.0; // set opacity on hover
+      material.opacity = 1.0;
       material.needsUpdate = true;
-      invalidate(); // manually trigger a render
+      invalidate();
     }
-  };
+  }, []);
 
-  const handlePointerOut = () => {
+  const handlePointerOut = React.useCallback(() => {
     setIsHovered(false);
     if (meshRef.current) {
       const material = meshRef.current.material as MeshBasicMaterial;
-      material.opacity = opacity; // reset opacity on hover out
+      material.opacity = opacity;
       material.needsUpdate = true;
-      invalidate(); //manually trigger a render
+      invalidate();
     }
-  };
+  }, [opacity]);
 
   return (
     <mesh
@@ -104,10 +105,12 @@ const Square: React.FC<SquareProps> = ({
       <meshBasicMaterial attach="material" color={gridColor} transparent />
     </mesh>
   );
-};
+});
+
+Square.displayName = "Square";
 
 const GridPattern = () => {
-  const [gridSize, setGridSize] = useState(48);
+  const [gridSize, setGridSize] = useState(24); // Reduced from 48 to 24
   const [activeAnimation, setActiveAnimation] = useState<{
     i: number;
     j: number;
@@ -118,18 +121,96 @@ const GridPattern = () => {
   const lineColor = useTheme().resolvedTheme === "dark" ? "#475569" : "#9ca3af";
   const isDarkTheme = useTheme().resolvedTheme === "dark";
 
+  // Memoize grid squares to prevent unnecessary re-renders
+  const gridSquares = useMemo(() => {
+    const squares = [];
+    for (let i = 0; i < gridSize; i++) {
+      for (let j = 0; j < gridSize; j++) {
+        squares.push(
+          <Square
+            key={`${i}-${j}`}
+            position={[
+              (i - gridSize / 2) * spacing,
+              (j - gridSize / 2) * spacing,
+              0,
+            ]}
+            i={i}
+            j={j}
+            gridSize={gridSize}
+            activeAnimation={activeAnimation}
+            setActiveAnimation={setActiveAnimation}
+          />
+        );
+      }
+    }
+    return squares;
+  }, [gridSize, activeAnimation]);
+
+  // Memoize grid lines
+  const gridLines = useMemo(() => {
+    const lines = [];
+    
+    // Vertical lines
+    for (let i = 0; i <= gridSize; i++) {
+      lines.push(
+        <Line
+          key={`vline-${i}`}
+          points={[
+            new Vector3(
+              (i - gridSize / 2) * spacing - halfSpacing,
+              -gridHalfSize,
+              0,
+            ),
+            new Vector3(
+              (i - gridSize / 2) * spacing - halfSpacing,
+              gridHalfSize,
+              0,
+            ),
+          ]}
+          color={lineColor}
+          lineWidth={0.5}
+        />
+      );
+    }
+
+    // Horizontal lines
+    for (let i = 0; i <= gridSize; i++) {
+      lines.push(
+        <Line
+          key={`hline-${i}`}
+          points={[
+            new Vector3(
+              -gridHalfSize,
+              (i - gridSize / 2) * spacing - halfSpacing,
+              0,
+            ),
+            new Vector3(
+              gridHalfSize,
+              (i - gridSize / 2) * spacing - halfSpacing,
+              0,
+            ),
+          ]}
+          color={lineColor}
+          lineWidth={0.5}
+        />
+      );
+    }
+    
+    return lines;
+  }, [gridSize, gridHalfSize, halfSpacing, spacing, lineColor]);
+
   useEffect(() => {
     function handleResize() {
       if (window.matchMedia("(max-width: 768px)").matches) {
-        setGridSize(24);
+        setGridSize(16); // Reduced for mobile
       } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        setGridSize(32);
+        setGridSize(20); // Reduced for tablet
       } else if (window.matchMedia("(max-width: 1920px)").matches) {
-        setGridSize(48);
+        setGridSize(24); // Reduced for desktop
       } else {
-        setGridSize(24);
+        setGridSize(16); // Reduced for large screens
       }
-      invalidate(); // manually trigger a render after resizing the screen and grid size is adjusted
+      invalidate();
     }
     handleResize();
 
@@ -153,65 +234,14 @@ const GridPattern = () => {
       <Canvas
         frameloop="demand"
         className="absolute top-0 left-0 w-full h-full z-0"
+        dpr={[1, 2]} // Limit device pixel ratio for performance
+        performance={{ min: 0.5 }} // Lower performance threshold
       >
-        {[...Array(gridSize)].map((_, i) =>
-          [...Array(gridSize)].map((_, j) => (
-            <Square
-              key={`${i}-${j}`}
-              position={[
-                (i - gridSize / 2) * spacing,
-                (j - gridSize / 2) * spacing,
-                0,
-              ]}
-              i={i}
-              j={j}
-              gridSize={gridSize}
-              activeAnimation={activeAnimation}
-              setActiveAnimation={setActiveAnimation}
-            />
-          )),
-        )}
-        {[...Array(gridSize + 1)].map((_, i) => (
-          <Line
-            key={`vline-${i}`}
-            points={[
-              new Vector3(
-                (i - gridSize / 2) * spacing - halfSpacing,
-                -gridHalfSize,
-                0,
-              ),
-              new Vector3(
-                (i - gridSize / 2) * spacing - halfSpacing,
-                gridHalfSize,
-                0,
-              ),
-            ]}
-            color={lineColor}
-            lineWidth={0.5}
-          />
-        ))}
-        {[...Array(gridSize + 1)].map((_, i) => (
-          <Line
-            key={`hline-${i}`}
-            points={[
-              new Vector3(
-                -gridHalfSize,
-                (i - gridSize / 2) * spacing - halfSpacing,
-                0,
-              ),
-              new Vector3(
-                gridHalfSize,
-                (i - gridSize / 2) * spacing - halfSpacing,
-                0,
-              ),
-            ]}
-            color={lineColor}
-            lineWidth={0.5}
-          />
-        ))}
+        {gridSquares}
+        {gridLines}
       </Canvas>
     </div>
   );
 };
 
-export default GridPattern;
+export default React.memo(GridPattern);
