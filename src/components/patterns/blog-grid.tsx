@@ -1,35 +1,50 @@
-import { Suspense } from "react";
+import { Suspense, useState, useMemo } from "react";
 
 import { fetchAllPosts } from "@/lib/blog-posts";
 import { CardCarousel } from "@/components/patterns/blog-card-carousel";
-import { SortButton } from "@/components/patterns/sort-popover";
-import { BlogCombobox } from "@/components/patterns/tag-combobox";
 import { BlogGridSkeleton } from "./grid-skeleton";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
-export async function BlogPostGrid() {
+// Server component wrapper
+export async function BlogPostGridWrapper() {
   const posts = await fetchAllPosts();
+  return <BlogPostGrid posts={posts} />;
+}
+
+"use client";
+
+interface BlogPostGridProps {
+  posts: any[];
+}
+
+export function BlogPostGrid({ posts }: BlogPostGridProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredPosts = useMemo(() => {
+    if (!searchQuery.trim()) return posts;
+    
+    const query = searchQuery.toLowerCase();
+    return posts.filter(post => 
+      post.title?.toLowerCase().includes(query) ||
+      post.tags?.some((tag: string) => tag.toLowerCase().includes(query))
+    );
+  }, [posts, searchQuery]);
 
   return (
-    <div className="flex flex-col justify-center items-start my-16">
-      <div className="flex flex-row justify-between items-center w-full mb-8">
-        <div className="flex flex-row items-center justify-center gap-2 mx-8 md:mx-4">
-          <p className="text-base md:text-lg font-semibold text-foreground font-monaSans">
-            Posts
-          </p>
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-400 font-mono hidden md:block">
-            · 2023 → Now
-          </p>
-        </div>
-        <div className="flex flex-row gap-2 mr-8 md:mr-0">
-          <div className="hidden md:block z-[2]">
-            <SortButton data={posts} />
-          </div>
-          <BlogCombobox data={posts} />
-        </div>
+    <div className="flex flex-col justify-center items-center my-16">
+      <div className="relative mb-8">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Input
+          placeholder="Search posts or tags..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-10 w-80 md:w-64 lg:w-80"
+        />
       </div>
       <Suspense fallback={<BlogGridSkeleton />}>
         <div className="mb-4 w-full">
-          <CardCarousel posts={posts} />
+          <CardCarousel posts={filteredPosts} />
         </div>
       </Suspense>
     </div>
