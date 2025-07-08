@@ -183,7 +183,9 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             train my compassion and temper my empathy, feeling for my users
             rather than with them.{" "}
             <strong className="font-semibold">
-              Compassion is a mindful balance of humility, empathy, and action
+              <span className="underline decoration-4 decoration-primary underline-offset-2">
+                Compassion is a mindful balance of humility, empathy, and action
+              </span>
             </strong>
             . I strive to be compassionate, kind, and open-minded in every
             interaction. Every day I succeed in doing so I forge a more
@@ -202,7 +204,9 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             privilege of ensuring that digital experiences are accessible,
             inclusive, and safe.{" "}
             <strong className="font-semibold">
-              I believe in strong ideas that are loosely held.
+              <span className="underline decoration-primary decoration-4 underline-offset-4">
+                I believe in strong ideas that are loosely held.
+              </span>
             </strong>{" "}
             My design philosophy reflects this premise. Learn from your
             user&apos;s motivations and frustrations. Tirelessly advocate for
@@ -221,8 +225,10 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             I believe in finding new ways to create genuine connections in a
             digital age.{" "}
             <strong className="font-semibold">
-              The solutions that I craft as a designer don&apos;t exist in a
-              vacuum and neither do my users.
+              <span className="underline decoration-primary decoration-4 underline-offset-4">
+                The solutions that I craft as a designer don&apos;t exist in a
+                vacuum and neither do my users.
+              </span>
             </strong>{" "}
             I aspire to build digital experiences that empower my users and give
             them the ability to transcend social, economic, and cultural
@@ -242,8 +248,10 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             balanced solution. Even so, maintaining my mental and physical
             health is my top priority.{" "}
             <strong className="font-semibold">
-              I&apos;m committed to authentic & well-rounded growth in all
-              facets of my life.
+              <span className="underline decoration-primary decoration-4 underline-offset-4">
+                I&apos;m committed to authentic & well-rounded growth in all
+                facets of my life.
+              </span>
             </strong>{" "}
             Above all, I&apos;m a private person that cherishes time alone to
             recharge. My favourite hobbies that enable this include reading,

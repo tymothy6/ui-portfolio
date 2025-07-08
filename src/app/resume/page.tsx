@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { DownloadIcon } from "@radix-ui/react-icons";
 
-import styles from "@/components/modules/landing.module.css";
+// import styles from "@/components/modules/landing.module.css";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -16,10 +16,8 @@ export const metadata: Metadata = {
 export default function Resume() {
   return (
     <div>
-      <div className={styles.grid}>
-        <div className={styles.gradient}>
-          <ResumeHero />
-        </div>
+      <div>
+        <ResumeHero />
       </div>
       <div className="w-full border-t-[1px]" />
       <div className="flex flex-col gap-8 md:px-8 pt-24 pb-36 mx-8 md:mx-24 lg:mx-48 xl:mx-64">

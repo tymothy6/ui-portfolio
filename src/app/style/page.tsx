@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 import { StyleHero } from "@/components/patterns/landing-hero";
 
-import styles from "@/components/modules/landing.module.css";
+// import styles from "@/components/modules/landing.module.css";
 
 export const metadata: Metadata = {
   title: "Style Guide",
@@ -13,9 +13,7 @@ export const metadata: Metadata = {
 export default function StyleGuide() {
   return (
     <div>
-      <div className={styles.gradient}>
         <StyleHero />
-      </div>
     </div>
   );
 }

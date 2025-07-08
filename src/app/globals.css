@@ -61,6 +61,8 @@
     overflow-y: auto;
     overscroll-behavior-x: none;
     scrollbar-width: thin;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   img {
@@ -73,6 +75,37 @@
   ::selection {
     @apply bg-selection text-selection-foreground;
   }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .font-serif {
+    font-display: swap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @keyframes scrollMarquee {
@@ -84,11 +117,18 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
   }
-  body {
-    @apply bg-background text-foreground;
+  
+  .optimize-legibility {
+    text-rendering: optimizeLegibility;
+  }
+  
+  .content-visibility-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
   }
 }
