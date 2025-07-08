@@ -52,6 +52,21 @@ export function ExperiencePage() {
       </h2>
       <div className="flex flex-col gap-3 lg:px-8">
         <div className="flex flex-col gap-1 md:gap-2">
+          <h3 className="text-lg font-medium text-foreground">
+            BC Public Service
+          </h3>
+          <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+            User Experience Designer
+          </h3>
+          <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
+            Vancouver, BC
+          </p>
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
+            Jul 2024 - Present
+          </p>
+        </div>
+        <Separator className="mt-4 mb-4" />
+        <div className="flex flex-col gap-1 md:gap-2">
           <h3 className="text-lg font-medium text-foreground">Freelance</h3>
           <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
             User Experience Designer
@@ -59,8 +74,8 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Toronto, ON
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
-            May 2022 - Present
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
+            May 2022 - December 2023
           </p>
         </div>
         <Separator className="mt-4 mb-4" />
@@ -74,7 +89,7 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Toronto, ON
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
             Jan 2016 - Oct 2022
           </p>
         </div>
@@ -89,7 +104,7 @@ export function ExperiencePage() {
           <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
             Montreal, QC
           </p>
-          <p className="text-base md:text-lg font-mono font-regular text-foreground">
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
             May 2014 - Jun 2015
           </p>
         </div>
@@ -240,9 +255,10 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             </strong>{" "}
             Above all, I&apos;m a private person that cherishes time alone to
             recharge. My favourite hobbies that enable this include reading,
-            language learning, and action RPGs. Currently, I&apos;m studying
-            Korean and Spanish with TV and movies. Physically, I clear my mind
-            and push my limits with weight training and racket sports.
+            language learning, and board gaming. Recently, I&apos;ve been working on
+            my TCG collection and dabbling in tabletop game design. Physically,
+            I like to clear my mind and push my limits with weight training and
+            racket sports.
           </p>
         </div>
       </div>

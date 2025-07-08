@@ -37,6 +37,7 @@ import {
   LinkedInContact,
   FigmaContact,
 } from "@/components/patterns/contact-button";
+import { Separator } from "../ui/separator";
 
 export function PageFooter2() {
   const footerText =
@@ -111,17 +112,20 @@ export function PageFooter2() {
             </Tooltip>
           </TooltipProvider>
           <div>
-            <span className="text-sm font-mono font-medium tracking-wide">
+            <span className="text-sm font-monaSans font-medium tracking-wide">
               Design Portfolio
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-gray-800 dark:text-gray-400 text-sm font-[450]">
-              Tim Ng
-            </span>
-            <span className="text-gray-800 dark:text-gray-400 font-[450] text-sm">
-              Vancouver, BC 🇨🇦
-            </span>
+            <div className="flex flex-row gap-2 items-center">
+              <span className="text-gray-800 dark:text-gray-400 text-sm font-[450]">
+                Tim Ng
+              </span>
+              <Separator orientation="vertical" className="h-3" />
+              <span className="text-gray-800 dark:text-gray-400 font-[450] text-sm">
+                Vancouver, BC 🇨🇦
+              </span>
+            </div>
             <div className="flex flex-row gap-2 md:gap-0">
               <LinkedInContact />
               <GitHubContact />
@@ -165,12 +169,12 @@ export function PageFooter2() {
         <div className="flex flex-row gap-16 w-full items-start md:justify-end md:items-center px-4 md:px-24 py-4">
           <div className="flex flex-col gap-4">
             <div>
-              <span className="text-sm font-mono font-medium tracking-wide ml-4">
+              <span className="text-sm font-monaSans font-medium tracking-wide ml-4">
                 Site
               </span>
             </div>
             <NavigationMenu>
-              <NavigationMenuList className="flex-col items-start gap-[10px]  md:gap-2">
+              <NavigationMenuList className="flex-col items-start gap-[10px] md:gap-2">
                 <NavigationMenuItem>
                   <Link href="/#home" legacyBehavior passHref>
                     <NavigationMenuLink
@@ -212,7 +216,7 @@ export function PageFooter2() {
           </div>
           <div className="flex flex-col gap-4">
             <div>
-              <span className="text-sm font-mono font-medium tracking-wide ml-4">
+              <span className="text-sm font-monaSans font-medium tracking-wide ml-4">
                 Resources
               </span>
             </div>

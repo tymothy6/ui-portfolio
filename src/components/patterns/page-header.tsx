@@ -263,18 +263,19 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
             </NavigationMenu>
           </div>
           <div className="mx-1 hidden md:block">{children}</div>
-          <LinkedInContact />
-          <GitHubContact />
-          <ModeToggle />
-
+          <div className="hidden md:block">
+            <LinkedInContact />
+            <GitHubContact />
+            <ModeToggle />
+          </div>
           <div className="block md:hidden">
             <Button
               variant="ghost"
-              size="icon"
               onClick={(event) => {
                 setIsMenuOpen(!isMenuOpen);
               }}
             >
+              <span className="mr-2">Menu</span>
               {isMenuOpen ? (
                 <span className="sr-only">Close menu</span>
               ) : (
@@ -285,7 +286,6 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
           </div>
         </div>
       </div>
-
       <motion.div
         ref={menuRef} // mobile menu
         initial={{ opacity: 0, height: 0 }}
@@ -300,11 +300,10 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
       >
         <div className="flex flex-col justify-start items-start bg-background/20 backdrop-blur-md border-b-[1px] w-full">
           <div className="px-12 pt-4 cursor-default">
-            <span className="text-gray-600 dark:text-gray-400 text-sm font-mono font-medium tracking-wide">
+            <span className="text-gray-600 dark:text-gray-400 text-sm font-monaSans font-medium tracking-wide">
               Menu
             </span>
           </div>
-
           <div className="flex flex-col gap-4 justify-start items-start px-8 pt-4 pb-8 w-full">
             <div>
               <NavigationMenu>
@@ -348,15 +347,12 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
                 </NavigationMenuListVert>
               </NavigationMenu>
             </div>
-
             <Separator />
-
             <div className="px-4 cursor-default">
-              <span className="text-gray-600 dark:text-gray-400 text-sm font-mono font-medium tracking-wide">
+              <span className="text-gray-600 dark:text-gray-400 text-sm font-monaSans font-medium tracking-wide">
                 Resources
               </span>
             </div>
-
             <div>
               <NavigationMenu>
                 <NavigationMenuListVert>
@@ -400,13 +396,14 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
               </NavigationMenu>
             </div>
           </div>
-
-          <div className="flex flex-row justify-between px-12 pb-8 w-full cursor-default">
+          <div className="flex flex-row items-center justify-between px-12 pb-8 w-full">
+            <div className="flex flex-row gap-2">
+              <LinkedInContact />
+              <GitHubContact />
+              <ModeToggle />
+            </div>
             <p className="text-gray-500 text-sm font-regular tracking-wide">
               Tim Ng
-            </p>
-            <p className="text-gray-500 text-sm font-regular tracking-wide">
-              Design Portfolio
             </p>
           </div>
         </div>
