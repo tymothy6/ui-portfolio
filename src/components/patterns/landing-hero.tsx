@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 import styles from "@/components/modules/landing.module.css";
 
@@ -950,10 +950,7 @@ export function ResumeHero() {
 
 export function BlogHero() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: "-10%" }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+    <div
       className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
     >
       <h1 className="text-5xl md:text-6xl font-semibold font-monaSans mb-8 z-[3]">
@@ -973,6 +970,6 @@ export function BlogHero() {
           </Button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
