@@ -951,9 +951,9 @@ export function ResumeHero() {
 export function BlogHero() {
   return (
     <div
-      className="flex flex-col justify-center items-center min-h-[50vh] pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
+      className="flex flex-col justify-center items-center min-h-[20vh] pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
     >
-      <h1 className="text-5xl md:text-8xl font-semibold font-monaSans mb-8 z-[3] text-center">
+      <h1 className="text-5xl md:text-6xl font-semibold text-center">
         Design Blog
       </h1>
     </div>
