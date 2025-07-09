@@ -152,7 +152,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
   const borderColor = "rgba(250, 250, 250, 0.1)";
 
   return (
-    <div
+    <header
       ref={menuRef}
       className={`backdrop-blur-md ${isMenuOpen ? "bg-background/90 dark:bg-background/90" : "bg-background/50 dark:bg-background/70"} fixed top-0 w-full z-[49]`}
       style={{
@@ -408,7 +408,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
           </div>
         </div>
       </motion.div>
-    </div>
+    </header>
   );
 }
 
