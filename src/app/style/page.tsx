@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function StyleGuide() {
   return (
-    <div>
+    <main>
         <StyleHero />
-    </div>
+    </main>
   );
 }

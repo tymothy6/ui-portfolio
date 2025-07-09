@@ -72,7 +72,7 @@ async function ProjectPage({ params }: ProjectPageProps) {
   );
 
   return (
-    <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
+    <main className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
       <div>
         <div className="flex flex-col md:grid md:grid-cols-2 md:space-x-16 pt-36 lg:pt-48 pb-24 md:pb-36 lg:pb-48 mx-8 md:mx-24 lg:mx-36 xl:mx-48">
           <h1 className="text-5xl md:text-6xl font-semibold mb-8">
@@ -225,7 +225,7 @@ async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

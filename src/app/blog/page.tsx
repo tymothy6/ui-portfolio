@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 
 export default function Blog() {
   return (
-    <div>
+    <main>
       <div>
         <BlogHero />
         <div className="md:mx-24 mb-36">
@@ -30,6 +30,6 @@ export default function Blog() {
           </Suspense>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

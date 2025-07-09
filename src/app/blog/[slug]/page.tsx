@@ -90,7 +90,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
   const otherBlogPosts = blogPosts.filter((post) => post.slug !== data.slug);
 
   return (
-    <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
+    <main className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
       <div>
         <div className="relative w-full h-[24rem] lg:h-[30rem]">
           <Image
@@ -215,7 +215,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
           </Suspense>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

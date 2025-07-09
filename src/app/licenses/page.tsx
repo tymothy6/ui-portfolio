@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function Licenses() {
   return (
-    <div>
+    <main>
         <LicenseHero />
-    </div>
+    </main>
   );
 }

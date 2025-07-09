@@ -40,7 +40,7 @@ import {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <main className="flex flex-col">
       <HeroWrapper id="home" />
       <div className="w-full border-t-[1px]" />
       <div>
@@ -89,6 +89,6 @@ export default function Home() {
         <ValuesPage id="values" />
         <ContactPage id="contact" />
       </div>
-    </div>
+    </main>
   );
 }
