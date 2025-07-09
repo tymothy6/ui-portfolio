@@ -298,7 +298,7 @@ export function PageFooter2() {
           </div>
           <div className="px-4">
             <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-nowrap">
-              © 2023-2024, Tim Ng
+              © 2023-2025, Tim Ng
             </span>
           </div>
         </div>

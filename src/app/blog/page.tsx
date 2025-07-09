@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { Metadata, Viewport } from "next";
 
 import { BlogHero } from "@/components/patterns/landing-hero";
-import { BlogPostGrid } from "@/components/patterns/blog-grid";
+import { BlogPostGridWrapper } from "@/components/patterns/blog-grid";
 
 // import styles from "@/components/modules/landing.module.css";
 
@@ -26,7 +26,7 @@ export default function Blog() {
         <BlogHero />
         <div className="md:mx-24 mb-36">
           <Suspense fallback={<div>Loading...</div>}>
-            <BlogPostGrid />
+            <BlogPostGridWrapper />
           </Suspense>
         </div>
       </div>

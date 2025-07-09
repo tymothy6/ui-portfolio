@@ -56,7 +56,7 @@ const works: {
   description: string;
 }[] = [
   {
-    title: "UX Design",
+    title: "Design",
     href: "/",
     id: "work",
     description: "Some of the problems I've tackled with design thinking",
@@ -76,7 +76,7 @@ const about: {
   description: string;
 }[] = [
   {
-    title: "About me",
+    title: "About",
     href: "/",
     id: "about",
     description: "A brief intro to who I am and what I do",

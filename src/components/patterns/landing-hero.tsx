@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 import styles from "@/components/modules/landing.module.css";
 
@@ -950,29 +950,12 @@ export function ResumeHero() {
 
 export function BlogHero() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: "-10%" }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="flex flex-col justify-center min-h-[50vh] md:grid md:grid-cols-2 md:space-x-8 pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
+    <div
+      className="flex flex-col justify-center items-center min-h-[20vh] pt-36 lg:pt-48 pb-8 mx-8 md:mx-24 lg:mx-36 xl:mx-48"
     >
-      <h1 className="text-5xl md:text-6xl font-semibold font-monaSans mb-8 z-[3]">
+      <h1 className="text-5xl md:text-6xl font-semibold text-center">
         Design Blog
       </h1>
-      <div className="flex flex-col justify-start w-full z-[3]">
-        <p className="text-xl lg:text-2xl text-foreground font-[450] text-gray-800 dark:text-gray-200 leading-relaxed md:tracking-wide mb-8">
-          Welcome to my blog! I&apos;ll be posting about my personal projects,
-          design ideas, and professional development here. Thoughts? I look
-          forward to our conversation.
-        </p>
-        <div className="z-[3]">
-          <Button variant="gradient" size="default" asChild>
-            <Link href="/#contact">
-              <span className="text-base font-medium">Contact me</span>
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </motion.div>
+    </div>
   );
 }
