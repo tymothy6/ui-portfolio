@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function Password() {
   return (
-    <div className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
+    <main className="bg-gradient-to-br from-background to-slate-50 animate-gradient-xy dark:bg-gradient-to-br dark:from-background dark:to-slate-900 dark:animate-gradient-xy">
       <PasswordHero />
-    </div>
+    </main>
   );
 }

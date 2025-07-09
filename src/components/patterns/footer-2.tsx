@@ -52,7 +52,7 @@ export function PageFooter2() {
   };
 
   return (
-    <div className="border-t-[1px] z-[2]">
+    <footer className="border-t-[1px] z-[2]">
       <div className="bg-background pt-8 md:pt-16 pb-2 w-full h-full relative overflow-hidden">
         <Popover>
           <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
@@ -153,6 +153,9 @@ export function PageFooter2() {
                 id="marquee"
                 onCheckedChange={toggleMarquee}
                 checked={isMarqueeEnabled}
+                aria-label={isMarqueeEnabled
+                  ? "Disable footer animation"
+                  : "Enable footer animation"}
               />
               <Label
                 htmlFor="marquee"
@@ -270,6 +273,9 @@ export function PageFooter2() {
             id="marquee"
             onCheckedChange={toggleMarquee}
             checked={isMarqueeEnabled}
+            aria-label={isMarqueeEnabled
+              ? "Disable footer animation"
+              : "Enable footer animation"}
           />
           <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">
             {isMarqueeEnabled
@@ -303,6 +309,6 @@ export function PageFooter2() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Resume() {
   return (
-    <div>
+    <main>
       <div>
         <ResumeHero />
       </div>
@@ -50,6 +50,6 @@ export default function Resume() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

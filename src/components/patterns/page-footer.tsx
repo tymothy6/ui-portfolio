@@ -32,7 +32,7 @@ export function PageFooter() {
   const marqueeText = `${footerText}${footerText}`;
 
   return (
-    <div className="border-t-[1px] z-[2]">
+    <footer className="border-t-[1px] z-[2]">
       <div className="bg-background pt-8 md:pt-16 pb-2 w-full h-full relative overflow-hidden">
         <Popover>
           <PopoverTrigger asChild className="focus-visible:none cursor-pointer">
@@ -268,6 +268,6 @@ export function PageFooter() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

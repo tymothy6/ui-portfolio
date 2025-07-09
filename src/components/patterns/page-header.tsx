@@ -152,7 +152,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
   const borderColor = "rgba(250, 250, 250, 0.1)";
 
   return (
-    <div
+    <header
       ref={menuRef}
       className={`backdrop-blur-md ${isMenuOpen ? "bg-background/90 dark:bg-background/90" : "bg-background/50 dark:bg-background/70"} fixed top-0 w-full z-[49]`}
       style={{
@@ -172,6 +172,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
             }
           }}
           passHref
+          aria-label="Go to homepage"
         >
           <TooltipProvider>
             <Tooltip>
@@ -183,6 +184,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
                         ? "https://images.ctfassets.net/mzyich089xy0/3it1Ee1attFtq5TDAfTWdb/39309148d9d40c4b368ce33b86455342/avatar-dark.png"
                         : "https://images.ctfassets.net/mzyich089xy0/1UHHXxWnN5LVkdkiylVcBc/9cfa320f91b36c46a7bc393626b216e9/avatar-light.png"
                     }
+                    alt="Tim Ng Design Logo"
                   />
                   <AvatarFallback>TN</AvatarFallback>
                 </Avatar>
@@ -408,7 +410,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
           </div>
         </div>
       </motion.div>
-    </div>
+    </header>
   );
 }
 
