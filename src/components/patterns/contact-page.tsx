@@ -80,7 +80,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
     if (!captchaValue) {
       toast({
         variant: "destructive",
-        title: "😖 Oops",
+        title: "Oops",
         description: (
           <p className="text-sm font-medium">
             Please verify that you&apos;re not a robot 🤖
@@ -111,7 +111,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
       if (!captchaData.success) {
         toast({
           variant: "destructive",
-          title: "😣 Oops",
+          title: "Oops",
           description: (
             <p className="text-sm font-medium">
               We couldn&apos;t verify that you&apos;re not a robot.
@@ -136,7 +136,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
 
       const data = await emailResponse.json();
       toast({
-        title: "📬 Thanks!",
+        title: "Thanks!",
         description: (
           <p className="text-sm font-medium">
             Your message has been sent, I&apos;ll get back to you shortly.
@@ -153,11 +153,11 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
       });
     } catch (error) {
       toast({
-        title: "😖 Oops",
+        title: "Oops",
         description: (
           <p className="text-sm font-medium">
             Your message failed to send, please try again later or reach out to
-            me elsewhere.
+            me by email.
           </p>
         ),
       });

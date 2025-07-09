@@ -1,8 +1,9 @@
 type FigmaEmbedProps = {
   figmaUrl: string;
+  title?: string;// optional to make the title more specific to the content
 };
 
-export function FigmaEmbed({ figmaUrl }: FigmaEmbedProps) {
+export function FigmaEmbed({ figmaUrl, title = "Figma Design preview" }: FigmaEmbedProps) {
   return (
     <div
       style={{
@@ -23,6 +24,7 @@ export function FigmaEmbed({ figmaUrl }: FigmaEmbedProps) {
         }}
         src={figmaUrl}
         allowFullScreen
+        title={title}
       ></iframe>
     </div>
   );

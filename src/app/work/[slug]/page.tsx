@@ -39,11 +39,15 @@ export async function generateMetadata(
     return notFound();
   }
 
+  const canonicalUrl = `https://tim-ng.me/work/${projectItem.slug}`;
+
   return {
     title: projectItem.name,
     openGraph: {
       title: projectItem.name,
       description: projectItem.overview,
+      url: canonicalUrl, 
+      siteName: "Tim Ng · Design Portfolio", 
       images: [
         {
           url: projectItem.thumbnail!.src ?? "",

@@ -153,6 +153,9 @@ export function PageFooter2() {
                 id="marquee"
                 onCheckedChange={toggleMarquee}
                 checked={isMarqueeEnabled}
+                aria-label={isMarqueeEnabled
+                  ? "Disable footer animation"
+                  : "Enable footer animation"}
               />
               <Label
                 htmlFor="marquee"
@@ -270,6 +273,9 @@ export function PageFooter2() {
             id="marquee"
             onCheckedChange={toggleMarquee}
             checked={isMarqueeEnabled}
+            aria-label={isMarqueeEnabled
+              ? "Disable footer animation"
+              : "Enable footer animation"}
           />
           <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">
             {isMarqueeEnabled

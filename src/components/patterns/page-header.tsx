@@ -172,6 +172,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
             }
           }}
           passHref
+          aria-label="Go to homepage"
         >
           <TooltipProvider>
             <Tooltip>
@@ -183,6 +184,7 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
                         ? "https://images.ctfassets.net/mzyich089xy0/3it1Ee1attFtq5TDAfTWdb/39309148d9d40c4b368ce33b86455342/avatar-dark.png"
                         : "https://images.ctfassets.net/mzyich089xy0/1UHHXxWnN5LVkdkiylVcBc/9cfa320f91b36c46a7bc393626b216e9/avatar-light.png"
                     }
+                    alt="Tim Ng Design Logo"
                   />
                   <AvatarFallback>TN</AvatarFallback>
                 </Avatar>

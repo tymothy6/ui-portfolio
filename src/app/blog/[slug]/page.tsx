@@ -59,11 +59,15 @@ export async function generateMetadata(
     return notFound();
   }
 
+  const canonicalUrl = `https://tim-ng.me/blog/${blogItem.slug}`;
+
   return {
     title: blogItem.title,
     openGraph: {
       title: blogItem.title,
       description: blogItem.summary,
+      url: canonicalUrl, 
+      siteName: "Tim Ng · Design Portfolio", 
       images: [
         {
           url: blogItem.thumbnail!.src ?? "",
@@ -136,7 +140,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
                   <AvatarBlog>
                     <AvatarImage
                       src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4"
-                      alt="A shiba inu wearing a Grogu costume"
+                      alt="The author's GitHub avatar"
                     />
                     <AvatarFallback>TN</AvatarFallback>
                   </AvatarBlog>
