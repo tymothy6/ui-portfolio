@@ -65,7 +65,7 @@ export function StyleNavigation() {
   const isActive = (id: string) => activeSection === id;
 
   return (
-    <div className="sticky top-8 hidden lg:block h-full w-full pl-16 pr-12 pt-24 pb-16 min-w-[16rem] max-w-[24rem]">
+    <nav className="sticky top-8 hidden lg:block h-full w-full pl-16 pr-12 pt-24 pb-16 min-w-[16rem] max-w-[24rem]">
       <p className="text-[15px] text-gray-800 dark:text-gray-300 font-mono pb-4">
         Style Guide
       </p>
@@ -135,6 +135,6 @@ export function StyleNavigation() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
+    </nav>
   );
 }

@@ -198,7 +198,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
               )}
           </div>
         )}
-        <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-72 font-serif">
+        <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-96 font-serif">
           <RichText document={data.body} />
 
           <div className="flex flex-row gap-2 items-center mx-8 mb-8 font-sans">
