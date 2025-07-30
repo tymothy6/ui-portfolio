@@ -29,7 +29,7 @@ export default function Resume() {
             style={{ paddingBottom: "120.41%" }}
           >
             <iframe
-              src="https://drive.google.com/file/d/1HErta3g2FdQd1n_iawh94JtHQOSHH5-K/view?usp=sharing"
+              src="https://drive.google.com/file/d/1HErta3g2FdQd1n_iawh94JtHQOSHH5-K/preview"
               width="100%"
               height="100%"
               allow="autoplay"
