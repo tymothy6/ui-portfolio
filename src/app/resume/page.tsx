@@ -29,14 +29,14 @@ export default function Resume() {
             style={{ paddingBottom: "120.41%" }}
           >
             <iframe
-              src="https://drive.google.com/file/d/1HUebfShmJvFA7GGVnBMno8KLqILeSK6T/preview"
+              src="https://drive.google.com/file/d/1HErta3g2FdQd1n_iawh94JtHQOSHH5-K/view?usp=sharing"
               width="100%"
               height="100%"
               allow="autoplay"
               className="absolute top-0 w-full h-full"
             ></iframe>
             <div>
-              <a href="https://drive.google.com/uc?export=download&id=1HUebfShmJvFA7GGVnBMno8KLqILeSK6T">
+              <a href="https://drive.google.com/uc?export=download&id=1HErta3g2FdQd1n_iawh94JtHQOSHH5-K">
                 <Button
                   variant="outline"
                   size="default"
