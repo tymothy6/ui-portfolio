@@ -26,6 +26,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ReadingTime } from "@/components/patterns/reading-time";
+import { extractTextFromRichText } from "@/lib/utils";
 
 export function BlogPostCard({
   data,
@@ -94,6 +96,12 @@ export function BlogPostCard({
                   />
                 </AspectRatio>
               </div>
+              {data.body && (
+                <ReadingTime 
+                  text={extractTextFromRichText(data.body)} 
+                  className="pl-2 pt-2"
+                />
+              )}
               <p className="text-left text-base md:text-lg font-regular text-gray-900 dark:text-gray-100 pl-2">
                 {data.summary}
               </p>
