@@ -27,6 +27,8 @@ import {
 } from "@/components/patterns/contact-button";
 import { GiscusWrapper } from "@/components/patterns/giscus-wrapper";
 import { BlogBuyMeCoffee } from "@/components/patterns/buy-me-coffee";
+import { ReadingTime } from "@/components/patterns/reading-time";
+import { extractTextFromRichText } from "@/lib/utils";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -107,16 +109,24 @@ async function BlogPostPage({ params }: BlogPageProps) {
         </div>
         <div className="flex flex-col gap-4 pt-12 lg:pt-8 mx-8 md:mx-24 lg:mx-48">
           <div className="flex flex-row justify-between items-center">
-            <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">
-              {data.date
-                ? new Intl.DateTimeFormat("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "2-digit",
-                  }).format(new Date(data.date))
-                : ""}
-            </p>
+            <div className="flex flex-row items-center gap-4">
+              <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">
+                {data.date
+                  ? new Intl.DateTimeFormat("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "2-digit",
+                    }).format(new Date(data.date))
+                  : ""}
+              </p>
+              {data.body && (
+                <ReadingTime 
+                  text={extractTextFromRichText(data.body)} 
+                  className="text-sm md:text-base"
+                />
+              )}
+            </div>
             <div className="hidden md:block">
               <Button variant="link" className="text-[15px]" asChild>
                 <Link href="/blog">
