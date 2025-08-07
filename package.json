@@ -47,6 +47,7 @@
     "@react-three/postprocessing": "^2.15.10",
     "@sentry/nextjs": "^10.2.0",
     "@sentry/react": "^10.2.0",
+    "@sentry/replay": "^7.116.0",
     "@tanstack/react-table": "^8.10.7",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.10",
