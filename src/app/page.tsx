@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 // Dynamic imports for heavy components
 const ProjectGrid = dynamic(() => import("@/components/patterns/project-grid").then(mod => ({ default: mod.ProjectGrid })), {
   loading: () => <div className="h-96 animate-pulse bg-gray-100 dark:bg-gray-800" />,
-  ssr: false
 });
 
 const ExperiencePage = dynamic(() => import("@/components/patterns/page-list").then(mod => ({ default: mod.ExperiencePage })), {

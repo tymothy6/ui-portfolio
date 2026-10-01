@@ -42,7 +42,7 @@ interface BlogPageParams {
 }
 
 interface BlogPageProps {
-  params: BlogPageParams;
+  params: Promise<BlogPageParams>;
 }
 
 export async function generateStaticParams(): Promise<BlogPageParams[]> {
@@ -55,7 +55,7 @@ export async function generateMetadata(
   { params }: BlogPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const blogItem = await fetchPost({ slug: params.slug });
+  const blogItem = await fetchPost({ slug: (await params).slug });
 
   if (!blogItem) {
     return notFound();
@@ -85,7 +85,7 @@ export async function generateMetadata(
 
 async function BlogPostPage({ params }: BlogPageProps) {
   // fetch a single blog post by its slug
-  const data = await fetchPost({ slug: params.slug });
+  const data = await fetchPost({ slug: (await params).slug });
 
   if (!data) {
     return notFound();

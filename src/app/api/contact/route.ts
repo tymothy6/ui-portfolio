@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, topic, message } = body;
     console.log("Request body:", body);
-    const emailHtml = render(MessageTemplate({ name, email, topic, message }));
+    const emailHtml = await render(MessageTemplate({ name, email, topic, message }));
 
     await sendEmail({
       to: "hello@tim-ng.me",

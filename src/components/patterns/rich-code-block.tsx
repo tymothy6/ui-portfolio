@@ -25,7 +25,7 @@ export function RichCodeBlock({
 
   const highlightLines = lineNumber?.split(",").map(Number) ?? []; // defaults to empty array if no line numbers are provided
 
-  async function handleCopy(ref: React.RefObject<HTMLDivElement>) {
+  async function handleCopy(ref: React.RefObject<HTMLDivElement | null>) {
     if (ref.current) {
       const text = ref.current.innerText || ref.current.textContent!;
       await navigator.clipboard.writeText(text);

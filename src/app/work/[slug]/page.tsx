@@ -18,7 +18,7 @@ interface ProjectPageParams {
 }
 
 interface ProjectPageProps {
-  params: ProjectPageParams;
+  params: Promise<ProjectPageParams>;
 }
 
 // Tell Next.js about the projects so they can be statically generated at build time
@@ -33,7 +33,7 @@ export async function generateMetadata(
   { params }: ProjectPageProps,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const projectItem = await fetchProject({ slug: params.slug });
+  const projectItem = await fetchProject({ slug: (await params).slug });
 
   if (!projectItem) {
     return notFound();
@@ -63,7 +63,7 @@ export async function generateMetadata(
 
 async function ProjectPage({ params }: ProjectPageProps) {
   // fetch a single project by slug
-  const data = await fetchProject({ slug: params.slug });
+  const data = await fetchProject({ slug: (await params).slug });
 
   if (!data) {
     return notFound(); // render a 404 if the project can't be found
