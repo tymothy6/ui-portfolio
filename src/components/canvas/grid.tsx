@@ -46,7 +46,7 @@ const Square: React.FC<SquareProps> = React.memo(({
   i,
   j,
 }) => {
-  const meshRef = useRef<Mesh>() as React.MutableRefObject<Mesh>;
+  const meshRef = useRef<Mesh>(null!);
   const frameCounter = useRef(0);
   const [isHovered, setIsHovered] = useState(false);
   const { resolvedTheme } = useTheme();

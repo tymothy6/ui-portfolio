@@ -373,7 +373,7 @@ export function StyleHero() {
     }
   };
 
-  async function handleCopy(ref: React.RefObject<HTMLDivElement>) {
+  async function handleCopy(ref: React.RefObject<HTMLDivElement | null>) {
     if (ref.current) {
       // Use innerText or textContent to get the content of the div
       const text = ref.current.innerText || ref.current.textContent!;

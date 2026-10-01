@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useTransform,
+  type Variants,
+} from "framer-motion";
 
 export interface ITypewriterProps {
   delay: number;
@@ -92,7 +98,7 @@ function RepeatedTextAnimation({
   return <motion.span className="inline">{displayText}</motion.span>;
 }
 
-const cursorVariants = {
+const cursorVariants: Variants = {
   blinking: {
     opacity: [0, 0, 1, 1],
     transition: {
