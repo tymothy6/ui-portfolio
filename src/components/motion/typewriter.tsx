@@ -36,13 +36,28 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
     };
   }, [count, baseText.length, delay]);
 
+  const longestText = texts.reduce(
+    (longest, text) => (text.length > longest.length ? text : longest),
+    "",
+  );
+
+  // An invisible copy of the longest full sentence shares the grid cell with
+  // the animated text, so the block keeps that height while typing and
+  // doesn't shift surrounding content when a line wraps
   return (
-    <span>
-      <motion.span>{displayText}</motion.span>
-      {animationComplete && (
-        <RepeatedTextAnimation texts={texts} delay={delay + 1} />
-      )}
-      <BlinkingCursor />
+    <span className="grid">
+      <span aria-hidden className="invisible col-start-1 row-start-1">
+        {baseText}
+        {longestText}
+        <span className="inline-block w-[2px]" />
+      </span>
+      <span className="col-start-1 row-start-1">
+        <motion.span>{displayText}</motion.span>
+        {animationComplete && (
+          <RepeatedTextAnimation texts={texts} delay={delay + 1} />
+        )}
+        <BlinkingCursor />
+      </span>
     </span>
   );
 }

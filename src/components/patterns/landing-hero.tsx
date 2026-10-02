@@ -70,7 +70,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
       <h1 className="text-5xl md:text-6xl font-semibold cursor-default pointer-events-none">
         👋🏼 I&apos;m Tim, experience designer and quantitative researcher
       </h1>
-      <h1 className="text-5xl md:text-6xl sm:min-h-[150px] font-semibold pb-4 cursor-default pointer-events-none">
+      <h1 className="text-5xl md:text-6xl font-semibold pb-4 cursor-default pointer-events-none">
         <div className="sm:block hidden">
           <Typewriter
             texts={texts}

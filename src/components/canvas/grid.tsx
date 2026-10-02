@@ -1,8 +1,14 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import React, { useRef, useState, useEffect, useMemo } from "react";
-import { Canvas, useFrame, extend, invalidate } from "@react-three/fiber";
+import React, { useRef, useState, useMemo } from "react";
+import {
+  Canvas,
+  useFrame,
+  useThree,
+  extend,
+  invalidate,
+} from "@react-three/fiber";
 import { Mesh, Vector3 } from "three";
 import { Line } from "@react-three/drei";
 import {
@@ -26,197 +32,157 @@ type SquareProps = {
   cellSize?: number;
   changeFrequency?: number;
   maxOpacity?: number;
-  i: number;
-  j: number;
-  gridSize: number;
-  activeAnimation: { i: number; j: number } | null;
-  setActiveAnimation: React.Dispatch<
-    React.SetStateAction<{ i: number; j: number } | null>
-  >;
 };
 
-const Square: React.FC<SquareProps> = React.memo(({
-  position,
-  opacity = 0.1,
-  cellSize = 0.5,
-  changeFrequency = 0.99,
-  maxOpacity,
-  activeAnimation,
-  setActiveAnimation,
-  i,
-  j,
-}) => {
-  const meshRef = useRef<Mesh>(null!);
-  const frameCounter = useRef(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const { resolvedTheme } = useTheme();
+const Square: React.FC<SquareProps> = React.memo(
+  ({
+    position,
+    opacity = 0.1,
+    cellSize = 0.5,
+    changeFrequency = 0.99,
+    maxOpacity,
+  }) => {
+    const meshRef = useRef<Mesh>(null!);
+    const frameCounter = useRef(0);
+    const [isHovered, setIsHovered] = useState(false);
+    const { resolvedTheme } = useTheme();
 
-  const gridColor = useTheme().resolvedTheme === "dark" ? "#0f172a" : "#ffffff";
-  const derivedMaxOpacity = useMemo(() =>
-    maxOpacity !== undefined
-      ? maxOpacity
-      : resolvedTheme === "dark"
-        ? 1.0
-        : 0.1,
-    [maxOpacity, resolvedTheme]
-  );
+    const gridColor =
+      useTheme().resolvedTheme === "dark" ? "#0f172a" : "#ffffff";
+    const derivedMaxOpacity = useMemo(
+      () =>
+        maxOpacity !== undefined
+          ? maxOpacity
+          : resolvedTheme === "dark"
+            ? 1.0
+            : 0.1,
+      [maxOpacity, resolvedTheme],
+    );
 
-  // Optimize frame updates - only update every 30 frames (~500ms) instead of every 10
-  useFrame(() => {
-    frameCounter.current += 1;
+    // Optimize frame updates - only update every 30 frames (~500ms) instead of every 10
+    useFrame(() => {
+      frameCounter.current += 1;
 
-    if (meshRef.current && frameCounter.current % 30 === 0 && !isHovered) {
-      const material = meshRef.current.material as MeshBasicMaterial;
-      if (Math.random() > changeFrequency) {
-        material.opacity = Math.min(derivedMaxOpacity, Math.random());
-        material.needsUpdate = true;
+      if (meshRef.current && frameCounter.current % 30 === 0 && !isHovered) {
+        const material = meshRef.current.material as MeshBasicMaterial;
+        if (Math.random() > changeFrequency) {
+          material.opacity = Math.min(derivedMaxOpacity, Math.random());
+          material.needsUpdate = true;
+        }
       }
-    }
-  });
+    });
 
-  const handlePointerOver = React.useCallback(() => {
-    setIsHovered(true);
-    if (meshRef.current) {
-      const material = meshRef.current.material as MeshBasicMaterial;
-      material.opacity = 1.0;
-      material.needsUpdate = true;
-      invalidate();
-    }
-  }, []);
+    const handlePointerOver = React.useCallback(() => {
+      setIsHovered(true);
+      if (meshRef.current) {
+        const material = meshRef.current.material as MeshBasicMaterial;
+        material.opacity = 1.0;
+        material.needsUpdate = true;
+        invalidate();
+      }
+    }, []);
 
-  const handlePointerOut = React.useCallback(() => {
-    setIsHovered(false);
-    if (meshRef.current) {
-      const material = meshRef.current.material as MeshBasicMaterial;
-      material.opacity = opacity;
-      material.needsUpdate = true;
-      invalidate();
-    }
-  }, [opacity]);
+    const handlePointerOut = React.useCallback(() => {
+      setIsHovered(false);
+      if (meshRef.current) {
+        const material = meshRef.current.material as MeshBasicMaterial;
+        material.opacity = opacity;
+        material.needsUpdate = true;
+        invalidate();
+      }
+    }, [opacity]);
 
-  return (
-    <mesh
-      ref={meshRef}
-      position={position}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-    >
-      <planeGeometry attach="geometry" args={[cellSize, cellSize]} />
-      <meshBasicMaterial attach="material" color={gridColor} transparent />
-    </mesh>
-  );
-});
+    return (
+      <mesh
+        ref={meshRef}
+        position={position}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+      >
+        <planeGeometry attach="geometry" args={[cellSize, cellSize]} />
+        <meshBasicMaterial attach="material" color={gridColor} transparent />
+      </mesh>
+    );
+  },
+);
 
 Square.displayName = "Square";
 
-const GridPattern = () => {
-  const [gridSize, setGridSize] = useState(24); // Reduced from 48 to 24
-  const [activeAnimation, setActiveAnimation] = useState<{
-    i: number;
-    j: number;
-  } | null>(null);
-  const spacing = 0.5;
-  const gridHalfSize = (gridSize / 2) * spacing;
-  const halfSpacing = spacing / 2;
-  const lineColor = useTheme().resolvedTheme === "dark" ? "#475569" : "#9ca3af";
-  const isDarkTheme = useTheme().resolvedTheme === "dark";
+const SPACING = 0.5;
 
-  // Memoize grid squares to prevent unnecessary re-renders
+// Sizes the grid to the camera's visible area so it fills the canvas at any
+// aspect ratio, with one extra cell on each side so no edge shows
+function Grid({ lineColor }: { lineColor: string }) {
+  const viewport = useThree((state) => state.viewport);
+  const cols = Math.ceil(viewport.width / SPACING) + 2;
+  const rows = Math.ceil(viewport.height / SPACING) + 2;
+  const halfWidth = (cols * SPACING) / 2;
+  const halfHeight = (rows * SPACING) / 2;
+
   const gridSquares = useMemo(() => {
     const squares = [];
-    for (let i = 0; i < gridSize; i++) {
-      for (let j = 0; j < gridSize; j++) {
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
         squares.push(
           <Square
             key={`${i}-${j}`}
             position={[
-              (i - gridSize / 2) * spacing,
-              (j - gridSize / 2) * spacing,
+              -halfWidth + (i + 0.5) * SPACING,
+              -halfHeight + (j + 0.5) * SPACING,
               0,
             ]}
-            i={i}
-            j={j}
-            gridSize={gridSize}
-            activeAnimation={activeAnimation}
-            setActiveAnimation={setActiveAnimation}
-          />
+            cellSize={SPACING}
+          />,
         );
       }
     }
     return squares;
-  }, [gridSize, activeAnimation]);
+  }, [cols, rows, halfWidth, halfHeight]);
 
-  // Memoize grid lines
   const gridLines = useMemo(() => {
     const lines = [];
-    
-    // Vertical lines
-    for (let i = 0; i <= gridSize; i++) {
+
+    for (let i = 0; i <= cols; i++) {
+      const x = -halfWidth + i * SPACING;
       lines.push(
         <Line
           key={`vline-${i}`}
           points={[
-            new Vector3(
-              (i - gridSize / 2) * spacing - halfSpacing,
-              -gridHalfSize,
-              0,
-            ),
-            new Vector3(
-              (i - gridSize / 2) * spacing - halfSpacing,
-              gridHalfSize,
-              0,
-            ),
+            new Vector3(x, -halfHeight, 0),
+            new Vector3(x, halfHeight, 0),
           ]}
           color={lineColor}
           lineWidth={0.5}
-        />
+        />,
       );
     }
 
-    // Horizontal lines
-    for (let i = 0; i <= gridSize; i++) {
+    for (let j = 0; j <= rows; j++) {
+      const y = -halfHeight + j * SPACING;
       lines.push(
         <Line
-          key={`hline-${i}`}
-          points={[
-            new Vector3(
-              -gridHalfSize,
-              (i - gridSize / 2) * spacing - halfSpacing,
-              0,
-            ),
-            new Vector3(
-              gridHalfSize,
-              (i - gridSize / 2) * spacing - halfSpacing,
-              0,
-            ),
-          ]}
+          key={`hline-${j}`}
+          points={[new Vector3(-halfWidth, y, 0), new Vector3(halfWidth, y, 0)]}
           color={lineColor}
           lineWidth={0.5}
-        />
+        />,
       );
     }
-    
+
     return lines;
-  }, [gridSize, gridHalfSize, halfSpacing, spacing, lineColor]);
+  }, [cols, rows, halfWidth, halfHeight, lineColor]);
 
-  useEffect(() => {
-    function handleResize() {
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        setGridSize(16); // Reduced for mobile
-      } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        setGridSize(20); // Reduced for tablet
-      } else if (window.matchMedia("(max-width: 1920px)").matches) {
-        setGridSize(24); // Reduced for desktop
-      } else {
-        setGridSize(16); // Reduced for large screens
-      }
-      invalidate();
-    }
-    handleResize();
+  return (
+    <>
+      {gridSquares}
+      {gridLines}
+    </>
+  );
+}
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+const GridPattern = () => {
+  const lineColor = useTheme().resolvedTheme === "dark" ? "#475569" : "#9ca3af";
+  const isDarkTheme = useTheme().resolvedTheme === "dark";
 
   return (
     <div
@@ -237,8 +203,7 @@ const GridPattern = () => {
         dpr={[1, 2]} // Limit device pixel ratio for performance
         performance={{ min: 0.5 }} // Lower performance threshold
       >
-        {gridSquares}
-        {gridLines}
+        <Grid lineColor={lineColor} />
       </Canvas>
     </div>
   );
