@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Suspense } from "react";
 
 import { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -117,6 +116,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
                       year: "numeric",
                       month: "long",
                       day: "2-digit",
+                      timeZone: "UTC",
                     }).format(new Date(data.date))
                   : ""}
               </p>
@@ -224,9 +224,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
           <h2 className="text-2xl text-foreground font-semibold mx-8 font-mono mb-4">
             Recommended posts
           </h2>
-          <Suspense fallback={<div>Loading...</div>}>
-            <CardCarousel posts={otherBlogPosts} recommended={true} />
-          </Suspense>
+          <CardCarousel posts={otherBlogPosts} recommended={true} />
         </div>
       </div>
     </main>

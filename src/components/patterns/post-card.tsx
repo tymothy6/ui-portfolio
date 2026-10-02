@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ReadingTime } from "@/components/patterns/reading-time";
-import { extractTextFromRichText, useIsClient } from "@/lib/utils";
+import { extractTextFromRichText } from "@/lib/utils";
 
 export function BlogPostCard({
   data,
@@ -36,94 +36,88 @@ export function BlogPostCard({
   data: Post;
   isFirstChild?: boolean;
 }) {
-  const isClient = useIsClient();
-
   return (
     <BlogCard
       className={`flex flex-col h-full ${isFirstChild ? "mx-4" : "mr-4"} md:mx-0 overflow-hidden`}
     >
-      {isClient && (
-        <>
-          <CardHeader>
-            <div className="flex flex-row justify-between items-center w-full">
-              <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">
-                {data.date
-                  ? new Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "2-digit",
-                    }).format(new Date(data.date))
-                  : ""}
-              </p>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <AvatarBlog className="z-[1] cursor-help">
-                      <AvatarImage
-                        src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4"
-                        alt="The author's GitHub avatar"
-                      />
-                      <AvatarFallback>TN</AvatarFallback>
-                    </AvatarBlog>
-                  </TooltipTrigger>
-                  <TooltipContent className="p-2 z-[3]">
-                    <p className="text-sm font-regular"> Tim Ng </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <Link href={`/blog/${data.slug}`}>
-              <h1 className="text-xl md:text-2xl font-medium text-foreground hover:text-foreground/90 decoration-primary decoration-2 md:decoration-4 hover:underline-offset-2 hover:underline">
-                {data.title}
-              </h1>
-            </Link>
-            <Separator />
-          </CardHeader>
-          <CardContent className="flex flex-col items-start w-full">
-            <div className="flex flex-col gap-4 w-full">
-              <div className="relative rounded-lg border border-accent overflow-hidden">
-                <AspectRatio ratio={4 / 3}>
-                  <Image
-                    src={data.thumbnail ? data.thumbnail.src : ""}
-                    alt={data.thumbnail ? data.thumbnail.alt : ""}
-                    fill={true}
-                    sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-top"
+      <CardHeader>
+        <div className="flex flex-row justify-between items-center w-full">
+          <p className="text-sm md:text-base font-regular text-gray-800 dark:text-gray-300">
+            {data.date
+              ? new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "2-digit",
+                  timeZone: "UTC",
+                }).format(new Date(data.date))
+              : ""}
+          </p>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <AvatarBlog className="z-[1] cursor-help">
+                  <AvatarImage
+                    src="https://avatars.githubusercontent.com/u/108041576?s=400&u=ddca44b272241d11275ef2a1c6db7e4f38af5f01&v=4"
+                    alt="The author's GitHub avatar"
                   />
-                </AspectRatio>
-              </div>
-              {data.body && (
-                <ReadingTime
-                  text={extractTextFromRichText(data.body)}
-                  className="pl-2 pt-2"
-                />
-              )}
-              <p className="text-left text-base md:text-lg font-regular text-gray-900 dark:text-gray-100 pl-2">
-                {data.summary}
-              </p>
-              <div className="flex flex-row flex-wrap gap-2">
-                {data.tags &&
-                  data.tags.map((tag) => (
-                    <Badge key={tag} variant="secondaryblog">
-                      <span className="font-mono tracking-tight cursor-default">
-                        {tag}
-                      </span>
-                    </Badge>
-                  ))}
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className="mt-auto">
-            <Button
-              variant="secondaryblog"
-              className="w-full text-base"
-              asChild
-            >
-              <Link href={`/blog/${data.slug}`}>Read more</Link>
-            </Button>
-          </CardFooter>
-        </>
-      )}
+                  <AvatarFallback>TN</AvatarFallback>
+                </AvatarBlog>
+              </TooltipTrigger>
+              <TooltipContent className="p-2 z-[3]">
+                <p className="text-sm font-regular"> Tim Ng </p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        <Link
+          href={`/blog/${data.slug}`}
+          className="block rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <h1 className="text-xl md:text-2xl font-medium text-foreground hover:text-foreground/90 decoration-primary decoration-2 md:decoration-4 hover:underline-offset-2 hover:underline">
+            {data.title}
+          </h1>
+        </Link>
+        <Separator />
+      </CardHeader>
+      <CardContent className="flex flex-col items-start w-full">
+        <div className="flex flex-col gap-4 w-full">
+          <div className="relative rounded-lg border border-accent overflow-hidden">
+            <AspectRatio ratio={4 / 3}>
+              <Image
+                src={data.thumbnail ? data.thumbnail.src : ""}
+                alt={data.thumbnail ? data.thumbnail.alt : ""}
+                fill={true}
+                sizes="(max-width: 768px) 85vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-top"
+              />
+            </AspectRatio>
+          </div>
+          {data.body && (
+            <ReadingTime
+              text={extractTextFromRichText(data.body)}
+              className="pl-2 pt-2"
+            />
+          )}
+          <p className="text-left text-base md:text-lg font-regular text-gray-900 dark:text-gray-100 pl-2">
+            {data.summary}
+          </p>
+          <div className="flex flex-row flex-wrap gap-2">
+            {data.tags &&
+              data.tags.map((tag) => (
+                <Badge key={tag} variant="secondaryblog">
+                  <span className="font-mono tracking-tight cursor-default">
+                    {tag}
+                  </span>
+                </Badge>
+              ))}
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter className="mt-auto">
+        <Button variant="secondaryblog" className="w-full text-base" asChild>
+          <Link href={`/blog/${data.slug}`}>Read more</Link>
+        </Button>
+      </CardFooter>
     </BlogCard>
   );
 }
