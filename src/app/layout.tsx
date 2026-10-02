@@ -56,6 +56,7 @@ export default function RootLayout({
 }) {
   return (
     <html
+      data-scroll-behavior="smooth"
       lang="en"
       className={`${monaSans.variable} ${GeistSans.variable} ${GeistMono.variable} ${source_serif.variable} font-serif`}
       suppressHydrationWarning

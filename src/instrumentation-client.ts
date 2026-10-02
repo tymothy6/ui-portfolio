@@ -1,4 +1,5 @@
 // This file configures the initialization of Sentry on the client.
+// Next.js loads it automatically before the app becomes interactive.
 // The config you add here will be used whenever a users loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
@@ -28,3 +29,5 @@ Sentry.init({
     }),
   ],
 });
+
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
