@@ -137,7 +137,6 @@ export function PageHeader({ children }: { children?: React.ReactNode }) {
   };
 
   React.useEffect(() => {
-    handleResize();
     window.addEventListener("resize", handleResize);
     document.addEventListener("mouseup", handleClick);
     document.addEventListener("touchend", handleClick);

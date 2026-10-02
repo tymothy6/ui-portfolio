@@ -8,25 +8,37 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function useMediaQuery(query: string) {
-  const [value, setValue] = React.useState(false);
+  const subscribe = React.useCallback(
+    (onStoreChange: () => void) => {
+      const result = matchMedia(query);
+      result.addEventListener("change", onStoreChange);
+      return () => result.removeEventListener("change", onStoreChange);
+    },
+    [query],
+  );
 
-  React.useEffect(() => {
-    function onChange(event: MediaQueryListEvent) {
-      setValue(event.matches);
-    }
+  return React.useSyncExternalStore(
+    subscribe,
+    () => matchMedia(query).matches,
+    () => false,
+  );
+}
 
-    const result = matchMedia(query);
-    result.addEventListener("change", onChange);
-    setValue(result.matches);
+const subscribeNoop = () => () => {};
 
-    return () => result.removeEventListener("change", onChange);
-  }, [query]);
-
-  return value;
+// False during server render and hydration, true once running on the client
+export function useIsClient() {
+  return React.useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false,
+  );
 }
 
 // Extract plain text from Contentful rich text document for reading time calculation
-export function extractTextFromRichText(document: RichTextDocument | null): string {
+export function extractTextFromRichText(
+  document: RichTextDocument | null,
+): string {
   if (!document || !document.content) {
     return "";
   }

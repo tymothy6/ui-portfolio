@@ -181,7 +181,10 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
         </p>
         <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form
+              onSubmit={(event) => form.handleSubmit(onSubmit)(event)}
+              className="space-y-4"
+            >
               <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
                 <div className="w-full h-full md:flex-grow">
                   <FormField
@@ -424,7 +427,10 @@ export const BlogContact = () => {
         </h1>
         <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form
+              onSubmit={(event) => form.handleSubmit(onSubmit)(event)}
+              className="space-y-4"
+            >
               <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
                 <div className="w-full h-full md:flex-grow font-sans">
                   <FormField
