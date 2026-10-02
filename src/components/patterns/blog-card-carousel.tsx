@@ -8,13 +8,32 @@ import styles from "@/components/modules/blog-card-carousel.module.css";
 import { Post } from "@/lib/blog-posts";
 import { BlogPostCard } from "@/components/patterns/post-card";
 
-export function CardCarousel({
-  posts,
-  recommended,
-}: {
-  posts: Post[];
-  recommended?: boolean;
-}) {
+function sortPosts(posts: Post[], sortType: string) {
+  const byDate = (a: Post, b: Post) => {
+    if (b.date !== null && a.date !== null) {
+      return b.date.getTime() - a.date.getTime();
+    }
+    return 0; // If either date is null, treat them as equal
+  };
+
+  switch (sortType) {
+    case "default":
+      return [...posts].sort(byDate);
+    case "lastdate":
+      return [...posts].sort((a, b) => byDate(b, a));
+    case "az":
+      return [...posts].sort((a, b) => a.title.localeCompare(b.title));
+    case "za":
+      return [...posts].sort((a, b) => b.title.localeCompare(a.title));
+    default:
+      return posts;
+  }
+}
+
+// Applies ?tag= and ?sort= from the URL. useSearchParams opts out of static
+// rendering, so wrap this in Suspense with an unfiltered <CardCarousel> fallback
+// to keep the posts in the server-rendered HTML.
+export function FilteredCardCarousel({ posts }: { posts: Post[] }) {
   const searchParams = useSearchParams();
   const currentTag = searchParams.get("tag") || "";
   const currentSortType = searchParams.get("sort") || "";
@@ -27,40 +46,16 @@ export function CardCarousel({
       )
     : posts;
 
-  let sortedPosts = filteredPosts;
-  switch (currentSortType) {
-    case "default":
-      sortedPosts = filteredPosts.sort((a, b) => {
-        if (b.date !== null && a.date !== null) {
-          return b.date.getTime() - a.date.getTime();
-        } else {
-          return 0; // If either date is null, treat them as equal
-        }
-      });
-      break;
-    case "lastdate":
-      sortedPosts = filteredPosts.sort((a, b) => {
-        if (b.date !== null && a.date !== null) {
-          return a.date.getTime() - b.date.getTime();
-        } else {
-          return 0; // If either date is null, treat them as equal
-        }
-      });
-      break;
-    case "az":
-      sortedPosts = filteredPosts.sort((a, b) =>
-        a.title.localeCompare(b.title),
-      );
-      break;
-    case "za":
-      sortedPosts = filteredPosts.sort((a, b) =>
-        b.title.localeCompare(a.title),
-      );
-      break;
-    default:
-      break;
-  }
+  return <CardCarousel posts={sortPosts(filteredPosts, currentSortType)} />;
+}
 
+export function CardCarousel({
+  posts,
+  recommended,
+}: {
+  posts: Post[];
+  recommended?: boolean;
+}) {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const overlayRef = React.useRef<HTMLDivElement>(null);
 
@@ -85,7 +80,7 @@ export function CardCarousel({
       onScroll={handleScroll}
       className={`flex flex-row relative overflow-x-auto md:grid md:grid-cols-2 z-[2] ${!recommended && "xl:grid-cols-3"} gap-0 md:gap-4 ${styles.horizontalScroll}`}
     >
-      {(recommended ? posts.slice(0, 2) : sortedPosts).map((post, index) => (
+      {(recommended ? posts.slice(0, 2) : posts).map((post, index) => (
         <div className="flex-shrink-0 w-[85vw] md:w-full" key={post.slug}>
           <BlogPostCard data={post} isFirstChild={index === 0} />
         </div>

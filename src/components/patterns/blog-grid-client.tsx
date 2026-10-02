@@ -1,8 +1,10 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { CardCarousel } from "@/components/patterns/blog-card-carousel";
-import { BlogGridSkeleton } from "./grid-skeleton";
+import {
+  CardCarousel,
+  FilteredCardCarousel,
+} from "@/components/patterns/blog-card-carousel";
 import { BlogSearch } from "./blog-search";
 
 interface BlogPostGridClientProps {
@@ -15,11 +17,11 @@ export function BlogPostGridClient({ posts }: BlogPostGridClientProps) {
   return (
     <div className="flex flex-col justify-center items-center my-16">
       <BlogSearch posts={posts} onFilteredPostsChange={setFilteredPosts} />
-      <Suspense fallback={<BlogGridSkeleton />}>
-        <div className="mb-4 w-full">
-          <CardCarousel posts={filteredPosts} />
-        </div>
-      </Suspense>
+      <div className="mb-4 w-full">
+        <Suspense fallback={<CardCarousel posts={filteredPosts} />}>
+          <FilteredCardCarousel posts={filteredPosts} />
+        </Suspense>
+      </div>
     </div>
   );
-} 
+}

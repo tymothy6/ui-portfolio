@@ -24,17 +24,6 @@ export function useMediaQuery(query: string) {
   );
 }
 
-const subscribeNoop = () => () => {};
-
-// False during server render and hydration, true once running on the client
-export function useIsClient() {
-  return React.useSyncExternalStore(
-    subscribeNoop,
-    () => true,
-    () => false,
-  );
-}
-
 // Extract plain text from Contentful rich text document for reading time calculation
 export function extractTextFromRichText(
   document: RichTextDocument | null,
