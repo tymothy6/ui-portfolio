@@ -69,7 +69,10 @@ export function BlogPostCard({
             </Tooltip>
           </TooltipProvider>
         </div>
-        <Link href={`/blog/${data.slug}`}>
+        <Link
+          href={`/blog/${data.slug}`}
+          className="block rounded-md focus-visible:outline-none focus-visible:ring focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
           <h1 className="text-xl md:text-2xl font-medium text-foreground hover:text-foreground/90 decoration-primary decoration-2 md:decoration-4 hover:underline-offset-2 hover:underline">
             {data.title}
           </h1>
