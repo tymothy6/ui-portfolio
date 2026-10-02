@@ -14,7 +14,10 @@ import { parseContentfulContentImage } from "./content-image";
 import { FigmaEmbed } from "@/components/patterns/figma-embed";
 import { RichCodeBlock } from "@/components/patterns/rich-code-block";
 import { RichEmbedBlock } from "@/components/patterns/rich-embed-block";
-import FsLightbox from "fslightbox-react";
+import {
+  ImageLightbox,
+  type LightboxImage,
+} from "@/components/patterns/image-lightbox";
 import { useToast } from "@/components/ui/use-toast";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -59,8 +62,9 @@ export default function RichText({ document }: RichTextProps) {
     }
   }, [toast, pathname]);
 
-  const [isLightBoxOpen, setIsLightBoxOpen] = React.useState(false);
-  const [lightBoxSource, setLightBoxSource] = React.useState("");
+  const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const [lightboxImage, setLightboxImage] =
+    React.useState<LightboxImage | null>(null);
 
   const options = {
     renderNode: {
@@ -107,22 +111,31 @@ export default function RichText({ document }: RichTextProps) {
           src = "https:" + src;
         }
 
+        const image: LightboxImage = {
+          src,
+          alt: title ?? "",
+          width: file.details.image.width,
+          height: file.details.image.height,
+        };
+
         return (
-          <div
+          <button
+            type="button"
+            aria-label={title ? `View larger: ${title}` : "View larger image"}
             onClick={() => {
-              setLightBoxSource(src);
-              setIsLightBoxOpen(true);
+              setLightboxImage(image);
+              setIsLightboxOpen(true);
             }}
-            className="cursor-pointer md:max-w-4xl mx-auto"
+            className="block w-full cursor-zoom-in md:max-w-4xl mx-auto md:rounded-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Image
-              alt={title}
-              src={src}
-              width={file.details.image.width}
-              height={file.details.image.height}
+              alt={image.alt}
+              src={image.src}
+              width={image.width}
+              height={image.height}
               className="md:rounded-lg"
             />
-          </div>
+          </button>
         );
       },
       [BLOCKS.EMBEDDED_ENTRY]: (node: Block | Inline) => {
@@ -225,7 +238,11 @@ export default function RichText({ document }: RichTextProps) {
   return (
     <>
       {documentToReactComponents(document, options)}
-      <FsLightbox toggler={isLightBoxOpen} sources={[lightBoxSource]} />
+      <ImageLightbox
+        image={lightboxImage}
+        open={isLightboxOpen}
+        onOpenChange={setIsLightboxOpen}
+      />
     </>
   );
 }

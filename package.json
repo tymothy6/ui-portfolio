@@ -46,7 +46,6 @@
     "contentful": "^11.5.13",
     "embla-carousel-react": "^8.0.0-rc18",
     "framer-motion": "^12",
-    "fslightbox-react": "^1.7.6",
     "geist": "^1.7.2",
     "lucide-react": "^0.284.0",
     "next": "^16.3.8",
@@ -70,7 +69,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/fslightbox-react": "^1.7.5",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
