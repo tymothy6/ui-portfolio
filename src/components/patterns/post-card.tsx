@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ReadingTime } from "@/components/patterns/reading-time";
-import { extractTextFromRichText } from "@/lib/utils";
+import { extractTextFromRichText, useIsClient } from "@/lib/utils";
 
 export function BlogPostCard({
   data,
@@ -36,11 +36,7 @@ export function BlogPostCard({
   data: Post;
   isFirstChild?: boolean;
 }) {
-  const [isClient, setIsClient] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isClient = useIsClient();
 
   return (
     <BlogCard
@@ -97,8 +93,8 @@ export function BlogPostCard({
                 </AspectRatio>
               </div>
               {data.body && (
-                <ReadingTime 
-                  text={extractTextFromRichText(data.body)} 
+                <ReadingTime
+                  text={extractTextFromRichText(data.body)}
                   className="pl-2 pt-2"
                 />
               )}
