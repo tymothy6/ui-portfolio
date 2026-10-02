@@ -73,7 +73,6 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
     const captchaValue = recaptcha.current
       ? recaptcha.current.getValue()
       : null;
@@ -92,6 +91,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
       return; // exit the function early if no captcha value
     }
 
+    setIsLoading(true);
     try {
       // Verify the captcha
       const captchaResponse = await fetch("/api/verify-recaptcha", {
