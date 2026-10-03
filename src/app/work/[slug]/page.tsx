@@ -176,7 +176,7 @@ async function ProjectPage({ params }: ProjectPageProps) {
                 ),
             )}
         </div>
-        <div className="flex flex-col gap-4 pt-12 md:pt-16 pb-24 md:pb-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
+        <div className="flex flex-col gap-4 pt-6 md:pt-8 pb-24 md:pb-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
           <div className="mx-8">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
               Design Process
