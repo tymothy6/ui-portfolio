@@ -53,6 +53,21 @@ export function ExperiencePage() {
       <div className="flex flex-col gap-3 lg:px-8">
         <div className="flex flex-col gap-1 md:gap-2">
           <h3 className="text-lg font-medium text-foreground">
+            AOT Technologies
+          </h3>
+          <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
+            User Experience Designer
+          </h3>
+          <p className="text-base md:text-lg font-medium text-gray-800 dark:text-gray-200">
+            Victoria, BC (Remote)
+          </p>
+          <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
+            Oct 2025 - Present
+          </p>
+        </div>
+        <Separator className="mt-4 mb-4" />
+        <div className="flex flex-col gap-1 md:gap-2">
+          <h3 className="text-lg font-medium text-foreground">
             BC Public Service
           </h3>
           <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200">
@@ -62,7 +77,7 @@ export function ExperiencePage() {
             Vancouver, BC
           </p>
           <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
-            Jul 2024 - Present
+            Jul 2024 - Jul 2025
           </p>
         </div>
         <Separator className="mt-4 mb-4" />
