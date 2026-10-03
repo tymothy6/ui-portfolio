@@ -19,20 +19,19 @@ export const AboutPage: React.FC<HomeProps> = ({ id }) => {
       </h2>
       <div className="flex flex-col gap-6 lg:gap-8 lg:mr-8">
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
-          I&apos;m a scientist by training and graduated with a PhD in Molecular
-          Genetics from the University of Toronto in 2022. My research
-          experience has bolstered my curiosity and instilled a logical way of
-          wondering and knowing that I leverage each day.
+          I&apos;m a scientist by training. I earned my PhD in Molecular
+          Genetics from the University of Toronto in 2022, where I learned to
+          approach problems with curiosity and rigour.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
-          During my PhD, I developed knowledge translation skills and honed a
-          keen eye for aesthetic design. Now, I work to apply my design skills
-          and data fluency to make complex ideas easier to understand for
-          others.
+          My PhD is also where I discovered design. Sharing my research with
+          people outside my field showed me how much clarity depends on good
+          design. Now I combine design and data skills to make complex ideas
+          accessible.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
           Research taught me that the hardest part of any problem is asking
-          the right question. Software has made it easy to build things, but
+          the right question. It&apos;s easier than ever to build software, but
           knowing what to build is still hard. As a designer, my job is to
           keep teams focused on the problems that matter to people, not just
           the ones that are easy to solve.
