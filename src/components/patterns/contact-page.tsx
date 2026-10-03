@@ -139,7 +139,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
         title: "Thanks!",
         description: (
           <p className="text-sm font-medium">
-            Your message has been sent, I&apos;ll get back to you shortly.
+            Your message has been sent. I&apos;ll get back to you soon.
           </p>
         ),
       });
@@ -156,8 +156,8 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
         title: "Oops",
         description: (
           <p className="text-sm font-medium">
-            Your message failed to send, please try again later or reach out to
-            me by email.
+            Your message didn&apos;t send. Please try again later, or email me
+            directly.
           </p>
         ),
       });
@@ -176,8 +176,7 @@ export const ContactPage: React.FC<HomeProps> = ({ id }) => {
           Want to work together? Get in touch
         </h1>
         <p className="text-lg text-left md:text-xl lg:text-2xl font-medium text-gray-800 dark:text-gray-400 mb-8">
-          Connect with me to create impactful designs that align with our values
-          and exceed our expectations 🤝🏼
+          Have a project or idea in mind? I&apos;d love to hear about it 🤝🏼
         </p>
         <div>
           <Form {...form}>
@@ -395,7 +394,7 @@ export const BlogContact = () => {
         title: "📬 Thanks!",
         description: (
           <p className="text-sm font-medium">
-            Your message has been sent, I&apos;ll get back to you shortly.
+            Your message has been sent. I&apos;ll get back to you soon.
           </p>
         ),
       });
@@ -411,8 +410,8 @@ export const BlogContact = () => {
         title: "😖 Error",
         description: (
           <p className="text-sm font-medium">
-            Your message failed to send, please try again later or reach out to
-            me directly.
+            Your message didn&apos;t send. Please try again later, or email me
+            directly.
           </p>
         ),
       });
