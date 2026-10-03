@@ -55,10 +55,10 @@ const formSchema = z.object({
 });
 
 const texts = [
-  "ideas accessible",
-  "writing accessible",
-  "design accessible",
-  "data accessible",
+  "making ideas accessible",
+  "making writing accessible",
+  "making design accessible",
+  "making data accessible",
 ];
 
 export const Hero: React.FC<HomeProps> = ({ id }) => {
@@ -75,7 +75,7 @@ export const Hero: React.FC<HomeProps> = ({ id }) => {
           <Typewriter
             texts={texts}
             delay={1}
-            baseText="🤗 I care about making "
+            baseText="🤗 I care about "
           />
         </div>
         <span className="inline-block sm:hidden">🤗 I care about making </span>
