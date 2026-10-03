@@ -27,7 +27,7 @@ export function Typewriter({ delay, texts, baseText = "" }: ITypewriterProps) {
     const controls = animate(count, baseText.length, {
       type: "tween",
       delay,
-      duration: 1,
+      duration: 1.5,
       ease: "easeInOut",
       onComplete: () => setAnimationComplete(true),
     });
@@ -91,7 +91,7 @@ function RepeatedTextAnimation({
     const animation = animate(count, 60, {
       type: "tween",
       delay,
-      duration: 1,
+      duration: 1.5,
       ease: "easeIn",
       repeat: Infinity,
       repeatType: "reverse",
