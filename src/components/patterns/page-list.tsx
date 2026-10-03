@@ -31,10 +31,11 @@ export const AboutPage: React.FC<HomeProps> = ({ id }) => {
           others.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
-          I believe I can fulfill this goal by crafting digital experiences.
-          Software has already changed our perception of what&apos;s possible.
-          But the next generation of user experiences will enable the future and
-          even let us envision what comes after it.
+          Research taught me that the hardest part of any problem is asking
+          the right question. Software has made it easy to build things, but
+          knowing what to build is still hard. As a designer, my job is to
+          keep teams focused on the problems that matter to people, not just
+          the ones that are easy to solve.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
           Feeling inspired? Connect with me to start a project together.
