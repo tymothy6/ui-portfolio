@@ -90,7 +90,7 @@ export function ExperiencePage() {
             Toronto, ON
           </p>
           <p className="text-sm md:text-base lg:text-lg font-mono font-regular text-accent-foreground">
-            May 2022 - December 2023
+            May 2022 - Dec 2023
           </p>
         </div>
         <Separator className="mt-4 mb-4" />
@@ -169,6 +169,15 @@ export function SkillsPage() {
           <p className="text-gray-700 dark:text-gray-200 text-base md:text-lg font-medium text-foreground leading-relaxed">
             HTML, CSS, JavaScript, React, React Native, Swift, Next.js, Express,
             MongoDB
+          </p>
+        </div>
+        <Separator className="mt-4 mb-4" />
+        <div className="flex flex-col gap-2">
+          <h3 className="text-lg font-semibold text-foreground leading-relaxed">
+            AI Tooling
+          </h3>
+          <p className="text-gray-700 dark:text-gray-200 text-base md:text-lg font-medium text-foreground leading-relaxed">
+            Claude, Claude Code, Cursor, ChatGPT, Figma Make
           </p>
         </div>
       </div>
