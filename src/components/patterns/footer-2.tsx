@@ -153,19 +153,14 @@ export function PageFooter2() {
                 id="marquee"
                 onCheckedChange={toggleMarquee}
                 checked={isMarqueeEnabled}
-                aria-label={
-                  isMarqueeEnabled
-                    ? "Disable footer animation"
-                    : "Enable footer animation"
-                }
               />
               <Label
                 htmlFor="marquee"
                 className="text-gray-800 dark:text-gray-400"
               >
                 {isMarqueeEnabled
-                  ? "Disable footer animation"
-                  : "Enable footer animation"}
+                  ? "Footer animation on"
+                  : "Footer animation off"}
               </Label>
             </div>
           </div>
@@ -275,16 +270,9 @@ export function PageFooter2() {
             id="marquee"
             onCheckedChange={toggleMarquee}
             checked={isMarqueeEnabled}
-            aria-label={
-              isMarqueeEnabled
-                ? "Disable footer animation"
-                : "Enable footer animation"
-            }
           />
           <Label htmlFor="marquee" className="text-gray-800 dark:text-gray-400">
-            {isMarqueeEnabled
-              ? "Disable footer animation"
-              : "Enable footer animation"}
+            {isMarqueeEnabled ? "Footer animation on" : "Footer animation off"}
           </Label>
         </div>
         <div className="flex flex-col w-full md:flex-row items-start md:items-center gap-2 pb-2 md:pb-0">
@@ -308,7 +296,7 @@ export function PageFooter2() {
           </div>
           <div className="px-4">
             <span className="text-xs md:text-sm text-gray-800 dark:text-gray-300 font-medium whitespace-nowrap">
-              © 2023-2025, Tim Ng
+              © 2023-2026, Tim Ng
             </span>
           </div>
         </div>
