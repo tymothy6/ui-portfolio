@@ -86,7 +86,8 @@ export default function RichText({ document }: RichTextProps) {
         <h5>{children}</h5>
       ),
       [BLOCKS.HEADING_6]: (node: Block | Inline, children: React.ReactNode) => (
-        <h6 className="text-sm font-medium text-center mb-8 mx-6">
+        // Captions sit close under the image they follow, cancelling its mb-8
+        <h6 className="text-sm font-medium text-center mb-8 mx-6 [[data-rich-image]+&]:-mt-8">
           {children}
         </h6>
       ),
@@ -121,12 +122,13 @@ export default function RichText({ document }: RichTextProps) {
         return (
           <button
             type="button"
+            data-rich-image
             aria-label={title ? `View larger: ${title}` : "View larger image"}
             onClick={() => {
               setLightboxImage(image);
               setIsLightboxOpen(true);
             }}
-            className="block w-full cursor-zoom-in md:max-w-4xl mx-auto md:rounded-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="block w-full mb-8 cursor-zoom-in md:max-w-4xl mx-auto md:rounded-lg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Image
               alt={image.alt}
