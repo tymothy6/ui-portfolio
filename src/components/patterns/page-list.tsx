@@ -30,11 +30,11 @@ export const AboutPage: React.FC<HomeProps> = ({ id }) => {
           accessible.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
-          Research taught me that the hardest part of any problem is asking
-          the right question. It&apos;s easier than ever to build software, but
-          knowing what to build is still hard. As a designer, my job is to
-          keep teams focused on the problems that matter to people, not just
-          the ones that are easy to solve.
+          Research taught me that the hardest part of any problem is asking the
+          right question. It&apos;s easier than ever to build software, but
+          knowing what to build is still hard. As a designer, my job is to keep
+          teams focused on the problems that matter to people, not just the ones
+          that are easy to solve.
         </p>
         <p className="text-lg md:text-xl font-regular text-foreground leading-relaxed tracking-wide">
           Feeling inspired? Connect with me to start a project together.
@@ -177,7 +177,8 @@ export function SkillsPage() {
             AI Tooling
           </h3>
           <p className="text-gray-700 dark:text-gray-200 text-base md:text-lg font-medium text-foreground leading-relaxed">
-            Claude, Claude Code, Cursor, ChatGPT, Figma Make
+            Claude, Claude Code, Cursor, ChatGPT, Figma Make, Model Context
+            Protocol (MCP)
           </p>
         </div>
       </div>
@@ -256,9 +257,8 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
             </strong>{" "}
             I aspire to build digital experiences that empower my users and give
             them the ability to transcend social, economic, and cultural
-            barriers. My lifelong goal is to apply my design skills to help the
-            people I work for realize their dreams. That means stepping out of
-            my comfort zone and taking on challenges in new problem spaces.
+            barriers. Doing that means stepping out of my comfort zone and
+            taking on challenges in new problem spaces.
           </p>
         </div>
 
@@ -268,7 +268,7 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
           </h3>
           <Separator className="mb-2 block lg:hidden" />
           <p className="text-gray-800 dark:text-gray-200 text-lg font-regular text-foreground leading-relaxed">
-            When working on a problem I&apos;m 110% committed to finding a
+            When working on a problem I&apos;m 100% committed to finding a
             balanced solution. Even so, maintaining my mental and physical
             health is my top priority.{" "}
             <strong className="font-semibold">
@@ -277,12 +277,11 @@ export const ValuesPage: React.FC<HomeProps> = ({ id }) => {
                 facets of my life.
               </span>
             </strong>{" "}
-            Above all, I&apos;m a private person that cherishes time alone to
+            Above all, I&apos;m a private person who cherishes time alone to
             recharge. My favourite hobbies that enable this include reading,
-            language learning, and board gaming. Recently, I&apos;ve been working on
-            my TCG collection and dabbling in tabletop game design. Physically,
-            I like to clear my mind and push my limits with weight training and
-            racket sports.
+            language learning, and board gaming. Recently, I&apos;ve been
+            dabbling in tabletop game design. Physically, I like to clear my
+            mind and push my limits with weight training and racket sports.
           </p>
         </div>
       </div>
