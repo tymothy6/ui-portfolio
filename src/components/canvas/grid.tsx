@@ -9,24 +9,20 @@ type Palette = {
   background: RGB;
   line: RGB;
   cover: RGB;
-  // Strength of the lines drawn over the cover, so the grid shows at rest
-  restLineOpacity: number;
 };
 
-// Page background with grid lines, under a darker cover drawn at each cell's
-// opacity; lines are drawn again faintly on top of the cover
+// Matches the on-screen colours of the previous WebGL grid: page background
+// with grid lines, under a darker cover drawn at each cell's opacity
 const PALETTES: Record<"light" | "dark", Palette> = {
   light: {
     background: [255, 255, 255],
-    line: [209, 213, 219],
+    line: [244, 245, 247],
     cover: [241, 241, 241],
-    restLineOpacity: 0.5,
   },
   dark: {
     background: [15, 23, 42],
-    line: [51, 65, 85],
+    line: [26, 38, 58],
     cover: [2, 6, 22],
-    restLineOpacity: 0.5,
   },
 };
 
@@ -88,23 +84,6 @@ const GridPattern = () => {
     const lineStyle = rgb(palette.line);
     const coverStyle = rgb(palette.cover);
 
-    // With allEdges false, only the top and left edges are drawn, so each
-    // boundary is drawn once across neighbouring cells
-    const drawLines = (
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      allEdges: boolean,
-    ) => {
-      ctx.fillRect(x, y, w, lineWidth);
-      ctx.fillRect(x, y, lineWidth, h);
-      if (allEdges) {
-        ctx.fillRect(x, y + h - lineWidth, w, lineWidth);
-        ctx.fillRect(x + w - lineWidth, y, lineWidth, h);
-      }
-    };
-
     const drawCell = (cell: number, opacity: number, force = false) => {
       if (!force && Math.abs(opacity - drawnOpacity[cell]) < OPACITY_EPSILON) {
         return;
@@ -122,17 +101,15 @@ const GridPattern = () => {
       ctx.fillStyle = backgroundStyle;
       ctx.fillRect(x, y, w, h);
 
-      // Full frame under the cover, visible where the cell is revealed
       ctx.fillStyle = lineStyle;
-      drawLines(x, y, w, h, true);
+      ctx.fillRect(x, y, w, lineWidth);
+      ctx.fillRect(x, y + h - lineWidth, w, lineWidth);
+      ctx.fillRect(x, y, lineWidth, h);
+      ctx.fillRect(x + w - lineWidth, y, lineWidth, h);
 
       ctx.globalAlpha = opacity;
       ctx.fillStyle = coverStyle;
       ctx.fillRect(x, y, w, h);
-
-      ctx.globalAlpha = palette.restLineOpacity;
-      ctx.fillStyle = lineStyle;
-      drawLines(x, y, w, h, false);
     };
 
     const twinkleOpacity = (cell: number, now: number) => {
