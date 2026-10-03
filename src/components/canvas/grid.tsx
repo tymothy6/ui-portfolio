@@ -6,22 +6,22 @@ import { useTheme } from "next-themes";
 type RGB = [number, number, number];
 
 type Palette = {
-  background: RGB;
+  revealed: RGB;
   line: RGB;
   cover: RGB;
 };
 
-// Matches the on-screen colours of the previous WebGL grid: page background
-// with grid lines, under a darker cover drawn at each cell's opacity
+// Each cell is its revealed colour with edge lines, under a darker cover drawn
+// at the cell's opacity. Uses Tailwind slate (dark) and gray (light) shades.
 const PALETTES: Record<"light" | "dark", Palette> = {
   light: {
-    background: [255, 255, 255],
-    line: [244, 245, 247],
-    cover: [241, 241, 241],
+    revealed: [255, 255, 255], // white
+    line: [209, 213, 219], // gray-300
+    cover: [229, 231, 235], // gray-200
   },
   dark: {
-    background: [15, 23, 42],
-    line: [26, 38, 58],
+    revealed: [30, 41, 59], // slate-800
+    line: [71, 85, 105], // slate-600
     cover: [2, 6, 22],
   },
 };
@@ -80,7 +80,7 @@ const GridPattern = () => {
     let lastFrameTime = 0;
     let twinkleTimer: ReturnType<typeof setInterval> | undefined;
 
-    const backgroundStyle = rgb(palette.background);
+    const revealedStyle = rgb(palette.revealed);
     const lineStyle = rgb(palette.line);
     const coverStyle = rgb(palette.cover);
 
@@ -98,7 +98,7 @@ const GridPattern = () => {
       const h = ys[row + 1] - y;
 
       ctx.globalAlpha = 1;
-      ctx.fillStyle = backgroundStyle;
+      ctx.fillStyle = revealedStyle;
       ctx.fillRect(x, y, w, h);
 
       ctx.fillStyle = lineStyle;
