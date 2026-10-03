@@ -45,7 +45,13 @@ type Twinkle = { cell: number; start: number; depth: number };
 
 const rgb = ([r, g, b]: RGB) => `rgb(${r}, ${g}, ${b})`;
 
-const GridPattern = () => {
+type GridPatternProps = {
+  // Mask the grid from fully visible at the top to transparent at the bottom,
+  // and size cells from the viewport so they match the full-height hero grid
+  fade?: boolean;
+};
+
+const GridPattern = ({ fade = false }: GridPatternProps) => {
   const { resolvedTheme } = useTheme();
   const palette = PALETTES[resolvedTheme === "dark" ? "dark" : "light"];
 
@@ -188,7 +194,8 @@ const GridPattern = () => {
       canvas.style.height = `${height}px`;
 
       // A grid line runs through the centre; one extra cell of overscan per side
-      const cell = Math.max(height * CELL_SIZE_RATIO, 24);
+      const cellBasis = fade ? window.innerHeight : height;
+      const cell = Math.max(cellBasis * CELL_SIZE_RATIO, 24);
       const half = (size: number) => Math.ceil(size / 2 / cell) + 1;
       const boundaries = (size: number) => {
         const n = half(size);
@@ -265,16 +272,27 @@ const GridPattern = () => {
       clearInterval(twinkleTimer);
       cancelAnimationFrame(frame);
     };
-  }, [palette]);
+  }, [palette, fade]);
 
   const isDarkTheme = resolvedTheme === "dark";
 
   return (
-    <div ref={containerRef} className="w-full h-auto absolute inset-0">
+    <div
+      ref={containerRef}
+      style={
+        fade
+          ? {
+              maskImage: "linear-gradient(to bottom, black, transparent)",
+              WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+            }
+          : undefined
+      }
+      className="w-full h-auto absolute inset-0"
+    >
       <div
         style={{
           background: `
-            linear-gradient(to bottom, transparent, transparent 60%, ${isDarkTheme ? "rgba(15, 23, 42, 0.95)" : "rgba(255, 255, 255, 1.0)"} 100%),
+            ${fade ? "" : `linear-gradient(to bottom, transparent, transparent 60%, ${isDarkTheme ? "rgba(15, 23, 42, 0.95)" : "rgba(255, 255, 255, 1.0)"} 100%),`}
             radial-gradient(circle at center, transparent, ${isDarkTheme ? "rgba(15, 23, 42, 0.9)" : "rgba(255, 255, 255, 1.0)"} 100%)
             `,
         }}
