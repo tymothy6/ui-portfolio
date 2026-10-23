@@ -1,0 +1,515 @@
+---
+title: Jam Copilot
+date: '2023-11-09T00:00-04:00'
+year: 2023
+tags:
+  - FigJam
+  - Figma Plugin API
+  - Figma Widget API
+  - TypeScript
+  - ChatGPT
+  - Generative AI
+summary: Document your ChatGPT usage visually in FigJam
+thumbnail:
+  src: >-
+    https://images.ctfassets.net/mzyich089xy0/3y3RM96xS2HKEZ8sM4HAix/21964942666688cace07b48b35303198/copilot-thumbnail_2x.png
+  width: 1968
+  height: 996
+  alt: Use ChatGPT visually in FigJam using stickies and connectors
+---
+
+## Introduction
+
+This post is an overview of my thought process when designing a widget to use ChatGPT in FigJam. Inspired by [Google Visual Blocks](https://visualblocks.withgoogle.com/#/) and eventually Figma's own [JamBot](https://www.figma.com/community/widget/1274481464484630971/jambot), I aimed to build a visual documentation tool for ChatGPT that leveraged whiteboards. As a primer, you should know that I'm a big fan of Notion as a second brain and task tracker (Kanban boards and databases are kind of my jam 😍), but a feature that I've always wanted is to organize and draw connections between my notes. I think this is an interface that complements large language models particularly well. When working with sequential prompts (think in the style of [LangChain](https://www.langchain.com/)), lengthy prompt-response chains can be especially difficult to navigate.
+
+**I'm sure if you've used ChatGPT for any involved task, you'll know how time-consuming it can be to scroll through a long conversation without being able to intuitively reference the most important responses.** With this in mind, one of my key requirements for this project was to strike a balance between flexible usage and structured queries like article summaries, idea generation, translation, or coding tasks.
+
+My solution is a simple wrapper that takes free-form input in FigJam, sends it to the OpenAI API for processing, and returns responses to the user. The process is repeated as many times as deemed necessary. All the inputs and responses are kept together on a single pane of glass (or canvas, to be pedantic). Plug in this simple user flow into the multiplayer aspect of Figma and you can envision collaborative ChatGPT usage and discussion. Pretty cool, huh? Widgets are an ideal solution since users interact with them on the canvas like any other native object, and the entry point for any user flow always starts on the widget itself. Widgets are inherently collaborative since every user in the same file sees the same instance. Finally, there's no limit to the number of widget instances in a file, meaning that prompts and responses can be chained together indefinitely. Perfect!
+
+You can access the full codebase for this project [on GitHub](https://github.com/tymothy6/Copilot).
+
+### Getting started
+
+I had used Figma Plugins and experimented with some widgets in the past, but I wasn't familiar with the well-documented [Widget API](https://www.figma.com/widget-docs/) that uses TypeScript and JSX. If you've written React code, you will immediately notice the similarity. There are some constraints to keep in mind and I will discuss each in more detail when we come across them. On the UI side, you should know that there are a limited set of React-like hooks and front-end components, so don't expect complete freedom when it comes to styling. Any custom shapes or icons will need to be defined as SVG elements and you won't be able to import custom wrappers. To interact with and create native elements in a Figma file, we will need to use the [Plugin API](https://www.figma.com/plugin-docs/). Every Figma plugin or widget needs to define a `manifest.json` file that describes the plugin. This file is automatically created for you when you [bootstrap](https://www.figma.com/widget-docs/setup-guide/) your widget development in Figma. However, we need to specify that the widget is designed for FigJam by modifying the `editorType` key. This will be important to access the specific methods in the Plugin API we will be using.
+
+```json title="manifest" highlight="8, 9, 10"
+{
+  "name": "Copilot",
+  "id": "1283872076476557239",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": [
+    "figjam"
+  ],
+  "containsWidget": true,
+  "widgetApi": "1.0.0",
+  "ui": "ui.html",
+  "networkAccess": {
+    "allowedDomains": [
+      "https://vercel-tymothy6.vercel.app/api/openai"
+    ]
+  }
+}
+```
+
+Great, now we know the tools we need to use to build our ChatGPT widget. Let's get started with the process.
+
+<Callout title={"Nodes in Figma"} description={"In Figma, nodes are the way the contents of a file are represented. Every layer in a Figma design or FigJam file corresponds to a node. Each node supports a range of properties. Some properties are universal, some are shared between nodes, and some are unique to specific node types."} />
+
+At the start of this project, the first prototype I wanted to build was a simple interaction with my widget reading input stored in a sticky note and returning a response. You might imagine that the barebones flow goes something like this:
+
+1. User opens the widget from the drawer.
+
+2. User creates a new sticky and writes a prompt.
+
+3. User initiates the call for a response from ChatGPT using an interaction handler.
+
+4. Widget prints the response in a new sticky. This is important for users to keep track of their usage on the canvas without having to interact with the widget. The sticky can be edited and used for subsequent prompts.
+
+What are the requirements for this user flow? First, we need a way to fetch the contents (text) of a sticky based on whether or not its selected. We then need to send the text in a request body to the OpenAI API and obtain a response (completion). Finally, we need to extract the completion and a method to generate a new sticky. On the UI side, we need an interactive element such as a button to initiate the OpenAI API call. We should also provide feedback to the user when prompts are ready to be sent. To do this, we can display the pending API call in a textbox. You might also consider styling the API call button differently depending on whether a prompt has been detected.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/1u7waEuxf3cPsD1j2gLgdZ/6779c6c3205b81994725ff49f8dec53a/copilot-in.png"} width={1342} height={750} alt={"Overview of FigJam ChatGPT widget design"}>Basic overview of the UI for a ChatGPT widget in FigJam</Figure>
+
+### Reading sticky notes
+
+As I alluded to earlier, the Figma Plugin API provides all the methods that we need to retrieve sticky text, send it to our backend to handle the OpenAI API call, and print the completion. We can access almost any part of a file through the `figma` object and use functions to view, create, and update its contents. To detect when a sticky has been selected by users, we can use the `on` callback and the `selectionchange` event that listens for (you guessed it) selection changes. By checking the `type` property of the nodes in a file, we can specify that we are listening for sticky note selections (`STICKY`) only. This logic applies to multiple stickies as well. We can use a `forEach` loop to process each selected sticky as needed. Because we need to manage side effects like interacting with the Plugin API, registering, and cleaning up the event listener, we will use the `useEffect` [hook](https://www.figma.com/widget-docs/api/properties/widget-useeffect/) from the Widget API (identical to React's `useEffect` hook).
+
+```jsx title="handleStickySelection"
+const { widget } = figma
+const { useEffect } = widget
+
+useEffect(() => {
+  const handleStickySelection = () => {
+    // Get the current selection
+    const currentSelection = figma.currentPage.selection;
+
+    // Filter the selection to include only sticky notes
+    const selectedStickies = currentSelection.filter(node => node.type === "STICKY");
+
+    // Process the selected sticky notes
+    selectedStickies.forEach(sticky => {
+      // Extract the text and make our API call
+    });
+  };
+
+  // Add the selection change listener
+  figma.on('selectionchange', handleStickySelection);
+
+  // Remove the event listener on cleanup
+  return () => {
+    figma.off('selectionchange', handleStickySelection);
+  };
+}, []);
+```
+
+Okay, this logic satisfies the requirements to process one or more prompts, at least on the surface. But how can we make this process even more intuitive? Let's allow users to prime the API call by linking stickies with the widget using FigJam connectors. Connectors are used to connect FigJam components to indicate relationships and possess directionality by default. That means that they are the ideal element to link prompt-response chains!
+
+```jsx title="documentChangeListener"
+const widgetId = useWidgetNodeId();
+
+useEffect(() => {
+
+  const documentChangeListener = (event: any) => {
+      // Check that an instance of the widget exists
+      if (!widgetId) {
+        console.error("Widget ID not found");
+        return;
+      }
+
+      for (const change of event.documentChanges) {
+        console.log('Document change:', change);
+
+       // Check for newly created connectors
+        if (change.type === "CREATE" && change.node.type === "CONNECTOR") {
+          console.log('New connector created:', change.node); // check that the connector is created
+
+          const connector = change.node as ConnectorNode;
+
+          let startNode: StickyNode | undefined;
+          let endNode: WidgetNode | undefined;
+
+          if ('endpointNodeId' in connector.connectorStart) {
+            const node = figma.getNodeById(connector.connectorStart.endpointNodeId);
+            if (node && node.type === "STICKY") {
+              startNode = node as StickyNode;
+            }
+          }
+
+          if ('endpointNodeId' in connector.connectorEnd) {
+            const node = figma.getNodeById(connector.connectorEnd.endpointNodeId);
+            if (node && node.id === widgetId) {
+              endNode = node as WidgetNode;
+            }
+          }
+
+          if (!startNode || !endNode) continue;
+
+          const isStickyConnectedToWidget = startNode !== undefined && endNode !== undefined && startNode.type === "STICKY" && endNode.id === widgetId;
+
+          if (isStickyConnectedToWidget) {
+            const defStartNode = startNode as StickyNode;
+            // First check if the sticky has been processed before ..
+            if (!processedStickies.includes(defStartNode.id)) {
+              processSticky(defStartNode);
+              setProcessedStickies(prevStickies => [...prevStickies, defStartNode.id]);
+
+            if (Array.isArray(defStartNode.fills)) {
+              setStickyFill(defStartNode.fills); // update the sticky fill
+            } else {
+              setStickyFill(null);
+            }
+          }
+        }
+      }
+
+    figma.on('documentchange', documentChangeListener);
+    }));
+
+    return () => {
+      figma.off('documentchange', documentChangeListener);
+    };
+  }, [])
+```
+
+The code in the `useEffect` hook now monitors connectors that are created between stickies and the widget, using the `widgetId` value obtained from `useWidgetNodeId` to identify the instance. When a connector is created, we process the sticky note by extracting the text, updating a list of processed stickies, setting a pending API call state, and saving the fill colour so that our response sticky is colour-matched.
+
+<Callout title={"useSyncedState"} description={"This hook from the Widget API behaves a lot like React's useState. It lets you declare that your widget relies on some state and returns a function to update that state. We need to \"key\" our state values to explicitly manage the namespace of the state. This is important for widgets because the syncedState can be maintained across different Figma clients."} />
+
+`processedStickies` is an array that keeps track of the unique sticky IDs that have been processed. `accumulatedStickyTexts` is an array that stores the text contents of each processed sticky. `stickyIdToIndexMap` is a mapping from sticky ID to their indices in the `accumulatedStickyTexts` array. This lets us update the text of an existing sticky in the array without searching through the array each time. Lastly, `pendingApiCall` holds the aggregated text that has been concatenated into a single string. In the `processSticky` function, the ID of a sticky is first checked to see if it exists in `stickyIdToIndexMap`. If it does, the corresponding text in `accumulatedStickyTexts` is updated.
+
+```jsx title="processSticky"
+const { useSyncedState } = widget;
+
+// useSyncedState expects a key and default value
+const [stickyIdToIndexMap, setStickyIdToIndexMap] = useSyncedState<Record<string, number>>("stickyIdToIndexMap", {});
+const [processedStickies, setProcessedStickies] = useSyncedState<string[]>("processedStickies", []);
+const [pendingApiCall, setPendingApiCall] = useSyncedState<string | null>("pendingApiCall", null); 
+const [accumulatedStickyTexts, setAccumulatedStickyTexts] = useSyncedState<string[]>("accumulatedStickyTexts", []);
+const [stickyFill, setStickyFill] = useSyncedState<ReadonlyArray<Paint> | null>("stickyFill", null)
+
+// ... In the useEffect hook
+
+const processSticky = (sticky: StickyNode) => {
+      const newStickyText = sticky.text.characters;
+      let newAccumulatedTexts;
+
+      if (stickyIdToIndexMap[sticky.id] !== undefined) {
+        // update existing sticky text
+        newAccumulatedTexts = [...accumulatedStickyTexts];
+        newAccumulatedTexts[stickyIdToIndexMap[sticky.id]] = newStickyText;
+      } else {
+        // handle new stickies
+        newAccumulatedTexts = [...accumulatedStickyTexts, newStickyText];
+        setStickyIdToIndexMap(prevMap => ({
+          ...prevMap,
+          [sticky.id]: newAccumulatedTexts.length - 1
+        }));
+      }
+
+      setAccumulatedStickyTexts(newAccumulatedTexts);
+      const aggregatedText = newAccumulatedTexts.join('\n');
+      console.log('Aggregated sticky text:', aggregatedText);
+      setPendingApiCall(aggregatedText);
+      console.log('Pending API call:', pendingApiCall);
+    };
+```
+
+### Fetching the OpenAI response
+
+Now we're ready to implement the star of the show; fetching the actual ChatGPT response!   The `handleJamClick` function triggers an API call using the content from `pendingApiCall`. We set up some default parameters for the `systemPrompt`, `userMessage`, and the number of completions (`choices`). If you aren't familiar with the ChatGPT API, I suggest you review the excellent documentation [here](https://platform.openai.com/docs/api-reference/chat). Of course, all of these parameters can be adjusted as per specific user requirements. For example, you might want to instruct ChatGPT to work with multiple prompts and return more than one response. In the next section, we'll discuss how you might use the choices array to create multiple stickies, each with their own completion.
+
+```jsx title="handleJamClick" highlight="12"
+const handleJamClick = async () => { 
+    console.log("handleJamClick triggered"); 
+
+    if(pendingApiCall) {
+      console.log("Making API call with:", pendingApiCall);
+
+      let systemPrompt = "You are a helpful assistant."; 
+      let userMessage = pendingApiCall; 
+      let choices = 1;
+
+      try {
+        const response = await fetch('https://vercel-tymothy6.vercel.app/api/openai', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userMessage }
+            ],
+            model: "gpt-3.5-turbo",
+            n: choices // the number of responses to return in the message.choices array
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Received API response:', data);
+          handleApiResponse(data); // logic to handle the response
+          setAccumulatedStickyTexts([]); // reset the input array
+          setStickyFill(null); // clear the stored sticky colour
+        } else {
+          console.error("Error making API call:", await response.text());
+        }
+      } catch (error) {
+        console.error("Error making API call:", (error as Error).message);
+      }
+    }
+  }
+```
+
+You should know that I'm using a Vercel serverless function to handle the call on the backend. This is because Figma widgets don't natively support environment variables to store secrets like API keys. The function is a simple proxy for making POST requests to the OpenAI chat completions endpoint. The request includes headers for content type, authorization, and the JSON stringified version of the request body sent by the widget. This lets the widget interact with the OpenAI API without handling API keys or managing CORS issues. Make sure you update the `allowedDomains` key of the widget's `manifest.json` file if you choose to use a similar approach to handle data fetching.
+
+```javascript title="vercel"
+module.exports = async (req, res) => {
+  const fetch = (await import('node-fetch')).default;
+  const body = req.body;
+
+  res.setHeader('Access-Control-Allow-Origin', '*'); // this allows any domain to access this route
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); 
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); 
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify(body)
+    });
+
+    const data = await response.json();
+    console.log('Outgoing response from OpenAI:', {
+      status: response.status,
+      statusText: response.statusText,
+      body: data
+    });
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed fetching data from OpenAI' });
+  }
+};
+```
+
+### Displaying the ChatGPT response to the user
+
+You might have noticed that I defined a `handleApiResponse` function in the click handler. This is where we will handle the logic to display the response in a new sticky. To better indicate the interaction flow, we'll also use the Plugin API to create a new connector that complements the original one drawn from the prompt to the widget. We'll check that the completion exists before attempting to extract the chat completion (`message`) from the `choices` array of the `data` object. We then call `createSticky` with the completion, which creates a single sticky note and connector. There's also logic to handle a response that contains code snippets, creating a formatted code block component in FigJam using the `createCodeBlock` method. Lastly, you'll notice that I've included a condition to check if a selected function *"Ideate"* is true. This function invokes an alternative method `createMultipleStickies` with the entire data object as an argument to create a sticky for each response when multiple completions are fetched. I won't delve into the details of that logic but I invite you to check out the code base for this project if I've piqued your interest.
+
+```jsx title="handleApiResponse" highlight="2, 3"
+function handleApiResponse(data: any) {
+    if (selectedFunction === "Ideate") {
+      createMultipleStickies(data);
+    } else {
+      if (data && data.choices && data.choices.length > 0 && data.choices[0].message) {
+        const completionText = data.choices[0].message.content.trim();
+
+        if (selectedFunction === "Code") {
+          createCodeBlock(completionText);
+        } else {
+        createSticky(completionText);
+        }
+      } else {
+        console.error("Error handling API response:", data);
+      }
+    }
+  }
+```
+
+Let's go over the `createSticky` logic in more detail. Given the chat completion as a string, the function first calls `figma.createSticky()` to create a new sticky. The `stickyFill` style is applied to the newly created sticky to ensure that it matches the prompt. The function loads the default FigJam font (Inter Medium) using `figma.loadFontAsync(defaultFont)` and sets this font for the sticky text. **Keep in mind that this is a prerequisite to render the completion text in the sticky correctly.** The contents of the sticky are set using the passed `content` string. To position the sticky relative to the widget, we use the widget instance (`widgetId`) as a reference. Lastly, we call `figma.createConnector()` to link the new sticky to the widget.
+
+```jsx title="createSticky" highlight="9, 10, 11"
+async function createSticky(content: string) {
+    try {
+    // Create a new sticky note using the widget position as reference
+    const newSticky = figma.createSticky();
+    if (stickyFill !== null) {
+      newSticky.fills = stickyFill;
+    }
+    // Load the font before setting characters
+    const defaultFont: FontName = { family: "Inter", style: "Medium" };
+    await figma.loadFontAsync(defaultFont);
+    newSticky.text.fontName = defaultFont;
+
+    newSticky.text.characters = content || '';
+
+    if (!widgetId) {
+      console.error("Widget ID not found");
+      return;
+    }
+    const widgetNode = figma.getNodeById(widgetId) as WidgetNode;
+
+    if (widgetNode) {
+      newSticky.x = widgetNode.x + widgetNode.width + 100;
+      newSticky.y = widgetNode.y + (widgetNode.height / 2) - (newSticky.height / 2);
+    } else {
+      console.error("Widget node not found.");
+      return;
+    }
+    // Create a connector between the widget and the new sticky
+    const connector = figma.createConnector();
+    connector.connectorStart = {
+      endpointNodeId: widgetId,
+      magnet: 'AUTO'
+    };
+    connector.connectorEnd = {
+      endpointNodeId: newSticky.id,
+      magnet: 'AUTO'
+    };
+  } catch (error) {
+    console.error("Error creating new sticky:", (error as Error).message);
+  }
+}
+```
+
+How do we parse ChatGPT responses and render native code components in FigJam? This behaviour is a little bit more involved than our previous handler. We need to pass information about the programming language for syntax highlighting to be formatted properly. First, we use a regular expression to extract the language and the code from the context of the chat completion. This expression looks for text enclosed in triple backtick code block syntax and isolates the language and code respectively. Next, we need to load a code block font to satisfy the Plugin API. We call `figma.createCodeBlock()` to create a new FigJam code block component. We define `isCodeLanguage` as a function to check whether the extracted language is compatible with syntax highlighting in FigJam. Finally, we position the code block relative to the widget instance and create a connector to link the block with the widget.
+
+````jsx title="createCodeBlock" highlight="22,23,24,25,26"
+ async function createCodeBlock(content: string) {
+    try {
+    const languageRegEx = /```(.*?)\n([\s\S]*?)```/g;
+    const languageMatch = languageRegEx.exec(content); // note that languageMatch[0] returns the entire matched string 
+
+    if (!languageMatch) {
+      console.error("Error parsing code block. Please try again with a supported language.");
+      return;
+    }
+
+    const defaultFont: FontName = { family: "Source Code Pro", style: "Medium" };
+    await figma.loadFontAsync(defaultFont);
+
+    // Match the language to the codeLanguage prop
+    if (languageMatch) {
+      const language = languageMatch[1].trim().toUpperCase(); // first match is the language right after the first triple backticks
+      const code = languageMatch[2].trim(); // second match is the enclosed code
+      // Create a new Code block using the widget position as reference
+      const newCode = figma.createCodeBlock();
+      newCode.code = code;
+
+      if (isCodeLanguage(language)) {
+        newCode.codeLanguage = language;
+      } else {
+        newCode.codeLanguage = 'PLAINTEXT';
+      }
+
+      if (!widgetId) {
+        console.error("Widget ID not found");
+        return;
+      }
+      const widgetNode = figma.getNodeById(widgetId) as WidgetNode;
+
+      if (widgetNode) {
+      newCode.x = widgetNode.x + widgetNode.width + 100;
+      newCode.y = widgetNode.y + (widgetNode.height / 2) - (newCode.height / 2);
+      } else {
+        console.error("Widget node not found.");
+        return;
+      }
+
+      // Create a connector between the widget and the code block
+      const connector = figma.createConnector();
+      connector.connectorStart = {
+        endpointNodeId: widgetId,
+        magnet: 'AUTO'
+      };
+      connector.connectorEnd = {
+        endpointNodeId: newCode.id,
+        magnet: 'AUTO'
+      };
+    }
+  } catch (error) {
+    console.error("Error creating code block:", (error as Error).message);
+  }
+}
+````
+
+```jsx title="isCodeResponse"
+// All supported languages in FigJam
+type CodeLanguageValue = 'TYPESCRIPT' | 'CPP' | 'RUBY' | 'CSS' | 'JAVASCRIPT' | 'HTML' | 'JSON' | 'GRAPHQL' | 'PYTHON' | 'GO' | 'SQL' | 'SWIFT' | 'KOTLIN' | 'RUST' | 'BASH' | 'PLAINTEXT' | 'DART';
+
+// Check that language is supported, if not, default to plain text in createCodeBlock()
+  function isCodeLanguage(lang: string): lang is CodeLanguageValue {
+    const validLanguages: CodeLanguageValue[] = ['TYPESCRIPT', 'CPP', 'RUBY', 'CSS', 'JAVASCRIPT', 'HTML', 'JSON', 'GRAPHQL', 'PYTHON', 'GO', 'SQL', 'SWIFT', 'KOTLIN', 'RUST', 'BASH', 'PLAINTEXT', 'DART'];
+    return validLanguages.includes(lang as CodeLanguageValue);
+  }
+```
+
+### Fine-tuning the widget
+
+We've discussed the basic building blocks to satisfy basic requirements for ChatGPT usage using native FigJam components (stickies, connectors, code blocks). Obviously, there are many directions that we could focus on in future iterations. One feature of Figma's JamBot that I enjoy using are the structured queries where ChatGPT is trained to act a specific way. For example, the *"Rabbit hole"* option provides six distinct but related ideas to your prompt. You might define logic for different widget functions using cases to modify the system prompt in the API fetch function. In my codebase, `selectedFunction` is a handler that parses the user selection from the UI and declares the relevant case. Please keep in mind that different language models (ChatGPT vs. GPT-4) will respond quite differently to these prompts and a fair amount of fine-tuning is necessary to achieve optimal results.
+
+````jsx title="switch-selected-function"
+// In the API fetch handler
+
+switch (selectedFunction) {
+        case "Ideate":
+          systemPrompt = "You are a helpful assistant for brainstorming ideas. You will provide concise answers of one sentence or less. Given the following, provide one related idea:";
+          choices = 4;
+          break;
+        case "Teach me":
+          systemPrompt = "You are a helpful teacher. Explain the following in simple terms:";
+          break;
+        case "Rabbit hole":
+          systemPrompt = "You are a helpful assistant. You will provide concise answers of one sentence or less. You are going down a rabbit hole. Provide one example, idea, statistic, fact, or insight based on the following:";
+          choices = 4;
+          break;
+        case "Summarize":
+          systemPrompt = "You are a helpful assistant. Summarize the messages provided into a concise description.";
+          break;
+        case "Rewrite":
+          systemPrompt = "You are a helpful assistant. Rewrite the message provided according to the specified requirements.";
+          userMessage = pendingApiCall + (additionalInput || '');
+          break;
+        case "Code":
+          systemPrompt = "You are a programming assistant. Provide concise code in the requested language to implement the given task. Be sure to wrap your code in triple backticks with the specified language (```language) to format it as a code block.";
+          userMessage = pendingApiCall + (additionalInput || '');
+          break;
+        default:
+          break;
+}
+````
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/1YB7Z8B4l6vw7apgeKUb20/025ae8ba05d49ceddcd9ccb202c56d67/copilot-out.png"} width={2218} height={692} alt={"Overview of FigJam ChatGPT widget design"}>Example of how you might handle additional inputs to modify the widget API call</Figure>
+
+You might also customize user prompts by providing additional inputs, for example by including a text area in the widget UI. In the example below, `additionalInput` is a state variable mapped to an `<Input>` [component](https://www.figma.com/widget-docs/api/component-Input/) from the Widget API. In my code, `additionalInput` is appended to the `pendingApiCall` state before the OpenAI API is called.
+
+```jsx title="additional-input"
+function Widget () {
+const [additionalInput, setAdditionalInput] = useSyncedState<string | null>("additionalInput", null); 
+
+// ... 
+
+return (
+// UI code starts here...
+
+  <Input
+        value={additionalInput}
+        placeholder={inputPlaceholder}
+        onTextEditEnd={(e) => {setAdditionalInput(e.characters);}}
+        fontSize={16}
+        fill={'#FFFFFF'}
+        placeholderProps={{
+          opacity: 0.8,
+        }}
+        inputFrameProps={{
+          fill: "#020202",
+          stroke: "#D5D5D5",
+          cornerRadius: 8,
+          padding: 8,
+        }}
+        inputBehavior="wrap" // typing 'Enter' blurs and triggers     onTextEditEnd, the height of the input frame will auto-resize
+        />
+
+  // more UI code here..
+  )
+}
+```
+
+## Final words
+
+Building out this ChatGPT widget for FigJam was a great experience as a novice developer. Having to consider different design decisions on the front-end, all while working within the specific constraints of widget development was challenging but rewarding. I enjoyed learning about the detailed codebase in the Plugin API and can see myself working on more complex plugins and widgets in the future. If you're thinking about developing a specific Figma plugin or widget, I strongly urge you to get started today 😊. You only know what you build yourself!

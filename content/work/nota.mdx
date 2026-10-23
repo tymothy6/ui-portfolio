@@ -1,0 +1,139 @@
+---
+name: 'Nota: Mobile Electronic Lab Notebook'
+order: 1
+year: 2022
+type:
+  - Product Design
+purpose: Personal Project
+timeline: 3 months
+tools:
+  - Figma
+  - Adobe Creative Suite
+summary: >-
+  Nota is a mobile interface for electronic lab notebooks (ELNs) designed to
+  simplify note-taking for bench scientists using mobile devices, enabling
+  documentation and access to saved entries regardless of their schedule and
+  location.
+overview: >-
+  How might we make it easier for bench scientists to take detailed notes about
+  their experiments by leveraging mobile devices? Nota is a dedicated mobile
+  interface for electronic laboratory notebooks (ELNs). Nota enables
+  mobile-friendly documentation when users are away from their personal
+  computers. Nota also enables users to reference their saved entries from their
+  mobile device.
+thumbnail:
+  src: >-
+    https://images.ctfassets.net/mzyich089xy0/3HUHmsqo45TfwLl4zm5tnI/792cf2e1a8492230b165bde217dcf7f8/nota-thumbnail.png
+  width: 2000
+  height: 1383
+  alt: ''
+alt: 'Nota: Mobile Electronic Lab Notebook'
+figmaLink: >-
+  https://www.figma.com/proto/q7Bb404fmZI1DqvZanYcaX/Nota-Prototype-v4?page-id=0%3A1&type=design&node-id=1-15&viewport=210%2C341%2C0.08&t=3syrJpHSr1mqlCRA-1&scaling=scale-down&starting-point-node-id=1%3A15&show-proto-sidebar=1&mode=design
+---
+
+<Gallery images={[
+  {
+    "src": "https://images.ctfassets.net/mzyich089xy0/1OB2dNioyF1dj7w6ALz115/d8c5675388d8a47abe0510f99ecb3487/Nota_cover.webp",
+    "width": 1920,
+    "height": 1080,
+    "alt": ""
+  }
+]} />
+
+<Section title="Design Process">
+
+## Problem Space
+
+Nota provides value by fulfilling the need of scientists to take detailed notes about experiments. By providing a means to document ideas and observations that might otherwise be lost, Nota could improve experimental reproducibility and accelerate the pace of scientific research \& development. Given the [high cost](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1002165) of irreproducible biomedical research and the [frequent inability](https://www.nature.com/articles/533452a) of experiments to be replicated, I believe this is an extremely impactful problem space to tackle.
+
+## User Research
+
+From my PhD studies, I knew many scientists who found lab documentation difficult (myself included!). I understood that documenting research was an important part of the scientific process but I didn’t feel confident in sorting my records by pen \& paper. I began with user research in the form of interviews. My goal was to understand how scientists take notes and their general familiarity with digital solutions. The majority of scientists I spoke to enjoyed the convenience and ease of organizing digital notes. Many were active users of electronic lab notebook (ELN) products like [Benchling](https://benchling.com) and [Labguru](https://labguru.com).
+
+During my research, I found several common drawbacks with existing ELN solutions. Many scientists found it difficult to capture their thought process in the form of digital text. Moreover, ELNs are meant to be accessed from a personal computer. Because of this, many scientists reported a disconnect between completing tasks and recording the details of an experiment. I reasoned that the use of mobile devices, such as personal or workplace-associated smartphones and tablets, could help address these pain points.
+
+> "I find it hard to keep up with \[taking\] lab notes. I'm always preoccupied with tasks at the bench."
+
+<Caption>-A potential Nota user</Caption>
+
+Two documentation formats enabled by mobile devices are image (with the device camera) and speech-based (with the microphone) notes. I conducted a second round of user interviews to test the feasibility of mobile device usage in lab environments. I found that many scientists were enthusiastic about the concept and familiar with these modes of usage in other apps. However, some respondents reported prior difficulties with speech-to-text technology.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/2QTbz6aw4RZBNZiuBrhvId/6edfe41308e867852eade1c74b3e7e86/Nota_User_Flow_Jessica.png"} width={1953} height={1098} alt={"nota-flow-diagram"}>How a scientist might use Nota to save a voice note</Figure>
+
+## Interaction \& UI Design
+
+After validating the concept with potential users, I synthesized user research data and ideated corresponding task flows. My users needed to save new photo or voice entries in existing project folders. I also began to explore the information architecture of Nota. In addition to saving and referencing ELN entires, I also ideated methods to access experimental workflows (Protocols) and reagent information databases based on user feedback. These ideas will be explored in future iterations of Nota.
+
+During the next stage of ideation, I applied interaction design principles to sketches and wireframes of the user interface. I also performed interviews regarding my sketches and wireframes with a cohort of scientists to test their usability. I refined my wireframes in subsequent prototypes and added image assets and brand colours to resemble the final product in-use by scientists. I tested these prototypes in three rounds of user testing with 2-3 participants each.‍
+
+<FigmaEmbed figmaUrl={"https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fq7Bb404fmZI1DqvZanYcaX%2FNota-Prototype-v4%3Fpage-id%3D0%253A1%26type%3Ddesign%26node-id%3D1-4%26viewport%3D321%252C301%252C0.1%26scaling%3Dscale-down%26starting-point-node-id%3D1%253A3%26show-proto-sidebar%3D1"} />
+
+My goal for the Nota user interface was to evoke an authentic, reliable, and familiar mood. The visual identity should support the value proposition of enabling scientific reproducibility and communication. The blue and violet hues support this aim and are similar to existing ELN brand colours. This helps to create a sense of continuity from existing ELNs for my users.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/2BIi0QSxSQpiN4lFqVuBcm/fe39ac3c2ce5af78415b49ee3bd1f2b8/nota-style-guide.png"} width={1412} height={1265} alt={"nota-style-guide"}>Nota Style Guide</Figure>
+
+## User Testing
+
+One common theme of feedback I received during user testing concerned how entries could be organized. My users wanted to save entries to multiple Projects and group related entries. To keep track of their notes, my users also desired the ability to input entry details like titles and descriptions. Some users desired alternative entry display formats. In response to these findings, I ideated and prototyped new solutions for entry description and organization.
+
+Selecting the appropriate amount of record information to display in Nota was a challenge. I considered mobile accessibility and developed Nota to supplement ELNs rather than replace them. Initially, I chose to minimize text inputs required during the note-taking task flow. I also limited the ability to edit record details in Nota. Upon receiving further rounds of user feedback, I realized that my designs were arbitrarily limiting some users.
+
+</Section>
+
+<Gallery images={[
+  {
+    "src": "https://images.ctfassets.net/mzyich089xy0/2UG9Gfg8rqKzeFws2v2ghL/87f03581f91cc8d9bc0c918fa1dd4a88/nota-hifi-1.png",
+    "width": 5928,
+    "height": 1976,
+    "alt": ""
+  },
+  {
+    "src": "https://images.ctfassets.net/mzyich089xy0/2U1Wi5vUPQNSsf3hxNypOg/f3edacaa50aa30d230a5e4375a924650/nota-hifi-2.png",
+    "width": 5928,
+    "height": 1976,
+    "alt": ""
+  },
+  {
+    "src": "https://images.ctfassets.net/mzyich089xy0/eeAaJta9WHWXDi2EoGzLn/7f910e5a15202b213b0e97022330ff19/nota-hifi-3.png",
+    "width": 5928,
+    "height": 1976,
+    "alt": ""
+  }
+]} />
+
+<Section title="Design Outcome">
+
+## Takeaway
+
+Nota is the first digital product that I designed from the ground up. I really enjoyed prototyping Nota and testing my design with users. I was humbled when I received feedback about my ideas, especially when users expressed their genuine need for the product! It was humbling to test my initial designs and receive feedback from my fellow scientists. This project taught me the importance of considering your potential users at every step of the design process. The most important takeaway from this work is the notion that it’s perfectly okay to go back to the drawing board if your solutions aren’t optimal. I strive to look for specific and relatable ways to tell a story to my audience - whether it’s from the perspective of an user story or in collecting evidence to test hypotheses and strengthen a scientific model. This work also reminds me to be cognizant of the transferrable skills I developed during my PhD and how they allow me to build user and customer empathy as a designer.
+
+## Measuring Success \& Design Impact
+
+How might we measure the impact of Nota as a solution to scientist’s documentation needs using summative research? Are scientists satisfied with the Nota user experience? How is Nota actually being used in a lab environment? These are all questions I am actively investigating in further iterations of the product. Examples of summative research that I would pursue include:
+
+**Quantitative methods:**
+
+1. Analytics (number of app downloads or users onboarded)
+
+2. Benchmarking media uploads (images and voice recordings, other assets)
+
+**Qualitative methods:**
+
+1. Structured interviews investigating impacts on research culture and documentation processes
+
+2. Contextual inquiry \& journey mapping
+
+**Mixed methods:**
+
+1. Field and diary studies (ethnographic research in the scientist's lab)
+
+2. Surveys probing user satisfaction
+
+## Taking Two Steps Back
+
+I am excited to continue working in the scientific documentation problem space. The prototype I present here is a small facet of the overall product I envision for Nota. Moving forward, I would like to conduct generative research to understand challenges in recording scientific protocols and accessing lab information management systems (LIMS). By doing so, I believe that I could provide valuable solutions to meet user needs.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/1rjo70RuVqwO76XX0pshR1/191cbda4556a8bf388be6dcb458d25de/nota-future-ia_2x.png"} width={2402} height={1194} alt={"nota-future-ia"}>Sample information architecture for the Protocols and LIMS features</Figure>
+
+</Section>

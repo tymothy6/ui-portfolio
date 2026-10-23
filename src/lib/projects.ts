@@ -1,10 +1,23 @@
-import { TypeWorkSkeleton } from "./content-types";
-import { Entry } from "contentful";
-import { Document as RichTextDocument } from "@contentful/rich-text-types";
-import { contentfulClient } from "./contentful";
-import { ContentImage, parseContentfulContentImage } from "./content-image";
+import { z } from "zod";
+import { contentImageSchema, type ContentImage } from "./content-image";
+import { readMdxFiles } from "./mdx-files";
 
-type ProjectWork = Entry<TypeWorkSkeleton, undefined, string>;
+const projectSchema = z.object({
+  name: z.string(),
+  // Position in project lists, lowest first
+  order: z.number().int(),
+  year: z.number().int().optional(),
+  type: z.array(z.string()).default([]),
+  purpose: z.string().default(""),
+  timeline: z.string().default(""),
+  tools: z.array(z.string()).default([]),
+  summary: z.string().default(""),
+  overview: z.string().default(""),
+  thumbnail: contentImageSchema.optional(),
+  alt: z.string().default(""),
+  figmaLink: z.string().url().optional(),
+  githubLink: z.string().url().optional(),
+});
 
 export interface Project {
   name: string;
@@ -17,56 +30,35 @@ export interface Project {
   year: number;
   summary: string;
   overview: string;
-  heroBlock1: (ContentImage | null)[];
-  process: RichTextDocument | null;
-  heroBlock2: (ContentImage | null)[];
-  outcome: RichTextDocument | null;
+  // MDX source for everything below the intro, rendered with <MdxContent>
+  body: string;
   figmaLink: string;
   githubLink: string;
   tools: string[];
 }
 
-// Transform a Contentful entry into a Project object
-export function parseContentfulProject(
-  projectWork?: ProjectWork,
-): Project | null {
-  if (!projectWork) {
-    return null;
-  }
-
-  return {
-    name: projectWork.fields.name,
-    slug: projectWork.fields.slug || "",
-    type: projectWork.fields.type || [],
-    thumbnail: parseContentfulContentImage(projectWork.fields.thumbnail),
-    alt: projectWork.fields.alt || "",
-    purpose: projectWork.fields.purpose || "",
-    timeline: projectWork.fields.timeline || "",
-    year: projectWork.fields.year || 0,
-    summary: projectWork.fields.summary || "",
-    overview: projectWork.fields.overview || "",
-    heroBlock1:
-      projectWork.fields.heroBlock1?.map(parseContentfulContentImage) || [],
-    process: projectWork.fields.process || null,
-    heroBlock2:
-      projectWork.fields.heroBlock2?.map(parseContentfulContentImage) || [],
-    outcome: projectWork.fields.outcome || null,
-    figmaLink: projectWork.fields.figmaLink || "",
-    githubLink: projectWork.fields.githubLink || "",
-    tools: projectWork.fields.tools || [],
-  };
-}
-
-// Fetch all projects
+// Fetch all projects in display order
 export async function fetchAllProjects(): Promise<Project[]> {
-  const projects = await contentfulClient.getEntries<TypeWorkSkeleton>({
-    content_type: "work",
-    order: ["fields.displayIndex"], // sort by displayIndex
-  });
+  const files = await readMdxFiles("work", projectSchema);
 
-  return projects.items.map(
-    (project) => parseContentfulProject(project) as Project,
-  );
+  return files
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(({ slug, data, body }) => ({
+      name: data.name,
+      slug,
+      type: data.type,
+      thumbnail: data.thumbnail ?? null,
+      alt: data.alt,
+      purpose: data.purpose,
+      timeline: data.timeline,
+      year: data.year ?? 0,
+      summary: data.summary,
+      overview: data.overview,
+      body,
+      figmaLink: data.figmaLink ?? "",
+      githubLink: data.githubLink ?? "",
+      tools: data.tools,
+    }));
 }
 
 // Fetch a single project by its slug
@@ -77,10 +69,6 @@ interface FetchProjectOptions {
 export async function fetchProject({
   slug,
 }: FetchProjectOptions): Promise<Project | null> {
-  const project = await contentfulClient.getEntries<TypeWorkSkeleton>({
-    content_type: "work",
-    "fields.slug": slug,
-  });
-
-  return parseContentfulProject(project.items[0]);
+  const projects = await fetchAllProjects();
+  return projects.find((project) => project.slug === slug) ?? null;
 }

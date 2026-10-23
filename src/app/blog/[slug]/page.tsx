@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata, ResolvingMetadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { fetchPost, fetchAllPosts } from "@/lib/blog-posts";
-import RichText from "@/lib/rich-text";
+import { MdxContent } from "@/components/mdx/mdx-content";
 import Image from "next/image";
 
 import { ArrowLeftIcon, Share2Icon } from "@radix-ui/react-icons";
@@ -27,7 +27,7 @@ import {
 import { GiscusWrapper } from "@/components/patterns/giscus-wrapper";
 import { BlogBuyMeCoffee } from "@/components/patterns/buy-me-coffee";
 import { ReadingTime } from "@/components/patterns/reading-time";
-import { extractTextFromRichText } from "@/lib/utils";
+import { mdxToPlainText } from "@/lib/utils";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -122,7 +122,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
               </p>
               {data.body && (
                 <ReadingTime 
-                  text={extractTextFromRichText(data.body)} 
+                  text={mdxToPlainText(data.body)} 
                   className="text-sm md:text-base"
                 />
               )}
@@ -209,7 +209,7 @@ async function BlogPostPage({ params }: BlogPageProps) {
           </div>
         )}
         <div className="flex flex-col gap-4 pt-24 pb-36 mx-0 md:mx-48 lg:mx-64 xl:mx-96 font-serif">
-          <RichText document={data.body} />
+          <MdxContent source={data.body} />
 
           <div className="flex flex-row gap-2 items-center mx-8 mb-8 font-sans">
             <LinkedInShare url={`https://tim-ng.me/blog/${data.slug}`} />

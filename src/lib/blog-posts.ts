@@ -1,10 +1,16 @@
-import { TypeBlogPageSkeleton } from "./content-types";
-import { Entry } from "contentful";
-import { Document as RichTextDocument } from "@contentful/rich-text-types";
-import { contentfulClient } from "./contentful";
-import { ContentImage, parseContentfulContentImage } from "./content-image";
+import { z } from "zod";
+import { contentImageSchema, type ContentImage } from "./content-image";
+import { readMdxFiles } from "./mdx-files";
 
-type BlogPost = Entry<TypeBlogPageSkeleton, undefined, string>;
+const postSchema = z.object({
+  title: z.string(),
+  date: z.coerce.date().optional(),
+  year: z.number().int().optional(),
+  tags: z.array(z.string()).default([]),
+  summary: z.string().default(""),
+  thumbnail: contentImageSchema.optional(),
+  hero: z.array(contentImageSchema).default([]),
+});
 
 export interface Post {
   title: string;
@@ -14,49 +20,30 @@ export interface Post {
   tags: string[];
   thumbnail: ContentImage | null;
   summary: string;
-  heroBlock: (ContentImage | null)[];
-  body: RichTextDocument | null;
-  recommended: BlogPost[];
+  heroBlock: ContentImage[];
+  // MDX source, rendered with <MdxContent>
+  body: string;
 }
 
-// Transform a Contentful entry into a Post object
-export function parseContentfulPost(blogPost?: BlogPost): Post | null {
-  if (!blogPost) {
-    return null;
-  }
-
-  return {
-    title: blogPost.fields.title,
-    slug: blogPost.fields.slug || "",
-    year: blogPost.fields.year || null,
-    date:
-      typeof blogPost.fields.date === "string"
-        ? new Date(blogPost.fields.date)
-        : null,
-    tags: blogPost.fields.tags || [],
-    thumbnail: parseContentfulContentImage(blogPost.fields.thumbnail),
-    summary: blogPost.fields.summary || "",
-    heroBlock:
-      blogPost.fields.heroBlock?.map(parseContentfulContentImage) || [],
-    body: blogPost.fields.body || null,
-    recommended:
-      (blogPost.fields.recommended?.filter(
-        (item) => !("sys" in item && item.sys.type === "Link"),
-      ) as BlogPost[]) || [],
-  };
-}
-
-// Fetch all blog posts
+// Fetch all blog posts, newest first
 export async function fetchAllPosts(): Promise<Post[]> {
-  const posts = await contentfulClient.getEntries<TypeBlogPageSkeleton>({
-    content_type: "blogPage",
-  });
+  const files = await readMdxFiles("blog", postSchema);
 
-  return posts.items
-    .map((post) => parseContentfulPost(post) as Post)
+  return files
+    .map(({ slug, data, body }) => ({
+      title: data.title,
+      slug,
+      year: data.year ?? null,
+      date: data.date ?? null,
+      tags: data.tags,
+      thumbnail: data.thumbnail ?? null,
+      summary: data.summary,
+      heroBlock: data.hero,
+      body,
+    }))
     .sort((a, b) => {
-      // Sort by date in descending order
-      if (!a.date) return 1; // posts without dates should be last
+      // Posts without dates go last
+      if (!a.date) return 1;
       if (!b.date) return -1;
 
       return b.date.getTime() - a.date.getTime();
@@ -71,10 +58,6 @@ interface FetchPostOptions {
 export async function fetchPost({
   slug,
 }: FetchPostOptions): Promise<Post | null> {
-  const post = await contentfulClient.getEntries<TypeBlogPageSkeleton>({
-    content_type: "blogPage",
-    "fields.slug": slug,
-  });
-
-  return parseContentfulPost(post.items[0]);
+  const posts = await fetchAllPosts();
+  return posts.find((post) => post.slug === slug) ?? null;
 }
