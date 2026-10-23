@@ -4,11 +4,11 @@ import Link from "next/link";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { fetchProject, fetchAllProjects } from "@/lib/projects";
-import RichText from "@/lib/rich-text";
-import Image from "next/image";
 
 import { Separator } from "@/components/ui/separator";
 import { ProjectCardCarousel } from "@/components/patterns/project-card-carousel";
+import { FigmaMobileNotice } from "@/components/patterns/figma-mobile-notice";
+import { MdxContent } from "@/components/mdx/mdx-content";
 import { Button } from "@/components/ui/button";
 
 import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -156,66 +156,10 @@ async function ProjectPage({ params }: ProjectPageProps) {
             </div>
           </div>
         </div>
-        <div className="my-6 flex flex-col">
-          {data.heroBlock1 &&
-            data.heroBlock1.map(
-              (image, index) =>
-                image && (
-                  <div
-                    key={`${data.slug}-${index}`}
-                    className="relative w-full"
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      className="object-cover"
-                    />
-                  </div>
-                ),
-            )}
+        <FigmaMobileNotice />
+        <div className="flex flex-col">
+          <MdxContent source={data.body} />
         </div>
-        <div className="flex flex-col gap-4 pt-6 md:pt-8 pb-12 md:pb-16 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
-          <div className="mx-8">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Design Process
-            </h2>
-            <Separator className="mb-8" />
-          </div>
-          <RichText document={data.process} />
-        </div>
-        <div className="my-6 flex flex-col">
-          {data.heroBlock2 &&
-            data.heroBlock2.map(
-              (image, index) =>
-                image && (
-                  <div
-                    key={`${data.slug}-${index}`}
-                    className="relative w-full"
-                  >
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={image.width}
-                      height={image.height}
-                      className="object-cover"
-                    />
-                  </div>
-                ),
-            )}
-        </div>
-        {data.outcome && (
-          <div className="flex flex-col gap-4 pt-12 md:pt-16 pb-24 md:pb-36 mx-0 md:mx-48 lg:mx-60 xl:mx-72">
-            <div className="mx-8">
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-                Design Outcome
-              </h2>
-              <Separator className="mb-8" />
-            </div>
-            <RichText document={data.outcome} />
-          </div>
-        )}
         <div className="flex-col space-y-8 pb-24 md:pb-36 lg:pb-48 md:mx-24 lg:mx-48 xl:mx-60">
           <h2 className="text-2xl font-semibold mx-8 mb-4 font-mono">
             Other work

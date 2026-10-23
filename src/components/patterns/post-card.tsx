@@ -27,7 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ReadingTime } from "@/components/patterns/reading-time";
-import { extractTextFromRichText } from "@/lib/utils";
+import { mdxToPlainText } from "@/lib/utils";
 
 export function BlogPostCard({
   data,
@@ -97,7 +97,7 @@ export function BlogPostCard({
           </div>
           {data.body && (
             <ReadingTime
-              text={extractTextFromRichText(data.body)}
+              text={mdxToPlainText(data.body)}
               className="pl-2 pt-2"
             />
           )}
