@@ -1,0 +1,122 @@
+---
+name: 'NotaChat: Generative AI for Scientists'
+order: 5
+year: 2023
+type:
+  - Product Design
+purpose: Personal Project
+timeline: 1 month
+tools:
+  - Figma
+  - ProtoPie
+  - React Native
+  - SwiftUI
+summary: >-
+  I explore the design and use cases of AI chatbots to standardize molecular
+  biology documentation, integrating large language models with iOS development
+  using SwiftUI and React Native.
+overview: >-
+  In this design initiative, I address the challenges scientists face due to
+  discrepancies in lab equipment and procedures, which can hinder the
+  reproducibility of experiments. Recognizing that nuances in shared methods can
+  critically influence outcomes, I turn to specialized AI chatbots as a
+  promising solution. These innovative tools aim to standardize molecular
+  biology techniques, such as microscopic cell studies and genome sequencing,
+  enhancing consistency and driving down costs. Throughout the project, I delve
+  into understanding the potential of generative AI for the scientific community
+  and conceptualize pioneering solutions. By employing rapid prototypes,
+  including apps developed in React Native & SwiftUI integrated with
+  large-language model and electronic lab notebook (ELN) APIs, I seek to
+  validate my hypotheses and further refine the tool's efficacy.
+thumbnail:
+  src: >-
+    https://images.ctfassets.net/mzyich089xy0/34sHtK0kL2GjQEE1xJkhjr/ec09fcb2f1820cc9614f51b7337f1eed/notachat-thumbnail.png
+  width: 2075
+  height: 1539
+  alt: ''
+alt: 'NotaChat: Generative AI for Science'
+githubLink: 'https://www.github.com/tymothy6/notachat'
+---
+
+<Gallery images={[
+  {
+    "src": "https://images.ctfassets.net/mzyich089xy0/5bhxPiDjoc4W9v8Gtg36M8/4316c68f608c08dd0ee4b44a6d821b71/notachat-hero_2x.png",
+    "width": 6194,
+    "height": 3066,
+    "alt": "Hero image for NotaChat"
+  }
+]} />
+
+<Section title="Design Process">
+
+## AI Tools for Science
+
+For the purpose of designing AI tools for lab documentation, I asked how research scientists are using AI and machine learning for their day-to-day research. First, I devised a mixed methods survey to capture a breadth of opinions. I followed up with in-depth interviews with selected users to gauge their use cases and AI interests. I concluded that scientists are very receptive to generative AI technology, yet existing tools and products for research and documentation purposes are lacking. ‍
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/4X9dghdd467TRRv1EzB0WR/dcd2bd88b4a8e78a296e0dc1645dd5e7/Insights_2x.png"} width={3618} height={4054} alt={"NotaChat AI survey results"}>Summary of survey results measuring AI usage by scientists</Figure>
+
+## Solutions \& Testing Insights
+
+There are at least two classes of inputs (text and images) that are relevant in the generative AI space. These are not mutually exclusive and many systems can effectively translate between the two.
+
+From my initial research, I found that **assisted documentation** for scientific **protocol completion** would be a valuable starting point for my design work. Throughout this work, insights collected from previous user testing influenced my design decisions:
+
+**Data depth \& sophistication: chatbot storage and recall**
+
+> *Which formats of data presentation are necessary or sufficient for my users?*
+
+**Technical constraints: context-specific knowledge and factual accuracy, input limitations (language, device support)**
+
+> *What if user intent cannot be efficiently translated to the AI?*
+
+I started prototyping chatbot assistants using existing Nota style guidelines to accelerate the design process. These are solutions in which the AI prompts the user for key details as they complete the protocol. In the context of a common procedure like immunofluorescence, this could include the following data points:
+
+- Cell line, passage, seeding density, culture conditions
+
+- Coverslips
+
+- Drug treatment, transfection, genetic modification
+
+- Fixation
+
+- Antibody details
+
+- Staining details: incubation steps, temperature, time
+
+- Microscope settings: objective lens, excitation/emission wavelengths, laser power, scanning mode, Z-planes, detector gain, averaged frames
+
+- Representative images of the experiment
+
+During each interaction, the chatbot provides guidance and best practices to the user based on its training data. Ideally, the chatbot can predict the user's actions and update the UI accordingly so that prose from the user is not required. After the information is collected, the chatbot displays a concise summary for review, allowing the user to edit potential inaccuracies. Finally, the chatbot saves the documentation to an ELN so that it can be referenced in the future. With regards to data storage and recall, it may be useful for the chatbot to write a data token using a structured language like JSON or XML that can be updated as a source-of-truth. Further user testing will be required to validate that a token is a legible alternative to a complete log of messages.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/4y9ahEJqFBSLi5HlE9eVMJ/8b32e4abf802e7ec7c5b92e9bdfffe40/NotaChat_Flow_1.png"} width={5644} height={1786} alt={"notachat-flow"}>Simplified user flow for assisted immunofluorescence documentation using NotaChat assistant</Figure>
+
+‍
+
+To bypass the limitations of user testing with static prototypes, I developed functional apps using React Native and SwiftUI. I prioritized interaction design and features requested by my users over visual design in this process. Over the course of 3 weeks, I was able to build, test, and iterate on several versions of a standalone chatbot app with message history and ELN integration. Although I was limited by model input constraints and publicly available ELN APIs, I am actively building and experimenting with next-generation chatbots that can interpret images and protocols in different file formats. Specifically, employing task-specific models will improve the user experience by reducing the time for responses to be returned and also return cost savings in production.
+
+> After testing with my users, I realized providing the language model with their personalized data will be a key requirement to ground the model and ensure that it can accommodate their needs.
+
+While testing chatbot iterations, my users frequently encountered difficulties caused by the context window of the language model. Briefly, this window refers to the length of the previous input that is considered during a response. If some information necessary to understand the user is excluded from this window (as in the case of a detailed protocol), the model loses provided context. While advances in model technology can expand the window, it will be important to design with this constraint in mind. One possible solution is to provide the data token when the window is exceeded, ensuring that no information is lost from the conversation.
+
+<Figure src={"https://images.ctfassets.net/mzyich089xy0/4lpQRCFlB3K0JVlLJTZlqn/5c530a06ccdd7df06e0cccf33e424afd/-NotaChat_Simulator.png"} width={4908} height={1786} alt={"notachat-swift-mock"}>NotaChat Swift app running on iOS Simulator. The app is powered by OpenAI \``gpt-3.5-turbo`\` or \``gpt4`\` models and supports OAuth user login, chat message history, renaming, grouping, and export using [RSpace](https://www.researchspace.com/) ELN credentials.</Figure>
+
+‍
+
+Documentation is an especially salient problem space for generative AI solutions. Generative AI has the potential to completely upend the way users interact with complex technical media by understanding user intent. I envision chatbots that can revise and adapt protocols based on user or laboratory constraints, condense protocols into legible summaries, and even promote research integrity through automated data collection. Information will be easier to comprehend and share than ever before. It is truly a humbling experience to define new UI patterns at the forefront of this technology.
+
+‍
+
+‍
+
+</Section>
+
+<Section title="Design Outcome">
+
+The main takeaway I gleaned from this project is that there is no 'one-size-fits-all' approach to updating products with an intent-based UI (AI-powered experiences rather than [command-based UI](https://www.nngroup.com/articles/ai-paradigm/)). As of the time of writing, I have witnessed many software companies releasing generative AI features on the heels of others. With this in mind, it is evident that the future of UI design requires a delicate balance of command and intent-based elements. It is my firm belief that favouring either solution without adequate user testing will tax design and development resources and negatively impact users.
+
+As designers, we need to be especially mindful of ‘*build fast, test early*’ philosophies when working in the generative AI space. To this end, I look forward to improving my development skills further so that I can continue to build exceptional prototypes for my users. Another important consideration when building personalized chatbots is to be cognizant of privacy and data security. Without a deliberate policy for safekeeping user data in place, it will be difficult to drive user adoption and retention. As the technology behind language models continue to evolve, teams will also realize that foundation models may not be the best solution for every use case. I predict that training or fine-tuning domain-specific chatbots 'in-house' will soon become feasible and help alleviate some of these concerns.
+
+‍
+
+</Section>
